@@ -1,0 +1,90 @@
+\documentclass[oneside, titlepage, 12pt, a4paper]{report}
+
+\usepackage[magyar]{babel}	% tartalomjegyzék felirat
+\usepackage[utf8]{inputenc}	% magyar karakterek
+\usepackage{graphicx}	% ábrák
+\usepackage{setspace}	% sorköz \onehalfspacing
+
+\newtheorem{theorem}{Tétel}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{definition}{Definíció}[section]
+\newtheorem{statement}{Állítás}[section]
+
+\textwidth=6.truein \textheight=9.truein
+\hoffset=-.5truein
+\voffset=-.8truein
+
+\begin{document}
+\begin{titlepage}
+% belső fedőlap
+
+% minta forrása: https://github.com/shdnx/ELTE-LaTeX-Thesis-Base
+\begin{minipage}{0.40\linewidth}
+\includegraphics[scale=0.8]{./abrak/elte_logo_szines.jpg}
+\end{minipage}
+\begin{minipage}{0.50\linewidth}
+\begin{center}
+Eötvös Loránd Tudományegyetem \\
+Informatikai Kar \\
+Numerikus Analízis Tanszék
+\end{center}
+\end{minipage}
+
+\hrule
+\vfill
+
+\begin{center}
+\Huge
+\textbf{A Ljapunov-Schmidt-módszer}
+\normalsize
+\end{center}
+
+\vfill
+
+\begin{minipage}[t]{0.5\linewidth}
+\begin{flushleft}
+\textbf{Dr. Kovács Sándor} \\
+Adjunktus
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.5\linewidth}
+\begin{flushright}
+\textbf{Lipták Bence Gábor} \\
+Programtervező Informatikus MSc
+\end{flushright}
+\end{minipage}
+
+\vfill
+
+\begin{center}
+Budapest, 2018.
+\end{center}
+
+\end{titlepage}
+
+\tableofcontents
+
+%% Bevezetés
+
+\onehalfspacing
+\chapter{Bevezetés}
+\label{chap:Introduction}
+
+% TODO Introduction
+
+%% Alapozás: faktorterek, Fredholm operátorok
+
+\onehalfspacing
+\chapter{Funkcionálanalízis kiegészítés}
+\label{chap:Funcanal_ext}
+
+% TODO faktorterek, Fredholm
+
+
+%% 
+ 
+%  Hivatkozások
+%\bibliography{hivatkozasok}	% TODO
+%\bibliographystyle{ieeetr}
+ 
+\end{document}
