@@ -1,7 +1,10 @@
 \documentclass[oneside, titlepage, 12pt, a4paper]{report}
 
+\usepackage{amsmath}	% align
+\usepackage{amsfonts}	% \mathbb
 \usepackage[magyar]{babel}	% tartalomjegyzék felirat
 \usepackage[utf8]{inputenc}	% magyar karakterek
+\usepackage[T1]{fontenc}
 \usepackage{graphicx}	% ábrák
 \usepackage{setspace}	% sorköz \onehalfspacing
 
@@ -78,13 +81,60 @@ Budapest, 2018.
 \chapter{Funkcionálanalízis kiegészítés}
 \label{chap:Funcanal_ext}
 
-% TODO faktorterek, Fredholm
+Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük, szükségünk van a faktorterek és a Fredholm-operátorok fogalmaira.
 
+\section{Faktorterek}
+\label{sec:Faktorter}
+
+Először is ismertessük a faktorterek definícióját, és az alkalmazásunk szempontjából fontos tulajdonságait, a \cite{faktorter} könyv 4.2 fejezete alapján.
+\begin{definition}
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ pedig egy altere. A V tér U szerinti faktortere
+\begin{equation}
+V / U := \{v + U \mid v \in V\},
+\end{equation}
+ahol
+\begin{equation}
+v + U := \{v + u \mid u \in U \}.
+\end{equation}
+\end{definition}
+Így egy lineáris térben egy altér segítségével definiáltunk egy halmazrendszert. A következő állítással megfogalmazzuk, hogy a kapott halmazok és az U altér között mi az összefüggés.
+\begin{statement}
+Ha V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, akkor $\forall v, v' \in V$-re
+\begin{equation}
+v + U = v' + U \Leftrightarrow v - v' \in U.
+\end{equation}
+\end{statement}
+Ennek segítségével belátható, hogy ha  ''$v - v' \in U$'' feltétellel definiálunk egy relációt $V$ elemein, akkor az egy ekvivalenciareláció és az ekvivalenciaosztályok pedig a $V / U$ faktortér elemei. Ezután definiáljunk műveleteket a faktortéren.
+\begin{theorem}
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekkor
+\begin{itemize}
+\item
+Megadunk	% TODO átfogalmazás
+\begin{align*}
+V / U \times V / U & \longrightarrow V / U \\
+\mathbb{K} \times V / U & \longrightarrow V / U
+\end{align*}
+leképezéseket a következő módon
+\begin{align}
+(v_1 + U) + (v_2 + U) &:= (v_1 + v_2) + U \\
+\alpha (v + U) &:= \alpha v + U
+\end{align}
+melyek jól definiáltak.
+\item
+A $V / U$ faktortér ezekkel a műveletekkel egy $\mathbb{K}$ feletti lineáris tér.
+\item % TODO magyar név helyes-e
+Az úgynevezett kanonikus $\pi_U$ leképezés, melyet
+\begin{equation*}
+\pi_U(v) := v + U \; (v \in V)
+\end{equation*}
+módon definiálunk lineáris operátor $V$ és $V / U$ között.
+\end{itemize}
+\end{theorem}
 
 %% 
  
 %  Hivatkozások
-%\bibliography{hivatkozasok}	% TODO
-%\bibliographystyle{ieeetr}
+\bibliography{hivatkozasok}	% TODO
+\bibliographystyle{ieeetr}
  
 \end{document}
