@@ -86,9 +86,9 @@ Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük, szükségünk van a fa
 \section{Faktorterek}
 \label{sec:Faktorter}
 
-Először is ismertessük a faktorterek definícióját, és az alkalmazásunk szempontjából fontos tulajdonságait, a \cite{faktorter} könyv 4.2 fejezete alapján.
+Először is ismertessük a faktorterek definícióját, és az alkalmazásunk szempontjából fontos tulajdonságait, a \cite{faktorter} könyv 4.2 fejezete alapján, ahol a bizonyítások is megtalálhatóak.
 \begin{definition}
-Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ pedig egy altere. A V tér U szerinti faktortere
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ pedig egy altere. A V tér U szerinti faktortere vagy hányadostere
 \begin{equation}
 V / U := \{v + U \mid v \in V\},
 \end{equation}
@@ -130,6 +130,28 @@ Az úgynevezett kanonikus $\pi_U$ leképezés, melyet
 módon definiálunk lineáris operátor $V$ és $V / U$ között.
 \end{itemize}
 \end{theorem}
+A faktortér konstrukciója nagyon hasonlít az egész számok körében létesített maradékosztályokra, és rögzített $U \subset V$ esetén ugyanaz a jelölés is alkalmazható:
+\begin{equation*}
+\overline{v} := v + U \; (v \in V),
+\end{equation*}
+ezzel a jelöléssel a műveletek:
+\begin{align*}
+\overline{v} + \overline{w} &= \overline{v + w} \; &(v, w \in V) \\
+\alpha \overline{v} &= \overline{\alpha v} \; &(\alpha \in \mathbb{K}, v \in V).
+\end{align*}
+Még fontos észrevétel, hogy a $\pi_U$ leképezés magtere pontosan az $U$ halmaz, valamint az operátor szürjektív is, amiből kapunk a faktortér dimenziójára egy összefüggést:
+\begin{theorem}
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekkor
+\begin{equation}
+\dim V / U + \dim U = \dim V.
+\end{equation}
+\end{theorem}
+
+% TODO komplemens térrel izomorfia (4.2.6)
+% TODO homomorfiatétel (4.2.7)
+
+\section{Fredholm-operátorok}
+\label{sec:Fredholm}
 
 %% 
  
