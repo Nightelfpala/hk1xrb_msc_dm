@@ -13,6 +13,9 @@
 \newtheorem{definition}{Definíció}[section]
 \newtheorem{statement}{Állítás}[section]
 
+\DeclareMathOperator{\Ima}{Im}	% képtér operátor
+\DeclareMathOperator{\Ker}{Ker}	% magtér operátor
+
 \textwidth=6.truein \textheight=9.truein
 \hoffset=-.5truein
 \voffset=-.8truein
@@ -73,7 +76,7 @@ Budapest, 2018.
 \chapter{Bevezetés}
 \label{chap:Introduction}
 
-% TODO Introduction
+% TODO bevezetés szövege
 
 %% Alapozás: faktorterek, Fredholm operátorok
 
@@ -87,8 +90,8 @@ Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük, szükségünk van a fa
 \label{sec:Faktorter}
 
 Először is ismertessük a faktorterek definícióját, és az alkalmazásunk szempontjából fontos tulajdonságait, a \cite{faktorter} könyv 4.2 fejezete alapján, ahol a bizonyítások is megtalálhatóak.
-\begin{definition}
-Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ pedig egy altere. A V tér U szerinti faktortere vagy hányadostere
+\begin{definition}[Faktortér]
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ pedig egy altere. A V tér U szerinti \textbf{faktortere} vagy \textbf{hányadostere}
 \begin{equation}
 V / U := \{v + U \mid v \in V\},
 \end{equation}
@@ -122,8 +125,8 @@ leképezéseket a következő módon
 melyek jól definiáltak.
 \item
 A $V / U$ faktortér ezekkel a műveletekkel egy $\mathbb{K}$ feletti lineáris tér.
-\item % TODO magyar név helyes-e
-Az úgynevezett kanonikus $\pi_U$ leképezés, melyet
+\item
+$\pi_U$ az úgynevezett \textbf{kanonikus leképezés}, melyet	% TODO magyar név helyes-e
 \begin{equation*}
 \pi_U(v) := v + U \; (v \in V)
 \end{equation*}
@@ -146,12 +149,33 @@ Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekko
 \dim V / U + \dim U = \dim V.
 \end{equation}
 \end{theorem}
+A faktortérnek van egy hasznos tulajdonsága, amivel nem halmazrendszerként, hanem altérként lehet kezelni.
+\begin{theorem}
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, $W \subset V$ pedig az U komplemens altere (tehát $V = W \oplus U$). Ekkor a $\pi_U$ kanonikus leképezés leszűkítése W-re
+\begin{equation*}
+W \longrightarrow V / U, \; w \longrightarrow w + U
+\end{equation*}
+izomorfia, azaz $W \cong V / U$.
+\end{theorem}
+Ha egy $v \in V$ elemet egy $u \in U$ elemmel eltolunk ($U \subset V$ altér), akkor a $V / U$ faktortérbeli $\pi_U$ általi képe változatlan, ez a konstrukció alkalmas arra, hogy olyan függvényeket vizsgáljunk, amiknek az értéke az U altéren konstans, speciális esetben 0.	% TODO esetleg átfogalmazni
+\begin{theorem}[Homomorfiatétel vektorterekre]
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $F \, : \, V \rightarrow W$ egy lineáris leképezés, $U \subset V$ egy altér ami $U \subset \Ker F$. Ekkor egyértelműen létezik $F' \, : \, V / U \rightarrow W$ amivel $F = F' \circ \pi_U$. Emellett
+\begin{itemize}
+\item
+$\Ima F = \Ima F'$, illetve F' pontosan akkor szürjektív, amikor F is,
+\item
+$\Ker F = (\Ker F) / U$, illetve F' pontosan akkor injektív, amikor $U = \Ker F$.
+\end{itemize}
+F'-t az \textbf{F által indukált homomorfizmusnak} nevezzük.	% TODO magyar név helyes-e
+\end{theorem}
 
-% TODO komplemens térrel izomorfia (4.2.6)
-% TODO homomorfiatétel (4.2.7)
+% TODO talán kivezető szöveg
+
+% TODO esetleg 4.2.8 tétel ~ ennek analógja funkcionálokra (ha ezt később használjuk)
 
 \section{Fredholm-operátorok}
 \label{sec:Fredholm}
+% TODO Fredholm
 
 %% 
  
