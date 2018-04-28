@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}	% align
 \usepackage{amsfonts}	% \mathbb
+\usepackage{mathtools}	% \norm definiálás
 \usepackage[magyar]{babel}	% tartalomjegyzék felirat
 \usepackage[utf8]{inputenc}	% magyar karakterek
 \usepackage[T1]{fontenc}
@@ -15,6 +16,9 @@
 
 \DeclareMathOperator{\Ima}{Im}	% képtér operátor
 \DeclareMathOperator{\Ker}{Ker}	% magtér operátor
+\DeclareMathOperator{\Codim}{codim}	% kodimenzió operátor
+
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}	% norma
 
 \textwidth=6.truein \textheight=9.truein
 \hoffset=-.5truein
@@ -86,6 +90,8 @@ Budapest, 2018.
 
 Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük, szükségünk van a faktorterek és a Fredholm-operátorok fogalmaira.
 
+% TODO esetleg jelölések szekció: Lin op, korl Lin op halmazai
+
 \section{Faktorterek}
 \label{sec:Faktorter}
 
@@ -100,6 +106,7 @@ ahol
 v + U := \{v + u \mid u \in U \}.
 \end{equation}
 \end{definition}
+
 Így egy lineáris térben egy altér segítségével definiáltunk egy halmazrendszert. A következő állítással megfogalmazzuk, hogy a kapott halmazok és az U altér között mi az összefüggés.
 \begin{statement}
 Ha V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, akkor $\forall v, v' \in V$-re
@@ -107,6 +114,7 @@ Ha V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, akkor $\
 v + U = v' + U \Leftrightarrow v - v' \in U.
 \end{equation}
 \end{statement}
+
 Ennek segítségével belátható, hogy ha  ''$v - v' \in U$'' feltétellel definiálunk egy relációt $V$ elemein, akkor az egy ekvivalenciareláció és az ekvivalenciaosztályok pedig a $V / U$ faktortér elemei. Ezután definiáljunk műveleteket a faktortéren.
 \begin{theorem}
 Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekkor
@@ -133,6 +141,7 @@ $\pi_U$ az úgynevezett \textbf{kanonikus leképezés}, melyet	% TODO magyar né
 módon definiálunk lineáris operátor $V$ és $V / U$ között.
 \end{itemize}
 \end{theorem}
+
 A faktortér konstrukciója nagyon hasonlít az egész számok körében létesített maradékosztályokra, és rögzített $U \subset V$ esetén ugyanaz a jelölés is alkalmazható:
 \begin{equation*}
 \overline{v} := v + U \; (v \in V),
@@ -142,6 +151,7 @@ ezzel a jelöléssel a műveletek:
 \overline{v} + \overline{w} &= \overline{v + w} \; &(v, w \in V) \\
 \alpha \overline{v} &= \overline{\alpha v} \; &(\alpha \in \mathbb{K}, v \in V).
 \end{align*}
+
 Még fontos észrevétel, hogy a $\pi_U$ leképezés magtere pontosan az $U$ halmaz, valamint az operátor szürjektív is, amiből kapunk a faktortér dimenziójára egy összefüggést:
 \begin{theorem}
 Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekkor
@@ -149,6 +159,19 @@ Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekko
 \dim V / U + \dim U = \dim V.
 \end{equation}
 \end{theorem}
+
+Ha egy $v \in V$ elemet egy $u \in U$ elemmel eltolunk ($U \subset V$ altér), akkor a $V / U$ faktortérbeli $\pi_U$ általi képe változatlan, ez a konstrukció alkalmas arra, hogy olyan függvényeket vizsgáljunk, amiknek az értéke az U altéren konstans, speciális esetben 0.	% TODO esetleg átfogalmazni
+\begin{theorem}[Homomorfiatétel vektorterekre]
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $F \, : \, V \rightarrow W$ egy lineáris leképezés, $U \subset V$ egy altér amire $U \subset \Ker F$. Ekkor egyértelműen létezik $F' \, : \, V / U \rightarrow W$ amivel $F = F' \circ \pi_U$. Emellett
+\begin{itemize}
+\item
+$\Ima F = \Ima F'$, illetve F' pontosan akkor szürjektív, amikor F is,
+\item
+$\Ker F' = (\Ker F) / U$, illetve F' pontosan akkor injektív, amikor $U = \Ker F$.
+\end{itemize}
+F'-t az \textbf{F által indukált homomorfizmusnak} nevezzük.	% TODO magyar név helyes-e
+\end{theorem}
+
 A faktortérnek van egy hasznos tulajdonsága, amivel nem halmazrendszerként, hanem altérként lehet kezelni.
 \begin{theorem}
 Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, $W \subset V$ pedig az U komplemens altere (tehát $V = W \oplus U$). Ekkor a $\pi_U$ kanonikus leképezés leszűkítése W-re
@@ -157,30 +180,49 @@ W \longrightarrow V / U, \; w \longrightarrow w + U
 \end{equation*}
 izomorfia, azaz $W \cong V / U$.
 \end{theorem}
-Ha egy $v \in V$ elemet egy $u \in U$ elemmel eltolunk ($U \subset V$ altér), akkor a $V / U$ faktortérbeli $\pi_U$ általi képe változatlan, ez a konstrukció alkalmas arra, hogy olyan függvényeket vizsgáljunk, amiknek az értéke az U altéren konstans, speciális esetben 0.	% TODO esetleg átfogalmazni
-\begin{theorem}[Homomorfiatétel vektorterekre]
-Legyen V egy $\mathbb{K}$ feletti lineáris tér, $F \, : \, V \rightarrow W$ egy lineáris leképezés, $U \subset V$ egy altér ami $U \subset \Ker F$. Ekkor egyértelműen létezik $F' \, : \, V / U \rightarrow W$ amivel $F = F' \circ \pi_U$. Emellett
-\begin{itemize}
-\item
-$\Ima F = \Ima F'$, illetve F' pontosan akkor szürjektív, amikor F is,
-\item
-$\Ker F = (\Ker F) / U$, illetve F' pontosan akkor injektív, amikor $U = \Ker F$.
-\end{itemize}
-F'-t az \textbf{F által indukált homomorfizmusnak} nevezzük.	% TODO magyar név helyes-e
-\end{theorem}
 
 % TODO talán kivezető szöveg
 
 % TODO esetleg 4.2.8 tétel ~ ennek analógja funkcionálokra (ha ezt később használjuk)
 
+\section{Kompakt operátorok}
+\label{sec:kompakt}
+
+A Fredholm-operátorok konstrukciójához érdemes feleleveníteni a kompakt operátorok fogalmát és néhány, a gyakorlat szempontjából hasznos tulajdonságukat. A következők során $(X, \norm{.}_X)$ és $(Y, \norm{.}_Y)$ normált terek.
+\begin{definition}
+$A \, : \, X \rightarrow Y$ operátor \textbf{kompakt}, ha bármely $U \subset X$ korlátos halmaznak a képe prekompakt, azaz $\overline{A[U]} \subset Y$ kompakt, valamint ha A korlátos, akkor \textbf{teljesen folytonosnak} is nevezzük. \cite{funkanal}
+\end{definition}
+A továbbiakban az $X \rightarrow Y$ közötti kompakt és lineáris operátorok halmazát $K(X, Y)$-al, $X = Y$ esetén $K(X)$-szel jelöljük, ez zárt alteret alkot $L(X, Y)$-ban.
+\begin{definition}
+$A \in L(X, Y)$ operátor \textbf{véges rangú}, ha a képtere véges dimenziós ($\dim \Ima A < \infty$). A véges rangú operátorok halmazát $K_{fin}(X, Y)$-al rövidítjük.
+\cite{funkanal,FcNotex}
+\end{definition}
+Belátható (\cite{funkanal}), hogy minden véges rangú operátor kompakt (és így a jelölés indokolt). \par
+A kompakt operátorok bizonyos esetekben közelíthetőek véges rangú operátorokkal:
+\begin{theorem}
+Ha Y-ban van Schauder-bázis, akkor $A \in L(X, Y)$ pontosan akkor kompakt, ha határértéke véges rangú operátorok valamely sorozatának, azaz $K(X, Y) = \overline{K_{fin}(X, Y)}$. \cite{FcNotex}
+\end{theorem}
+Ezek a feltételek teljesülnek például szeparábilis Hilbert-terekben vagy $L^p$-terekben ($p \ge 1$). \par
+Még tegyünk egy megállapítást a kompakt operátorok adjungáltjával kapcsolatban:
+\begin{theorem}
+Legyenek $(X, \norm{.}_X)$ és $(Y, \norm{.}_Y)$ Banach-terek, $A \in L(X, Y)$, ekkor
+\begin{equation*}
+A \in K(X, Y) \Leftrightarrow A^* \in K(Y^*, X^*),
+\end{equation*}
+azaz A pontosan akkor kompakt, ha $A^*$ adjungált operátora kompakt.
+\cite{funkanal, lectures16and17}
+\end{theorem}
+
 \section{Fredholm-operátorok}
 \label{sec:Fredholm}
 % TODO Fredholm
 
+
+
 %% 
  
 %  Hivatkozások
-\bibliography{hivatkozasok}	% TODO
+\bibliography{hivatkozasok}	% TODO pontos adatok
 \bibliographystyle{ieeetr}
  
 \end{document}
