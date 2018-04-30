@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}	% align
 \usepackage{amsfonts}	% \mathbb
+\usepackage{amssymb}	% \mathcal
 \usepackage{mathtools}	% \norm definiálás
 \usepackage[magyar]{babel}	% tartalomjegyzék felirat
 \usepackage[utf8]{inputenc}	% magyar karakterek
@@ -16,7 +17,9 @@
 
 \DeclareMathOperator{\Ima}{Im}	% képtér operátor
 \DeclareMathOperator{\Ker}{Ker}	% magtér operátor
-\DeclareMathOperator{\Codim}{codim}	% kodimenzió operátor
+\DeclareMathOperator{\coker}{coker}	% magtér operátor
+\DeclareMathOperator{\codim}{codim}	% kodimenzió operátor
+\DeclareMathOperator{\ind}{ind}	% index operátor
 
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}	% norma
 
@@ -85,12 +88,12 @@ Budapest, 2018.
 %% Alapozás: faktorterek, Fredholm operátorok
 
 \onehalfspacing
-\chapter{Funkcionálanalízis kiegészítés}
+\chapter{Funkcionálanalízis kiegészítés}	% TODOtalán cím
 \label{chap:Funcanal_ext}
 
 Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük, szükségünk van a faktorterek és a Fredholm-operátorok fogalmaira.
 
-% TODO esetleg jelölések szekció: Lin op, korl Lin op halmazai
+% TODOtalán jelölések szekció: Lin op, korl Lin op halmazai
 
 \section{Faktorterek}
 \label{sec:Faktorter}
@@ -120,7 +123,7 @@ Ennek segítségével belátható, hogy ha  ''$v - v' \in U$'' feltétellel defi
 Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekkor
 \begin{itemize}
 \item
-Megadunk	% TODO átfogalmazás
+Megadunk	% TODOtalán átfogalmazás
 \begin{align*}
 V / U \times V / U & \longrightarrow V / U \\
 \mathbb{K} \times V / U & \longrightarrow V / U
@@ -134,7 +137,7 @@ melyek jól definiáltak.
 \item
 A $V / U$ faktortér ezekkel a műveletekkel egy $\mathbb{K}$ feletti lineáris tér.
 \item
-$\pi_U$ az úgynevezett \textbf{kanonikus leképezés}, melyet	% TODO magyar név helyes-e
+$\pi_U$ az úgynevezett \textbf{kanonikus leképezés}, melyet	% TODOmagyar név helyes-e
 \begin{equation*}
 \pi_U(v) := v + U \; (v \in V)
 \end{equation*}
@@ -160,7 +163,7 @@ Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekko
 \end{equation}
 \end{theorem}
 
-Ha egy $v \in V$ elemet egy $u \in U$ elemmel eltolunk ($U \subset V$ altér), akkor a $V / U$ faktortérbeli $\pi_U$ általi képe változatlan, ez a konstrukció alkalmas arra, hogy olyan függvényeket vizsgáljunk, amiknek az értéke az U altéren konstans, speciális esetben 0.	% TODO esetleg átfogalmazni
+Ha egy $v \in V$ elemet egy $u \in U$ elemmel eltolunk ($U \subset V$ altér), akkor a $V / U$ faktortérbeli $\pi_U$ általi képe változatlan, ez a konstrukció alkalmas arra, hogy olyan függvényeket vizsgáljunk, amiknek az értéke az U altéren konstans, speciális esetben 0. Az ilyen leképezésekről szól a következő tétel:	% TODOtalán átfogalmazni
 \begin{theorem}[Homomorfiatétel vektorterekre]
 Legyen V egy $\mathbb{K}$ feletti lineáris tér, $F \, : \, V \rightarrow W$ egy lineáris leképezés, $U \subset V$ egy altér amire $U \subset \Ker F$. Ekkor egyértelműen létezik $F' \, : \, V / U \rightarrow W$ amivel $F = F' \circ \pi_U$. Emellett
 \begin{itemize}
@@ -169,7 +172,7 @@ $\Ima F = \Ima F'$, illetve F' pontosan akkor szürjektív, amikor F is,
 \item
 $\Ker F' = (\Ker F) / U$, illetve F' pontosan akkor injektív, amikor $U = \Ker F$.
 \end{itemize}
-F'-t az \textbf{F által indukált homomorfizmusnak} nevezzük.	% TODO magyar név helyes-e
+F'-t az \textbf{F által indukált homomorfizmusnak} nevezzük.	% TODOmagyar név helyes-e
 \end{theorem}
 
 A faktortérnek van egy hasznos tulajdonsága, amivel nem halmazrendszerként, hanem altérként lehet kezelni.
@@ -181,28 +184,32 @@ W \longrightarrow V / U, \; w \longrightarrow w + U
 izomorfia, azaz $W \cong V / U$.
 \end{theorem}
 
-% TODO talán kivezető szöveg
+% TODOtalán kivezető szöveg
 
-% TODO esetleg 4.2.8 tétel ~ ennek analógja funkcionálokra (ha ezt később használjuk)
+% TODOtalán 4.2.8 tétel ~ ennek analógja funkcionálokra (ha ezt később használjuk)
 
+%
 \section{Kompakt operátorok}
 \label{sec:kompakt}
 
 A Fredholm-operátorok konstrukciójához érdemes feleleveníteni a kompakt operátorok fogalmát és néhány, a gyakorlat szempontjából hasznos tulajdonságukat. A következők során $(X, \norm{.}_X)$ és $(Y, \norm{.}_Y)$ normált terek.
-\begin{definition}
+\begin{definition}[Kompakt operátor]
 $A \, : \, X \rightarrow Y$ operátor \textbf{kompakt}, ha bármely $U \subset X$ korlátos halmaznak a képe prekompakt, azaz $\overline{A[U]} \subset Y$ kompakt, valamint ha A korlátos, akkor \textbf{teljesen folytonosnak} is nevezzük. \cite{funkanal}
 \end{definition}
+
 A továbbiakban az $X \rightarrow Y$ közötti kompakt és lineáris operátorok halmazát $K(X, Y)$-al, $X = Y$ esetén $K(X)$-szel jelöljük, ez zárt alteret alkot $L(X, Y)$-ban.
 \begin{definition}
 $A \in L(X, Y)$ operátor \textbf{véges rangú}, ha a képtere véges dimenziós ($\dim \Ima A < \infty$). A véges rangú operátorok halmazát $K_{fin}(X, Y)$-al rövidítjük.
 \cite{funkanal,FcNotex}
 \end{definition}
 Belátható (\cite{funkanal}), hogy minden véges rangú operátor kompakt (és így a jelölés indokolt). \par
+
 A kompakt operátorok bizonyos esetekben közelíthetőek véges rangú operátorokkal:
 \begin{theorem}
 Ha Y-ban van Schauder-bázis, akkor $A \in L(X, Y)$ pontosan akkor kompakt, ha határértéke véges rangú operátorok valamely sorozatának, azaz $K(X, Y) = \overline{K_{fin}(X, Y)}$. \cite{FcNotex}
 \end{theorem}
 Ezek a feltételek teljesülnek például szeparábilis Hilbert-terekben vagy $L^p$-terekben ($p \ge 1$). \par
+
 Még tegyünk egy megállapítást a kompakt operátorok adjungáltjával kapcsolatban:
 \begin{theorem}
 Legyenek $(X, \norm{.}_X)$ és $(Y, \norm{.}_Y)$ Banach-terek, $A \in L(X, Y)$, ekkor
@@ -212,12 +219,69 @@ A \in K(X, Y) \Leftrightarrow A^* \in K(Y^*, X^*),
 azaz A pontosan akkor kompakt, ha $A^*$ adjungált operátora kompakt.
 \cite{funkanal, lectures16and17}
 \end{theorem}
+% TODOtalán kivezető szöveg
 
+%
 \section{Fredholm-operátorok}
 \label{sec:Fredholm}
-% TODO Fredholm
 
+Végül beszéljünk a Fredholm-operárokról és lehetőségekről az előállításukra. A továbbiakban $(X, \norm{.}_X)$ és $(Y, \norm{.}_Y)$ Banach-terek.
+\begin{definition}[Fredholm-operátor]
+$T \in L(X, Y)$ \textbf{Fredholm-operátor}, ha az alábbiak teljesülnek:
+\begin{itemize}
+\item
+$\dim \Ker T < \infty$,
+\item
+T[X] zárt Y-ban,
+\item
+$\dim (Y / T[X]) < \infty$.
+\end{itemize} % TODOmagyar nevek
+Ekkor a T operátor \textbf{indexe} $\ind T := \dim \Ker T - \dim (Y / T[X]) \in \mathbb{Z}$, T \textbf{cokernele} $\coker T := Y / T[X]$ (azaz Y-ban a T képtere szerinti faktortér), valamint a cokernel dimenziója az operátor \textbf{kodimenziója} $\codim T := \dim \coker T$. \cite{faktorter, FcNotex, lectures16and17, diffun2}
+\end{definition}
+Az X és Y közötti Fredholm-operátorok halmazát a továbbiakban $\mathcal{F}(X, Y)$-al jelöljük. Belátható, hogy a második feltétel (T képterének a zártsága) a másik kettőből következik \cite{lectures16and17, diffun2}. \par
 
+Most nézzük meg, hogy bizonyos függvény műveletek hatására változik-e a Fredholm-tulajdonság.	% TODOtalán átírni
+\begin{theorem}
+Legyenek $(X, \norm{.}_X)$, $(Y, \norm{.}_Y)$ és $(Z, \norm{.}_Z)$ Banach-terek, ekkor:
+\begin{itemize}
+\item
+$A \in \mathcal{F}(X, Y)$ és $B \in \mathcal{F}(Y, Z)$, ekkor $B \circ A \in \mathcal{F}(X, Z)$ és $ \ind (B \circ A) = \ind B + \ind A$,
+\item
+$A \in \mathcal{F}(X, Y)$, ekkor $A^* \in \mathcal{F}(X^*, Y^*)$ és $\ind A^* = - \ind A$,
+\item
+$\mathcal{F}(X, Y)$ nyílt részhalmaza L(X, Y)-nak, és az $\ind : \mathcal{F}(X, Y) \rightarrow \mathbb{Z}$ függvény lokálisan konstans.
+\end{itemize}
+Tehát Fredholm-operátorok kompozíciója Fredholm-operátor, valamint Fredholm-operátor adjungáltja is Fredholm-operátor. \cite{FcNotex, diffun2}
+\end{theorem}
+% TODOtalán a lokálisan konstansságból következően a kis perturbáció tétel is?
+
+Korábban említettük a kompakt operátorok és a Fredholm-operátorok kapcsolatát, erről szól a következő állítás.
+\begin{theorem}
+$T \in L(X, Y)$ bijektív, $K \in L(X, Y)$ kompakt, ekkor $T + K$ Fredholm-operátor és $\ind(T + K) = 0$. Ennek speciális esete amikor $(X, \norm{.}_X) = (Y, \norm{.}_Y)$ és T az identitás X-en. \cite{FcNotex,diffun2}
+\end{theorem}
+
+Amennyiben ilyen módon kaptunk egy Fredholm-operátort, akkor ahhoz (a kompakt operátorok altér-tulajdonságából kifolyólag) egy kompakt operátort hozzáadva is Fredholm-operátort kapunk, ez igaz tetszőleges konstrukció esetén is:
+\begin{theorem}
+$K \in K(X, Y)$ és $F \in \mathcal{F}(X, Y)$ esetén $K + F \in \mathcal{F}(X, Y)$, valamint $\ind(K + F) = \ind F$. \cite{FcNotex}
+\end{theorem}
+
+Mivel a Fredholm-operátoroknál nem feltétel, hogy a magterük csak a tér nullelemét tartalmazza, ezért általában nem invertálhatóak, de egy hasonló tulajdonságot megadhatunk:	% TODOtalán átírni
+\begin{theorem}
+$T \in L(X, Y)$ pontosan akkor Fredholm-operátor, ha létezik $B \in L(Y, X)$, $K_X \in K(X)$, $K_Y \in K(Y)$ úgy, hogy
+\begin{equation*}
+BT = I_{\mkern 1mu \vrule height 2ex\mkern2mu X} + K_X, TB = I_{\mkern 1mu \vrule height 2ex\mkern2mu Y} + K_Y.
+\end{equation*}
+Azaz a Fredholm-tulajdonság lényegében az invertálhatóság modulo kompakt operátort jelenti. \cite{FcNotex, diffun2}
+\end{theorem}
+% TODOtalán kivezető szöveg
+
+%%
+
+\onehalfspacing
+\chapter{A Ljapunov-Schmidt-módszer}
+\label{chap:modszer}
+
+% TODO
 
 %% 
  
