@@ -91,10 +91,11 @@ Budapest, 2018.
 \chapter{Funkcionálanalízis kiegészítés}	% TODOtalán cím
 \label{chap:Funcanal_ext}
 
-Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük, szükségünk van a faktorterek és a Fredholm-operátorok fogalmaira.
+Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük szükségünk van a Fredholm-operátorok fogalmára, amihez elengedhetetlenek a faktorterek és a kompakt operátorok. A módszerhez emelett még az implicit függvény tétel (Banach-terekben) is szükséges.
 
 % TODOtalán jelölések szekció: Lin op, korl Lin op halmazai
 
+%
 \section{Faktorterek}
 \label{sec:Faktorter}
 
@@ -137,7 +138,7 @@ melyek jól definiáltak.
 \item
 A $V / U$ faktortér ezekkel a műveletekkel egy $\mathbb{K}$ feletti lineáris tér.
 \item
-$\pi_U$ az úgynevezett \textbf{kanonikus leképezés}, melyet	% TODOmagyar név helyes-e
+$\pi_U$ az úgynevezett \textbf{kanonikus leképezés}, melyet
 \begin{equation*}
 \pi_U(v) := v + U \; (v \in V)
 \end{equation*}
@@ -272,6 +273,29 @@ $T \in L(X, Y)$ pontosan akkor Fredholm-operátor, ha létezik $B \in L(Y, X)$, 
 BT = I_{\mkern 1mu \vrule height 2ex\mkern2mu X} + K_X, TB = I_{\mkern 1mu \vrule height 2ex\mkern2mu Y} + K_Y.
 \end{equation*}
 Azaz a Fredholm-tulajdonság lényegében az invertálhatóság modulo kompakt operátort jelenti. \cite{FcNotex, diffun2}
+\end{theorem}
+% TODOtalán kivezető szöveg
+
+%
+\section{Implicit függvény tétel}
+\label{sec:implicitfvtetel}
+
+A módszer használata során az eredmény eléréséhez szükségünk lesz az implicit függvény tételre Banach-terekben, illetve ahhoz kötődően a Fréchet-derivált fogalmára. $(X, \norm{.}_X)$, $(Y, \norm{.}_Y)$ és $(Z, \norm{.}_Z)$ a következők során Banach-terek.
+
+\begin{definition}
+$F : X \times Y \rightarrow Z$ \textbf{Fréchet-differenciálható} X-ben $(u_0, v_0)$ pontban, ha létezik $(D_uF)(u_0, v_0) \in L(X, Z)$ úgy, hogy
+\begin{equation*}
+\lim_{h \to 0} \frac{\norm{F(u_0 + h, v_0) - F(u_0, v_0) - (D_uF)(u_0, v_0)h}_Z}{\norm{h}_X} = 0.
+\end{equation*}
+\end{definition}
+Látható, hogy egy ponthoz tartozó derivált (a valós többdimenziós esethez hasonlóan) egy függvény.
+
+\begin{theorem}[Implicit függvény tétel]
+$F : X \times Y \rightarrow Z$ folytonos, $(u_0, v_0) \in X \times Y$, $F(u_0, v_0) = 0$, $(D_uF(u_0, v_0))$ bijektív és folytonos. Ekkor létezik $(u_0, v_0)$-nak olyan $U \times V \subset X \times Y$ környezete és $G:V \rightarrow U$ függvény, amivel $G(v_0) = u_0$ és
+\begin{equation*}
+F(G(v), v) = 0 \qquad (\forall v \in V).
+\end{equation*}
+Ezen felül minden $U \times V$-beli megoldás ebben a formában áll elő. \cite{IFaLS}
 \end{theorem}
 % TODOtalán kivezető szöveg
 
