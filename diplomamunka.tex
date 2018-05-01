@@ -283,15 +283,16 @@ Azaz a Fredholm-tulajdonság lényegében az invertálhatóság modulo kompakt o
 A módszer használata során az eredmény eléréséhez szükségünk lesz az implicit függvény tételre Banach-terekben, illetve ahhoz kötődően a Fréchet-derivált fogalmára. $(X, \norm{.}_X)$, $(Y, \norm{.}_Y)$ és $(Z, \norm{.}_Z)$ a következők során Banach-terek.
 
 \begin{definition}
-$F : X \times Y \rightarrow Z$ \textbf{Fréchet-differenciálható} X-ben $(u_0, v_0)$ pontban, ha létezik $(D_uF)(u_0, v_0) \in L(X, Z)$ úgy, hogy
+$F : X \times Y \rightarrow Z$ \textbf{Fréchet-differenciálható} X-ben az $(u_0, v_0)$ pontban, ha létezik $(D_xF)(u_0, v_0) \in L(X, Z)$ úgy, hogy
 \begin{equation*}
-\lim_{h \to 0} \frac{\norm{F(u_0 + h, v_0) - F(u_0, v_0) - (D_uF)(u_0, v_0)h}_Z}{\norm{h}_X} = 0.
+\lim_{h \to 0} \frac{\norm{F(u_0 + h, v_0) - F(u_0, v_0) - (D_xF)(u_0, v_0)h}_Z}{\norm{h}_X} = 0.
 \end{equation*}
 \end{definition}
-Látható, hogy egy ponthoz tartozó derivált (a valós többdimenziós esethez hasonlóan) egy függvény.
+Látható, hogy egy ponthoz tartozó derivált (a valós, többdimenziós esethez hasonlóan) egy függvény.
 
 \begin{theorem}[Implicit függvény tétel]
-$F : X \times Y \rightarrow Z$ folytonos, $(u_0, v_0) \in X \times Y$, $F(u_0, v_0) = 0$, $(D_uF(u_0, v_0))$ bijektív és folytonos. Ekkor létezik $(u_0, v_0)$-nak olyan $U \times V \subset X \times Y$ környezete és $G:V \rightarrow U$ függvény, amivel $G(v_0) = u_0$ és
+\label{implicit}
+$F : X \times Y \rightarrow Z$ folytonos, $(u_0, v_0) \in X \times Y$, $F(u_0, v_0) = 0$, $(D_xF)(u_0, v_0)$ bijektív és folytonos. Ekkor létezik $(u_0, v_0)$-nak olyan $U \times V \subset X \times Y$ környezete és $G:V \rightarrow U$ függvény, amivel $G(v_0) = u_0$ és
 \begin{equation*}
 F(G(v), v) = 0 \qquad (\forall v \in V).
 \end{equation*}
@@ -304,6 +305,39 @@ Ezen felül minden $U \times V$-beli megoldás ebben a formában áll elő. \cit
 \onehalfspacing
 \chapter{A Ljapunov-Schmidt-módszer}
 \label{chap:modszer}
+
+A Ljapunov-Schmidt-módszer célja, hogy egy végtelen-dimenziós feladatot egy jobban kezelhető, véges dimenziós feladatra redukáljunk. \par
+Először is nézzük meg az általános esetet (\cite{8.6TLSM}). $(X, \norm{.}_X)$, $(Y, \norm{.}_Y)$ és $(\Lambda, \norm{.}_\Lambda)$ legyenek Banach-terek ($\Lambda$ a paramétertér szerepét tölti be), 0-val pedig értelemszerűen a megfelelő tér nullelemét jelöljük.\par
+Legyen $F : X \rightarrow Z$ egy korlátos lineáris operátor, $N : X \times \Lambda \rightarrow Z$ pedig egy folytonosan (Fréchet-)differenciálható leképezés úgy, hogy
+\begin{align*}
+N(0, 0) &= 0, \\
+(D_xN)(0,0) &= 0.
+\end{align*}
+Keressük $x \in X$-ben az alábbi egyenlet nemtriviális ($\lambda \ne 0$) megoldásait:
+\begin{equation}
+Fx = N(x, \lambda).
+\end{equation}
+Ha $D_xF(0)$ izomorfizmus $X$ és $Z$ között, akkor $A(x, \lambda) := Fx - N(x, \lambda)$ jelöléssel
+\begin{equation*}
+A(0, 0) = 0,
+\end{equation*}
+\begin{equation*}
+D_xA(0, 0) = D_xF(0) \in L(X, Z) \, \text{folytonos bijekció},
+\end{equation*}
+így alkalmazható az implicit függvény tétel, ami megad egy $f : V \rightarrow U$ folytonos függvényt ($U \times V \subset X \times \Lambda$ a $(0, 0)$ egy nyílt környezete), amivel
+\begin{equation*}
+f(0) = 0,
+\end{equation*}
+\begin{equation*}
+0 = A(f(\lambda), \lambda) = F(f(\lambda)) - N(f(\lambda), \lambda) \qquad (\lambda \in V),
+\end{equation*}
+és így 
+\begin{equation*}
+F(f(\lambda)) = N( f(\lambda), \lambda) \qquad (\lambda \in V),
+\end{equation*}
+ami megoldja az eredeti egyenletünket a $(0, 0)$ egy környezetében.\par
+A Ljapunov-Schmidt-módszer bizonyos feltételek mellett megoldja a feladatot abban az esetben, ha $D_xF(0)$ nem izomorfizmus.	% TODO cont
+
 
 % TODO
 
