@@ -115,7 +115,7 @@ v + U := \{v + u \mid u \in U \}.
 \begin{statement}
 Ha V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, akkor $\forall v, v' \in V$-re
 \begin{equation}
-v + U = v' + U \Leftrightarrow v - v' \in U.
+v + U = v' + U \qquad \Leftrightarrow \qquad v - v' \in U.
 \end{equation}
 \end{statement}
 
@@ -140,7 +140,7 @@ A $V / U$ faktortér ezekkel a műveletekkel egy $\mathbb{K}$ feletti lineáris 
 \item
 $\pi_U$ az úgynevezett \textbf{kanonikus leképezés}, melyet
 \begin{equation*}
-\pi_U(v) := v + U \; (v \in V)
+\pi_U(v) := v + U \qquad (v \in V)
 \end{equation*}
 módon definiálunk lineáris operátor $V$ és $V / U$ között.
 \end{itemize}
@@ -148,12 +148,12 @@ módon definiálunk lineáris operátor $V$ és $V / U$ között.
 
 A faktortér konstrukciója nagyon hasonlít az egész számok körében létesített maradékosztályokra, és rögzített $U \subset V$ esetén ugyanaz a jelölés is alkalmazható:
 \begin{equation*}
-\overline{v} := v + U \; (v \in V),
+\overline{v} := v + U \qquad (v \in V),
 \end{equation*}
 ezzel a jelöléssel a műveletek:
 \begin{align*}
-\overline{v} + \overline{w} &= \overline{v + w} \; &(v, w \in V) \\
-\alpha \overline{v} &= \overline{\alpha v} \; &(\alpha \in \mathbb{K}, v \in V).
+\overline{v} + \overline{w} &= \overline{v + w} &(v, w \in V) \\
+\alpha \overline{v} &= \overline{\alpha v} &(\alpha \in \mathbb{K}, v \in V).
 \end{align*}
 
 Még fontos észrevétel, hogy a $\pi_U$ leképezés magtere pontosan az $U$ halmaz, valamint az operátor szürjektív is, amiből kapunk a faktortér dimenziójára egy összefüggést:
@@ -166,7 +166,7 @@ Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekko
 
 Ha egy $v \in V$ elemet egy $u \in U$ elemmel eltolunk ($U \subset V$ altér), akkor a $V / U$ faktortérbeli $\pi_U$ általi képe változatlan, ez a konstrukció alkalmas arra, hogy olyan függvényeket vizsgáljunk, amiknek az értéke az U altéren konstans, speciális esetben 0. Az ilyen leképezésekről szól a következő tétel:	% TODOtalán átfogalmazni
 \begin{theorem}[Homomorfiatétel vektorterekre]
-Legyen V egy $\mathbb{K}$ feletti lineáris tér, $F \, : \, V \rightarrow W$ egy lineáris leképezés, $U \subset V$ egy altér amire $U \subset \Ker F$. Ekkor egyértelműen létezik $F' \, : \, V / U \rightarrow W$ amivel $F = F' \circ \pi_U$. Emellett
+Legyen V egy $\mathbb{K}$ feletti lineáris tér, $F : V \rightarrow W$ egy lineáris leképezés, $U \subset V$ egy altér amire $U \subset \Ker F$. Ekkor egyértelműen létezik $F' : V / U \rightarrow W$ amivel $F = F' \circ \pi_U$. Emellett
 \begin{itemize}
 \item
 $\Ima F = \Ima F'$, illetve F' pontosan akkor szürjektív, amikor F is,
@@ -180,7 +180,7 @@ A faktortérnek van egy hasznos tulajdonsága, amivel nem halmazrendszerként, h
 \begin{theorem}
 Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, $W \subset V$ pedig az U komplemens altere (tehát $V = W \oplus U$). Ekkor a $\pi_U$ kanonikus leképezés leszűkítése W-re
 \begin{equation*}
-W \longrightarrow V / U, \; w \longrightarrow w + U
+\pi_{\mkern 1mu \vrule height 2ex\mkern2mu U} : W \longrightarrow V / U, \; \pi_{\mkern 1mu \vrule height 2ex\mkern2mu U}(w) = w + U
 \end{equation*}
 izomorfia, azaz $W \cong V / U$.
 \end{theorem}
@@ -195,7 +195,7 @@ izomorfia, azaz $W \cong V / U$.
 
 A Fredholm-operátorok konstrukciójához érdemes feleleveníteni a kompakt operátorok fogalmát és néhány, a gyakorlat szempontjából hasznos tulajdonságukat. A következők során $(X, \norm{.}_X)$ és $(Y, \norm{.}_Y)$ normált terek.
 \begin{definition}[Kompakt operátor]
-$A \, : \, X \rightarrow Y$ operátor \textbf{kompakt}, ha bármely $U \subset X$ korlátos halmaznak a képe prekompakt, azaz $\overline{A[U]} \subset Y$ kompakt, valamint ha A korlátos, akkor \textbf{teljesen folytonosnak} is nevezzük. \cite{funkanal}
+$A : X \rightarrow Y$ operátor \textbf{kompakt}, ha bármely $U \subset X$ korlátos halmaznak a képe prekompakt, azaz $\overline{A[U]} \subset Y$ kompakt, valamint ha A korlátos, akkor \textbf{teljesen folytonosnak} is nevezzük. \cite{funkanal}
 \end{definition}
 
 A továbbiakban az $X \rightarrow Y$ közötti kompakt és lineáris operátorok halmazát $K(X, Y)$-al, $X = Y$ esetén $K(X)$-szel jelöljük, ez zárt alteret alkot $L(X, Y)$-ban.
