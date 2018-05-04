@@ -91,13 +91,13 @@ Budapest, 2018.
 \chapter{Funkcionálanalízis kiegészítés}	% TODOtalán cím
 \label{chap:Funcanal_ext}
 
-Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük szükségünk van a Fredholm-operátorok fogalmára, amihez elengedhetetlenek a faktorterek és a kompakt operátorok. A módszerhez emelett még az implicit függvény tétel (Banach-terekben) is szükséges.
+Ahhoz, hogy a Ljapunov-Schmidt-módszert ismertethessük szükségünk van a Fredholm-operátorok fogalmára, amihez elengedhetetlenek a faktorterek és a kompakt operátorok. A módszerhez emellett még az implicit függvény tétel (Banach-terekben) is szükséges.
 
 % TODOtalán jelölések szekció: Lin op, korl Lin op halmazai
 
 %
 \section{Faktorterek}
-\label{sec:Faktorter}
+\label{sec:Quotient_space}
 
 Először is ismertessük a faktorterek definícióját, és az alkalmazásunk szempontjából fontos tulajdonságait, a \cite{faktorter} könyv 4.2 fejezete alapján, ahol a bizonyítások is megtalálhatóak.
 \begin{definition}[Faktortér]
@@ -290,7 +290,7 @@ $F : X \times Y \rightarrow Z$ \textbf{Fréchet-differenciálható} X-ben az $(u
 \end{definition}
 Látható, hogy egy ponthoz tartozó derivált (a valós, többdimenziós esethez hasonlóan) egy függvény.
 
-\begin{theorem}[Implicit függvény tétel]
+\begin{theorem}[Implicit függvény tétel Banach-terekben]
 \label{implicit}
 $F : X \times Y \rightarrow Z$ folytonos, $(u_0, v_0) \in X \times Y$, $F(u_0, v_0) = 0$, $(D_xF)(u_0, v_0)$ bijektív és folytonos. Ekkor létezik $(u_0, v_0)$-nak olyan $U \times V \subset X \times Y$ környezete és $G:V \rightarrow U$ függvény, amivel $G(v_0) = u_0$ és
 \begin{equation*}
@@ -303,43 +303,79 @@ Ezen felül minden $U \times V$-beli megoldás ebben a formában áll elő. \cit
 %%
 
 \onehalfspacing
-\chapter{A Ljapunov-Schmidt-módszer}
-\label{chap:modszer}
+\chapter{A Ljapunov-Schmidt-módszer és alkalmazásai}
+\label{chap:LjapunovSchmidt}
 
+\section{A Ljapunov-Schmidt-redukció}
+\label{sec:LSMethod}
 A Ljapunov-Schmidt-módszer célja, hogy egy végtelen-dimenziós feladatot egy jobban kezelhető, véges dimenziós feladatra redukáljunk. \par
-Először is nézzük meg az általános esetet (\cite{8.6TLSM}). $(X, \norm{.}_X)$, $(Y, \norm{.}_Y)$ és $(\Lambda, \norm{.}_\Lambda)$ legyenek Banach-terek ($\Lambda$ a paramétertér szerepét tölti be), 0-val pedig értelemszerűen a megfelelő tér nullelemét jelöljük.\par
-Legyen $F : X \rightarrow Z$ egy korlátos lineáris operátor, $N : X \times \Lambda \rightarrow Z$ pedig egy folytonosan (Fréchet-)differenciálható leképezés úgy, hogy
-\begin{align*}
-N(0, 0) &= 0, \\
-(D_xN)(0,0) &= 0.
-\end{align*}
-Keressük $x \in X$-ben az alábbi egyenlet nemtriviális ($\lambda \ne 0$) megoldásait:
+Először is nézzük meg az általános esetet (\cite{8.6TLSM, chapter2chapter10}). $(X, \norm{.}_X)$, $(Y, \norm{.}_Y)$ és $(\Lambda, \norm{.}_\Lambda)$ legyenek Banach-terek ($\Lambda$ a paramétertér szerepét tölti be), 0-val pedig értelemszerűen a megfelelő tér nullelemét jelöljük.\par
+Legyen $F : X \times \Lambda \rightarrow Z$ egy korlátos, $p$-szer folytonosan differenciálható operátor ($p \ge 1$) úgy, hogy
+\begin{equation*}
+F(x_0, \lambda_0) = 0,
+\end{equation*}
+ahol $(x_0, \lambda_0) \in X \times \Lambda$. Keressük az 
 \begin{equation}
-Fx = N(x, \lambda).
+\label{eq:LSproblem}
+F(x, \lambda) = 0
 \end{equation}
-Ha $D_xF(0)$ izomorfizmus $X$ és $Z$ között, akkor $A(x, \lambda) := Fx - N(x, \lambda)$ jelöléssel
+egyenlet olyan megoldásait $(x_0, \lambda_0)$ környezetében, amikre $x \ne x_0$. \par
+Először tegyük fel, hogy $D_xF(x_0, \lambda_0)$ izomorfizmus. Ekkor alkalmazható az implicit függvény tétel, azaz létezik $ U \times V \subset X \times \Lambda$ és $f : V \rightarrow U$, amivel
+\begin{align*}
+f(\lambda_0) &= x_0, \\
+F(f(\lambda), \lambda) &= 0 \qquad(\lambda \in V),
+\end{align*}
+és $U \times V$-ben minden megoldás előáll ebben az alakban. \par
+A Ljapunov-Schmidt-módszer bizonyos feltételek mellett megoldja a feladatot abban az esetben, ha $D_xF(x_0, \lambda_0)$ nem izomorfizmus, tételezzük tehát ezt fel. A továbbiakban a $D_xF(x_0, \lambda_0)$ operátort rövidítve, $D_xF$-el jelöljük (ami egy $L(X, Z)$ függvény). \par
+Legyen $K := \Ker D_xF$ és $R := \Ima D_xF$, és tekintsük a hozzájuk tartozó kiegészítő altereket:
+\begin{align*}
+X &= K \oplus W, \\
+Z &= R \oplus S.
+\end{align*}
+Tegyük fel, hogy $K$ és $S$ véges dimenziósak, azaz $D_xF$ Fredholm-operátor, ekkor létezik megfelelő $W$ és $S$, melyek zártak (\cite{funkanal} 4.5.9).	% TODO kell pontos hely megjelölés a hivatkozáshoz?
+Tekintsük $D_xF_{\mkern 1mu \vrule height 2ex\mkern2mu W} : W \rightarrow R$ függvényt, ez bijekció és R zárt, ezért létezik $D_xF_{\mkern 1mu \vrule height 2ex\mkern2mu W}$-nek folytonos inverze. \par % TODOtalán indoklás: (szürjektivitás $R$ képtér tulajdonságából következik, injektivitás abból, hogy $\Ker D_xF_{\mkern 1mu \vrule height 2ex\mkern2mu W} = W \cap K = \{0\}$)
+Bontsuk fel minden $x \in X$-et fel $K$ mentén egyértelműen ($x_0$ esetén külön jelölve a kapott részeket):
+\begin{align*}
+x &= x_1 + x_2 \qquad &(x_1 \in K, x_2 \in W), \\
+x_0 &= x_1^{(0)} + x_2^{(0)} \qquad &(x_1^{(0)} \in K, x_2^{(0)} \in W),
+\end{align*}
+Legyen $P_R : Z \rightarrow R$ projekciós operátor $R$-re. Alkalmazzuk $P_R$-t és $(I - P_R)$-t  az eredeti (\ref{eq:LSproblem}) feladatra, kiegészítve az $x$ szétválasztásával:
+\begin{align*}
+P_RF(x_1, x_2, \lambda) & := P_RF(x_1 + x_2, \lambda) = 0, \\
+(I - P_R)F(x_1, x_2, \lambda) & := (I - P_R)F(x_1 + x_2, \lambda) = 0,
+\end{align*}
+ahol így
+\begin{align*}
+P_RF &: K \times W \times \Lambda \rightarrow R, \\
+(I - P_R)F &: K \times W \times \Lambda \rightarrow S,
+\end{align*}
+az elsőt kissé átrendezve
 \begin{equation*}
-A(0, 0) = 0,
+P_RF : W \times (K \times \Lambda) \rightarrow R,
 \end{equation*}
+alakot kapunk, amire a $D_xF_{\mkern 1mu \vrule height 2ex\mkern2mu W}$ invertálhatósága (és az inverz folytonossága) lehetővé teszi az implicit függvény tétel alkalmazását, amivel kapunk egy $x_2 : \Theta \times \Gamma \rightarrow W$ függvényt (alkalmas $\Theta \subset K$ és $\Gamma \subset \Lambda$ halmazokkal $x_1^{(0)}$ és $\lambda_0$ környezetében), amivel
+\begin{align*}
+x_2 &:= x_2(x_1, \lambda) \qquad (x_1 \in \Theta, \lambda \in \Gamma), \\
+x_2^{(0)} &= x_2(x_1^{(0)}, \lambda_0), \\
+P_RF&(x_1 + x_2(x_1, \lambda), \lambda) = 0
+\end{align*}
+teljesül, így már csak
+\begin{equation}
+(I - P_R)F(x_1 + x_2(x_1, \lambda), \lambda) = 0
+\end{equation}
+egyenletet kell megoldani, ami így $\Theta \times \Gamma \subset K \times \Lambda$ halmazon értelmezett, $S$-beli értékeket vesz fel. \par
+Ha még azt is feltesszük, hogy $\Lambda$ véges dimenziós, akkor $\dim K < \infty$ és $\dim S < \infty$ miatt kapunk egy véges sok egyenletből álló egyenletrendszert véges sok ismeretlennel, amit már például a ``szokásos'' implicit függvény tétellel megkísérelhetünk megoldani. \par
+Az eredeti \ref{eq:LSproblem} feladat például akkor állhat elő, ha van $A : X \rightarrow Z$ korlátos lineáris operátorunk, $N : X \times Y \rightarrow Z$ folytonosan differenciálható leképezésünk (ami nem feltétlenül lineáris) és az
 \begin{equation*}
-D_xA(0, 0) = D_xF(0) \in L(X, Z) \, \text{folytonos bijekció},
+Ax = N(x, \lambda)
 \end{equation*}
-így alkalmazható az implicit függvény tétel, ami megad egy $f : V \rightarrow U$ folytonos függvényt ($U \times V \subset X \times \Lambda$ a $(0, 0)$ egy nyílt környezete), amivel
-\begin{equation*}
-f(0) = 0,
-\end{equation*}
-\begin{equation*}
-0 = A(f(\lambda), \lambda) = F(f(\lambda)) - N(f(\lambda), \lambda) \qquad (\lambda \in V),
-\end{equation*}
-és így 
-\begin{equation*}
-F(f(\lambda)) = N( f(\lambda), \lambda) \qquad (\lambda \in V),
-\end{equation*}
-ami megoldja az eredeti egyenletünket a $(0, 0)$ egy környezetében.\par
-A Ljapunov-Schmidt-módszer bizonyos feltételek mellett megoldja a feladatot abban az esetben, ha $D_xF(0)$ nem izomorfizmus.	% TODO cont
+egyenlet nemtriviális $x \in X$ megoldásait keressük (\cite{8.6TLSM}).
 
+% TODO bifurkációs dolgok (Hopf, egyéb) {8.6TLSM, chapter2chapter10}
 
-% TODO
+% TODO parcdiffegyenletek megoldása: nemlineáris peremérték feladat, szemilineáris elliptikus feladat
+
+% TODOtalán Matlab program
 
 %% 
  
