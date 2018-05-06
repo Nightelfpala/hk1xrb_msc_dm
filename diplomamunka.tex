@@ -20,6 +20,7 @@
 \DeclareMathOperator{\coker}{coker}	% magtér operátor
 \DeclareMathOperator{\codim}{codim}	% kodimenzió operátor
 \DeclareMathOperator{\ind}{ind}	% index operátor
+\DeclareMathOperator{\Span}{span}	% magtér operátor
 
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}	% norma
 
@@ -124,7 +125,7 @@ Ennek segítségével belátható, hogy ha  ''$v - v' \in U$'' feltétellel defi
 Legyen V egy $\mathbb{K}$ feletti lineáris tér, $U \subset V$ egy altere, ekkor
 \begin{itemize}
 \item
-Megadunk	% TODOtalán átfogalmazás
+Megadunk
 \begin{align*}
 V / U \times V / U & \longrightarrow V / U \\
 \mathbb{K} \times V / U & \longrightarrow V / U
@@ -298,7 +299,16 @@ F(G(v), v) = 0 \qquad (\forall v \in V).
 \end{equation*}
 Ezen felül minden $U \times V$-beli megoldás ebben a formában áll elő. \cite{IFaLS}
 \end{theorem}
+Az ilyen tulajdonságokkal rendelkező $D_xF$ függvényeket lineáris homeomorfizmusnak nevezzük:
+\begin{definition}
+Az $A$ leképezés \textbf{lineáris homeomorfizmus}, ha folytonos, bijektív és az inverze is folytonos.
+\end{definition}
+Az inverz folytonossága pedig a Banach-féle inverz tételből (vagy Banach-féle homeomorfia-tételből) következik:
+\begin{theorem}
+$A \in L(X, Y)$ Banach-terek közötti bijektív operátor, ekkor $A^{-1} \in L(Y, X)$. (\cite{funkanal} 6.1.4) % TODO kell-e pontos helymegjelölés
+\end{theorem}
 % TODOtalán kivezető szöveg
+% TODOtalán Taylor sorfejtés Banach-térben
 
 %%
 
@@ -371,7 +381,220 @@ Ax = N(x, \lambda)
 \end{equation*}
 egyenlet nemtriviális $x \in X$ megoldásait keressük (\cite{8.6TLSM}).
 
-% TODO bifurkációs dolgok (Hopf, egyéb) {8.6TLSM, chapter2chapter10}
+% TODO bifurkációs dolgok (lokális, Hopf) {8.6TLSM, chapter2chapter10}
+
+% TODO bifurkációs pont definíció
+
+\section{Hopf bifurkáció}
+\label{sec:Hopfbifurcation}
+A következőkben az úgynevezett Hopf-bifurkáció-tételt vizsgáljuk, ami időfüggetlen, egy paramétertől függő differenciálegyenlet-rendszerek nemtriviális periodikus megoldásainak a létezéséhez ad meg feltételeket. Ennek során fel fogjuk használni az előző fejezetben tárgyalt Ljapunov-Schmidt-módszert. \cite{chapter2chapter10} \par
+Legyen $f : \mathbb{R}^n \times \mathbb{R} \rightarrow \mathbb{R}^n$ kétszer folytonosan differenciálható leképezés, melyre
+\begin{equation*}
+f(0, \alpha) = 0 \qquad (\alpha \in \mathbb{R}).
+\end{equation*}
+A vizsgálandó differenciálegyenlet-rendszer, melynek $u \in \mathbb{R} \rightarrow \mathbb{R}^n$ megoldásait keressük a következő:
+\begin{equation}
+\label{eq:HopfDE}
+\frac{du}{dt} + f(u, \alpha) = 0.
+\end{equation}
+Tegyük fel, hogy $f$-re teljesülnek az alábbiak:
+\begin{itemize}
+\item
+valamilyen $\alpha = \alpha_0$ érték esetén $i = \sqrt{-1}$ és $-i$ sajátértékei $D_uf(0, \alpha_0)$-nak, és $\pm ki$ ($k = 0, 2, 3, \dots$) nem sajátértékek;
+\item
+$\alpha_0$ egy környezetében van a sajátértékeknek és sajátvektoroknak egy-egy görbéje ($\beta$ illetve $a$), amivel
+\begin{align}
+D_uf(0, \alpha_0) a(\alpha) &= \beta(\alpha) a(\alpha), \\
+a(\alpha_0) &\ne 0, \\
+\beta(\alpha_0) &= i, \\
+\Re(\frac{d\beta}{d\alpha}(\alpha_0)) &\ne 0.
+\end{align}
+\end{itemize}
+A célunk az, hogy találjunk olyan $\eta > 0$ számot illetve egy
+\begin{equation*}
+(u, \rho, \alpha) : (-\eta, \eta) \rightarrow C_{2\pi}^1(\mathbb{R}, \mathbb{R}^n) \times \mathbb{R} \times \mathbb{R}
+\end{equation*}
+folytonosan differenciálható függvényt, amivel $(u(s), \rho(s), \alpha(s))$ megoldja a (\ref{eq:HopfDE}) egyenlet egy általánosítását:
+\begin{equation}
+\label{eq:HopfDErho}
+\frac{du}{dt} + \rho f(u, \alpha) = 0
+\end{equation}
+nemtriviális módon ($u(0) \ne 0$ ha $s \ne 0$),
+\begin{equation*}
+\rho(0) = 1, \> \alpha(0) = \alpha_0, \> u(0) = 0,
+\end{equation*}
+és ezen felül minden megoldás $(0, 1, \alpha_0)$ közelében valamely $s \in (-\eta, \eta)$ esetén előálljon ($u$-beli fáziseltolástól eltekintve). \par
+Vegyük észre, hogy ha $u(t)$ megoldása (\ref{eq:HopfDE})-nek $2 \pi \rho$ periódussal, akkor $u(\rho t)$ $2\pi$-periódusú megoldása (\ref{eq:HopfDErho})-nak.\par
+Legyenek $X = C^1_{2\pi}(\mathbb{R}, \mathbb{R}^n)$ és $Y = C_{2\pi}(\mathbb{R}, \mathbb{R}^n)$ Banach-terek a ``szokásos'' normákkal. Definiáljunk egy $F : X \times \mathbb{R} \times \mathbb{R} \rightarrow Y$ operátort a következő módon:
+\begin{equation*}
+(u, \rho, \alpha) \mapsto \frac{du}{dt} + \rho f(u, \alpha),
+\end{equation*}
+ami így kétszer folytonosan differenciálható, és keressük az
+\begin{equation}
+\label{eq:HopfDEbigF}
+F(u, \rho, \alpha) = 0
+\end{equation}
+megoldásait, amikor $\rho$ közel van $1$-hez, $\alpha$ közel van $\alpha_0$-hoz és $u \ne 0$. Látható, hogy
+\begin{equation*}
+F(0, \rho, \alpha) = 0 \qquad (\rho \in \mathbb{R}, \alpha \in \mathbb{R}).
+\end{equation*}
+Vegyük észre, hogy
+\begin{align*}
+\phi_0(t) &= \Re(e^{it}a(\alpha_0)), \\
+\phi_1(t) &= \Im(e^{it}a(\alpha_0))
+\end{align*}
+függvények $2\pi$-periodikus megoldásai az
+\begin{equation}
+\frac{du}{dt} + D_uf(0, \alpha_0)u = 0
+\end{equation}
+egyenletnek, és ezek a függvények kifeszítik $D_uF(0, 1, \alpha_0)$ magterét:
+\begin{equation*}
+\Ker D_uF(0, 1, \alpha_0) = \Span \{ \phi_0, \phi_1 = \phi_0'\} \subset X.
+\end{equation*}
+% TODO lin DE theory hivatkozás
+A differenciálegyenletek elméletéből következik, hogy $\Ima D_uF(0, 1, \alpha_0) \subset Y$ zárt és
+\begin{equation*}
+\Ima D_uF(0, 1, \alpha_0) = \{ g \in Y : \langle g, \psi_i \rangle = 0, i = 0, 1\},
+\end{equation*}
+ahol $\langle \cdot , \cdot \rangle$ az $L^2$-beli skaláris szorzás, $\{\psi_0, \psi_1 \}$ pedig $\Ker \{ -u' + D_uf^T(0, \alpha_0)u\}$ bázisa, ami az $u' + D_uf(0, \alpha_0)u$ adjungált operátora. Emellett $\psi_1 = \psi_0'$ és $\langle \phi_i, \psi_j \rangle = \delta_{ij}$ Kronecker-deltával egyenlő. Ebből következik, hogy $D_uF : X \rightarrow Y$ Fredholm-operátor aminek a magtere és a kokernele is 2 dimenziójú. \par
+Így alkalmazhatjuk a Ljapunov-Schmidt-módszert:
+\begin{align*}
+X = V \oplus W, \\
+Y = Z \oplus T,
+\end{align*}
+ahol $V = \Ker D_uF$ és $T = \Ima D_uF$. $U$ legyen a $(0, 1, \alpha_0, 0) \in V \times \mathbb{R} \times \mathbb{R} \times \mathbb{R}$, és $G$ legyen $U$-n értelmezve a következő módon:
+\begin{equation*}
+G(v, \rho, \alpha, s) =
+\begin{cases}
+\frac{1}{s}F(s(\phi_0 + v), \rho, \alpha), & s \ne 0, \\
+D_uF(0, \rho, \alpha)(\phi_0 + v), &s = 0.
+\end{cases}
+\end{equation*}
+Ekkor a megoldandó egyenletünk
+\begin{equation}
+G(v, \rho, \alpha, s) = 0
+\end{equation}
+alakban van, amit $v, \rho, \alpha$-ra kellene megoldani $s$ függvényében $0 \in \mathbb{R}$ egy környezetében. $G$ folytonosan differenciálható, és
+\begin{equation*}
+G(v, \rho, \alpha, 0) = D_uF(0, \rho, \alpha)(\phi_0 + v) = (\phi_0 + v)' + \rho D_uf(0, \alpha)(\phi_0 + v),
+\end{equation*}
+illetve
+\begin{equation}
+G(0, \rho, \alpha, 0) = \phi_0' + \rho D_uf(0, \alpha) \phi_0.
+\end{equation}
+Az implicit függvény tétel alkalmazásához arra van szükségünk, hogy a $(v, \rho, \alpha) \mapsto G(v, \rho, \alpha, s)$ leképezés $(0, 1, \alpha_0, 0)$-ban vett deriváltja folytonos és bijektív leképezése $V \times \mathbb{R} \times \mathbb{R}$-nak $Y$-ra. \par
+Vegyük az előbbi egyenlet Taylor-sorba fejtését $(0, 1, \alpha_0)$ körül (rögzített $s \in \mathbb{R}$ esetén):
+\begin{align*}
+G(v, \rho, \alpha, s) = &G(0, 1, \alpha_0, s) + D_\rho G(0, 1, \alpha_0, s)(\rho - 1) \\
++ &D_\alpha G(0, 1, \alpha_0, s)(\alpha - \alpha_0) + D_vG(0, 1, \alpha_0, s)v + \dots,
+\end{align*}
+amit $s = 0$-ban kiértékelünk:
+\begin{align*}
+D_{v, \rho, \alpha}G(0, 1, \alpha_0, 0)(v, \rho - 1, \alpha - \alpha_0) = & D_uf(0, \alpha_0) \phi_0 (\rho - 1) \\
++ & D_{u \alpha}f(0, \alpha_0) \phi_0 (\alpha - \alpha_0) \\
++ & (v' + D_uf(0, \alpha_0)v).
+\end{align*}
+Ebből az utóbbi
+\begin{equation*}
+v \mapsto v' + D_uf(0, \alpha_0)v
+\end{equation*}
+lineáris homeomorfizmus $V$-ből $T$-re (folytonos bijekció), így elég az egyenlet maradékáról
+\begin{equation*}
+(\rho, \alpha) \mapsto D_uf(0, \alpha_0) \phi_0 (\rho - 1) + D_{u \alpha}f(0, \alpha_0) \phi_0 (\alpha - \alpha_0)
+\end{equation*}
+belátni hogy pontosan akkor képez $T$-be, ha $\rho = 1$ és $\alpha = \alpha_0$, valamint minden $\psi \in Z$-re egyértelműen létezik $(\rho, \alpha)$ amivel
+\begin{equation*}
+D_uf(0, \alpha_0) \phi_0 (\rho - 1) + D_{u \alpha}f(0, \alpha_0) \phi_0 (\alpha - \alpha_0) = \psi.
+\end{equation*}
+$T$-t korábban felírtuk mint $\{\psi_0, \psi_1\}$-re ortogonális függvények halmaza, így
+\begin{equation*}
+D_uf(0, \alpha_0) \phi_0 (\rho - 1) + D_{u \alpha}f(0, \alpha_0) \phi_0 (\alpha - \alpha_0) \in T
+\end{equation*}
+pontosan akkor teljesül, ha
+\begin{equation*}
+\langle D_uf(0, \alpha_0) \phi_0, \psi_i \rangle (\rho - 1) + \langle D_{u \alpha}f(0, \alpha_0) \phi_0, \psi_i \rangle (\alpha - \alpha_0) = 0 \qquad (i = 0, 1).
+\end{equation*}
+Mivel $D_uf(0, \alpha_0) \phi_0 = \phi_1$ és $\langle \phi_i, \psi_j \rangle = \delta_{ij}$, ezért az alábbi két egyenletet kapjuk (ahol $(\rho - 1)$ és $(\alpha - \alpha_0)$ az ismeretlenek)
+\begin{align*}
+\langle D_{u \alpha}f(0, \alpha_0) \phi_0, \psi_0 \rangle (\alpha - \alpha_0) &= 0 \\
+(\rho - 1) + \langle D_{u \alpha}f(0, \alpha_0) \phi_0, \psi_1 \rangle (\alpha - \alpha_0) &= 0,
+\end{align*}
+aminek pontosan
+\begin{equation*}
+\langle D_{u \alpha}f(0, \alpha_0) \phi_0, \psi_0 \rangle \ne 0
+\end{equation*}
+esetén van csak a triviális megoldása (amikor is $\rho = 1$ és $\alpha = \alpha_0$), ami kiszámítható, hogy
+\begin{equation*}
+\langle D_{u \alpha}f(0, \alpha_0) \phi_0, \psi_0 \rangle = \Re (\frac{d\beta}{d\alpha}(\alpha_0)) \ne 0
+\end{equation*}
+a kezdeti kikötéseink miatt teljesül. \par
+% példa
+Vizsgáljunk meg példát, amint az előbbi levezetés alkalmazható. Vegyünk a
+\begin{equation}
+x'' + x - \alpha (1 - x^2) x' = 0
+\end{equation}
+differenciálegyenlet-rendszert. Alakítsuk át
+\begin{equation*}
+u =\left(
+\begin{array}{c}
+u_1 \\
+u_2
+\end{array}
+\right) = \left(
+\begin{array}{c}
+x \\
+x'
+\end{array}
+\right)
+\end{equation*}
+alakra, amiből az eredeti egyenlet
+\begin{equation*}
+u' + \left(
+\begin{matrix}
+&0& -1& \\
+&1& -\alpha&
+\end{matrix}
+\right) + \left(
+\begin{array}{c}
+0 \\
+u_1^2 u_2
+\end{array}
+\right) = \left(
+\begin{array}{c}
+0 \\
+0
+\end{array}
+\right)
+\end{equation*}
+formában adódik. Így
+\begin{equation*}
+f(u, \alpha) = \left(
+\begin{matrix}
+&0& -1& \\
+&1& -\alpha&
+\end{matrix}
+\right) + \left(
+\begin{array}{c}
+0 \\
+u_1^2 u_2
+\end{array}
+\right)
+\end{equation*}
+illetve
+\begin{equation*}
+D_uf(0, \alpha) = \left(
+\begin{matrix}
+&0& -1& \\
+&1& -\alpha&
+\end{matrix}
+\right),
+\end{equation*}
+aminek sajátértékei kielégítik az
+\begin{equation*}
+\beta (\alpha + \beta) + 1 = 0
+\end{equation*}
+egyenletet.
+Legyen $\alpha_0 = 0$, így $\beta(0) = \pm i$ és $\beta' = -\frac{1}{2}$ az $\alpha = 0$ esetben, tehát a tételünk értelmében van $\eta > 0$ és $\alpha(s)$, $\rho(s)$ ($s \in (-\eta, \eta)$) amire $\alpha(0) = 0$, $\rho(0) = 1$ és $s \ne 0$ esetén van nemtriviális $x(s)$ megoldása a feladatunknak $2 \pi \rho(s)$ periódussal.
 
 % TODO parcdiffegyenletek megoldása: nemlineáris peremérték feladat, szemilineáris elliptikus feladat
 
