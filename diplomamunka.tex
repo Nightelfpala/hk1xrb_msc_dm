@@ -17,10 +17,11 @@
 
 \DeclareMathOperator{\Ima}{Im}	% képtér operátor
 \DeclareMathOperator{\Ker}{Ker}	% magtér operátor
+\DeclareMathOperator{\Dom}{Dom}	% értelmezési tartomány operátor
 \DeclareMathOperator{\coker}{coker}	% magtér operátor
 \DeclareMathOperator{\codim}{codim}	% kodimenzió operátor
 \DeclareMathOperator{\ind}{ind}	% index operátor
-\DeclareMathOperator{\Span}{span}	% magtér operátor
+\DeclareMathOperator{\Span}{span}	% kifeszített tér
 
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}	% norma
 
@@ -381,11 +382,11 @@ Ax = N(x, \lambda)
 \end{equation*}
 egyenlet nemtriviális $x \in X$ megoldásait keressük (\cite{8.6TLSM}).
 
-% TODO bifurkációs dolgok (lokális, Hopf) {8.6TLSM, chapter2chapter10}
+% TODOtalán lokális bifurkáció {8.6TLSM, chapter2chapter10}
 
 % TODO bifurkációs pont definíció
 
-\section{Hopf bifurkáció}
+\section{Alkalmazás: Hopf-bifurkáció}
 \label{sec:Hopfbifurcation}
 A következőkben az úgynevezett Hopf-bifurkáció-tételt vizsgáljuk, ami időfüggetlen, egy paramétertől függő differenciálegyenlet-rendszerek nemtriviális periodikus megoldásainak a létezéséhez ad meg feltételeket. Ennek során fel fogjuk használni az előző fejezetben tárgyalt Ljapunov-Schmidt-módszert. \cite{chapter2chapter10} \par
 Legyen $f : \mathbb{R}^n \times \mathbb{R} \rightarrow \mathbb{R}^n$ kétszer folytonosan differenciálható leképezés, melyre
@@ -597,6 +598,236 @@ egyenletet.
 Legyen $\alpha_0 = 0$, így $\beta(0) = \pm i$ és $\beta' = -\frac{1}{2}$ az $\alpha = 0$ esetben, tehát a tételünk értelmében van $\eta > 0$ és $\alpha(s)$, $\rho(s)$ ($s \in (-\eta, \eta)$) amire $\alpha(0) = 0$, $\rho(0) = 1$ és $s \ne 0$ esetén van nemtriviális $x(s)$ megoldása a feladatunknak $2 \pi \rho(s)$ periódussal.
 
 % TODO parcdiffegyenletek megoldása: nemlineáris peremérték feladat, szemilineáris elliptikus feladat
+% nemlin peremérték feladat
+\section{Alkalmazás: Nemlineáris peremérték feladat}
+\label{sec:Nonlinboundary}
+Legyen $f : \mathbb{R} \rightarrow \mathbb{R}$ folytonos aminek létezik határértéke $\pm \infty$-ben. Legyen $g : C([0, 1], \mathbb{R}) \rightarrow C([0, 1], \mathbb{R})$ nemlineáris folytonos (a függvények terén a $\norm{.}_\infty$ normát tekintve). Vizsgáljuk az alábbi alakú differenciálegyenleteket:
+\begin{equation}
+\label{eq:Nonlinboundaryeq}
+y^{(n)}(t) + \dots + a_1(t) y'(t) + a_0(t) y(t) = f(y(t)) + (gy)(t), \qquad 0 \le t \le 1,
+\end{equation}
+a következő peremfeltételekkel:
+\begin{align*}
+b_{11} y(0) + &\dots + b_{1n} y^{(n-1)}(0) + d_{11} y(1) + &\dots + d_{1n} y^{(n - 1)}(1) &= 0, \\
+b_{21} y(0) + &\dots + b_{2n} y^{(n-1)}(0) + d_{21} y(1) + &\dots + d_{2n} y^{(n - 1)}(1) &= 0, \\
+\vdots \\
+b_{n1} y(0) + &\dots + b_{nn} y^{(n-1)}(0) + d_{n1} y(1) + &\dots + d_{nn} y^{(n - 1)}(1) &= 0. \\
+\end{align*}
+Tételezzük fel, hogy a homogén egyenletnek
+\begin{equation*}
+y^{(n)}(t) + \dots + a_1(t) y'(t) + a_0(t) y(t) = 0,
+\end{equation*}
+a megoldásai egy dimenziós alteret alkotnak. A továbbiakban \cite{RodriguezAbernathy} mintájára megadunk feltételeket az inhomogén egyenlet megoldásának létezéséhez a Ljapunov-Schmidt-módszer felhasználásával. \par
+Először is alakítsuk át az egyenletet egyenletrendszerré:
+\begin{equation*}
+A(t) = \left(
+\begin{matrix}
+&0 &1 &0 &\dots &0 \\
+&0 &0 &1 &\dots &0 \\
+&\vdots &\vdots &\vdots & &\vdots \\
+&-a_n(t) &-a_{n - 1}(t) &-a_{n - 2}(t) &\dots &-a_1(t)
+\end{matrix}
+\right)
+\end{equation*}
+\begin{equation*}
+x = \left(
+\begin{array}{c}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{array}
+\right) = \left(
+\begin{array}{c}
+y \\
+y' \\
+\vdots \\
+y^{(n - 1)}
+\end{array}
+\right),
+\end{equation*}
+és a peremfeltételek:
+\begin{equation*}
+B =  \left(
+\begin{matrix}
+&b_{11} &b_{12} &\dots &b_{1n} \\
+&b_{21} &b_{22} &\dots &b_{2n} \\
+&\vdots &\vdots & &\vdots \\
+&b_{n1} &b_{n2} &\dots &b_{nn} \\
+\end{matrix}
+\right), \qquad
+D = \left(
+\begin{matrix}
+&d_{11} &d_{12} &\dots &d_{1n} \\
+&d_{21} &d_{22} &\dots &d_{2n} \\
+&\vdots &\vdots & &\vdots \\
+&d_{n1} &d_{n2} &\dots &d_{nn} \\
+\end{matrix}
+\right).
+\end{equation*}
+Ezzel a jelöléssel a feladat a következő alakú:
+\begin{equation}
+x'(t) = A(t) x(t) + \left(
+\begin{array}{c}
+0 \\
+0 \\
+\vdots \\
+f(x_1(t))
+\end{array}
+\right) + \left(
+\begin{array}{c}
+0 \\
+0 \\
+\vdots \\
+g(x_1(t))
+\end{array}
+\right), \qquad 0 \le t \le 1,
+\end{equation}
+amire a
+\begin{equation}
+Bx(0) + Dx(1) = 0
+\end{equation}
+peremfeltételnek kell teljesülnie. Az $f$ függvény határértékeit jelöljük
+\begin{align*}
+f(\infty) &:= lim_{s \to \infty} f(s), \\
+f(-\infty) &:= lim_{s \to -\infty} f(s),
+\end{align*}
+módon, és ezekről tegyük fel, hogy végesek. Mivel az így kapott differenciálegyenlet-rendszer $n$-dimenziós, megadunk a lehetséges megoldások $C([0, 1],\mathbb{R}^n)$ terén egy normát a következő módon:
+\begin{equation*}
+\norm{\phi}_\infty := \sup \{ \norm{\phi(t)}_2 : 0 \le t \le 1 \},
+\end{equation*}
+ahol $\norm{.}_2$ az euklideszi norma $\mathbb{R}^n$-en. \par
+Tegyük fel, hogy létezik $M > 0$ amivel bármely $\psi \in C([0, 1], \mathbb{R})$-re teljesül
+\begin{equation*}
+\sup \{ |g(\psi(t))| : 0 \le t \le 1 \} \le M < \infty.
+\end{equation*}
+Jelöljük a peremfeltételt kielégítő függvények terét $X$-el:
+\begin{equation*}
+X := \{ x \in C([0, 1], \mathbb{R}^n) : Bx(0) + Dx(1) = 0 \}
+\end{equation*}
+valamint adjunk meg $F, G : X \rightarrow C([0, 1], \mathbb{R}^n)$ operátorokat a következő módon:
+\begin{equation*}
+(Fx)(t) = \left(
+\begin{array}{c}
+0 \\
+0 \\
+\vdots \\
+f(x_1(t))
+\end{array}
+\right), \qquad
+(Gx)(t) = \left(
+\begin{array}{c}
+0 \\
+0 \\
+\vdots \\
+g(x_1(t))
+\end{array}
+\right).
+\end{equation*}
+Látható, hogy $F$ és $G$ folytonosak, valamint $\sup \{ \norm{F(x)}_\infty : x \in X\}$ és $\sup \{ \norm{G(x)}_\infty : x \in X\}$ is véges. \par
+Legyen $\Dom L := C^1([0, 1], \mathbb{R}^n) \cap X$, és legyen $L : \Dom L \rightarrow C([0,1], \mathbb{R}^n)$ az alábbi operátor:
+\begin{equation*}
+(Lx)(t) := x'(t) - A(t) x(t).
+\end{equation*}
+Ezek segítségével az eredeti feladatot a következő formában írhatjuk fel:
+\begin{equation}
+Lx = F(x) + G(x).
+\end{equation} \par
+Mivel a homogén egyenlet megoldásainak tulajdonságai szerepet játszhatnak az inhomogén egyenlet megoldhatóságában, először vizsgáljuk az $Lx = 0$ homogén egyenletet. \par
+Legyen $\Gamma(t)$ az $x'(t) = A(t) x(t)$ egyenlet alapmátrixa.
+\begin{align*}
+&Lx = 0 \\
+\Leftrightarrow & x'(t) - A(t) x(t) = 0 \> \text{ és } \> Bx(0) + Dx(1) = 0 \\
+\Leftrightarrow & x(t) = \Gamma(t) C \> \text{ valamely $C$-re és } \> B\Gamma(0)C + D\Gamma(1)C = 0 \\
+\Leftrightarrow & B + D\Gamma(1)C = 0 \\
+\Leftrightarrow & C \in \Ker (B + D\Gamma(1)),
+\end{align*}
+azaz a homogén megoldások előállnak $x(t) = \Gamma(t) C$ alakban, ahol $C \in \Ker (B + D \Gamma(1))$. Ebből az is látszik, hogy $\dim \Ker L = \dim \Ker (B + D \Gamma(1))$. \par
+Az állandók variálásának módszerével az $x'(t) = A(t) x(t) + h(t)$ inhomogén egyenlet megoldásai előállnak
+\begin{equation*}
+x(t) = \Gamma(t) x(0) + \Gamma(t) \int_0^1 \Gamma^{-1}(s) h(s) ds
+\end{equation*}
+alakban. Ez és a peremfeltételek együtt pontosan akkor teljesülnek, ha
+\begin{equation*}
+Bx(0) + D(\Gamma(1) x(0) + \Gamma(1) \int_0^1 \Gamma^{-1}(s) h(s) ds) = 0,
+\end{equation*}
+pontosan akkor, ha
+\begin{equation*}
+(B + D(\Gamma(1)) x(0) = -D\Gamma(1) \int_0^1 \Gamma^{-1}(s) h(s) ds,
+\end{equation*}
+amiből megkaptuk x(0) értékét. Ezekből az is következik, hogy $L$ pontosan akkor bijektív, ha $(B + D\Gamma(1))$ invertálható. Ebben az esetben nem szükséges a Ljapunov-Schmidt-módszer alkalmazása, ezért tegyük fel hogy $\Ker L = 1$. \par
+Az előbbiek alapján $h \in \Ima L$ pontosan akkor, ha valamely $x_0 \in \mathbb{R}^n$ esetén
+\begin{equation*}
+(B + D\Gamma(1)) x_0 = - D\Gamma(1) \int_0^1 \Gamma^{-1}(s) h(s) ds,
+\end{equation*}
+ami pontosan akkor, ha
+\begin{equation*}
+\int_0^1 D \Gamma(1) \Gamma^{-1}(s) h(s) ds \in \Ima (B + D \Gamma(1)).
+\end{equation*}
+% TODO lin DE theory hivatkozás (bár ez itt egyszerűbbnek tűnik)
+Az $\Ima (B + D \Gamma(1)) = (\ker(B + D\Gamma(1))^T)^\perp$ összefüggés miatt $h \in \Ima L$ pontosan akkor, ha
+\begin{equation*}
+W^T \int_0^1 D \Gamma(1) \Gamma^{-1}(s) h(s) = 0,
+\end{equation*}
+ahol $W \in \mathbb{R}^{n \times n}$ mátrix, aminek az oszlopai a $\Ker (B + D \Gamma(1))^T$ egy bázisát alkotják. Legyen $\Psi : \mathbb{R} \rightarrow \mathbb{R}^n$ úgy
+\begin{equation*}
+\Psi^T(t) = W^T D \Gamma(1) \Gamma^{-1}(t),
+\end{equation*}
+ezzel a jelöléssel $Lx = h$ pontosan akkor, ha $\int_0^1 \Psi^T(t) h(t) dt = 0$. Legyenek $P : \Dom L \rightarrow \Ker L$ és $E : C([0, 1], \mathbb{R}^n) \rightarrow \Ima L$ projekciók, ezek segítségével írjuk fel a már ismert felbontásokat:
+\begin{align*}
+\Dom L &= \Ker L \oplus \Ima (I - P), \\
+C([0, 1], \mathbb{R}^n) &= \Ima L \oplus \Ima (I - E).
+\end{align*}
+Legyen $\Phi(t) := \Gamma(t) V$, ahol $V \in \mathbb{R}^n$ a bázisa $\Ker (B + D\Gamma(1))$-nek. Legyenek
+\begin{align*}
+C_1 :=& \int_0^1 \Phi^T(t) \Phi(t) dt, \\
+C_2 :=& \int_0^1 \Psi^T(t) \Psi(t) dt.
+\end{align*}
+Lássuk be, hogy $C_1$ invertálható, valamint $C_2$ invertálható akkor, ha $[B : D]$ teljes rangú. \par
+$C_1$-hez tegyük fel, hogy $C_1 a = 0$, és legyen $q(t) := \Phi(t) a$. Így
+\begin{equation*}
+a^T C_1 a = \int_0^1 q^T(t) q(t) dt = 0,
+\end{equation*}
+amitől $q(t) = 0$ minden $t \in [0, 1]$-re, így $a = 0$, mivel $\Phi(t)$ nem konstans 0. \par
+$C_2$-höz elég az, hogy $\Psi^T(t)$ oszlopai (amiket $\Psi_j^T(t)$-vel jelölünk) lineárisan függetlenek. Mivel $[B : D]$ teljes rangú, $a \in \Ker B^T \cap \Ker D^T$-ből következik $a = 0$. Így
+\begin{equation*}
+c_1 \Psi_1^T(t) + c_2 \Psi_2^T(t) = 0
+\end{equation*}
+pontosan akkor, ha $(c_1, c_2) D = 0$, azaz ha $(c_1, c_2)^T \in \Ker D^T$. Mivel $(c_1, c_2)^T \in \Ker (B + D\Gamma(1))^T$ és $(c_1, c_2)^T \in \Ker B^T$, ezért $(c_1, c_2)^T = (0, 0)$, azaz $C_2$ invertálható. \par
+Így a projekciókat alkalmazva eredeti egyenlet helyett a következőket kapjuk:
+\begin{align*}
+(I - E) x(t) &= \Psi(t) C_2^{-1} \int_0^1 \Psi^T(s) x(s) ds, \\
+P x(t) &= \Phi(t) C_1^{-1} \int_0^1 \Phi^T(s) x(s) ds.
+\end{align*} \par
+Vezessük be a következő jelölést: $M := (L_{\mkern 1mu \vrule height 2ex\mkern2mu \Ima (I - P)})^{-1}$, ezzel $\Ima M = \Ima L$, $M L x = (I - P) x$, és $M$ kompakt. A projekciók segítségével $Lx = F(x) + G(x)$ pontosan akkor, ha
+\begin{equation*}
+\begin{cases}
+E (Lx - (F(x) + G(x))) = 0 \\
+(I - E)(Lx - (F(x) + G(x))) = 0,
+\end{cases}
+\end{equation*}
+ami pontosan akkor, ha
+\begin{equation*}
+\begin{cases}
+Lx = E(F(x) + G(x)) \\
+(I - E)(F(x) + G(x)) = 0,
+\end{cases}
+\end{equation*}
+ami pontosan akkor, ha
+\begin{equation*}
+\begin{cases}
+(I - P)x = ME(F(x) + G(x)) \\
+(I - E)(F(x) + G(x)) = 0,
+\end{cases}
+\end{equation*}
+ami pontosan akkor, ha
+\begin{equation*}
+\begin{cases}
+x = Px + ME(F(x) + G(x)) \\
+(I - E)(F(Px + ME(F(x) + G(x))) + G(Px + ME(F(x) + G(x)))) = 0.
+\end{cases}
+\end{equation*}
+% TODO 494. oldaltól
 
 % TODOtalán Matlab program
 
