@@ -827,7 +827,55 @@ x = Px + ME(F(x) + G(x)) \\
 (I - E)(F(Px + ME(F(x) + G(x))) + G(Px + ME(F(x) + G(x)))) = 0.
 \end{cases}
 \end{equation*}
-% TODO 494. oldaltól
+Ez utóbbi jelölést a $\Phi$ és a $\Psi$ segítségével felírhatjuk a következő módon:
+\begin{equation*}
+\begin{cases}
+x = \alpha \Phi(t) + ME(F(x) + G(x)) \\
+0 = \int_0^1 \Psi_2(t) f(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt + \\
+\qquad + \int_0^1 \Psi_2(t) g(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt,
+\end{cases}
+\end{equation*}
+ahol $\Phi_i$, $\Psi_i$, $(ME(F(x) + G(x)))_i$ a megfelelő függvény i-edik komponense. \par
+Legyen $J_1$ és $J_2$ úgy, hogy
+\begin{align*}
+J_1 =& f(\infty) \int_{ \{ t \in [0, 1] : \Phi_1(t) > 0 \} } \Psi_2(t) dt + f(-\infty) \int_{ \{ t \in [0, 1] : \Phi_1(t) < 0 \}} \Psi_2(t) dt, \\
+J_2 =& f(-\infty) \int_{ \{ t \in [0, 1] : \Phi_1(t) > 0 \} } \Psi_2(t) dt + f(\infty) \int_{ \{ t \in [0, 1] : \Phi_1(t) < 0 \}} \Psi_2(t) dt.
+\end{align*}
+Ezekről tegyük fel, hogy ellenkező előjelűek, azaz $J_1 J_2 < 0$, az általánosság megszorítása nélkül feltehetjük, hogy $J_2 < 0 < J_1$, legyen $J := \min\{|J_1|, |J_2|\}$, és tegyük fel $g$-ről hogy
+\begin{equation*}
+\sup \{ \norm{g(w)}_\infty : w \in C([0, 1], \mathbb{R}) \} \le J.
+\end{equation*}
+Azt állítjuk, hogy ezen és a korábban tett feltételek mellett megoldható az inhomogén nemlineáris differenciálegyenlet. \par
+Először adjunk meg $H_1, H_2, H$ leképezéseket
+\begin{align*}
+H_1 &: \mathbb{R} \times C([0, 1], \mathbb{R}^n) \rightarrow C([0, 1], \mathbb{R}^n), \\
+H_2 &: \mathbb{R} \times C([0, 1], \mathbb{R}^n) \rightarrow \mathbb{R}, \\
+H &: \mathbb{R} \times C([0, 1], \mathbb{R}^n) \rightarrow \mathbb{R} \times C([0, 1], \mathbb{R}^n).
+\end{align*}
+az alábbi módokon:
+\begin{align*}
+H_1(\alpha, x) &= \alpha \Phi(t) + ME(F(x) + G(x)), \\
+H_2(\alpha, x) &= \alpha - \left( \int_0^1 \Psi_2(t) f(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt \right. \\
+&\left. + \int_0^1 \Psi_2(t) g(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt \right), \\
+H(\alpha, x) &= (H_1(\alpha, x), H_2(\alpha, x)).
+\end{align*}
+Mivel $\{ t : \Phi_1(t) = 0\}$ $0$ Lebesgue-mértékű ($\Phi$ egy nem nulla mátrixfüggvény és egy nem nulla vektor szorzata), a $H_2$-ben szereplő első integrál két részre bontható:
+\begin{align*}
+&\int_0^1 \Psi_2(t) f(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt = \\
+&= \int_{ \{ t \in [0, 1] : \Phi_1(t) > 0 \} } \Psi_2(t) f(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt + \\
+&+ \int_{ \{ t \in [0, 1] : \Phi_1(t) < 0 \} } \Psi_2(t) f(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt.
+\end{align*}
+Mivel $M E(F + G)$ korlátos, a kettébontott összegben $\alpha \to \infty$ esetén kiemelhető $f(\pm \infty)$:
+\begin{align*}
+\lim_{\alpha \to \infty} &\int_0^1 \Psi_2(t) f(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt = \\
+&= f(\infty) \int_{ \{ t \in [0, 1] : \Phi_1(t) > 0 \} } \Psi_2(t) dt + f(-\infty) \int_{ \{ t \in [0, 1] : \Phi_1(t) < 0 \} } \Psi_2(t) dt = J_1,
+\end{align*}
+illetve ehhez hasonlóan
+\begin{align*}
+\lim_{\alpha \to -\infty} &\int_0^1 \Psi_2(t) f(\alpha \Phi_1(t) + (ME(F(x) + G(x)))_1(t)) dt = \\
+&= f(-\infty) \int_{ \{ t \in [0, 1] : \Phi_1(t) > 0 \} } \Psi_2(t) dt + f(\infty) \int_{ \{ t \in [0, 1] : \Phi_1(t) < 0 \} } \Psi_2(t) dt = J_2.
+\end{align*}
+% TODO 496-497
 
 % TODOtalán Matlab program
 
