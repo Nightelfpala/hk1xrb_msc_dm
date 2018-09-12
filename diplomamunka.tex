@@ -320,6 +320,54 @@ $A \in L(X, Y)$ Banach-terek közötti bijektív operátor, ekkor $A^{-1} \in L(
 \chapter{A Ljapunov-Schmidt-módszer és alkalmazásai}
 \label{chap:LjapunovSchmidt}
 
+Először is vizsgáljunk meg egy bifurkációs problémát \cite{CSiAM} alapján, ezen keresztül szemléltetve a módszer lényegét. Tekintsük a következő egyenletet:
+\begin{equation*}
+F(\lambda, x) = 0
+\end{equation*}
+ahol $\lambda \in \mathbb{R}$ valós paraméter, $x \in X$ állapotváltozó (TODO ?) $X$ Banach-térben, $0 \in Y$ pedig egy Banach-tér nulleleme, $F$ pedig kétszer folytonosan differenciálható operátor. A feladat meghatározni azon $(\lambda, x) \in \mathbb{R} \times X$ párokat, amelyek kielégítik az egyenletet, lehetőség szerint az $x$-eket $\lambda$ függvényében.
+
+Feltesszük, hogy létezik megoldás, valamint azt, hogy minden $x = 0$ esetén minden $\lambda \in \mathbb{R}$ megoldása az egyenletnek (az úgynevezett triviális megoldások). Ezen kívül tegyük fel azt, hogy $(\lambda_0, 0) \in \mathbb{R} \times X$ bármely környezetében van nemtriviális megoldás, azaz $(\lambda_0, 0)$ bifurkációs pont. Ez maga után vonja, hogy $F_x(\lambda_0, 0)$ Fréchet-derivált nem invertálható.
+
+Legyen
+\begin{align*}
+L &:= F_x(\lambda_0, x_0) : X \rightarrow Y, \\
+K &:= \Ker L, \\
+R &:= \Ima L.
+\end{align*}
+Tegyük fel, hogy $K$-nak és $R$-nek (amelyek zárt alterek $X$-ben és $Y$-ban) vannak komplemens alterei, azaz létezik $W \subset X$ zárt altér, amellyel $K \oplus W = X$, illetve $Z \subset Y$ szintén zárt altér, amellyel $R \oplus Z = Y$, és bármely $x \in X$ egyértelműen felírható $x = u + v, u \in K, v \in W$ alakban, valamint bármely $y \in Y$ egyértelműen felírható $y = r + z, r \in R, z \in Z$ alakban - ezek teljesülnek például akkor, hogyha $K$ és $R$ véges dimenziós alterek, azaz ha $L$ Fredholm-operátor. Vegyük ezenfelül a $Q : Y \rightarrow R$ és $P : Y \rightarrow Z$ projekciókat.
+
+Írjuk fel az eredeti egyenlet Taylor-polinomját:
+\begin{equation*}
+0 = F(\lambda, x) = Lx + \phi (\lambda, x)
+\end{equation*}
+(ahol $\phi(\lambda, x) = F(\lambda, x) - Lx$ a megfelelő maradéktag), és ezekbe írjuk be az $x = u + v$ felírást, valamint vetítsük őket az $R$ és a $Z$ alterekre, így kapjuk az alábbi két egyenletet:
+\begin{align*}
+0 &= QL(u + v) + Q\phi (\lambda, u + v) = Lv + Q\phi (\lambda, u + v), \\
+0 &= PL(u + v) + P\phi (\lambda, u + v).
+\end{align*}
+Az első egyenlet így egy 3-változós függvényt ír le:
+\begin{equation*}
+\Phi(\lambda, u, v) := Lv + Q\phi (\lambda, u + v),
+\end{equation*}
+ami folytonosan differenciálható, és deriváltja a 3. változó szerint az $u = v = 0$ helyen
+\begin{equation*}
+\Phi_v (\lambda_0, 0, 0) : v \rightarrow Lv + Q\phi_x(\lambda_0, 0)v.
+\end{equation*}
+Mivel $\phi(\lambda, x) = F(\lambda, x) - Lx$, így
+\begin{equation*}
+\phi_x(\lambda_0, 0) = F_x(\lambda_0, 0) - L = L - L = 0,
+\end{equation*}
+ezért
+\begin{equation*}
+\Phi_v (\lambda_0, 0, 0) = L_{\mkern 1mu \vrule height 2ex\mkern2mu W},
+\end{equation*}
+viszont $\Ker L_{\mkern 1mu \vrule height 2ex\mkern2mu W} = \{0\}$ és $\Ima L = R$, így $\Phi_v (\lambda, 0, 0)$ folytonos bijekció $W$ és $R$ között. Alkalmazható az implicit függvény tétel, tehát van $(\lambda_0, 0, 0)$-nak egy olyan $\Lambda \times \mathcal{K} \times \mathcal{W}$ környezete, amiben egy $\gamma : \Lambda \times \mathcal{K} \rightarrow \mathcal{W}$ függvény meghatározza a $\Phi_v (\lambda, u, v) = 0$ összes megoldását $\Phi_v (\lambda, u, \gamma(\lambda, u))$ alakban.
+Ezt behelyettesítve az eredeti egyenletbe kapjuk az
+\begin{equation*}
+0 = P F(\lambda, u + \gamma(\lambda, u))
+\end{equation*}
+egyenletet. Mivel $u \in K$ és $\dim K < \infty$, valamint $\Ima P = Z$, $\dim Z < \infty$, így az eredeti egyenletet sikerült redukálnunk egy véges dimenzión értelmezett, véges dimenziós értékkészletű (TODO?) egyenletre, amit könnyebb megoldani.
+
 
 % TODO Matlab program
 
