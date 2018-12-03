@@ -387,15 +387,15 @@ ahol $p(x) > 0, w(x) > 0\;(x \in [a, b])$, $p \in C^1[a, b];\;q, w \in C[a, b]$ 
 \alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
 \alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
 \end{align*}
-Ezek a kikötések azért szükségesek, mert a későbbiekben az ilyen $L$-ekhez adunk meg egy módszert (a Csebisev-Tau-módszert \cite{ChebysevTau}), amivel a sajátfüggvényeit elő tudjuk állítani. % TODO irodalomjegyzék kis-nagybetű
+Ezek a kikötések azért szükségesek, mert a későbbiekben az ilyen $L$-ekhez adunk meg egy módszert (a Csebisev-Tau-módszert \cite{ChebysevTau}), amivel a sajátfüggvényeit elő tudjuk állítani. \\ % TODO irodalomjegyzék kis-nagybetű
 Emellett feltesszük a következőket:
 \begin{itemize}
 \item $S$ valós, szeparábilis Hilbert-tér, $L : \Dom L \subset S \rightarrow S$ lineáris operátor, $N : \Dom N \subset S \rightarrow S$ nemlineáris operátor,
 \item $L$ zárt leképezés (amivel ekvivalens \cite{funkanal}: $x_n \rightarrow x$ és $Lx_n \rightarrow y$-ból következik hogy $x \in \Dom L$ és $Lx = y$), önadjungált, $\Dom L$ sűrű $S$-ben, $\Ker L = p > 0$ véges,
 \item $L$-nek a sajátértékei $\lambda_1 = \dots = \lambda_p = 0 < \lambda_{p + 1}$, $\lambda_i \leq \lambda_{i + 1}$, $\lim_{i \to \infty} \lambda_i = \infty$, és a hozzájuk tartozó $\Phi_1, \Phi_2, \dots$ sajátfüggvények $S$-ben egy teljes ortonormált rendszert alkotnak - ezeket a Sturm-Liouville-operátor biztosítja, % TODO lim legyen alatta, kell-e a S-L tulajdonság említése
 \item létezik egy $S' \subset S$ altér, ami egy $\mu$ normával teljes, $\Dom L \subset S'$, minden $x \in \Dom L$ esetén a $\Phi_i$-szerinti Fourier-sora ($\sum_{k=1}^\infty (x, \Phi_k) \Phi_k$) $\mu$-ben konvergál $x$-hez, és $\{ \mu(\Phi_k) / \lambda_k\}_{k > p} \in l_2$, valamint létezik $\alpha > 0$, amivel $x \in S'$ esetén $\norm {x}_S \leq \alpha \mu(x)$ (tehát $\mu$ $\alpha$-szorosa felső becslése az eredeti normának),
-\item $\Dom L \cap \Dom N \neq \emptyset$, $\Dom N \subset S'$, $\Dom N$ zárt $\mu$ szerint,
-\item bármely $R > 0$-hoz létezik $\beta_R > 0, b_R > 0$, amelyekkel bármely $x, y \in \Dom N$ amire $\mu(x) \leq R, \mu(y) \leq R$ teljesül $\mu(Nx - Ny) \leq \beta_R \mu(x - y)$ és $\mu(Nx) \leq b_R$ - tehát tetszőleges $\mu$-szerinti gömb $N$-szerinti képe korlátos ($\mu$ normával), valamint minden elem környezetének képének átmérője arányos a környezet átmérőjével; ezek a feltételek biztosítják majd az auxiliary(TODO) egyenletünk kontrakció tulajdonságát. % TODO átfogalmazni a környezeteset
+\item $\Dom L \cap \Dom N \neq \emptyset$, $\Dom N \subset S'$ és legyen altér $S'$-ben, $\Dom N$ zárt $\mu$ szerint,
+\item bármely $R > 0$-hoz létezik $\beta_R > 0, b_R > 0$, amelyekkel bármely $x, y \in \Dom N$ amire $\mu(x) \leq R, \mu(y) \leq R$ teljesül $\mu(Nx - Ny) \leq \beta_R \mu(x - y)$ és $\mu(Nx) \leq b_R$ - tehát tetszőleges $\mu$-szerinti gömb $N$-szerinti képe korlátos ($\mu$ normával), valamint minden elem környezetének képének átmérője arányos a környezet átmérőjével; ezek a feltételek biztosítják majd az kisegítő egyenletünk kontrakció tulajdonságát. % TODO átfogalmazni a környezeteset % TODO auxiliary = kisegítő?
 \end{itemize}
 Az $\eqref{eq:num:1}$ egyenlet megoldásait $\Dom L \cap \Dom N$-ben keressük. Legyen $m \geq p$ és
 \begin{equation*}
@@ -409,7 +409,27 @@ tehát $P_m$ az $S_m$-re történő ortogonális projekció, valamint
 \begin{equation*}
 H_m u = \sum_{k = m + 1}^\infty \frac{1}{\lambda_k} (u, \Phi_k), \Phi_k.
 \end{equation*}
-$H_m$-ről látható, hogy lineáris, $\Dom L$-be képez, $H_m = (L_{\mkern 1mu \vrule height 2ex\mkern2mu S_m^\perp})^{-1}$, illetve $H_mLu = (I - P_m)u$. Az $S$-téren vett normája $\norm{H_m} = \frac{1}{\lambda_{m+1}}$, a $\mu$-szerinti normája $\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty \left( \frac{\mu(\Phi_k)}{\lambda_k}\right)^2\right)^{1/2}$ (ez utóbbi Cauchy-Schwarz-egyenlőtlenséggel belátható). Ebből következik, hogy $\lim_{m \to \infty} \mu(H_m) = 0$.
+$H_m$-ről látható, hogy lineáris, $\Dom L$-be képez, $H_m = (L_{\mkern 1mu \vrule height 2ex\mkern2mu S_m^\perp})^{-1}$, illetve $H_mLu = (I - P_m)u$ ($I$ az identitás operátor). Az $S$-téren vett normája $\norm{H_m} = \frac{1}{\lambda_{m+1}}$, a $\mu$-szerinti normája $\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty \left( \frac{\mu(\Phi_k)}{\lambda_k}\right)^2\right)^{1/2}$ (ez utóbbi Cauchy-Schwarz-egyenlőtlenséggel belátható). Ebből következik, hogy $\lim_{m \to \infty} \mu(H_m) = 0$. A korábbi feltételeinket egészítsük ki még azzal, hogy $\Ima H_m \subset \Dom N$ és $S_m \subset \Dom N$, hogy a $P_m$ és a $H_m$ alkalmazása után tudjuk az $N$-et is még alkalmazni. \\
+Tegyük fel, hogy $\overline{u} \in \Dom N \cap \Dom L$ megoldása az $\eqref{eq:num:1}$ egyenletnek, tehát
+\begin{equation}
+L\overline{u} = N\overline{u}. \label{eq:num:2}
+\end{equation}
+Erre először alkalmazzuk $H_m$-et:
+\begin{align*}
+H_m L \overline{u} &= H_m N \overline{u}, \\
+(I - P_m) \overline{u} &= H_m N \overline{u}, \\
+\overline{u} &= P_m \overline{u} + H_m N \overline{u},
+\end{align*}
+ez a kisegítő egyenlet. Ezután alkalmazzuk $\eqref{eq:num:2}$-re $P_m$-et: % TODO auxiliary = kisegítő?
+\begin{equation*}
+P_m(L \overline{u} - N \overline{u}) = 0,
+\end{equation*}
+ami a bifurkációs egyenlet. Az összes olyan $\overline{u} \in \Dom L \cap \Dom N$, ami megoldása a kisegítő és a bifurkációs egyenletnek, az megoldása az eredeti $\eqref{eq:num:1}$ feladatnak. % TODO auxiliary = kisegítő?
+
+% TODO példa
+
+% TODO Csebisev-Tau
+
 
 %% 
  
