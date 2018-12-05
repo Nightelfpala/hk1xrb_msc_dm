@@ -394,7 +394,7 @@ Emellett feltesszük a következőket:
 \item $L$ zárt leképezés (amivel ekvivalens \cite{funkanal}: $x_n \rightarrow x$ és $Lx_n \rightarrow y$-ból következik hogy $x \in \Dom L$ és $Lx = y$), önadjungált, $\Dom L$ sűrű $S$-ben, $\Ker L = p > 0$ véges,
 \item $L$-nek a sajátértékei $\lambda_1 = \dots = \lambda_p = 0 < \lambda_{p + 1}$, $\lambda_i \leq \lambda_{i + 1}$, $\lim_{i \to \infty} \lambda_i = \infty$, és a hozzájuk tartozó $\Phi_1, \Phi_2, \dots$ sajátfüggvények $S$-ben egy teljes ortonormált rendszert alkotnak - ezeket a Sturm-Liouville-operátor biztosítja, % TODO lim legyen alatta, kell-e a S-L tulajdonság említése
 \item létezik egy $S' \subset S$ altér, ami egy $\mu$ normával teljes, $\Dom L \subset S'$, minden $x \in \Dom L$ esetén a $\Phi_i$-szerinti Fourier-sora ($\sum_{k=1}^\infty (x, \Phi_k) \Phi_k$) $\mu$-ben konvergál $x$-hez és $\{ \mu(\Phi_k) / \lambda_k\}_{k > p} \in l_2$, valamint létezik $\alpha > 0$, amivel $x \in S'$ esetén $\norm {x}_S \leq \alpha \mu(x)$ (tehát $\mu$ $\alpha$-szorosa felső becslése az eredeti normának, és $\mu$-beli konvergenciából következik, hogy az adott sorozat az eredeti normában is konvergens),
-\item $\Dom L \cap \Dom N \neq \emptyset$, $\Dom N \subset S'$ és legyen altér $S'$-ben, $\Dom N$ zárt $\mu$ szerint,
+\item $\Dom L \cap \Dom N \neq \emptyset$, $\Dom N \subset S'$ és altér $S'$-ben, $\Dom N$ zárt $\mu$ szerint,
 \item bármely $R > 0$-hoz létezik $\beta_R > 0, b_R > 0$, amelyekkel bármely $x, y \in \Dom N$ amire $\mu(x) \leq R, \mu(y) \leq R$ teljesül $\mu(Nx - Ny) \leq \beta_R \mu(x - y)$ és $\mu(Nx) \leq b_R$, tehát tetszőleges $\mu$-szerinti gömb $N$-szerinti képe korlátos ($\mu$ normával), valamint minden elem környezetének képének átmérője arányos a környezet átmérőjével; ezek a feltételek biztosítják majd az kisegítő egyenletünk kontrakció tulajdonságát. % TODO átfogalmazni a környezeteset % TODO auxiliary = kisegítő?
 \end{itemize}
 Az $\eqref{eq:num:1}$ egyenlet megoldásait $\Dom L \cap \Dom N$-ben keressük. Legyen $m \geq p$ és
@@ -421,9 +421,9 @@ H_m L \overline{u} &= H_m N \overline{u}, \nonumber \\
 \overline{u} &= P_m \overline{u} + H_m N \overline{u}, \label{eq:num:3}
 \end{align}
 ez a kisegítő egyenlet. Ezután alkalmazzuk $\eqref{eq:num:2}$-re $P_m$-et: % TODO auxiliary = kisegítő?
-\begin{equation*}
-P_m(L \overline{u} - N \overline{u}) = 0,
-\end{equation*}
+\begin{equation}
+P_m(L \overline{u} - N \overline{u}) = 0, \label{eq:num:4}
+\end{equation}
 ami a bifurkációs egyenlet. Az összes olyan $\overline{u} \in \Dom L \cap \Dom N$, ami megoldása a kisegítő és a bifurkációs egyenletnek, az megoldása az eredeti $\eqref{eq:num:1}$ feladatnak. \\ % TODO auxiliary = kisegítő?
 Legyenek $a > 0, b > 0$ valós számok, és legyen $u_0$ egy közelítő megoldása az $Lu = Nu$ egyenletnek úgy, hogy létezik $u^* \in S_m$ ($u^* = \sum_{k=1}^m c_k \Phi_k$), amivel $\mu(u^* - u_0) \leq a$. Vegyük a következő halmazt:
 \begin{equation*}
@@ -445,7 +445,28 @@ Lássuk be $T_{u^*}^b$-ről, hogy bizonyos feltételek mellett kontrakció, legy
 &\leq \mu(H_m) \mu(N x - N y) \leq \\
 &\leq \mu(H_m) \beta_R \mu(x - y),
 \end{align*}
-ahol $R = \mu(u^*) + b$, tehát $u^*$-tól és $b$-től függő konstans. Mivel $\lim_{m \to \infty} \mu(H_m) = 0$, ezért elég nagy $m$ esetén $\mu(H_m) \beta_R < 1$. Annak, hogy $\Ima  T_{u^*}^b \subset S_{u^*}^b$ (tehát lehet $ T_{u^*}^b$-t iteratívan alkalmazni) elégséges feltétele, hogy $\mu(H_m)^2 \mu(L) b_R \leq b$, ami kellően nagy $m$-re szintén teljesül. Tehát ha $m$ elég nagy, akkor $ T_{u^*}^b$ kontrakció, így a Banach-Tyihonov-Cacciopoli-tétel miatt van fixpontja. Ezt az $u^*$-tól függő fixpontot jelöljük $y(u^*)$-al, és asszociált elemnek nevezzük. $y(u^*)$-ról könnyen belátható, hogy megoldása az $\eqref{eq:num:3}$ egyenletnek. \\ % TODO associate = asszociált?
+ahol $R = \mu(u^*) + b$, tehát $u^*$-tól és $b$-től függő konstans, és a kezdeti kikötéseink alapján $\beta_R$ egy $R$-től függő konstans. Mivel $\lim_{m \to \infty} \mu(H_m) = 0$, ezért elég nagy $m$ esetén $\mu(H_m) \beta_R < 1$. Annak, hogy $\Ima  T_{u^*}^b \subset S_{u^*}^b$ (tehát lehet $ T_{u^*}^b$-t iteratívan alkalmazni) elégséges feltétele, hogy $\mu(H_m)^2 \mu(L) b_R \leq b$, ami kellően nagy $m$-re szintén teljesül. Tehát ha $m$ elég nagy, akkor $ T_{u^*}^b$ kontrakció, így a Banach-Tyihonov-Cacciopoli-tétel miatt van fixpontja. Ezt az $u^*$-tól függő fixpontot jelöljük $y(u^*)$-al, és asszociált elemnek nevezzük. $y(u^*)$-ról könnyen belátható, hogy megoldása az $\eqref{eq:num:3}$ egyenletnek. \\ % TODO associate = asszociált?
+Vezessük be a $c_k := (u^*, \Phi_k) \;(k = 1, \dots, m)$ jelölést, amivel $u^* = \sum_{k = 1}^m c_k \Phi_k$. Nézzük meg, hogy milyen feltételek mellett lesz $y(u^*)$ megoldása a bifurkációs egyenletnek $\eqref{eq:num:4}$?
+\begin{align*}
+0 &= P_m(L y(u^*) - N y(u^*)) = P_m L y(u^*) - P_m N y(u^*), \\
+P_m L y(u^*) &= P_m L (u^* + H_m N y(u^*)) = P_m L u^* + P_m L H_m N y(u^*) = \\
+ &= P_m L (\sum_{k = 1}^m c_k\Phi_k) + P_m L \sum_{k = m+1}^\infty (N y(u^*), \Phi_k) \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + P_m \sum_{k = m + 1}^\infty (N y(u^*, \Phi_k) \lambda_k \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + \sum_{k = m + 1}^\infty (N y(u^*), \Phi_k) \lambda_k P_m \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k),
+\end{align*}
+tehát
+\begin{equation*}
+0 = P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k - N y(u^*)),
+\end{equation*}
+ami pontosan akkor teljesül, ha
+\begin{align}
+0 &= (\sum_{j = 1}^m c_j \lambda_j \Phi_j - N y(u^*), \Phi_k) \; (k = 1, \dots, m), \nonumber \\
+0 &= (c_k \lambda_k \Phi_k - N y(u^*), \Phi_k) \; (k = 1, \dots, m), \text{vagy} \nonumber \\
+0 &= (\lambda_k u^* - N y(u^*), \Phi_k) \; (k = 1, \dots, m). \label{eq:num:5}
+\end{align}
+Ez utóbbi egy $m$-változós ($c_k \; (k = 1, \dots, m)$ számok meghatározzák $u^*$-ot), $m$ egyenletből álló egyenletrendszer. Ezek eredményeként megállapíthatjuk, hogy ha $a, b, m$ elég nagyok, akkor az eredeti $\eqref{eq:num:1}$ egyenletnek $\overline{u}$ pontosan akkor megoldása, ha az $\eqref{eq:num:5}$ egyenletnek $u^*$ megoldása és $\overline{u} = y(u^*)$. \\
+
 
 
 % TODO példa
