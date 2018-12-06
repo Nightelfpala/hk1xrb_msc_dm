@@ -466,7 +466,29 @@ ami pontosan akkor teljesül, ha
 0 &= (\lambda_k u^* - N y(u^*), \Phi_k) \; (k = 1, \dots, m). \label{eq:num:5}
 \end{align}
 Ez utóbbi egy $m$-változós ($c_k \; (k = 1, \dots, m)$ számok meghatározzák $u^*$-ot), $m$ egyenletből álló egyenletrendszer. Ezek eredményeként megállapíthatjuk, hogy ha $a, b, m$ elég nagyok, akkor az eredeti $\eqref{eq:num:1}$ egyenletnek $\overline{u}$ pontosan akkor megoldása, ha az $\eqref{eq:num:5}$ egyenletnek $u^*$ megoldása és $\overline{u} = y(u^*)$. \\
+Ezzel mindenünk megvan ahhoz, hogy a feladat numerikus megoldását ismertessük. Legyen $N \geq m$. Az $Lu = Nu$ feladat megoldásait
+\begin{equation*}
+u = \sum_{k = 1}^N c_k \Phi_k = \sum_{k = 1}^m c_k \Phi_k + \sum_{k = m+1}^N c_k \Phi_k
+\end{equation*}
+alakban keressük, tehát N növelésével a megoldás pontosságát javítjuk (a műveletigény rovására). $H_m$-en is hasonlóképpen módosítunk:
+\begin{equation*}
+H_m u := \sum_{k = m+1}^N \frac{c_k}{\lambda_k} \Phi_k
+\end{equation*}
+Maga az algoritmus a következő:
+\begin{enumerate}
+\item Állítsuk elő $L$-hez $\Phi_k (k = 1, \dots, N)$ sajátfüggvényeket.
+\item Rögzítsünk egy kezdeti $u^* = \sum_{k = 1}^m c_k \Phi_k$ kiinduló értéket.
+\item Állítsuk elő $y(u^*)$-ot a fixpontiterációval: $y_0 := u^*$, $y_{i+1} := u^* + H_m N y_i, \; (i = 1, \dots, S)$.
+\item Oldjuk meg az $Lu^* = P_m N y_{S+1}$ egyenletet $u^*$-ra, például Newton-módszerrel.
+\item Az így kapott $u^*$-ból kiindulva ismételjük 3.-4. lépéseket, amíg a kívánt pontosságot el nem érjük.
+\end{enumerate}
+Előfordulhat, hogy a 3. vagy a 4. lépésben nincs konvergencia, ekkor $m$ növelése szükséges lehet (ami miatt $N$-et is lehet, hogy növelni kell). \\
+A következő szekcióban taglaljuk, hogy az 1. lépést hogyan hajtjuk végre.
 
+\section{Csebisev-Tau-módszer a sajátfüggvények előállítására}
+\label{sec:ChebTau}
+
+A fejezet elején előrebocsátottuk, hogy az $L$ alakjára vonatkozó megkötésekre azért van szükség, mert az ilyen operátorokhoz tudunk sajátfüggvényeket numerikusan könnyen előállítani. A  \cite{ChebysevTau} alapján ezt megmutatjuk.
 
 
 % TODO példa
