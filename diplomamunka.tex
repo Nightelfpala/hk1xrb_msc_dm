@@ -500,27 +500,27 @@ L u = \frac{1}{w} ( -(p u')' + q u),
 \alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
 \end{align*}
 Ha $L$-nek $\lambda$ sajátértéke, $v$ pedig a hozzá tartozó sajátvektor, akkor $L v = \lambda v$, azaz
-\begin{align*}
-\frac{1}{w} ( -(p v')' + q v) &= \lambda v, \\
--p v'' - p' v' + q v &= \lambda w v.
-\end{align*}
-Jelöljük $T_n(x)$-el a $(-1, 1)$-en értelmezett Csebisev-polinomokat: $T_n(x) = \cos(n \arccos(x))$. Ezekről tudjuk, hogy ortogonális rendszert alkotnak az $\frac{1}{\sqrt{1 - x^2}}$ súlyfüggvénnyel, és van rekurzív képletük ($T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)$). A cél az, hogy ilyen polinomok lineáris kombinációjaként előállítsuk a sajátfüggvényt:
+\begin{align}
+\frac{1}{w} ( -(p v')' + q v) &= \lambda v, \nonumber \\
+-p v'' - p' v' + q v &= \lambda w v. \label{eq:CT:2}
+\end{align}
+Jelöljük $T_n(x)$-el a $(-1, 1)$-en értelmezett Csebisev-polinomokat: $T_n(x) = \cos(n \arccos(x))$. Ezekről tudjuk, hogy ortogonális rendszert alkotnak az $\frac{1}{\sqrt{1 - x^2}}$ súlyfüggvénnyel, és van rekurzív képletük ($T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)$). A cél az, hogy ilyen polinomok véges lineáris kombinációjával közelítsük a sajátfüggvényt:
 \begin{equation*}
-v(x) = \sum_{k = 0}^\infty a_k T_k(x) = \mathbf{a}^T \mathbf{t},
+v(x) = \sum_{k = 0}^N a_k T_k(x) = \mathbf{a}^T \mathbf{t},
 \end{equation*}
-ahol $\mathbf{a}^T = [a_0, a_1, \dots]$ és $\mathbf{t} = [T_0(x), T_1(x), \dots]^T$, így az együtthatók $\mathbf{a}$ vektora egyértelműen meghatározza a $v(x)$ függvényt. \\
+ahol $\mathbf{a}^T = [a_0, a_1, \dots, a_N]$ és $\mathbf{t} = [T_0(x), T_1(x), \dots, T_N(x)]^T$, így az együtthatók $\mathbf{a}$ vektora egyértelműen meghatározza a $v(x)$ függvényt. \\
 Mivel $L$-nek szüksége van $v$ deriváltjaira, vizsgáljuk meg, hogy a deriválás milyen (mátrixszal leírható) változást eredményez az együtthatók vektorán:
 \begin{equation}
-v'(x) = \sum_{k = 0}^\infty a_k T_k'(x) = \sum_{k = 0}^\infty b_k T_k(x) \label{eq:CT:1}
+v'(x) = \sum_{k = 0}^N a_k T_k'(x) = \sum_{k = 0}^N b_k T_k(x) = \mathbf{b}^T \mathbf{t} \label{eq:CT:1}
 \end{equation}
-Először is nézzük meg, hogy mi a kapcsolat a Csebisev-polinomok és a deriváltak között. Az áttekinthetőség kedvéért használjuk a $\theta := \arccos x$ jelölést (amivel $\sin \theta = \sqrt{(1 - x^2)}$).
+Először is nézzük meg, hogy mi a kapcsolat a Csebisev-polinomok és a deriváltak között. Az áttekinthetőség kedvéért használjuk a $\theta := \arccos x$ jelölést (amivel $\sin \theta = \sqrt{1 - x^2}$).
 \begin{align*}
 T_n (x) &= \cos(n \theta) \\
-T_n' (x) &= \sin(n \theta) n \frac{1}{\sqrt{(1 - x^2)}} \\
-\frac{1}{n+1} T_{n+1}' (x) &= \sin((n+1) \theta) \frac{1}{\sqrt{(1 - x^2)}} \\
-\frac{1}{n-1} T_{n-1}' (x) &= \sin((n-1) \theta) \frac{1}{\sqrt{(1 - x^2)}} \\
-\frac{1}{n+1} T_{n+1}' (x) - \frac{1}{n-1} T_{n-1}' (x) &= \frac{\sin((n+1) \theta) - \sin((n-1) \theta)}{\sqrt{(1 - x^2)}} \\
-\sin((n+1) \theta) - \sin((n-1) \theta) &= 2 \cos(n \theta) \sin\theta = 2 T_n(x) \sqrt{(1 - x^2)} \\
+T_n' (x) &= \sin(n \theta) n \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n+1} T_{n+1}' (x) &= \sin((n+1) \theta) \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n-1} T_{n-1}' (x) &= \sin((n-1) \theta) \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n+1} T_{n+1}' (x) - \frac{1}{n-1} T_{n-1}' (x) &= \frac{\sin((n+1) \theta) - \sin((n-1) \theta)}{\sqrt{1 - x^2}} \\
+\sin((n+1) \theta) - \sin((n-1) \theta) &= 2 \cos(n \theta) \sin\theta = 2 T_n(x) \sqrt{1 - x^2} \\
 \frac{1}{n+1} T_{n+1}' (x) - \frac{1}{n-1} T_{n-1}' (x) &= 2 T_n(x)
 \end{align*}
 Ez működik $n \geq 2$ esetén, kis $n$-ekre pedig egyszerű a dolog:
@@ -529,22 +529,94 @@ T_0' (x) &= 0, \\
 T_1' (x) &= 1 = T_0(x), \\
 T_2' (x) &= 4x = 4 T_1(x).
 \end{align*}
-Helyettesítsük be $\eqref{eq:CT:1}$-be $T_n(x)$ helyére az így kapott képleteket:
+Helyettesítsük be $\eqref{eq:CT:1}$-be a $T_k(x)$-ek helyére az így kapott képleteket:
 \begin{align*}
-v' &= \sum_{n = 0}^\infty b_n T_n(x) = b_0 T_1' + \frac{b_1}{4} T_2' + \sum_{n=2}^\infty \frac{b_n}{2(n+1)} T_{n+1}' - \sum_{n=2}^\infty \frac{b_n}{2(n-1)} T_{n-1}' = \\
- &= \left( b_0 - \frac{b_2}{2} \right) T_1' + \sum_{n=2}^\infty \frac{b_{n-1} - b_{n+1}}{2n} T_n'.
+v' &= \sum_{n = 0}^N b_n T_n = b_0 T_1' + \frac{b_1}{4} T_2' + \sum_{n=2}^N \frac{b_n}{2(n+1)} T_{n+1}' - \sum_{n=2}^N \frac{b_n}{2(n-1)} T_{n-1}' = \\
+ &= \left( b_0 - \frac{b_2}{2} \right) T_1' + \sum_{n=2}^{N - 1} \frac{b_{n-1} - b_{n+1}}{2n} T_n' + \frac{b_{N-1}}{2N} T_N' + \frac{b_N}{2(N+1)}T_{N+1}'.
 \end{align*}
+Így már látható az összefüggés $a_n$ és $b_n$ között:
+\begin{align*}
+b_N &= 0 \\
+b_{N-1} &= 2N a_N \\
+b_{n-1} &= b_{n+1} + 2n a_n \;(n = N-1, \dots, 2) \\
+b_0 &= \frac{b_2}{2} + a_1.
+\end{align*}
+Belátható, hogy az alábbi mátrix kielégíti a $\hat{D} \mathbf{a} = \mathbf{b}$ egyenletet ($k, l = 0, \dots, N$):
+\begin{equation*}
+\hat{D}_{kl} =
+	\begin{cases}
+	l, \; &\text{ha } k = 0 \text{ és } l \text{ páratlan} \\
+	2l, \; &\text{ha } l \geq k \geq 1 \text{ és } l+k \text{ páratlan} \\
+	0, \; &\text{különben},
+	\end{cases}
+\end{equation*}
+azaz ennek a mátrixnak a segítségével tudjuk a polinomsorral felírt függvényeket deriválni:
+\begin{equation*}
+v' = \mathbf{b}^T \mathbf{t} = (\hat{D}\mathbf{a})^T \mathbf{t}.
+\end{equation*}
+Ezután vizsgáljuk meg, hogy az $x$-szel történő szorzás milyen változást eredményez. Ezt már csak közelítőleg tudjuk megadni:
+\begin{equation*}
+x v(x) = \sum_{k = 0}^N a_k x T_k(x) \approx \sum_{k = 0}^N c_k T_k(x).
+\end{equation*}
+Itt a Csebisev-polinomok rekurziójából gyorsan kijön a megoldás:
+\begin{align*}
+x T_0(x) &= T_1(x) \\
+x T_n(x) &= \frac{1}{2} \left( T_{n+1} + T_{n-1} \right) \; (n \geq 1)
+\end{align*}
+Ezt behelyettesítve kapjuk:
+\begin{align*}
+b_0 &= \frac{a_1}{2} \\
+b_1 &= a_0 + \frac{a_2}{2} \\
+b_n &= \frac{a_{n-1} + a_{n+1}}{2} \; (n = 2, \dots, N-1) \\
+b_N &\approx \frac{a_{N-1}}{2}
+\end{align*}
+Így az alábbi mátrix közelítőleg megvalósítja a $M \mathbf{a} \approx \mathbf{c}$ szorzást ($k, l = 0, \dots, N$):
+\begin{equation*}
+M_{kl} =
+	\begin{cases}
+	1, \; &\text{ha }(k, l) = (1, 0) \\
+	\frac{1}{2}l, \; &\text{ha } l \geq 2 \text{ és } |k - l| = 1 \\
+	0, \; &\text{különben},
+	\end{cases}
+\end{equation*}
+tehát
+\begin{equation*}
+x v(x) \approx \mathbf{c}^T \mathbf{t} \approx (M \mathbf{a})^T \mathbf{t}.
+\end{equation*}
+Ezenfelül, ha $f$ analitikus függvény, akkor $f(x) v(x) \approx (f(M)\mathbf{c})^T \mathbf{t}$. \\ % TODO valami blabla arról hogy ezt miért engedhetjük meg p, p', q, w-re, lehet hogy meg kell őket szorítanunk analitikus fv-ekre
+Ezek segítségével írjuk fel az $\eqref{eq:CT:2}$ egyenletet az együtthatók vektorán végzett mátrixműveletként:
+\begin{equation*}
+\hat{L} \mathbf{a} := \left( -p(M) \hat{D}^2 - p'(M) \hat{D} + q(M) \right) \mathbf{a}.
+\end{equation*}
+A $\eqref{eq:CT:2}$ egyenlet jobb oldala ebben a formában pedig $\lambda w(M) \mathbf{a}$, jelölésként $\textbf{B} := w(M)$. \\
+Még hasonlóképpen meg kell fogalmaznunk a peremfeltételeinket, ehhez felhasználjuk, hogy $\mathbf{t}$ egy vektorértékű függvény, $[a, b] = [-1, 1]$, és ennek az intervallumnak a végpontjain $T_n(-1) = (-1)^n$, $T_n(1) = 1$. Legyen
+\begin{align*}
+h_1^T &= \alpha_{11} (\mathbf{t}(-1))^T + \alpha_{12} (\mathbf{t}(-1))^T \hat{D}, \\
+h_2^T &= \alpha_{21} (\mathbf{t}(1))^T + \alpha_{22} (\mathbf{t}(1))^T \hat{D}
+\end{align*}
+amivel (ismét a $\hat{D} \mathbf{a} = \mathbf{b}$ jelölést alkalmazva)
+\begin{align*}
+h_1^T \mathbf{a} &= \alpha_{11} (\mathbf{a}^T \mathbf{t}(-1))^T + \alpha_{12} (\mathbf{b}^T \mathbf{t}(-1))^T &= \alpha_{11} v(-1) + \alpha_{12} v'(-1), \\
+h_2^T \mathbf{a} &= \alpha_{21} (\mathbf{a}^T \mathbf{t}(1))^T + \alpha_{22} (\mathbf{b}^T \mathbf{t}(1))^T &= \alpha_{21} v(1) + \alpha_{22} v'(1).
+\end{align*}
+Legyen $H = (h_1, h_2)^T$, amivel a peremfeltétel megfogalmazható $H \textbf{a} = \textbf{0}$ formában. \\
+Legyen $\hat{A}$ az a mátrix, amit úgy kapunk, hogy $\hat{L}$ utolsó két sorát elhagyjuk (tehát $N-1 \times N+1$ mátrix), és állítsuk elő $\hat{B}$-t ugyanígy $\textbf{B}$-ből. Az alábbi egyenletrendszer megoldásaként megkapjuk a sajátfüggvényekhez tartozó együtthatósorozatokat (ezt általánosított sajátérték feladatnak is nevezik):
+\begin{equation*}
+\begin{pmatrix} \hat{A} \\ H \end{pmatrix} \mathbf{a} = \lambda \begin{pmatrix} \hat{B} \\ \mathbf{0} \end{pmatrix} \mathbf{a}.
+\end{equation*}
+Az egyenlet jobb oldalán javíthatunk, ha $\mathbf{0}$ helyett $\frac{1}{\lambda_*} H$-t használunk, ahol $\lambda_*$ egy nagy szám, ami nem sajátértéke a feladatnak. Így a jobb oldal mátrixának
+$\begin{pmatrix} \hat{B} \\ \frac{1}{\lambda_*} H \end{pmatrix}$
+nincsenek csupa $0$ sorai. \\
+Még fontos megjegyezni, hogy ha az eredeti intervallumunk nem a $[-1, 1]$, hanem valami $[a, b]$, akkor a deriválás mátrix egy kicsit máshogy fog kinézni: $D := \frac{1}{\alpha} \hat{D}$, ahol $\alpha$ az intervallum középpontja ($\alpha = \frac{b - a}{2}$).
 
-
-
-% TODO a végére ha más intervallum -> D := D / alpha ahol alpha = (b - a)/2
 
 % TODO példa
+%\section{példa}
 
 
 % TODO kiegészítés: H_m tul levezetések
 
-\section{Kiegészítés} % TODO valami takarítás
+%\section{Kiegészítés} % TODO valami takarítás
 
 
 %% 
