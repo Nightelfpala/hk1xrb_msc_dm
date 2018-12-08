@@ -402,7 +402,7 @@ Az $\eqref{eq:num:1}$ egyenlet megoldásait $\Dom L \cap \Dom N$-ben keressük. 
 \begin{equation*}
 S_m = \Span \{\Phi_1, \dots, \Phi_m \}, \; S_0 = \{ 0\}
 \end{equation*}
-az első $m$ sajátfüggvény által kifeszített altér, $S_m \subset \Dom L$. Definiáljuk a következő operátorokat, amennyiben $u = \sum_{k = 1}^\infty (u, \Phi_k), \Phi_k$ ($u \in S$):
+$S_m$ az első $m$ sajátfüggvény által kifeszített altér, $S_m \subset \Dom L$. Definiáljuk a következő operátorokat, amennyiben $u = \sum_{k = 1}^\infty (u, \Phi_k), \Phi_k$ ($u \in S$):
 \begin{equation*}
 P_m u := \sum_{k = 1}^m (u, \Phi_k), \Phi_k,
 \end{equation*}
@@ -484,12 +484,12 @@ Maga az algoritmus a következő:
 \item Az így kapott $u^*$-ból kiindulva ismételjük 3.-4. lépéseket, amíg a kívánt pontosságot el nem érjük.
 \end{enumerate}
 Előfordulhat, hogy a 3. vagy a 4. lépésben nincs konvergencia, ekkor $m$ növelése szükséges lehet (ami miatt $N$-et is lehet, hogy növelni kell). \\
-A következő szekcióban taglaljuk, hogy az 1. lépést hogyan hajtjuk végre.
+A peremfeltételeket $u$-ra azzal garantáljuk, hogy a homogén peremfeltételt kikényszerítjük a $\Phi_k$ sajátfüggvényekre, így az ő lineáris kombinációjukkal előálló függvényre is teljesülni fognak. A következő szekcióban taglaljuk, hogy hogyan találjuk meg a sajátfüggvényeket.
 
 \section{Csebisev-Tau-módszer a sajátfüggvények előállítására}
 \label{sec:ChebTau}
 
-A fejezet elején előrebocsátottuk, hogy az $L$ alakjára vonatkozó megkötésekre azért van szükség, mert az ilyen operátorokhoz tudunk sajátfüggvényeket numerikusan könnyen előállítani. A  \cite{ChebysevTau} és \cite{LISC} cikkek alapján ezt bemutatjuk. \\
+A fejezet elején előrebocsátottuk, hogy az $L$ alakjára vonatkozó megkötésekre azért van szükség, mert az ilyen operátorokhoz tudunk sajátfüggvényeket numerikusan könnyen előállítani. A  \cite{ChebysevTau} és \cite{LISC} cikkek alapján ezt bemutatjuk. Ennek az eljárásnak az eredményeként ugyan nem ortonormált rendszert kapunk, de a Gram-Schmidt-módszerrel át lehet megfelelően alakítani. \\
 Legyen $L$ egy Sturm-Liouville operátor:
 \begin{equation*}
 L u = \frac{1}{w} ( -(p u')' + q u),
@@ -545,9 +545,9 @@ Belátható, hogy az alábbi mátrix kielégíti a $\hat{D} \mathbf{a} = \mathbf
 \begin{equation*}
 \hat{D}_{kl} =
 	\begin{cases}
-	l, \; &\text{ha } k = 0 \text{ és } l \text{ páratlan} \\
-	2l, \; &\text{ha } l \geq k \geq 1 \text{ és } l+k \text{ páratlan} \\
-	0, \; &\text{különben},
+	l, &\text{ha } k = 0 \text{ és } l \text{ páratlan} \\
+	2l, &\text{ha } l \geq k \geq 1 \text{ és } l+k \text{ páratlan} \\
+	0, &\text{különben},
 	\end{cases}
 \end{equation*}
 azaz ennek a mátrixnak a segítségével tudjuk a polinomsorral felírt függvényeket deriválni:
@@ -574,9 +574,9 @@ b_N &\approx \frac{a_{N-1}}{2}
 \begin{equation*}
 M_{kl} =
 	\begin{cases}
-	1, \; &\text{ha }(k, l) = (1, 0) \\
-	\frac{1}{2}l, \; &\text{ha } l \geq 2 \text{ és } |k - l| = 1 \\
-	0, \; &\text{különben},
+	1, &\text{ha }(k, l) = (1, 0) \\
+	\frac{1}{2}l, &\text{ha } l \geq 2 \text{ és } |k - l| = 1 \\
+	0, &\text{különben},
 	\end{cases}
 \end{equation*}
 tehát
@@ -609,14 +609,79 @@ $\begin{pmatrix} \hat{B} \\ \frac{1}{\lambda_*} H \end{pmatrix}$
 nincsenek csupa $0$ sorai. \\
 Még fontos megjegyezni, hogy ha az eredeti intervallumunk nem a $[-1, 1]$, hanem valami $[a, b]$, akkor a deriválás mátrix egy kicsit máshogy fog kinézni: $D := \frac{1}{\alpha} \hat{D}$, ahol $\alpha$ az intervallum középpontja ($\alpha = \frac{b - a}{2}$).
 
+\section{Példa a numerikus alkalmazásra}
+\label{sec:examples}
 
-% TODO példa
-%\section{példa}
-
+Most mutassunk két példát a módszer gyakorlati alkalmazására, felhasználva a $\cite{LSNum}$ cikkhez készült MATLAB csomagot. \\
+Tekintsük az
+\begin{equation*}
+-u''(x) - 2u(x) = \frac{1}{3} u^3 - \sqrt{x}
+\end{equation*}
+egyenletet a $[0, 1]$ intervallumon a
+\begin{align*}
+u(0) &= 0 \\
+u(1) + u'(1) &= 0
+\end{align*}
+peremfeltételekkel. Erre a feladatra a kiszámolt megoldás a következő, legfeljebb $10^{-5}$ hibát megengedve:
+\begin{center}
+	\includegraphics{./abrak/pelda_01.png}
+\end{center}
+Ehhez az $m = 0$ választás elegendő volt. Ezzel szemben, ha változtatunk a peremfeltételen, és az intervallum jobb oldalán a
+\begin{equation*}
+u'(1) = 0
+\end{equation*}
+feltételt követeljük meg, akkor $m=0$ esetén nincs konvergencia, és még $m=1$ esetén is problémás a helyzet, mert a Newton-iteráció nem konvergál, ezért meg kell adni kezdeti feltételt. A 
+$\text{cinit} = [1]$ paraméterrel, azaz a $\Phi_1$ komponens kezdeti együtthatóját 1-re változtatva viszont már van konvergencia, és megkapjuk a megoldást:
+\begin{center}
+	\includegraphics{./abrak/pelda_02.png}
+\end{center}
 
 % TODO kiegészítés: H_m tul levezetések
 
-%\section{Kiegészítés} % TODO valami takarítás
+\section{Kiegészítés} % TODO valami takarítás
+
+$H_m$ lineáris:
+\begin{align*}
+H_m(\alpha x + y) &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\alpha x + y, \Phi_k) \Phi_k = \\
+ &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} ((\alpha x, \Phi_k) + (y, \Phi_k)) \Phi_k = \\
+ &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\alpha x, \Phi_k) \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (y, \Phi_k) \Phi_k = \\
+ &= \alpha \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (x, \Phi_k) \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (y, \Phi_k) \Phi_k = \\
+ &= \alpha H_m x + H_m y
+\end{align*}
+$H_m = (L_{\mkern 1mu \vrule height 2ex\mkern2mu S_m^\perp})^{-1}$, linearitás miatt elég $\Phi_n$-ra nézni ($n > m$):
+\begin{align*}
+L H_m \Phi_n &= L \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\Phi_n, \Phi_k) \Phi_k \right) = \\
+ &= L \left( \frac{1}{\lambda_n} \Phi_n \right) = \frac{1}{\lambda_n} \lambda_n \Phi_n = \Phi_n
+\end{align*}
+$H_m L u = (I - P_m)u$, linearitás miatt elég $\Phi_n$-re:
+\begin{align*}
+H_m L \Phi_n &= H_m (\lambda_n \Phi_n) = \lambda_n \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\Phi_n, \Phi_k) \Phi_k = \\
+ &=
+	\begin{cases}
+		\mathbf{0}, &\text{ha } n \leq m \\
+		\Phi_n, &\text{ha } n \geq m + 1
+	\end{cases}
+\end{align*}
+$\norm{H_m} = \frac{1}{\lambda_{m+1}}$, kihasználva, hogy a sajátértékek növekvő sorrendben vannak indexelve, valamint hogy $\norm{I - P_m} \leq 1$ a projekció tulajdonsága miatt:
+\begin{align*}
+\norm{H_m u} &= \norm{ \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (u, \Phi_k) \Phi_k} \leq \\
+ &\leq \frac{1}{\lambda_{m+1}} \norm{(I - P_m)u} \leq \frac{1}{\lambda_{m+1}} \norm{u}
+\end{align*}
+és $u = \Phi_{m+1}$ esetén
+\begin{align*}
+\norm{H_m \Phi_{m+1}} &= \norm{ \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\Phi_{m+1}, \Phi_k) \Phi_k} = \\
+ &= \norm{ \frac{1}{\lambda_{m+1}} \Phi_{m+1}} = \frac{1}{\lambda_{m+1}} \norm{\Phi_{m+1}}
+\end{align*}
+$\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty \left( \frac{\mu(\Phi_k)}{\lambda_k}\right)^2\right)^{1/2}$:
+\begin{align*}
+\mu(H_m u) &= \mu \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (u, \Phi_k) \Phi_k \right) \leq \\
+ &\leq \left| \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (u, \Phi_k) \mu(\Phi_k) \right| = \\
+ &= \left| \sum_{k = m+1}^\infty \frac{\mu(\Phi_k)}{\lambda_k} (u, \Phi_k) \right| \leq \\
+ &\leq \left| \left( \frac{\mu(\Phi_k)}{\lambda_k}, (u, \Phi_k) \right)_{l_2} \right| \leq \\
+ &\leq \norm{\frac{\mu(\Phi_k)}{\lambda_k}}_{l_2} \norm{(u, \Phi_k)}_{l_2}
+\end{align*}
+ahol $\left( , \right)_{l_2}$ az $l_2$-beli skaláris szorzást jelöli, és erre alkalmaztuk a Cauchy-Bunyakovsky-Scwarz-egyenlőtlenséget. Ha $\norm{(u, \Phi_k)}_{l_2} = 1$ (ami $u = \Phi_k$ választással biztosítható), akkor megkaptuk, hogy $\mu(H_m) \leq \alpha \sigma(m)$. %TODO alpha hogy jön be? talán legyen alpha > 1 a kezdeti megkötés, és így nincs gond
+
 
 
 %% 
