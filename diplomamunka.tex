@@ -368,6 +368,116 @@ Ezt behelyettesítve az eredeti egyenletbe kapjuk az
 \end{equation*}
 egyenletet. Mivel $u \in K$ és $\dim K < \infty$, valamint $\Ima P = Z$, $\dim Z < \infty$, így az eredeti egyenletet sikerült redukálnunk egy véges dimenzión értelmezett, véges dimenziós értékkészletű (TODO?) egyenletre, amit könnyebb megoldani.
 
+\section{Többpontos peremfeladat közönséges nemlineáris differenciálegyenletre}
+\label{sec:multipoint}
+
+Mutassuk be a Ljapunov-Schmidt módszer egy alkalmazását $\cite{multipoint}$ alapján. A feladat egy $n$-edrendű, nemlineáris differenciálegyenlet megoldása, homogén peremfeltéttel:
+\begin{equation}
+y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dots + a_0 y(t) = g(y(t)); \quad (0 \leq t \leq 1) \label{eq:mp:inhomOG}
+\end{equation}
+\begin{equation}
+\sum_{j = 1}^n b_{ij}(0) y^{(j-1)}(0) + \sum_{j = 1}^n b_{ij}(1) y^{(j-1)}(t_1) + \dots + \sum_{j = 1}^n b_{ij}(N) y^{(j-1)}(t_N) = 0; \quad (i = 1, \dots, n) \label{eq:mp:boundaryOG}
+\end{equation}
+ahol $b_{ij}$ valós számok, $0 = t_0 < t_1 < \dots < t_N = 1$ rögzítettek. Feltesszük, hogy $g$ és $a_0, \dots, a_n$ valósak, folytonosak, a teljes $\mathbb{R}$-en értelmezettek, valamint $a_0(t) \neq 0 \; (0 \leq t \leq 1)$. Azt is feltesszük, hogy $lim_{t \to \infty} g(t)$ és $lim_{t \to -\infty} g(t)$ létezik, ezeket $g(\infty)$-nel illetve $g(-\infty)$-nel fogjuk jelölni. \\
+A vizsgálat során fontos szerepet fog játszani a homogén probléma megoldása:
+\begin{equation}
+y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dots + a_0 y(t) = 0; \quad (0 \leq t \leq 1) \label{eq:mp:homOG}.
+\end{equation}
+Első lépésként fogalmazzuk át a problémát, a magasabbrendű egyenlet helyett kezeljünk egyenletrendszert. Ehhez vezessük be az alábbi jelöléseket:
+\begin{equation*}
+x =
+	\begin{bmatrix}
+		y \\ y' \\ \vdots \\ y^{(n-1)}
+	\end{bmatrix}
+\qquad
+A(t) =
+	\begin{bmatrix}
+		0 & 1 & 0 & \dots & 0 \\
+		0 & 0 & 1 & \dots & 0 \\
+		\vdots & \vdots & \vdots && \vdots \\
+		-a_0(t) & -a_1(t) & -a_2(t) & \dots & -a_{n-1}(t)
+	\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+f(x) =
+	\begin{bmatrix}
+		0 \\ 0 \\ \vdots \\ 0 \\ g(x_1)
+	\end{bmatrix}
+=
+	\begin{bmatrix}
+		0 \\ 0 \\ \vdots \\ 0 \\ g(y)
+	\end{bmatrix}
+\qquad
+B_k =
+	\begin{bmatrix}
+		b_{11}(k) & b_{12}(k) & \dots & b_{1n}(k) \\
+		b_{21}(k) & b_{22}(k) & \dots & b_{2n}(k) \\
+		\vdots & \vdots && \vdots \\
+		b_{n1}(k) & b_{n2}(k) & \dots & b_{nn}(k)
+	\end{bmatrix}
+\end{equation*}
+Így a differenciálegyenletet felírhatjuk 
+\begin{equation}
+x'(t) = A(t) x(t) + f(x(t)) \quad (0 \leq t \leq 1) \label{eq:mp:inhom}
+\end{equation}
+alakban, a homogén egyenletet
+\begin{equation}
+x'(t) = A(t) x(t) \quad (0 \leq t \leq 1) \label{eq:mp:hom}
+\end{equation}
+alakban, a peremfeltételt pedig
+\begin{equation}
+B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = 0 \label{eq:mp:boundary}
+\end{equation}
+formában. Legyen $\Phi$ a homogén egyenlet fundamentális mátrix megoldása, aminek $\Phi(0) = I$. Ezt felhasználva még legyen
+\begin{equation*}
+D = B_0 + B_1 \Phi(t_1) + \dots + B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1).
+\end{equation*}
+Emellett még szükséges az inhomogén, lineáris egyenlet vizsgálata:
+\begin{equation}
+x'(t) = A(t) x(t) + h(t) \quad (0 \leq t \leq 1). \label{eq:mp:inhomlin}
+\end{equation}
+Az állandók variálásával $\eqref{eq:mp:inhomlin}$-$\eqref{eq:mp:boundary}$-nak $x$ megoldása pontosan akkor, ha
+\begin{align*}
+&x(t) = \Phi(t) x(0) + \Phi(t) \int_0^1 \Phi^{-1}(s) h(s) ds &\text{és}& \\
+&B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = 0.&&
+\end{align*}
+Ha a második egyenletben $x$-be behelyettesítjük az első egyenletből, akkor
+\begin{align*}
+0 &= B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = \\
+ &= B_0 x(0) + B_1 \Phi(t_1) \left( x(0) + \int_0^{t_1} \Phi^{-1}(s) h(s) ds \right) + \dots + \\
+ &+ B_N \Phi(t_{N-1}) \left( x(0) + \int_0^{t_{N-1}} \Phi^{-1}(s) h(s) ds \right) +  B_N \Phi(1) \left( x(0) + \int_0^1 \Phi^{-1}(s) h(s) ds \right) = 
+\end{align*}
+Mivel
+\begin{equation*}
+D x(0) = B_0 x(0) + B_1 \Phi(t_1) x(0) + \dots + B_{N-1} \Phi(t_{N-1}) x(0) + B_N \Phi(1) x(0),
+\end{equation*}
+ezért az előbbit átrendezve
+\begin{equation*}
+D x(0) = - \left( B_1 \Phi(t_1) \int_0^{t_1} \Phi^{-1}(s) h(s) ds + \dots + B_N \Phi(1) \int_0^1 \Phi^{-1}(s) h(s) ds \right).
+\end{equation*}
+Tehát
+\begin{equation*}
+B_1 \Phi(t_1) \int_0^{t_1} \Phi^{-1}(s) h(s) ds + \dots + B_N \Phi(1) \int_0^1 \Phi^{-1}(s) h(s) ds
+\end{equation*}
+benne van $D$ képterében. Mivel $\Ima D \perp \Ker D^T$, ezért ha $p \in \Ker D^T$, akkor
+\begin{equation*}
+0 = p^T \left( B_1 \Phi(t_1) \int_0^{t_1} \Phi^{-1}(s) h(s) ds + \dots + B_N \Phi(1) \int_0^1 \Phi^{-1}(s) h(s) ds \right).
+\end{equation*}
+Ezután vizsgáljuk meg $\eqref{eq:mp:hom}$-$\eqref{eq:mp:boundary}$ feladatot, ez pontosan akkor oldható meg, ha
+\begin{align*}
+&x(t) = \Phi(t) x(0) &\text{ és}& \\
+&B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = 0&&
+\end{align*}
+A második egyenlet átírható
+\begin{align*}
+0 &= B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = \\
+ &= B_0 x(0) + B_1 \Phi(t_1) x(0) + \dots + B_{N-1} \Phi(t_{N-1}) x(0) + B_N \Phi(1) x(0) = \\
+ &= D x(0)
+\end{align*}
+alakra, tehát $x$ pontosan akkor megoldása a homogén peremfeladatnak, ha $x(0) = p$, ahol $p \in \Ker D$. Ebből az is kiderült, hogy a megoldástér ugyanannyi dimenziós, mint $\Ker D$. A továbbiakban feltesszük, hogy $\dim \Ker D = 1$, $\hat{p} \in \Ker D$, $\norm{\hat{p}} = 1$, és legyen $u(t) := \Phi(t) \hat{p}$. \\
+
+% TODO rest Main Results-tól
+
 
 \onehalfspacing
 \chapter{A Ljapunov-Schmidt-módszer mint numerikus módszer}
@@ -678,9 +788,10 @@ $\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty 
  &\leq \left| \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (u, \Phi_k) \mu(\Phi_k) \right| = \\
  &= \left| \sum_{k = m+1}^\infty \frac{\mu(\Phi_k)}{\lambda_k} (u, \Phi_k) \right| \leq \\
  &\leq \left| \left( \frac{\mu(\Phi_k)}{\lambda_k}, (u, \Phi_k) \right)_{l_2} \right| \leq \\
- &\leq \norm{\frac{\mu(\Phi_k)}{\lambda_k}}_{l_2} \norm{(u, \Phi_k)}_{l_2}
+ &\leq \norm{\frac{\mu(\Phi_k)}{\lambda_k}}_{l_2} \norm{(u, \Phi_k)}_{l_2} = \\
+ &= \sigma(m) \norm{u} \leq \sigma(m) \alpha \mu(u)
 \end{align*}
-ahol $\left( , \right)_{l_2}$ az $l_2$-beli skaláris szorzást jelöli, és erre alkalmaztuk a Cauchy-Bunyakovsky-Scwarz-egyenlőtlenséget. Ha $\norm{(u, \Phi_k)}_{l_2} = 1$ (ami $u = \Phi_k$ választással biztosítható), akkor megkaptuk, hogy $\mu(H_m) \leq \alpha \sigma(m)$. %TODO alpha hogy jön be? talán legyen alpha > 1 a kezdeti megkötés, és így nincs gond
+ahol $\left( , \right)_{l_2}$ az $l_2$-beli skaláris szorzást jelöli. A levezetés során alkalmaztuk a Cauchy-Bunyakovsky-Schwarz-egyenlőtlenséget és a Parseval-egyenlőséget.
 
 
 
