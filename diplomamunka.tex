@@ -24,6 +24,8 @@
 \DeclareMathOperator{\Span}{span}	% kifeszített tér
 
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}	% norma
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}	% abszolút érték - abs* kell megfelelő mérethez
+
 
 \textwidth=6.truein \textheight=9.truein
 \hoffset=-.5truein
@@ -373,12 +375,12 @@ egyenletet. Mivel $u \in K$ és $\dim K < \infty$, valamint $\Ima P = Z$, $\dim 
 
 Mutassuk be a Ljapunov-Schmidt módszer egy alkalmazását $\cite{multipoint}$ alapján. A feladat egy $n$-edrendű, nemlineáris differenciálegyenlet megoldása, homogén peremfeltéttel:
 \begin{equation}
-y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dots + a_0 y(t) = g(y(t)); \quad (0 \leq t \leq 1) \label{eq:mp:inhomOG}
+y^{(n)}(t) + a_{n-1}(t) y^{(n-1)}(t) + \dots + a_0(t) y(t) = g(y(t)); \quad (0 \leq t \leq 1) \label{eq:mp:inhomOG}
 \end{equation}
 \begin{equation}
 \sum_{j = 1}^n b_{ij}(0) y^{(j-1)}(0) + \sum_{j = 1}^n b_{ij}(1) y^{(j-1)}(t_1) + \dots + \sum_{j = 1}^n b_{ij}(N) y^{(j-1)}(t_N) = 0; \quad (i = 1, \dots, n) \label{eq:mp:boundaryOG}
 \end{equation}
-ahol $b_{ij}$ valós számok, $0 = t_0 < t_1 < \dots < t_N = 1$ rögzítettek. Feltesszük, hogy $g$ és $a_0, \dots, a_n$ valósak, folytonosak, a teljes $\mathbb{R}$-en értelmezettek, valamint $a_0(t) \neq 0 \; (0 \leq t \leq 1)$. Azt is feltesszük, hogy $lim_{t \to \infty} g(t)$ és $lim_{t \to -\infty} g(t)$ létezik, ezeket $g(\infty)$-nel illetve $g(-\infty)$-nel fogjuk jelölni. \\
+ahol $b_{ij}$ valós számok, $0 = t_0 < t_1 < \dots < t_N = 1$ rögzítettek. Feltesszük, hogy $g$ és $a_0, \dots, a_n$ valósak, folytonosak, a teljes $\mathbb{R}$-en értelmezettek $g$ Lipschitz-folytonos, valamint $a_0(t) \neq 0 \; (0 \leq t \leq 1)$. Azt is feltesszük, hogy $\lim_{t \to \infty} g(t)$ és $\lim_{t \to -\infty} g(t)$ létezik és véges, ezeket $g(\infty)$-nel illetve $g(-\infty)$-nel fogjuk jelölni. \\
 A vizsgálat során fontos szerepet fog játszani a homogén probléma megoldása:
 \begin{equation}
 y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dots + a_0 y(t) = 0; \quad (0 \leq t \leq 1) \label{eq:mp:homOG}.
@@ -428,7 +430,7 @@ alakban, a peremfeltételt pedig
 \begin{equation}
 B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = 0 \label{eq:mp:boundary}
 \end{equation}
-formában. Legyen $\Phi$ a homogén egyenlet fundamentális mátrix megoldása, aminek $\Phi(0) = I$. Ezt felhasználva még legyen
+formában. Legyen $\Phi$ a homogén egyenlet alaprendszere (azaz $\Phi'(t) = A(t) \Phi(t) \; (0 \leq t \leq 1)$), amivel $\Phi(0) = I$. Ezt felhasználva még legyen
 \begin{equation*}
 D = B_0 + B_1 \Phi(t_1) + \dots + B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1).
 \end{equation*}
@@ -475,8 +477,130 @@ A második egyenlet átírható
  &= D x(0)
 \end{align*}
 alakra, tehát $x$ pontosan akkor megoldása a homogén peremfeladatnak, ha $x(0) = p$, ahol $p \in \Ker D$. Ebből az is kiderült, hogy a megoldástér ugyanannyi dimenziós, mint $\Ker D$. A továbbiakban feltesszük, hogy $\dim \Ker D = 1$, $\hat{p} \in \Ker D$, $\norm{\hat{p}} = 1$, és legyen $u(t) := \Phi(t) \hat{p}$. \\
+Definiáljunk operátorokat, legyen $( L^2[0, 1], \mathbb{R}^n)$ az $L^2[0, 1]$-ből $\mathbb{R}^n$-be képező függvények halmaza, $F : ( L^2[0, 1], \mathbb{R}^n) \rightarrow ( L^2[0, 1], \mathbb{R}^n)$: $(Fx)(t) := f(x(t))$. $F$-ről látható, hogy $f$ folytonossága miatt ő is folytonos. Legyen $L : \Dom L \rightarrow ( L^2[0, 1], \mathbb{R}^n)$, ahol
+\begin{equation*}
+\Dom L = \left\{ \phi : [0, 1] \rightarrow \mathbb{R}^n : \phi abszolút folytonos, \phi' \in ( L^2[0, 1], \mathbb{R}^n), \sum_{k = 1}^N B_k \phi(t_k) = 0 \right\}
+\end{equation*}
+és $(Lx)(t) := x'(t) - A(t) x(t)$. Tehát $L$ értelmezési tartományában azok a függvények vannak, amelyek kielégítik a \eqref{eq:mp:boundary} peremfeltételt, és a \eqref{eq:mp:inhom} egyenletnek megfelel az
+\begin{equation}
+Lx = Fx \label{eq:mp:operator}
+\end{equation}
+egyenlet. Erre fogjuk a Ljapunov-Schmidt módszert alkalmazni. \\
+A korábbi levezetésünkből és $L$ definíciójából következik, hogy $x \in \Ker L$ pontosan akkor, ha $x(t) = \Phi(t) \hat{p}$ (ami egybevág $u$-nak a definíciójával, tehát $u \in \Ker L$). \\
+Konstruáljunk meg egy $\psi : [0, 1] \rightarrow \mathbb{R}^n$ függvényt úgy, hogy az ő merőleges kiegészítője $\Ima L$ legyen. Legyen $p \in \Ker(D^T) \setminus \{ \mathbf{0} \}$, és legyen
+\begin{equation*}
+\psi(t) = 
+	\begin{cases}
+	\left[ \left( B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in (t_{N-1}, 1] \\
+	\left[ \left( B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in (t_{N-2}, t_{N-1}]  \\
+	\vdots &\\
+	\left[ \left( B_2 \Phi(t_2) + \dots + B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in (t_1, t_2]  \\
+	\left[ \left( B_1 \Phi(t_1) + B_2 \Phi(t_2) + \dots + B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in [0, t_1]. \\
+	\end{cases}
+\end{equation*}
+Ellenőrizzük, hogy $\psi(t) = 0 \; (t \in [0, 1])$ lehetséges-e, ha $p \neq \mathbb{0}$. Először nézzük meg, hogy $(t_{N-1}, 1]$ intervallumon mi kell hozzá:
+\begin{equation*}
+0 = \left[ B_N \Phi(1) \Phi^{-1}(t) \right]^T p = \Phi^{-T}(t) \Phi^T(1) B_N^T p,
+\end{equation*}
+ami akkor teljesül, ha $p \in \Ker B_N^T$. Ezt feltéve és továbbhaladva, $(t_{N-2}, t_{N-1}]$ intervallumon nézzük:
+\begin{align*}
+0 &= \left[ \left( B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p =\\
+ &= \Phi^{-T}(t) \left( B_{N-1}^T \Phi^T(t_{N-1}) + \Phi^T(1) B_N^T \right) p = \Phi^{-T}(t) \Phi^T(t_{N-1}) B_{N-1}^T p,
+\end{align*}
+ami akkor teljesül, ha $p \in \Ker B_{N-1}^T$. Ezt ismét feltételezve és tovább folytatva azt kapjuk, hogy ha $\psi(t) = 0 \; (t \in [0, 1])$, abból következik, hogy $p \in \Ker B_i^T \; (i = 1, \dots, N)$. A továbbiakban feltesszük, hogy $\cap_{i = 1}^N \Ker B_i^T = \{ \mathbf{0} \}$, így $\psi$ nem az azonosan $\mathbf{0}$ függvény, valamint hogy $p$-t úgy választottuk, hogy $\norm{\psi}_{L^2} = 1$. \\
+Belátható, hogy $\Ima L = {\psi}^\perp$. % TODO why?
+Ennek segítségével állítsuk elő a $E : ( L^2[0, 1], \mathbb{R}^n) \rightarrow \Ima L$ projekciós operátort:
+\begin{equation*}
+(Ex) (t) = x(t) - \psi(t) \int_0^1 \psi^T(s) x(s) ds = x(t) - \psi(t) \langle x, \psi \rangle_{L^2}.
+\end{equation*}
+Ezzel értelemszerűen $E L x = L x \; (x \in \Dom L)$. \\
+Emellett vezessük be a $P : ( L^2[0, 1], \mathbb{R}^n) \rightarrow \Ker L$ projekciót is:
+\begin{equation*}
+(Px)(t) = u(t) \int_0^1 u^T(s) x(s) ds = u(t) \langle x, u \rangle_{L^2},
+\end{equation*}
+ahol $u$ volt az a vektor, ami kifeszíti $\Ker L$-et. Így bármely $x \in ( L^2[0, 1], \mathbb{R}^n)$-re $Px = \alpha u$, ahol $\alpha$ megfelelő valós szám. \\
+Magától értetődő, hogy ha $L$-et leszűkítjük $\Dom L \cap (\Ker L)^\perp$-re, akkor az bijekció $\Dom L \cap (\Ker L)^\perp$ és $\Ima L$ között. Így létezik $M : \Ima L \rightarrow \Dom L \cap (\Ker L)^\perp$ leképezés, ami ennek a megszorításnak az inverze:
+\begin{align*}
+L M h &= h \quad &(h \in \Ima L) \\
+M L x &= (I - P) x \quad &(x \in \Dom L).
+\end{align*}
+Lássunk neki az $Lx = Fx$ egyenlet megoldhatóságának vizsgálatához. Először vetítsük az egyenletet $\Ima L$-re $E$ felhasználásával:
+\begin{equation*}
+L x = E F x.
+\end{equation*}
+Ezután írjuk fel $x$-et a $P$ projekció segítségével, és helyettesítsük be a levetített feladatot, illetve a $\Ker L$-et kifeszítő $u$-t.
+\begin{equation*}
+x = Px + (I - P)x = Px + M L x = P x + M E F x = \alpha u + M E F x.
+\end{equation*}
+Az $Lx = Fx$ ekvivalens $Lx - Fx = 0$-val, ami ekvivalens
+\begin{align*}
+E (Lx - Fx) &= 0 \quad \text{és} \\
+(I - E) (Lx - Fx) &= 0.
+\end{align*}
+Az első egyenlet azt jelenti, hogy $F(x) \in \Ima L$, és $\psi$ ortogonális $\Ima L$-re, ezért pontosan akkor teljesül, ha
+\begin{equation*}
+\int_0^1 \left( f(x(t)) \right)^T \psi(t) dt = 0.
+\end{equation*}
+Vezessük be az alábbi jelöléseket:
+\begin{itemize}
+\item $u(t)$ első komponensét jelöljük $s(t)$-vel,
+\item $M E F (x)$ első komponensét jelöljük $w(x)$-szel,
+\item $\psi(t)$ $n$. komponensét jelöljük $v(t)$-vel.
+\end{itemize}
+Mivel $f$ olyan függvény, aminek az első $n-1$ komponense azonosan $0$, az $n$. komponense pedig $f_n(x) = g(x_1)$, így az integrál átalakítható:
+\begin{equation*}
+0 = \int_0^1 \left( f(x(t)) \right)^T \psi(t) dt = \int_0^1 v(t) g(x_1(t)) dt = \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt.
+\end{equation*}
+Mivel $\left\{ t : s(t) =0 \right\}$ 0-mértékű, ezért az integrál felbontható:
+\begin{equation*}
+\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt = \int_{s(t) > 0} v(t) g(\alpha s(t) + w(x(t))) dt + \int_{s(t) < 0} v(t) g(\alpha s(t) + w(x(t))) dt
+\end{equation*}
+$M$, $E$ és $g$ korlátossága miatt $w$ is korlátos, és a Lebesgue-tétel alkalmazásával írjuk fel $\alpha \to \pm \infty$ esetén az egyenletet:
+\begin{align*}
+\lim_{\alpha \to \infty} \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt &= g(\infty) \int_{s(t) > 0} v(t) dt + g(-\infty) \int_{s(t) < 0} v(t) dt =: J_1 \\
+\lim_{\alpha \to -\infty} \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt &= g(-\infty) \int_{s(t) > 0} v(t) dt + g(\infty) \int_{s(t) < 0} v(t) dt =: J_2.
+\end{align*}
+Tegyük fel, hogy $J_2 < 0 < J_1$ ($J_1 J_2 < 0$ elég lenne). Így létezik $\alpha_0$, amivel
+\begin{align}
+\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt &> 0 \qquad &\text{ha } \alpha \geq \alpha_0, \label{eq:mp:alpha} \\
+\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt &< 0 \qquad &\text{ha } \alpha \leq -\alpha_0. \nonumber
+\end{align}
+Definiáljuk az alábbi operátorokat:
+\begin{align*}
+&H_1 : ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow ( L^2[0, 1], \mathbb{R}^n) \\
+&H_1(x, \alpha) = \alpha u + M E F (x) \\
+&H_2 :  ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow \mathbb{R} \\
+&H_2(x, \alpha) = \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt \\
+&H : ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \\
+&H(x, \alpha) = (H_1 (x, \alpha), H_2(x, \alpha)).
+\end{align*}
+Ezzel a szétválasztással $x$-nek a $\Ker L$ irányú komponensét az $\alpha$ reprezentálja. $( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R}$-en a norma amit használunk $\norm{(x, \alpha)} := \max \{ \norm{x}_{L^2}, \abs{\alpha} \}$. Jól látható, hogy az eredeti $\eqref{eq:mp:inhom}$-$\eqref{eq:mp:boundary}$ peremfeladat megoldhatósága a $H$ fixpontjának létezésével hozható összefüggésbe. \\
+Legyen $r := \sup_{t \in \mathbb{R}} \abs{g(t)}$, $m := \sup_{t \in [0, 1]} \abs{v(t)}$. Ezekből következik, hogy
+\begin{equation*}
+\abs*{ \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt} \leq rm.
+\end{equation*}
+Válasszunk $\alpha_0$-át úgy, hogy $\eqref{eq:mp:alpha}$ egyenletek teljesüljenek és $\alpha_0 > rm$, legyen $\delta := \alpha_0 + rm$. $u$, $g$ és $M E$ korlátossága miatt ha $\abs{\alpha} \leq \delta$ és $x \in L^2[0, 1]$, akkor
+\begin{equation*}
+\norm{H_1 (x, \alpha)} = \norm{ \alpha u + M E F (x)} \leq \abs{\alpha} \norm{u} \norm{M E F (x)} \leq \abs{\alpha} \norm{u} \norm{M E} \abs{g(x_1)} \leq b_1
+\end{equation*}
+megfelelő $b_1$ választásával. Legyen
+\begin{equation*}
+\mathcal{B} = \left\{ (x, \alpha) \in L^2[0, 1] \times \mathbb{R} : \norm{x} \leq b_1 \text{ és } \abs{\alpha} \leq \delta \right\},
+\end{equation*}
+így $\mathcal{B}$ egy zárt, korlátos, konvex halmaz. A cél megmutatni, hogy $H$ a $\mathcal{B}$ halmazt önmagába képezi. $\norm{H_1(x, \alpha)} \leq b_1$-et az előbb beláttuk, nézzük $\norm{H_2(x, \alpha)} \leq \delta$-t. \\
+Először legyen $\alpha_0 \leq \alpha \leq \delta$, a feltételünk miatt $\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt > 0$, így
+\begin{equation*}
+H_2(x, \alpha) = \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt \geq \alpha_0 - rm,
+\end{equation*}
+így $H_2(x, \alpha) \in [0, \alpha_0 - rm] \subset [-\delta, \delta]$. \\
+Ha $0 \leq \alpha < \alpha_0$, akkor
+\begin{align*}
+\abs{H_2(x, \alpha)} &= \abs*{ \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt } \leq \\
+ &\leq \abs{\alpha} + \abs*{\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt} \leq \alpha_0 + rm = \delta,
+\end{align*}
+így $H_2(x, \alpha) \in [-\delta, \delta]$, tehát ha $0 \leq \alpha \leq \delta$ és $x \in L^2[0, 1]$, akkor $H(x, \alpha) \in \mathcal{B}$. Analóg módon belátható, hogy ha $-\delta \leq \alpha \leq 0$, akkor ugyanez fenn áll. \\
+Így tehát $H(\mathcal{B}) \subset \mathcal{B}$. $H$ kompaktsága következik $M E F$ kompaktságából, és így a Schauder fixpont-tétel értelmében $H$-nak van fixpontja $\mathcal{B}$-ben, ami egyben azt jelenti, hogy az eredeti $\eqref{eq:mp:inhom}$-$\eqref{eq:mp:boundary}$ peremfeladat is megoldható.
 
-% TODO rest Main Results-tól
 
 
 \onehalfspacing
