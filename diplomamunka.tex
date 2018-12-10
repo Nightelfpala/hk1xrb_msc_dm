@@ -326,7 +326,7 @@ Először is vizsgáljunk meg egy bifurkációs problémát \cite{CSiAM} alapjá
 \begin{equation*}
 F(\lambda, x) = 0
 \end{equation*}
-ahol $\lambda \in \mathbb{R}$ valós paraméter, $x \in X$ állapotváltozó (TODO ?) $X$ Banach-térben, $0 \in Y$ pedig egy Banach-tér nulleleme, $F$ pedig kétszer folytonosan differenciálható operátor. A feladat meghatározni azon $(\lambda, x) \in \mathbb{R} \times X$ párokat, amelyek kielégítik az egyenletet, lehetőség szerint az $x$-eket $\lambda$ függvényében.
+ahol $\lambda \in \mathbb{R}$ valós paraméter, $x \in X$ állapotváltozó, $X$ Banach-tér, $Y$ Banach-tér, $0 \in Y$ az ő nulleleme, $F$ pedig kétszer folytonosan differenciálható operátor. A feladat meghatározni azon $(\lambda, x) \in \mathbb{R} \times X$ párokat, amelyek kielégítik az egyenletet, lehetőség szerint az $x$-eket $\lambda$ függvényében.
 
 Feltesszük, hogy létezik megoldás, valamint azt, hogy minden $x = 0$ esetén minden $\lambda \in \mathbb{R}$ megoldása az egyenletnek (az úgynevezett triviális megoldások). Ezen kívül tegyük fel azt, hogy $(\lambda_0, 0) \in \mathbb{R} \times X$ bármely környezetében van nemtriviális megoldás, azaz $(\lambda_0, 0)$ bifurkációs pont. Ez maga után vonja, hogy $F_x(\lambda_0, 0)$ Fréchet-derivált nem invertálható.
 
@@ -336,7 +336,7 @@ L &:= F_x(\lambda_0, x_0) : X \rightarrow Y, \\
 K &:= \Ker L, \\
 R &:= \Ima L.
 \end{align*}
-Tegyük fel, hogy $K$-nak és $R$-nek (amelyek zárt alterek $X$-ben és $Y$-ban) vannak komplemens alterei, azaz létezik $W \subset X$ zárt altér, amellyel $K \oplus W = X$, illetve $Z \subset Y$ szintén zárt altér, amellyel $R \oplus Z = Y$, és bármely $x \in X$ egyértelműen felírható $x = u + v, u \in K, v \in W$ alakban, valamint bármely $y \in Y$ egyértelműen felírható $y = r + z, r \in R, z \in Z$ alakban - ezek teljesülnek például akkor, hogyha $K$ és $R$ véges dimenziós alterek, azaz ha $L$ Fredholm-operátor. Vegyük ezenfelül a $Q : Y \rightarrow R$ és $P : Y \rightarrow Z$ projekciókat.
+Tegyük fel, hogy $K$ és $R$ zárt alterek $X$-ben és $Y$-ban, emiatt vannak komplemens altereik, azaz létezik $W \subset X$ zárt altér, amellyel $K \oplus W = X$, illetve létezik $Z \subset Y$ szintén zárt altér, amellyel $R \oplus Z = Y$, és bármely $x \in X$ egyértelműen felírható $x = u + v, u \in K, v \in W$ alakban, valamint bármely $y \in Y$ egyértelműen felírható $y = r + z, r \in R, z \in Z$ alakban. Ez teljesül például akkor, hogyha $K$ és $R$ véges dimenziós alterek, azaz ha $L$ Fredholm-operátor. Vegyük ezenfelül a $Q : Y \rightarrow R$ és $P : Y \rightarrow Z$ projekciókat.
 
 Írjuk fel az eredeti egyenlet Taylor-polinomját:
 \begin{equation*}
@@ -363,35 +363,40 @@ ezért
 \begin{equation*}
 \Phi_v (\lambda_0, 0, 0) = L_{\mkern 1mu \vrule height 2ex\mkern2mu W},
 \end{equation*}
-viszont $\Ker L_{\mkern 1mu \vrule height 2ex\mkern2mu W} = \{0\}$ és $\Ima L = R$, így $\Phi_v (\lambda, 0, 0)$ folytonos bijekció $W$ és $R$ között. Alkalmazható az implicit függvény tétel, tehát van $(\lambda_0, 0, 0)$-nak egy olyan $\Lambda \times \mathcal{K} \times \mathcal{W}$ környezete, amiben egy $\gamma : \Lambda \times \mathcal{K} \rightarrow \mathcal{W}$ függvény meghatározza a $\Phi_v (\lambda, u, v) = 0$ összes megoldását $\Phi_v (\lambda, u, \gamma(\lambda, u))$ alakban.
-Ezt behelyettesítve az eredeti egyenletbe kapjuk az
+viszont $\Ker L_{\mkern 1mu \vrule height 2ex\mkern2mu W} = \{0\}$ és $\Ima L = R$, így $\Phi_v (\lambda_0, 0, 0)$ folytonos bijekció $W$ és $R$ között. Alkalmazható az implicit függvény tétel, tehát van $(\lambda_0, 0, 0)$-nak egy olyan $\Lambda \times \mathcal{K} \times \mathcal{W}$ környezete, amiben egy $\gamma : \Lambda \times \mathcal{K} \rightarrow \mathcal{W}$ függvény meghatározza a $\Phi_v (\lambda, u, v) = 0$ összes megoldását $\Phi_v (\lambda, u, \gamma(\lambda, u))$ alakban.
+Ezt behelyettesítve az eredeti egyenletbe kapjuk a
 \begin{equation*}
 0 = P F(\lambda, u + \gamma(\lambda, u))
 \end{equation*}
-egyenletet. Mivel $u \in K$ és $\dim K < \infty$, valamint $\Ima P = Z$, $\dim Z < \infty$, így az eredeti egyenletet sikerült redukálnunk egy véges dimenzión értelmezett, véges dimenziós értékkészletű (TODO?) egyenletre, amit könnyebb megoldani.
+egyenletet. Mivel $u \in K$ és $\dim K < \infty$, valamint $\Ima P = Z$, $\dim Z < \infty$, így az eredeti egyenletet sikerült redukálnunk egy véges dimenzión értelmezett, véges dimenziós értékkészletű egyenletre, amit könnyebb megoldani.
 
 \section{Többpontos peremfeladat közönséges nemlineáris differenciálegyenletre}
 \label{sec:multipoint}
 
 Mutassuk be a Ljapunov-Schmidt módszer egy alkalmazását $\cite{multipoint}$ alapján. A feladat egy $n$-edrendű, nemlineáris differenciálegyenlet megoldása, homogén peremfeltéttel:
 \begin{equation}
-y^{(n)}(t) + a_{n-1}(t) y^{(n-1)}(t) + \dots + a_0(t) y(t) = g(y(t)); \quad (0 \leq t \leq 1) \label{eq:mp:inhomOG}
+y^{(n)}(t) + a_{n-1}(t) y^{(n-1)}(t) + \dots + a_0(t) y(t) = g(y(t)) \quad (0 \leq t \leq 1) \label{eq:mp:inhomOG}
 \end{equation}
 \begin{equation}
-\sum_{j = 1}^n b_{ij}(0) y^{(j-1)}(0) + \sum_{j = 1}^n b_{ij}(1) y^{(j-1)}(t_1) + \dots + \sum_{j = 1}^n b_{ij}(N) y^{(j-1)}(t_N) = 0; \quad (i = 1, \dots, n) \label{eq:mp:boundaryOG}
+\sum_{j = 1}^n b_{ij}(0) y^{(j-1)}(0) + \sum_{j = 1}^n b_{ij}(1) y^{(j-1)}(t_1) + \dots + \sum_{j = 1}^n b_{ij}(N) y^{(j-1)}(t_N) = 0 \quad (i = 1, \dots, n) \label{eq:mp:boundaryOG}
 \end{equation}
-ahol $b_{ij}$ valós számok, $0 = t_0 < t_1 < \dots < t_N = 1$ rögzítettek. Feltesszük, hogy $g$ és $a_0, \dots, a_n$ valósak, folytonosak, a teljes $\mathbb{R}$-en értelmezettek $g$ Lipschitz-folytonos, valamint $a_0(t) \neq 0 \; (0 \leq t \leq 1)$. Azt is feltesszük, hogy $\lim_{t \to \infty} g(t)$ és $\lim_{t \to -\infty} g(t)$ létezik és véges, ezeket $g(\infty)$-nel illetve $g(-\infty)$-nel fogjuk jelölni. \\
+ahol $b_{ij}$ valós számok, $0 = t_0 < t_1 < \dots < t_N = 1$ rögzítettek. Feltesszük, hogy $g$ és $a_0, \dots, a_{n-1}$ valósak, folytonosak, a teljes $\mathbb{R}$-en értelmezettek, $g$ Lipschitz-folytonos, valamint $a_0(t) \neq 0 \; (0 \leq t \leq 1)$. Azt is feltesszük, hogy $\lim_{t \to \infty} g(t)$ és $\lim_{t \to -\infty} g(t)$ létezik és véges, ezeket $g(\infty)$-nel illetve $g(-\infty)$-nel fogjuk jelölni. \\
 A vizsgálat során fontos szerepet fog játszani a homogén probléma megoldása:
 \begin{equation}
-y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dots + a_0 y(t) = 0; \quad (0 \leq t \leq 1) \label{eq:mp:homOG}.
+y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dots + a_0 y(t) = 0 \quad (0 \leq t \leq 1) \label{eq:mp:homOG}.
 \end{equation}
 Első lépésként fogalmazzuk át a problémát, a magasabbrendű egyenlet helyett kezeljünk egyenletrendszert. Ehhez vezessük be az alábbi jelöléseket:
 \begin{equation*}
 x =
 	\begin{bmatrix}
+		x_1 \\ x_2 \\ \vdots \\ x_n
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
 		y \\ y' \\ \vdots \\ y^{(n-1)}
 	\end{bmatrix}
-\qquad
+\end{equation*}
+\begin{equation*}
 A(t) =
 	\begin{bmatrix}
 		0 & 1 & 0 & \dots & 0 \\
@@ -409,7 +414,8 @@ f(x) =
 	\begin{bmatrix}
 		0 \\ 0 \\ \vdots \\ 0 \\ g(y)
 	\end{bmatrix}
-\qquad
+\end{equation*}
+\begin{equation*}
 B_k =
 	\begin{bmatrix}
 		b_{11}(k) & b_{12}(k) & \dots & b_{1n}(k) \\
@@ -430,7 +436,7 @@ alakban, a peremfeltételt pedig
 \begin{equation}
 B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = 0 \label{eq:mp:boundary}
 \end{equation}
-formában. Legyen $\Phi$ a homogén egyenlet alaprendszere (azaz $\Phi'(t) = A(t) \Phi(t) \; (0 \leq t \leq 1)$), amivel $\Phi(0) = I$. Ezt felhasználva még legyen
+formában. Legyen $\Phi$ a homogén egyenlet alaprendszere (azaz $\Phi'(t) = A(t) \Phi(t) \; (0 \leq t \leq 1)$), és $\Phi(0) = I$ (ahol $I$ az $N \times N$ méretű egységmátrix). Ezt felhasználva még legyen
 \begin{equation*}
 D = B_0 + B_1 \Phi(t_1) + \dots + B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1).
 \end{equation*}
@@ -443,11 +449,13 @@ Az állandók variálásával $\eqref{eq:mp:inhomlin}$-$\eqref{eq:mp:boundary}$-
 &x(t) = \Phi(t) x(0) + \Phi(t) \int_0^1 \Phi^{-1}(s) h(s) ds &\text{és}& \\
 &B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = 0.&&
 \end{align*}
-Ha a második egyenletben $x$-be behelyettesítjük az első egyenletből, akkor
+Ha a második egyenletben $x$-be behelyettesítünk az első egyenletből, akkor
 \begin{align*}
 0 &= B_0 x(0) + B_1 x(t_1) + \dots + B_{N-1} x(t_{N-1}) + B_N x(1) = \\
  &= B_0 x(0) + B_1 \Phi(t_1) \left( x(0) + \int_0^{t_1} \Phi^{-1}(s) h(s) ds \right) + \dots + \\
- &+ B_N \Phi(t_{N-1}) \left( x(0) + \int_0^{t_{N-1}} \Phi^{-1}(s) h(s) ds \right) +  B_N \Phi(1) \left( x(0) + \int_0^1 \Phi^{-1}(s) h(s) ds \right) = 
+ &+ B_N \Phi(t_{N-1}) \left( x(0) + \int_0^{t_{N-1}} \Phi^{-1}(s) h(s) ds \right) +  B_N \Phi(1) \left( x(0) + \int_0^1 \Phi^{-1}(s) h(s) ds \right) = \\
+ &= B_0 x(0) + B_1 \Phi(t_1) x(0) + \dots + B_N \Phi(1) x(0) + \\
+ &+ B_1 \Phi(t_1) \int_0^{t_1} \Phi^{-1}(s) h(s) ds + \dots + B_N \Phi(1) \int_0^1 \Phi^{-1}(s) h(s) ds.
 \end{align*}
 Mivel
 \begin{equation*}
@@ -476,10 +484,10 @@ A második egyenlet átírható
  &= B_0 x(0) + B_1 \Phi(t_1) x(0) + \dots + B_{N-1} \Phi(t_{N-1}) x(0) + B_N \Phi(1) x(0) = \\
  &= D x(0)
 \end{align*}
-alakra, tehát $x$ pontosan akkor megoldása a homogén peremfeladatnak, ha $x(0) = p$, ahol $p \in \Ker D$. Ebből az is kiderült, hogy a megoldástér ugyanannyi dimenziós, mint $\Ker D$. A továbbiakban feltesszük, hogy $\dim \Ker D = 1$, $\hat{p} \in \Ker D$, $\norm{\hat{p}} = 1$, és legyen $u(t) := \Phi(t) \hat{p}$. \\
+alakra, tehát $x$ pontosan akkor megoldása a homogén peremfeladatnak, ha $x(0) \in \Ker D$. Ebből az is kiderült, hogy a megoldástér ugyanannyi dimenziós, mint $\Ker D$. A továbbiakban feltesszük, hogy $\dim \Ker D = 1$, $\hat{p} \in \Ker D$, $\norm{\hat{p}} = 1$, és legyen $u(t) := \Phi(t) \hat{p}$. \\
 Definiáljunk operátorokat, legyen $( L^2[0, 1], \mathbb{R}^n)$ az $L^2[0, 1]$-ből $\mathbb{R}^n$-be képező függvények halmaza, $F : ( L^2[0, 1], \mathbb{R}^n) \rightarrow ( L^2[0, 1], \mathbb{R}^n)$: $(Fx)(t) := f(x(t))$. $F$-ről látható, hogy $f$ folytonossága miatt ő is folytonos. Legyen $L : \Dom L \rightarrow ( L^2[0, 1], \mathbb{R}^n)$, ahol
 \begin{equation*}
-\Dom L = \left\{ \phi : [0, 1] \rightarrow \mathbb{R}^n : \phi abszolút folytonos, \phi' \in ( L^2[0, 1], \mathbb{R}^n), \sum_{k = 1}^N B_k \phi(t_k) = 0 \right\}
+\Dom L = \left\{ \phi : [0, 1] \rightarrow \mathbb{R}^n : \phi \text{ abszolút folytonos}, \phi' \in ( L^2[0, 1], \mathbb{R}^n), \sum_{k = 1}^N B_k \phi(t_k) = 0 \right\}
 \end{equation*}
 és $(Lx)(t) := x'(t) - A(t) x(t)$. Tehát $L$ értelmezési tartományában azok a függvények vannak, amelyek kielégítik a \eqref{eq:mp:boundary} peremfeltételt, és a \eqref{eq:mp:inhom} egyenletnek megfelel az
 \begin{equation}
@@ -498,18 +506,18 @@ Konstruáljunk meg egy $\psi : [0, 1] \rightarrow \mathbb{R}^n$ függvényt úgy
 	\left[ \left( B_1 \Phi(t_1) + B_2 \Phi(t_2) + \dots + B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in [0, t_1]. \\
 	\end{cases}
 \end{equation*}
-Ellenőrizzük, hogy $\psi(t) = 0 \; (t \in [0, 1])$ lehetséges-e, ha $p \neq \mathbb{0}$. Először nézzük meg, hogy $(t_{N-1}, 1]$ intervallumon mi kell hozzá:
+Ellenőrizzük, hogy $\psi(t) = 0 \; (t \in [0, 1])$ lehetséges-e. Először nézzük meg, hogy $(t_{N-1}, 1]$ intervallumon ez mit jelentene:
 \begin{equation*}
-0 = \left[ B_N \Phi(1) \Phi^{-1}(t) \right]^T p = \Phi^{-T}(t) \Phi^T(1) B_N^T p,
+0 = \psi(t) = \left[ B_N \Phi(1) \Phi^{-1}(t) \right]^T p = \Phi^{-T}(t) \Phi^T(1) B_N^T p,
 \end{equation*}
-ami akkor teljesül, ha $p \in \Ker B_N^T$. Ezt feltéve és továbbhaladva, $(t_{N-2}, t_{N-1}]$ intervallumon nézzük:
+ami pontosan akkor teljesül, ha $p \in \Ker B_N^T$. Ezt feltéve és továbbhaladva, $(t_{N-2}, t_{N-1}]$ intervallumon nézzük:
 \begin{align*}
-0 &= \left[ \left( B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p =\\
+0 &= \psi(t) = \left[ \left( B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p =\\
  &= \Phi^{-T}(t) \left( B_{N-1}^T \Phi^T(t_{N-1}) + \Phi^T(1) B_N^T \right) p = \Phi^{-T}(t) \Phi^T(t_{N-1}) B_{N-1}^T p,
 \end{align*}
-ami akkor teljesül, ha $p \in \Ker B_{N-1}^T$. Ezt ismét feltételezve és tovább folytatva azt kapjuk, hogy ha $\psi(t) = 0 \; (t \in [0, 1])$, abból következik, hogy $p \in \Ker B_i^T \; (i = 1, \dots, N)$. A továbbiakban feltesszük, hogy $\cap_{i = 1}^N \Ker B_i^T = \{ \mathbf{0} \}$, így $\psi$ nem az azonosan $\mathbf{0}$ függvény, valamint hogy $p$-t úgy választottuk, hogy $\norm{\psi}_{L^2} = 1$. \\
+ami akkor teljesül, ha $p \in \Ker B_{N-1}^T$. Ezt ismét feltételezve és $i = N-3, \dots, 1$ tovább folytatva azt kapjuk, hogy ha $\psi(t) = 0 \; (t \in [0, 1])$, abból az következik, hogy $p \in \Ker B_i^T$. A továbbiakban feltesszük, hogy $\cap_{i = 1}^N \Ker B_i^T = \{ \mathbf{0} \}$, így $\psi$ nem az azonosan $\mathbf{0}$ függvény, valamint hogy $p \in \Ker (D^T)$-at úgy választjuk, hogy $\norm{\psi}_{L^2} = 1$. \\
 Belátható, hogy $\Ima L = {\psi}^\perp$. % TODO why?
-Ennek segítségével állítsuk elő a $E : ( L^2[0, 1], \mathbb{R}^n) \rightarrow \Ima L$ projekciós operátort:
+Ennek segítségével állítsuk elő az $E : ( L^2[0, 1], \mathbb{R}^n) \rightarrow \Ima L$ projekciós operátort:
 \begin{equation*}
 (Ex) (t) = x(t) - \psi(t) \int_0^1 \psi^T(s) x(s) ds = x(t) - \psi(t) \langle x, \psi \rangle_{L^2}.
 \end{equation*}
@@ -518,7 +526,7 @@ Emellett vezessük be a $P : ( L^2[0, 1], \mathbb{R}^n) \rightarrow \Ker L$ proj
 \begin{equation*}
 (Px)(t) = u(t) \int_0^1 u^T(s) x(s) ds = u(t) \langle x, u \rangle_{L^2},
 \end{equation*}
-ahol $u$ volt az a vektor, ami kifeszíti $\Ker L$-et. Így bármely $x \in ( L^2[0, 1], \mathbb{R}^n)$-re $Px = \alpha u$, ahol $\alpha$ megfelelő valós szám. \\
+ahol $u$ volt az a vektor, ami kifeszíti $\Ker L$-et. Így bármely $x \in ( L^2[0, 1], \mathbb{R}^n)$-re $Px = \alpha u$, ahol $\alpha$ megfelelő ($x$-től függő) valós szám. \\
 Magától értetődő, hogy ha $L$-et leszűkítjük $\Dom L \cap (\Ker L)^\perp$-re, akkor az bijekció $\Dom L \cap (\Ker L)^\perp$ és $\Ima L$ között. Így létezik $M : \Ima L \rightarrow \Dom L \cap (\Ker L)^\perp$ leképezés, ami ennek a megszorításnak az inverze:
 \begin{align*}
 L M h &= h \quad &(h \in \Ima L) \\
@@ -537,7 +545,7 @@ Az $Lx = Fx$ ekvivalens $Lx - Fx = 0$-val, ami ekvivalens
 E (Lx - Fx) &= 0 \quad \text{és} \\
 (I - E) (Lx - Fx) &= 0.
 \end{align*}
-Az első egyenlet azt jelenti, hogy $F(x) \in \Ima L$, és $\psi$ ortogonális $\Ima L$-re, ezért pontosan akkor teljesül, ha
+Az első egyenlet azt jelenti, hogy $F(x) \in \Ima L$, és mivel $\psi$ ortogonális $\Ima L$-re, ezért pontosan akkor teljesül, ha
 \begin{equation*}
 \int_0^1 \left( f(x(t)) \right)^T \psi(t) dt = 0.
 \end{equation*}
@@ -547,20 +555,20 @@ Vezessük be az alábbi jelöléseket:
 \item $M E F (x)$ első komponensét jelöljük $w(x)$-szel,
 \item $\psi(t)$ $n$. komponensét jelöljük $v(t)$-vel.
 \end{itemize}
-Mivel $f$ olyan függvény, aminek az első $n-1$ komponense azonosan $0$, az $n$. komponense pedig $f_n(x) = g(x_1)$, így az integrál átalakítható:
+Mivel $f$ az a függvény, aminek az első $n-1$ komponense azonosan $0$, az $n$. komponense pedig $f_n(x) = g(x_1)$, emellett $x_1$ felírható $x_1(t) = \alpha s(t) + w(x(t))$ alakban, így az integrál átalakítható:
 \begin{equation*}
 0 = \int_0^1 \left( f(x(t)) \right)^T \psi(t) dt = \int_0^1 v(t) g(x_1(t)) dt = \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt.
 \end{equation*}
 Mivel $\left\{ t : s(t) =0 \right\}$ 0-mértékű, ezért az integrál felbontható:
 \begin{equation*}
-\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt = \int_{s(t) > 0} v(t) g(\alpha s(t) + w(x(t))) dt + \int_{s(t) < 0} v(t) g(\alpha s(t) + w(x(t))) dt
+\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt = \int_{\{ s(t) > 0 \}} v(t) g(\alpha s(t) + w(x(t))) dt + \int_{\{ s(t) < 0 \}} v(t) g(\alpha s(t) + w(x(t))) dt
 \end{equation*}
-$M$, $E$ és $g$ korlátossága miatt $w$ is korlátos, és a Lebesgue-tétel alkalmazásával írjuk fel $\alpha \to \pm \infty$ esetén az egyenletet:
+$M$, $E$ és $g$ korlátossága miatt $w$ is korlátos, írjuk fel $\alpha \to \pm \infty$ esetén az egyenletet:
 \begin{align*}
 \lim_{\alpha \to \infty} \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt &= g(\infty) \int_{s(t) > 0} v(t) dt + g(-\infty) \int_{s(t) < 0} v(t) dt =: J_1 \\
 \lim_{\alpha \to -\infty} \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt &= g(-\infty) \int_{s(t) > 0} v(t) dt + g(\infty) \int_{s(t) < 0} v(t) dt =: J_2.
 \end{align*}
-Tegyük fel, hogy $J_2 < 0 < J_1$ ($J_1 J_2 < 0$ elég lenne). Így létezik $\alpha_0$, amivel
+Tegyük fel, hogy $J_2 < 0 < J_1$ ($J_1 < 0 < J_2$ esetén analóg módon folytatható, de $J_1 J_2 < 0$ szükséges). Így létezik $\alpha_0$, amivel
 \begin{align}
 \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt &> 0 \qquad &\text{ha } \alpha \geq \alpha_0, \label{eq:mp:alpha} \\
 \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt &< 0 \qquad &\text{ha } \alpha \leq -\alpha_0. \nonumber
@@ -568,11 +576,11 @@ Tegyük fel, hogy $J_2 < 0 < J_1$ ($J_1 J_2 < 0$ elég lenne). Így létezik $\a
 Definiáljuk az alábbi operátorokat:
 \begin{align*}
 &H_1 : ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow ( L^2[0, 1], \mathbb{R}^n) \\
-&H_1(x, \alpha) = \alpha u + M E F (x) \\
+&H_1(x, \alpha) := \alpha u + M E F (x) \\
 &H_2 :  ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow \mathbb{R} \\
-&H_2(x, \alpha) = \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt \\
+&H_2(x, \alpha) := \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt \\
 &H : ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \\
-&H(x, \alpha) = (H_1 (x, \alpha), H_2(x, \alpha)).
+&H(x, \alpha) := (H_1 (x, \alpha), H_2(x, \alpha)).
 \end{align*}
 Ezzel a szétválasztással $x$-nek a $\Ker L$ irányú komponensét az $\alpha$ reprezentálja. $( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R}$-en a norma amit használunk $\norm{(x, \alpha)} := \max \{ \norm{x}_{L^2}, \abs{\alpha} \}$. Jól látható, hogy az eredeti $\eqref{eq:mp:inhom}$-$\eqref{eq:mp:boundary}$ peremfeladat megoldhatósága a $H$ fixpontjának létezésével hozható összefüggésbe. \\
 Legyen $r := \sup_{t \in \mathbb{R}} \abs{g(t)}$, $m := \sup_{t \in [0, 1]} \abs{v(t)}$. Ezekből következik, hogy
@@ -588,9 +596,13 @@ megfelelő $b_1$ választásával. Legyen
 \mathcal{B} = \left\{ (x, \alpha) \in L^2[0, 1] \times \mathbb{R} : \norm{x} \leq b_1 \text{ és } \abs{\alpha} \leq \delta \right\},
 \end{equation*}
 így $\mathcal{B}$ egy zárt, korlátos, konvex halmaz. A cél megmutatni, hogy $H$ a $\mathcal{B}$ halmazt önmagába képezi. $\norm{H_1(x, \alpha)} \leq b_1$-et az előbb beláttuk, nézzük $\norm{H_2(x, \alpha)} \leq \delta$-t. \\
-Először legyen $\alpha_0 \leq \alpha \leq \delta$, a feltételünk miatt $\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt > 0$, így
+Először legyen $\alpha_0 \leq \alpha \leq \delta$, a feltételünk miatt
 \begin{equation*}
-H_2(x, \alpha) = \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt \geq \alpha_0 - rm,
+\int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt > 0,
+\end{equation*}
+így
+\begin{equation*}
+H_2(x, \alpha) = \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) dt \geq \alpha_0 - rm > 0,
 \end{equation*}
 így $H_2(x, \alpha) \in [0, \alpha_0 - rm] \subset [-\delta, \delta]$. \\
 Ha $0 \leq \alpha < \alpha_0$, akkor
@@ -617,7 +629,7 @@ ahol $L$ úgynevezett Sturm-Liouville operátor:
 %Lu(x) = \frac{1}{w(x)}(-(p(x)u'(x))' + q(x)u(x)),
 L u = \frac{1}{w} ( -(p u')' + q u),
 \end{equation*}
-ahol $p(x) > 0, w(x) > 0\;(x \in [a, b])$, $p \in C^1[a, b];\;q, w \in C[a, b]$ adott függvények, valamint $u$-ra a következő peremfeltételek teljesülnek:
+ahol $p(x) > 0, w(x) > 0\;(x \in [a, b])$, $p, q, w$ adott analitikus függvények, valamint $u$-ra a következő peremfeltételek teljesülnek:
 \begin{align*}
 \alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
 \alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
@@ -627,24 +639,64 @@ Emellett feltesszük a következőket:
 \begin{itemize}
 \item $S$ valós, szeparábilis Hilbert-tér, $L : \Dom L \subset S \rightarrow S$ lineáris operátor, $N : \Dom N \subset S \rightarrow S$ nemlineáris operátor,
 \item $L$ zárt leképezés (amivel ekvivalens \cite{funkanal}: $x_n \rightarrow x$ és $Lx_n \rightarrow y$-ból következik hogy $x \in \Dom L$ és $Lx = y$), önadjungált, $\Dom L$ sűrű $S$-ben, $\Ker L = p > 0$ véges,
-\item $L$-nek a sajátértékei $\lambda_1 = \dots = \lambda_p = 0 < \lambda_{p + 1}$, $\lambda_i \leq \lambda_{i + 1}$, $\lim_{i \to \infty} \lambda_i = \infty$, és a hozzájuk tartozó $\Phi_1, \Phi_2, \dots$ sajátfüggvények $S$-ben egy teljes ortonormált rendszert alkotnak - ezeket a Sturm-Liouville-operátor biztosítja, % TODO lim legyen alatta, kell-e a S-L tulajdonság említése
-\item létezik egy $S' \subset S$ altér, ami egy $\mu$ normával teljes, $\Dom L \subset S'$, minden $x \in \Dom L$ esetén a $\Phi_i$-szerinti Fourier-sora ($\sum_{k=1}^\infty (x, \Phi_k) \Phi_k$) $\mu$-ben konvergál $x$-hez és $\{ \mu(\Phi_k) / \lambda_k\}_{k > p} \in l_2$, valamint létezik $\alpha > 0$, amivel $x \in S'$ esetén $\norm {x}_S \leq \alpha \mu(x)$ (tehát $\mu$ $\alpha$-szorosa felső becslése az eredeti normának, és $\mu$-beli konvergenciából következik, hogy az adott sorozat az eredeti normában is konvergens),
+\item $L$-nek a sajátértékei $\lambda_1 = \dots = \lambda_p = 0 < \lambda_{p + 1}$, $\lambda_i \leq \lambda_{i + 1}$, $\lim_{i \to \infty} \lambda_i = \infty$, és a hozzájuk tartozó $\Phi_1, \Phi_2, \dots$ sajátfüggvények $S$-ben egy teljes ortonormált rendszert alkotnak - ezeket a tulajdonságokat a Sturm-Liouville-operátor biztosítja,
+\item létezik egy $S' \subset S$ altér, ami egy $\mu$ normával teljes, $\Dom L \subset S'$, minden $x \in \Dom L$ esetén a $\Phi_i$-szerinti Fourier-sora ($\sum_{k=1}^\infty \langle x, \Phi_k \rangle \Phi_k$) $\mu$-ben konvergál $x$-hez és $\{ \mu(\Phi_k) / \lambda_k\}_{k > p} \in l_2$, valamint létezik $\alpha > 0$, amivel $x \in S'$ esetén $\norm {x}_S \leq \alpha \mu(x)$ (tehát $\mu$ $\alpha$-szorosa felső becslése az eredeti normának, és $\mu$-beli konvergenciából következik, hogy az adott sorozat az eredeti normában is konvergens),
 \item $\Dom L \cap \Dom N \neq \emptyset$, $\Dom N \subset S'$ és altér $S'$-ben, $\Dom N$ zárt $\mu$ szerint,
-\item bármely $R > 0$-hoz létezik $\beta_R > 0, b_R > 0$, amelyekkel bármely $x, y \in \Dom N$ amire $\mu(x) \leq R, \mu(y) \leq R$ teljesül $\mu(Nx - Ny) \leq \beta_R \mu(x - y)$ és $\mu(Nx) \leq b_R$, tehát tetszőleges $\mu$-szerinti gömb $N$-szerinti képe korlátos ($\mu$ normával), valamint minden elem környezetének képének átmérője arányos a környezet átmérőjével; ezek a feltételek biztosítják majd az kisegítő egyenletünk kontrakció tulajdonságát. % TODO átfogalmazni a környezeteset % TODO auxiliary = kisegítő?
+\item bármely $R > 0$-hoz létezik $\beta_R > 0, b_R > 0$, amelyekkel azon $x, y \in \Dom N$-ekre, amelyekre $\mu(x) \leq R, \mu(y) \leq R$ teljesül, $\mu(Nx - Ny) \leq \beta_R \mu(x - y)$ és $\mu(Nx) \leq b_R$, tehát tetszőleges $\mu$-szerinti gömb $N$-szerinti képe korlátos ($\mu$ normával), valamint ezen gömbbeli elemek környezetének képének átmérője arányos a környezet átmérőjével; ezek a feltételek biztosítják majd az kisegítő egyenletünk kontrakció tulajdonságát. % TODO átfogalmazni a környezeteset % TODO auxiliary = kisegítő?
 \end{itemize}
 Az $\eqref{eq:num:1}$ egyenlet megoldásait $\Dom L \cap \Dom N$-ben keressük. Legyen $m \geq p$ és
 \begin{equation*}
-S_m = \Span \{\Phi_1, \dots, \Phi_m \}, \; S_0 = \{ 0\}
+S_m := \Span \{\Phi_1, \dots, \Phi_m \}, \quad S_0 := \{ 0\},
 \end{equation*}
-$S_m$ az első $m$ sajátfüggvény által kifeszített altér, $S_m \subset \Dom L$. Definiáljuk a következő operátorokat, amennyiben $u = \sum_{k = 1}^\infty (u, \Phi_k), \Phi_k$ ($u \in S$):
+azaz $S_m$ az első $m$ sajátfüggvény által kifeszített altér, $S_m \subset \Dom L$. Definiáljuk a következő operátorokat, amennyiben $u = \sum_{k = 1}^\infty \langle u, \Phi_k \rangle, \Phi_k$ ($u \in S$):
 \begin{equation*}
-P_m u := \sum_{k = 1}^m (u, \Phi_k), \Phi_k,
+P_m u := \sum_{k = 1}^m \langle u, \Phi_k \rangle, \Phi_k,
 \end{equation*}
 tehát $P_m$ az $S_m$-re történő ortogonális projekció, valamint
 \begin{equation*}
-H_m u := \sum_{k = m + 1}^\infty \frac{1}{\lambda_k} (u, \Phi_k), \Phi_k.
+H_m u := \sum_{k = m + 1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle, \Phi_k.
 \end{equation*}
-$H_m$-ről látható, hogy lineáris, $\Dom L$-be képez, $H_m = (L_{\mkern 1mu \vrule height 2ex\mkern2mu S_m^\perp})^{-1}$, illetve $H_mLu = (I - P_m)u$ ($I$ az identitás operátor). Az $S$-téren vett normája $\norm{H_m} = \frac{1}{\lambda_{m+1}}$, a $\mu$-szerinti normája $\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty \left( \frac{\mu(\Phi_k)}{\lambda_k}\right)^2\right)^{1/2}$ (ez utóbbi Cauchy-Schwarz-egyenlőtlenséggel belátható). Ebből következik, hogy $\lim_{m \to \infty} \mu(H_m) = 0$. A korábbi feltételeinket egészítsük ki még azzal, hogy $\Ima H_m \subset \Dom N$ és $S_m \subset \Dom N$, hogy a $P_m$ és a $H_m$ alkalmazása után tudjuk az $N$-et is még alkalmazni. \\
+$H_m$ $\Dom L$-be képez (mivel $\Phi_k \in \Dom L \; (k = 0, \dots, m+1, \dots)$), lássuk be róla, hogy lineáris ($x, y \in S$, $\alpha \in \mathbb{R}$):
+\begin{align*}
+H_m(\alpha x + y) &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \alpha x + y, \Phi_k \rangle \Phi_k = \\
+ &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} ( \langle \alpha x, \Phi_k \rangle + \langle y, \Phi_k \rangle ) \Phi_k = \\
+ &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \alpha x, \Phi_k \rangle \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle y, \Phi_k \rangle \Phi_k = \\
+ &= \alpha \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle x, \Phi_k \rangle \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle y, \Phi_k \rangle \Phi_k = \\
+ &= \alpha H_m x + H_m y.
+\end{align*}
+$H_m$ az $L$ egy leszűkítésének inverze, pontosabban $H_m = (L_{\mkern 1mu \vrule height 2ex\mkern2mu S_m^\perp})^{-1}$, értelemszerűen $S_m^\perp = \Span \{ \Phi_{m+1}, \Phi_{m+2}, \dots \}$, így a linearitás miatt elég $\Phi_n$-ra nézni ($n > m$):
+\begin{align*}
+L H_m \Phi_n &= L \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_n, \Phi_k \rangle \Phi_k \right) = \\
+ &= L \left( \frac{1}{\lambda_n} \Phi_n \right) = \frac{1}{\lambda_n} \lambda_n \Phi_n = \Phi_n.
+\end{align*}
+$H_m L u = (I - P_m)u$, ahol $I$ az identitás operátor, ezt szintén elég $\Phi_n$-re vizsgálni ($n = 1, 2, \dots$):
+\begin{align*}
+H_m L \Phi_n &= H_m (\lambda_n \Phi_n) = \lambda_n \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_n, \Phi_k \rangle \Phi_k = \\
+ &=
+	\begin{cases}
+		\mathbf{0}, &\text{ha } n \leq m \\
+		\Phi_n, &\text{ha } n \geq m + 1.
+	\end{cases}
+\end{align*}
+$H_m$ $S$-szerinti normája $\frac{1}{\lambda_{m+1}}$, ehhez felhasználjuk, hogy $L$ sajátértékei növekvő sorrendben vannak indexelve, valamint hogy $\norm{I - P_m} \leq 1$ az ortogonális projekció tulajdonsága miatt:
+\begin{align*}
+\norm{H_m u} &= \norm*{ \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle \Phi_k} \leq \\
+ &\leq \frac{1}{\lambda_{m+1}} \norm{(I - P_m)u} \leq \frac{1}{\lambda_{m+1}} \norm{u}
+\end{align*}
+és $u = \Phi_{m+1}$ esetén teljesül az egyenlőség:
+\begin{align*}
+\norm{H_m \Phi_{m+1}} &= \norm*{ \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_{m+1}, \Phi_k \rangle \Phi_k} = \\
+ &= \norm*{ \frac{1}{\lambda_{m+1}} \Phi_{m+1}} = \frac{1}{\lambda_{m+1}} \norm{\Phi_{m+1}}.
+\end{align*}
+Még nézzük meg $H_m$ $\mu$-szerinti normáját: $\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty \left( \frac{\mu(\Phi_k)}{\lambda_k}\right)^2\right)^{1/2}$:
+\begin{align*}
+\mu(H_m u) &= \mu \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle \Phi_k \right) \leq \\
+ &\leq \abs*{ \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle \mu(\Phi_k) } = \abs*{ \sum_{k = m+1}^\infty \frac{\mu(\Phi_k)}{\lambda_k} \langle u, \Phi_k \rangle } \leq \\
+ &\leq \abs*{ \left( \frac{\mu(\Phi_k)}{\lambda_k}, \langle u, \Phi_k \rangle \right)_{l_2} } \leq \norm*{\frac{\mu(\Phi_k)}{\lambda_k}}_{l_2} \norm{\langle u, \Phi_k \rangle}_{l_2} = \\
+ &= \sigma(m) \norm{u} \leq \sigma(m) \alpha \mu(u)
+\end{align*}
+ahol $\left( \cdot, \cdot \right)_{l_2}$ az $l_2$-beli skaláris szorzást jelöli. A levezetés során alkalmaztuk a Cauchy-Bunyakovsky-Schwarz-egyenlőtlenséget és a Parseval-egyenlőséget.
+Ebből az is következik, hogy $\lim_{m \to \infty} \mu(H_m) = 0$. A korábbi feltételeinket egészítsük ki még azzal, így $\Ima H_m \subset \Dom N$ és $S_m \subset \Dom N$, hogy a $P_m$ és a $H_m$ alkalmazása után tudjuk az $N$-et is még alkalmazni. \\
 Tegyük fel, hogy $\overline{u} \in \Dom N \cap \Dom L$ megoldása az $\eqref{eq:num:1}$ egyenletnek, tehát
 \begin{equation}
 L\overline{u} = N\overline{u}. \label{eq:num:2}
@@ -660,7 +712,7 @@ ez a kisegítő egyenlet. Ezután alkalmazzuk $\eqref{eq:num:2}$-re $P_m$-et: % 
 P_m(L \overline{u} - N \overline{u}) = 0, \label{eq:num:4}
 \end{equation}
 ami a bifurkációs egyenlet. Az összes olyan $\overline{u} \in \Dom L \cap \Dom N$, ami megoldása a kisegítő és a bifurkációs egyenletnek, az megoldása az eredeti $\eqref{eq:num:1}$ feladatnak. \\ % TODO auxiliary = kisegítő?
-Legyenek $a > 0, b > 0$ valós számok, és legyen $u_0$ egy közelítő megoldása az $Lu = Nu$ egyenletnek úgy, hogy létezik $u^* \in S_m$ ($u^* = \sum_{k=1}^m c_k \Phi_k$), amivel $\mu(u^* - u_0) \leq a$. Vegyük a következő halmazt:
+Legyenek $a > 0, b > 0$ valós számok, és legyen $u_0$ egy közelítő megoldása az $Lu = Nu$ egyenletnek úgy, hogy létezik $u^* \in S_m$ ($u^* = \sum_{k=1}^m a_k \Phi_k$ valamely $a_k$ számokra, $k = 1, \dots, m$), amivel $\mu(u^* - u_0) \leq a$. Vegyük a következő halmazt:
 \begin{equation*}
 S_{u^*}^b := \{ u \in \Dom N \; | \; P_m u = u^*, \mu((I - P_m)u) \leq b \},
 \end{equation*}
@@ -681,13 +733,13 @@ Lássuk be $T_{u^*}^b$-ről, hogy bizonyos feltételek mellett kontrakció, legy
 &\leq \mu(H_m) \beta_R \mu(x - y),
 \end{align*}
 ahol $R = \mu(u^*) + b$, tehát $u^*$-tól és $b$-től függő konstans, és a kezdeti kikötéseink alapján $\beta_R$ egy $R$-től függő konstans. Mivel $\lim_{m \to \infty} \mu(H_m) = 0$, ezért elég nagy $m$ esetén $\mu(H_m) \beta_R < 1$. Annak, hogy $\Ima  T_{u^*}^b \subset S_{u^*}^b$ (tehát lehet $ T_{u^*}^b$-t iteratívan alkalmazni) elégséges feltétele, hogy $\mu(H_m)^2 \mu(L) b_R \leq b$, ami kellően nagy $m$-re szintén teljesül. Tehát ha $m$ elég nagy, akkor $ T_{u^*}^b$ kontrakció, így a Banach-Tyihonov-Cacciopoli-tétel miatt van fixpontja. Ezt az $u^*$-tól függő fixpontot jelöljük $y(u^*)$-al, és asszociált elemnek nevezzük. $y(u^*)$-ról könnyen belátható, hogy megoldása az $\eqref{eq:num:3}$ egyenletnek. \\ % TODO associate = asszociált?
-Vezessük be a $c_k := (u^*, \Phi_k) \;(k = 1, \dots, m)$ jelölést, amivel $u^* = \sum_{k = 1}^m c_k \Phi_k$. Nézzük meg, hogy milyen feltételek mellett lesz $y(u^*)$ megoldása a bifurkációs egyenletnek $\eqref{eq:num:4}$?
+Vezessük be a $c_k := \langle u^*, \Phi_k \rangle \;(k = 1, \dots, m)$ jelölést, amivel $u^* = \sum_{k = 1}^m c_k \Phi_k$. Nézzük meg, hogy milyen feltételek mellett lesz $y(u^*)$ megoldása a $\eqref{eq:num:4}$ bifurkációs egyenletnek?
 \begin{align*}
 0 &= P_m(L y(u^*) - N y(u^*)) = P_m L y(u^*) - P_m N y(u^*), \\
 P_m L y(u^*) &= P_m L (u^* + H_m N y(u^*)) = P_m L u^* + P_m L H_m N y(u^*) = \\
- &= P_m L (\sum_{k = 1}^m c_k\Phi_k) + P_m L \sum_{k = m+1}^\infty (N y(u^*), \Phi_k) \Phi_k = \\
- &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + P_m \sum_{k = m + 1}^\infty (N y(u^*, \Phi_k) \lambda_k \Phi_k = \\
- &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + \sum_{k = m + 1}^\infty (N y(u^*), \Phi_k) \lambda_k P_m \Phi_k = \\
+ &= P_m L (\sum_{k = 1}^m c_k\Phi_k) + P_m L \sum_{k = m+1}^\infty \langle N y(u^*), \Phi_k \rangle \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + P_m \sum_{k = m + 1}^\infty \langle N y(u^*), \Phi_k \rangle \lambda_k \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + \sum_{k = m + 1}^\infty \langle N y(u^*), \Phi_k \rangle \lambda_k P_m \Phi_k = \\
  &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k),
 \end{align*}
 tehát
@@ -696,9 +748,9 @@ tehát
 \end{equation*}
 ami pontosan akkor teljesül, ha
 \begin{align}
-0 &= (\sum_{j = 1}^m c_j \lambda_j \Phi_j - N y(u^*), \Phi_k) \; (k = 1, \dots, m), \nonumber \\
-0 &= (c_k \lambda_k \Phi_k - N y(u^*), \Phi_k) \; (k = 1, \dots, m), \text{vagy} \nonumber \\
-0 &= (\lambda_k u^* - N y(u^*), \Phi_k) \; (k = 1, \dots, m). \label{eq:num:5}
+0 &= \langle \sum_{j = 1}^m c_j \lambda_j \Phi_j - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m), \text{ azaz} \nonumber \\
+0 &= \langle c_k \lambda_k \Phi_k - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m), \text{vagy} \nonumber \\
+0 &= \langle \lambda_k u^* - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m). \label{eq:num:5}
 \end{align}
 Ez utóbbi egy $m$-változós ($c_k \; (k = 1, \dots, m)$ számok meghatározzák $u^*$-ot), $m$ egyenletből álló egyenletrendszer. Ezek eredményeként megállapíthatjuk, hogy ha $a, b, m$ elég nagyok, akkor az eredeti $\eqref{eq:num:1}$ egyenletnek $\overline{u}$ pontosan akkor megoldása, ha az $\eqref{eq:num:5}$ egyenletnek $u^*$ megoldása és $\overline{u} = y(u^*)$. \\
 Ezzel mindenünk megvan ahhoz, hogy a feladat numerikus megoldását ismertessük. Legyen $N \geq m$. Az $Lu = Nu$ feladat megoldásait
@@ -715,7 +767,7 @@ Maga az algoritmus a következő:
 \item Rögzítsünk egy kezdeti $u^* = \sum_{k = 1}^m c_k \Phi_k$ kiinduló értéket.
 \item Állítsuk elő $y(u^*)$-ot a fixpontiterációval: $y_0 := u^*$, $y_{i+1} := u^* + H_m N y_i, \; (i = 1, \dots, S)$.
 \item Oldjuk meg az $Lu^* = P_m N y_{S+1}$ egyenletet $u^*$-ra, például Newton-módszerrel.
-\item Az így kapott $u^*$-ból kiindulva ismételjük 3.-4. lépéseket, amíg a kívánt pontosságot el nem érjük.
+\item Az így kapott $u^*$-ból kiindulva ismételjük 3.-4. lépéseket, amíg a kívánt pontosságot el nem érjük (amit $Lu^* - Nu^*$ normájával lehet jellemezni).
 \end{enumerate}
 Előfordulhat, hogy a 3. vagy a 4. lépésben nincs konvergencia, ekkor $m$ növelése szükséges lehet (ami miatt $N$-et is lehet, hogy növelni kell). \\
 A peremfeltételeket $u$-ra azzal garantáljuk, hogy a homogén peremfeltételt kikényszerítjük a $\Phi_k$ sajátfüggvényekre, így az ő lineáris kombinációjukkal előálló függvényre is teljesülni fognak. A következő szekcióban taglaljuk, hogy hogyan találjuk meg a sajátfüggvényeket.
@@ -799,10 +851,10 @@ x T_n(x) &= \frac{1}{2} \left( T_{n+1} + T_{n-1} \right) \; (n \geq 1)
 \end{align*}
 Ezt behelyettesítve kapjuk:
 \begin{align*}
-b_0 &= \frac{a_1}{2} \\
-b_1 &= a_0 + \frac{a_2}{2} \\
-b_n &= \frac{a_{n-1} + a_{n+1}}{2} \; (n = 2, \dots, N-1) \\
-b_N &\approx \frac{a_{N-1}}{2}
+c_0 &= \frac{a_1}{2} \\
+c_1 &= a_0 + \frac{a_2}{2} \\
+c_n &= \frac{a_{n-1} + a_{n+1}}{2} \; (n = 2, \dots, N-1) \\
+c_N &\approx \frac{a_{N-1}}{2}
 \end{align*}
 Így az alábbi mátrix közelítőleg megvalósítja a $M \mathbf{a} \approx \mathbf{c}$ szorzást ($k, l = 0, \dots, N$):
 \begin{equation*}
@@ -830,18 +882,18 @@ h_2^T &= \alpha_{21} (\mathbf{t}(1))^T + \alpha_{22} (\mathbf{t}(1))^T \hat{D}
 \end{align*}
 amivel (ismét a $\hat{D} \mathbf{a} = \mathbf{b}$ jelölést alkalmazva)
 \begin{align*}
-h_1^T \mathbf{a} &= \alpha_{11} (\mathbf{a}^T \mathbf{t}(-1))^T + \alpha_{12} (\mathbf{b}^T \mathbf{t}(-1))^T &= \alpha_{11} v(-1) + \alpha_{12} v'(-1), \\
-h_2^T \mathbf{a} &= \alpha_{21} (\mathbf{a}^T \mathbf{t}(1))^T + \alpha_{22} (\mathbf{b}^T \mathbf{t}(1))^T &= \alpha_{21} v(1) + \alpha_{22} v'(1).
+h_1^T \mathbf{a} &= \alpha_{11} (\mathbf{a}^T \mathbf{t}(-1))^T + \alpha_{12} (\mathbf{b}^T \mathbf{t}(-1))^T = \alpha_{11} v(-1) + \alpha_{12} v'(-1), \\
+h_2^T \mathbf{a} &= \alpha_{21} (\mathbf{a}^T \mathbf{t}(1))^T + \alpha_{22} (\mathbf{b}^T \mathbf{t}(1))^T = \alpha_{21} v(1) + \alpha_{22} v'(1).
 \end{align*}
-Legyen $H = (h_1, h_2)^T$, amivel a peremfeltétel megfogalmazható $H \textbf{a} = \textbf{0}$ formában. \\
+Legyen $H = (h_1, h_2)^T$, így a peremfeltétel megfogalmazható $H \textbf{a} = \textbf{0}$ formában. \\
 Legyen $\hat{A}$ az a mátrix, amit úgy kapunk, hogy $\hat{L}$ utolsó két sorát elhagyjuk (tehát $N-1 \times N+1$ mátrix), és állítsuk elő $\hat{B}$-t ugyanígy $\textbf{B}$-ből. Az alábbi egyenletrendszer megoldásaként megkapjuk a sajátfüggvényekhez tartozó együtthatósorozatokat (ezt általánosított sajátérték feladatnak is nevezik):
 \begin{equation*}
 \begin{pmatrix} \hat{A} \\ H \end{pmatrix} \mathbf{a} = \lambda \begin{pmatrix} \hat{B} \\ \mathbf{0} \end{pmatrix} \mathbf{a}.
 \end{equation*}
-Az egyenlet jobb oldalán javíthatunk, ha $\mathbf{0}$ helyett $\frac{1}{\lambda_*} H$-t használunk, ahol $\lambda_*$ egy nagy szám, ami nem sajátértéke a feladatnak. Így a jobb oldal mátrixának
+Az egyenlet jobb oldalán javíthatunk, ha $\mathbf{0}$ helyett $\frac{1}{\lambda_*} H$-t használunk, ahol $\lambda_*$ egy nagy szám, ami nem sajátértéke $L$-nek. Így a jobb oldal mátrixának
 $\begin{pmatrix} \hat{B} \\ \frac{1}{\lambda_*} H \end{pmatrix}$
 nincsenek csupa $0$ sorai. \\
-Még fontos megjegyezni, hogy ha az eredeti intervallumunk nem a $[-1, 1]$, hanem valami $[a, b]$, akkor a deriválás mátrix egy kicsit máshogy fog kinézni: $D := \frac{1}{\alpha} \hat{D}$, ahol $\alpha$ az intervallum középpontja ($\alpha = \frac{b - a}{2}$).
+Még fontos megjegyezni, hogy ha az eredeti intervallumunk nem a $[-1, 1]$, hanem valamely $[a, b]$ intervallum, akkor a deriválás mátrix egy kicsit máshogy fog kinézni: $D := \frac{1}{\alpha} \hat{D}$, ahol $\alpha$ az intervallum középpontja ($\alpha = \frac{b - a}{2}$).
 
 \section{Példa a numerikus alkalmazásra}
 \label{sec:examples}
@@ -869,53 +921,6 @@ $\text{cinit} = [1]$ paraméterrel, azaz a $\Phi_1$ komponens kezdeti együtthat
 \begin{center}
 	\includegraphics{./abrak/pelda_02.png}
 \end{center}
-
-% TODO kiegészítés: H_m tul levezetések
-
-\section{Kiegészítés} % TODO valami takarítás
-
-$H_m$ lineáris:
-\begin{align*}
-H_m(\alpha x + y) &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\alpha x + y, \Phi_k) \Phi_k = \\
- &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} ((\alpha x, \Phi_k) + (y, \Phi_k)) \Phi_k = \\
- &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\alpha x, \Phi_k) \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (y, \Phi_k) \Phi_k = \\
- &= \alpha \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (x, \Phi_k) \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (y, \Phi_k) \Phi_k = \\
- &= \alpha H_m x + H_m y
-\end{align*}
-$H_m = (L_{\mkern 1mu \vrule height 2ex\mkern2mu S_m^\perp})^{-1}$, linearitás miatt elég $\Phi_n$-ra nézni ($n > m$):
-\begin{align*}
-L H_m \Phi_n &= L \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\Phi_n, \Phi_k) \Phi_k \right) = \\
- &= L \left( \frac{1}{\lambda_n} \Phi_n \right) = \frac{1}{\lambda_n} \lambda_n \Phi_n = \Phi_n
-\end{align*}
-$H_m L u = (I - P_m)u$, linearitás miatt elég $\Phi_n$-re:
-\begin{align*}
-H_m L \Phi_n &= H_m (\lambda_n \Phi_n) = \lambda_n \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\Phi_n, \Phi_k) \Phi_k = \\
- &=
-	\begin{cases}
-		\mathbf{0}, &\text{ha } n \leq m \\
-		\Phi_n, &\text{ha } n \geq m + 1
-	\end{cases}
-\end{align*}
-$\norm{H_m} = \frac{1}{\lambda_{m+1}}$, kihasználva, hogy a sajátértékek növekvő sorrendben vannak indexelve, valamint hogy $\norm{I - P_m} \leq 1$ a projekció tulajdonsága miatt:
-\begin{align*}
-\norm{H_m u} &= \norm{ \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (u, \Phi_k) \Phi_k} \leq \\
- &\leq \frac{1}{\lambda_{m+1}} \norm{(I - P_m)u} \leq \frac{1}{\lambda_{m+1}} \norm{u}
-\end{align*}
-és $u = \Phi_{m+1}$ esetén
-\begin{align*}
-\norm{H_m \Phi_{m+1}} &= \norm{ \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (\Phi_{m+1}, \Phi_k) \Phi_k} = \\
- &= \norm{ \frac{1}{\lambda_{m+1}} \Phi_{m+1}} = \frac{1}{\lambda_{m+1}} \norm{\Phi_{m+1}}
-\end{align*}
-$\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty \left( \frac{\mu(\Phi_k)}{\lambda_k}\right)^2\right)^{1/2}$:
-\begin{align*}
-\mu(H_m u) &= \mu \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (u, \Phi_k) \Phi_k \right) \leq \\
- &\leq \left| \sum_{k = m+1}^\infty \frac{1}{\lambda_k} (u, \Phi_k) \mu(\Phi_k) \right| = \\
- &= \left| \sum_{k = m+1}^\infty \frac{\mu(\Phi_k)}{\lambda_k} (u, \Phi_k) \right| \leq \\
- &\leq \left| \left( \frac{\mu(\Phi_k)}{\lambda_k}, (u, \Phi_k) \right)_{l_2} \right| \leq \\
- &\leq \norm{\frac{\mu(\Phi_k)}{\lambda_k}}_{l_2} \norm{(u, \Phi_k)}_{l_2} = \\
- &= \sigma(m) \norm{u} \leq \sigma(m) \alpha \mu(u)
-\end{align*}
-ahol $\left( , \right)_{l_2}$ az $l_2$-beli skaláris szorzást jelöli. A levezetés során alkalmaztuk a Cauchy-Bunyakovsky-Schwarz-egyenlőtlenséget és a Parseval-egyenlőséget.
 
 
 
