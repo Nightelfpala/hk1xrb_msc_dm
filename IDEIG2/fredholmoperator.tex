@@ -1,0 +1,125 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+
+\section{Fredholm-operátorok}
+
+Ismeretes, hogy ha $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ normált tér, $A\in\mathfrak{L}(\X,\Y)$, úgy az $A$ (lineáris) operátor pontosan akkor izomorfizmus, ha injektív és szürkjektív, azaz ha
+$$
+\mathcal{N}(A)=\{0\}\qquad\textrm{és}\qquad A[\X]=\Y
+$$
+teljesül. Ez utóbbi azt jelenti, hogy $\Y/A[\X]=\{0\}$. Így az $A$ lineáris operátor izomorfiája azzal egyenértékû, hogy
+$$
+\dim(\mathcal{N}(A))=0=\dim(\Y/A[\X]).
+$$
+
+
+\defin{Adott  $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ Banach-tér esetén azt mondjuk $$A\in L(\X,\Y)$$ \textbf{Fredholm-operátor} (jelben $A\in \mathcal{F}(\X,\Y)$), ha
+$$
+n:=\dim \mathcal{N}(A)=\dim A^{-1}[\{0\}]<+\infty\qquad\textrm{és}\qquad r:=\codim \mathcal{R}(A)=\dim \Y/A[X]<+\infty,
+$$
+továbbá az $n-r$ számot az $A$ \textbf{index}ének nevezzük: $\indOp(A):=n-r$.}{}
+
+\bsp{Ha $\X$ és $\Y$ véges dimenziós: $\dim\X=:m\in\N$, $\dim\Y=:n\in\N$, akkor $A\in L(\X,\Y)$ $(m-n)$-indexû Fredholm-operátor, ui.
+      $$
+      \begin{array}{lll}
+      \displaystyle\indOp(A) & = & \displaystyle\dim\mathcal{N}(A)-\codim\mathcal{R}(A)=\\\\
+                    & = & \displaystyle\left(\dim\X-\dim\mathcal{R}(A)\right)-\left(\dim\Y-\dim\mathcal{R}(A)\right)=\\\\
+                    & = & \displaystyle\dim\X-\dim\Y=m-n.
+      \end{array}
+      $$}{}
+
+\bsp{A balra való eltolás
+      $$
+      B:l_\infty\rightarrow l_\infty,\qquad (Bu)_n:=u_{n+1}
+      $$
+      operátorára
+      $$
+      \mathcal{N}(B)={e_1}\qquad\textrm{and}\qquad \mathcal{R}(B)=l_\infty
+      $$
+      ennélfogva $\dim\mathcal{N}(B)=1$, $\codim \mathcal{R}(B)=0$, ami azt jelenti, hogy $\indOp (B)=1$.}{}
+
+
+
+
+\bsp{A jobbra való eltolás
+      $$
+      J:l_\infty\rightarrow l_\infty,\qquad (Ju)_n:=\left\{
+                                                      \begin{array}{ll}
+                                                        0 & (n=0), \\\\
+                                                        u_{n-1} & (n>0)
+                                                      \end{array}
+                                                    \right.
+      $$
+      operátorára
+      $$
+      \mathcal{N}(J)=\{0\}\qquad\textrm{és}\qquad \codim\mathcal{R}(J)=\dim\mathcal{N}(B)=1
+      $$
+      és így  $$\indOp (J)=-1$$ /$\mathcal{R}(J)$ zárt, hiszen tartalmaz minden olyan  $v=(v_1,v_2,v_2,\ldots)\in l_\infty$ sorozatot, amelyre $v_1=0$/.}{}
+
+\bsp{Ha $\X:=\mathfrak{C}_\R^1[a,b]$ és $\Y:=\mathfrak{C}_\R[a,b]$, ill. $$\|u\|_\X:=\max\left\{\|u\|_\infty,\|u'\|_\infty\right\}\qquad(u\in\X)\qquad\textrm{és}\qquad \|\cdot\|_\Y:=\|\cdot\|_\infty,$$
+akkor az
+$$
+Au:=u'\qquad(x\in\X).
+$$
+operátorra $$A\in L(\X,\Y)\cap\mathcal{F}(\X,\Y),\qquad \indOp(A)=1,$$ hiszen
+      \begin{itemize}
+        \item bármely $v\in\mathfrak{C}_\R[a,b]$ esetén az $u'=v$ egyenletnek van $\mathfrak{C}_\R^1[a,b]$-ban megoldása:
+            $$
+            u(x)=\int_a^xv(t)\,\mathrm{d}t\qquad(t\in[a,b])
+            $$
+            így $\mathcal{R}(A)=\Y$, ahonnan $\codim \mathcal{R}(A)=0$ következik;
+        \item továbbá $v= 0$ esetén $u=const$, és így $$\dim\mathcal{N}(A)=1.$$
+      \end{itemize}}{}
+
+
+Belátható (vö. \cite{Zeidler}, 366-367. old.), hogy a Fredholm-operátorok rendelkeznek az alábbi tulajdonságokkal.
+\begin{enumerate}
+  \item Ha $A\in\mathcal{F}(\X,\Y)$, $\indOp(A)=0$, továbbá $\mathcal{N}(A)=\{0\}$, akkor $A$ \textbf{invertálható}, azaz
+      $$
+      A\in GL(\X,\Y):=\left\{T\in L(\X,\Y):\;\exists\,T^{-1}\in L(\Y,\X)\right\}.
+      $$
+
+  \item Bármely $A\in\mathcal{K}(X)$operátorra $I-A\in\mathcal{F}(\X,\Y)$ és $\indOp(A-I)=0$.
+
+  \item Ha $\mathcal{R}(A)\subset\Y$ zárt altér /$A$ folytonossága következtében $\mathcal{N}(A)$ is zárt/, akkor alkalmas $\X_0\subset\X$, $\Y_0\subset\Y$ zárt alterekkel
+      $$
+      \X=\mathcal{N}(A)\oplus\X_0\qquad\textrm{és}\qquad\Y=\Y_0\oplus\mathcal{R}(A),
+      $$
+      továbbá
+      $$
+      \dim(\Y_0)=\codim(\mathcal{R}(A))<+\infty,\qquad\textrm{és}\qquad\codim(\X_0)=\dim(\mathcal{N}(A))<+\infty.
+      $$
+  \item Ha $A\in\mathcal{F}(\X,\Y)$, akkor az $A^*$ duális operátorra is $A^*\in L(\Y^*,\X^*)$, továbbá
+      $$
+      \dim\mathcal{N}(A^*)=\codim(\mathcal{R}(A))<+\infty,\qquad\textrm{és}\qquad\codim\mathcal{R}(A^*)=\dim\mathcal{N}(A)<+\infty.
+      $$
+    \item Az  $A\in\mathcal{F}(\X,\Y)$ pontosan akkor bijektív, ha $\indOp(A)=\dim\mathcal{N}(A)=0$. Így a Banach-féle homeomorfia-tétel következményeként tetszõleges $b\in\Y$ esetén az $Ax=b$ egyenletnek pontosan akkor van egyértelmû megoldása, ha $\indOp(A)=\dim\mathcal{N}(A)=0$ teljesül.
+\end{enumerate}
+
+
+A fenti $\X_0\subset\X$, ill. $\Y_0\subset\Y$ zárt alterek menti
+$$
+P:\X\rightarrow\mathcal{N}(A),\qquad\textrm{ill.}\qquad Q:\Y\rightarrow\mathcal{R}(A)
+$$
+folytonos projekciók  és a kiegészítõ alterek az alábbi módnon konstruálhatók meg (vö. \cite{Zeidler}, 369. old.). Válasszunk egy-egy bázist $\mathcal{N}(A)$-ban és $\mathcal{N}(A^*)$-ban:
+$$
+\{x_1\ldots,x_n\}\subset\mathcal{N}(A),\qquad\{g_1\ldots,g_m\}\subset\mathcal{N}(A^*),
+$$
+majd legyenek
+$$f_1,\ldots,f_n\in\X^*\qquad\textrm{és}\qquad y_1,\ldots,y_m\in\Y$$ olyan funkcionálok, amelyekre
+$$
+\langle f_i,x_j\rangle=\delta_{i,j}\quad(i,j\in\{1,\ldots,n\})\qquad\textrm{és}\qquad
+\langle g_i,y_j\rangle=\delta_{i,j}\quad(i,j\in\{1,\ldots,m\})
+$$
+teljesül. Ez a korábban említettek szerint megtehetõ. Így az $$\{f_j,x_j\},\qquad\textrm{ill.}\qquad\{g_j,y_j\}$$  biortogonális rendszerekkel a
+$$
+Px:=\sum\limits_{k=1}^n\langle f_k,x\rangle x_k\quad(x\in\X)\qquad\textrm{és a}\qquad
+Qy:=y-\sum\limits_{l=1}^m\langle g_l,y\rangle y_l\qquad(y\in\Y)
+$$
+operátorok olyan projekciók, amelyek folytonosak (vö. zárt gráfra vonatkozó tétel), továbbá
+\begin{enumerate}
+  \item $I-P$ az $\X$-rõl az $\X_0=(I-P)[\X]$ altérre
+  \item $I-Q$ pedig $\Y$-ról az $\Y_0=(I-Q)[\Y]$ altérre
+\end{enumerate}
+való projekció. 

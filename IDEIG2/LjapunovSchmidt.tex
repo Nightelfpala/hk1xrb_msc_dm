@@ -1,0 +1,103 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+
+
+
+
+\label{chap:LjapunovSchmidt}
+
+Ebben a fejezetben egy olyan módszert mutatunk be, amelynek segítségével egy végtelen dimenziós feladatatot véges dimenziósra tudunk redukálni. A \idez{lényeges} koordinátákra való vetítéssel vezetjük vissza a \eqref{bifEq} végtelen dimenziós egyenletrendszert véges dimenziós egyenletrendszerre, az ún. \textbf{bifurkációs egyenlet}re.
+
+Adott $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ Banach-terek esetén legyen $$A:=\partial_1F(x_0,\lambda_0)\in \mathcal{F}(\X,\Y),$$ ill. tegyük fel, hogy a \eqref{bifEq} egyenletnek van triviális megoldása, azaz \eqref{trivimo} teljesül. Világos, hogy ha $A$ invertálható operátor, akkor az implicit függvényre vonatkozó tétel alkalmazásával a \eqref{bifEq} egyenletet meg tudjuk oldani: az \eqref{bifEq} egyenletnek az $(x_0,\lambda_0)$ pont egy környezetében van nemtriviális megoldása. Igen gyakori azonban az az eset, amikor az $A$ operátor nem invertálható. Ekkor, mint ahogy a következõkben látni fogjuk, néhány változótól eltekintve a megoldás nem reménytelen.
+
+Mivel $A$  Fredholm-operátor, ezért $\X$ és $\Y$ felbontható direkt kiegészítõ alterekre:
+$$
+\X=\mathcal{N}(A)\oplus\X_0,\qquad\Y=\Y_0\oplus\mathcal{R}(A),
+$$
+ahol a $P\in L(\X)$, $Q\in L(\Y)$ ún. \textbf{Ljapunov-Schmidt-projekció}kra 
+$$
+P:\X\rightarrow\mathcal{N}(A)\qquad\textrm{és}\qquad Q:\Y\rightarrow\mathcal{R}(A),
+$$
+ill. alkalmas 
+$$
+x_1,\ldots,x_n\in\X;\quad y_1,\ldots,y_m\in\Y
+$$
+lineárisan független vektorok esetén
+$$
+\mathcal{N}(A)=\spanned\{x_1\ldots,x_n\}\qquad\textrm{és}\qquad(I-Q)[\Y]=\spanned\{y_1\ldots,y_m\}.
+$$
+
+\satz{Tetszõleges $x\in\Omega$ vektornak a fenti projekciókkal való $$x=x_0+v+w$$ felbontása esetén, ahol $v\in\mathcal{N}(A)$ és $w\in\X_0$ a \eqref{bifEq} egyenlet egyenértékû a 
+\begin{equation}\label{LSchRed1}
+Q\circ F(x_0+v+w,\lambda)=0\qquad\textrm{és}\qquad(I-Q)\circ F(x_0+v+w,\lambda)=0.
+\end{equation}
+egyenletekbõl álló rendszerrel.}{
+\begin{description}
+  \item[1. lépés] Világos, hogy a
+   \eqref{bifEq}, azaz az  $F(x,\lambda)=0$ egyenlet következménye $$Q\circ F(x,\lambda)=0\qquad\textrm{és}\qquad(I-Q)\circ F(x,\lambda)=0.$$
+  \item[2. lépés] Ha pedig \eqref{LSchRed1} teljesül, akkor nyilvánvalóan $$(I-Q)\circ F(x,\lambda)=Q\circ F(x,\lambda)$$ is igaz, így $$Q\circ F(x,\lambda)\in\mathcal{R}(A),\qquad\textrm{és}\qquad(I-Q)\circ F(x,\lambda)\in\Y_0,$$ ahonnan  $\mathcal{R}(A)\cap\Y_0=\{0\}$ figyelembe vételével $F(x,\lambda)=0$ következik. $\blacksquare$
+\end{description}
+}
+
+Így a \eqref{bifEq} egyenlet helyett külön-külön kell megoldanunk a végtelen dimenziós  $$Q\circ F(x_0+v+w,\lambda)=0,$$ ill. a véges dimenziós $$(I-Q)\circ F(x_0+v+w,\lambda)=0$$ egyenletet. A fenti dimenzió végtelen, illetve véges voltát az indokolja, hogy a $v\in\mathcal{N}(A)$ vektor \idez{végesen generált}, a $w\in\X_0$ vektor pedig nem. Jelölje $U\subset\R^n$ halmaz a $0$ egy környezetét, ekkor  a \ref{surjimpl}. tételt a
+$$
+G:\mathcal{N}(A)\times U\times\Lambda\rightarrow\mathcal{R}(Q),\qquad G(w,s,\lambda):= Q\circ F\left(x_0+\sum\limits_{k=1}^ns_kx_k+w,\lambda\right),
+$$
+függvényre alkalmazva azt kapjuk, hogy
+$$
+\partial_1G(0,0,\lambda_0)=A|_{\X_0}\in GL(\X_0,\mathcal{R}(Q)).
+$$
+Ennélfogva $$w=\phi(s,\lambda),$$
+ahol a
+$$
+\phi:S\times\Lambda_0\rightarrow\X_0\qquad\textrm{függvényre}\qquad\phi(0,\lambda_0)=0
+$$
+és
+$$
+Q\circ F\left(x_0+\sum\limits_{k=1}^ns_kx_k+\phi(s,\lambda),\lambda\right)=0\qquad((s,\lambda)\in S\times\Lambda_0),
+$$
+ahol $S\subset\R^n$, ill. $\Lambda_0\subset\Lambda$ egy-egy, a $0$-t, ill. $\lambda_0$-at tartalmazó konvex, nyílt halmaz.
+
+\satz{A fenti $\phi$ függvényre $\partial_1\phi(0,\lambda_0)=0$ teljesül.}{Ha deriváljuk az
+$$
+Q\circ F\left(x_0+\sum\limits_{k=1}^ns_kx_k+\phi(s,\lambda),\lambda\right)\equiv0
+$$
+egyenlõség mindkét oldalát az $s_k$ változók szerint, akkor   $s=0$-t, ill. $\lambda=\lambda_0$-t helyettesitve az
+$x_k\in\mathcal{N}(\partial_1F(x_0,\lambda_0))$ vektorral azt kapjuk, hogy
+$$
+0=Q\circ\partial_1F(x_0,\lambda_0)[x_k+\partial_{s_k}\phi(0,\lambda_0)]=Q\circ\partial_1F(x_0,\lambda_0)\partial_{s_k}\phi(0,\lambda_0).
+$$
+Így $A|_{\X_0}\in GL(\X_0,\mathcal{R}(Q))$ következtében
+$$
+\partial_{s_k}\phi(0,\lambda_0)=0\quad(k\in\{1,\ldots,n\}),
+$$
+ennélfogva
+$\partial_1\phi(0,\lambda_0)=0.$ $\blacksquare$}
+
+Így tehát a \eqref{bifEq} egyenlet helyett egy $m$ egyenletbõl álló 
+\begin{equation}\label{bifegy}
+f(s,\lambda)=0,
+\end{equation} 
+rendszert, ún. \textbf{bifurkációs egyenlet}et kell megoldanunk, ahol az $n$-, pontosabban $(n+1)$-változós $f$ függvényre
+$$
+f=(f_1,\ldots,f_m),\qquad f_l:S\times\Lambda_0\rightarrow\R,\qquad f_l\in\mathfrak{C}^k\quad(l\in\{1,\ldots,m\})
+$$
+és
+$$
+\sum\limits_{l=1}^mf_l(s,\lambda)y_l:=(I-Q)\circ F\left(x_0+\sum\limits_{k=1}^ns_kx_k+\phi(s,\lambda),\lambda\right)
+$$
+teljesül. Világos, hogy ez a függvény deriválható, továbbá igaz a
+
+\satz{A bifurkációs egyenletet definiáló $f$ függvényre $\partial_1f(0,\lambda_0)=0$ teljesül.}{Ha deriváljuk a
+$$
+\sum\limits_{l=1}^mf_l(s,\lambda)y_l:=(I-Q)\circ F\left(x_0+\sum\limits_{k=1}^ns_kx_k+\phi(s,\lambda),\lambda\right)\equiv0
+$$
+egyenlõség mindkét oldalát az $s_k$ változók szerint, akkot $s=0$-t, ill. $\lambda=\lambda_0$-t helyettesítve tetszõleges  $k\in\{1,\ldots,n\}$ esetén azt kapjuk
+$$
+\begin{array}{lll}
+  \displaystyle 0 & = & \displaystyle\sum\limits_{l=1}^m\partial_{s_k}f_l(s,\lambda)y_l=(I-Q)\circ\partial_1F(x_0,\lambda_0)[x_k+\partial_{s_k}\phi(0,\lambda_0)]=\\\\
+    & = & \displaystyle(I-Q)\circ\partial_1F(x_0,\lambda_0)x_k+(I-Q)\circ\partial_1F(x_0,\lambda_0)\partial_{s_k}\phi(0,\lambda_0)=\\\\
+    & = & \displaystyle0+0=0.\quad\blacksquare
+\end{array}
+$$}

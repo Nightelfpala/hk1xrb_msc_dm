@@ -1,0 +1,86 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+\section{Lineáris operátorok}
+
+Ha például $P:\X\rightarrow\X$ projekció, azaz $P^2=P$, akkor a $Q:=I-P$ lekélpezés is projekció (vö. pl. \cite{Kovacs}), továbbá
+$$
+\mathcal{N}(P)+\mathcal{R}(P)=\X\qquad\textrm{és}\qquad\mathcal{N}(P)\cap\mathcal{R}(P)=\{0\},
+$$
+azaz $$\X=\mathcal{N}(P)\oplus\mathcal{R}(P).$$
+
+\section{Tools from functional anmalysis}
+
+For the sake of completeness I will remond you about some notations and fundamental theorems.
+\begin{itemize}
+  \item Let $\X^*:=L(\X,\R)$ denotes the \textbf{dual space} of $\X$. We introduce the duality product
+      $$
+      \langle f,x\rangle:=\langle f|x\rangle:=f(x)\qquad(x\in\X,\,f\in\X^*).
+      $$
+      For a subspace $M\subset\X$ and $N\subset\X^*$ we define
+      $$
+      M^\perp:=\left\{f\in\X^*:\;x\in\Y\;\Rightarrow\;\langle f,x\rangle=0\right\}\subset\X^*
+      $$
+      (the \textbf{annihilator} of $M$ or the \textbf{pseudo-orthogonal complement} to $M$)
+      and
+      $$
+      N_\perp:=\left\{x\in\X:\;f\in N^*\;\Rightarrow\;\langle f,x\rangle=0\right\}\subset\X.
+      $$
+  \item (\textbf{Hahn-Banach.}) Let $\Y\subset\X$ be a linear subspace. If $\phi\in \Y^*$ then there is a $\Phi\in\X^*$ with
+      $$
+      \Phi(y)=\phi(y)\quad(y\in\Y)\qquad\textrm{and}\qquad\|\Phi\|_{\X^*}=\|\phi\|_{\X^*}.
+      $$
+      Corollaries.
+      \begin{enumerate}
+        \item For each nonzero vektor $u\in\X$ there is a continuous functional $f\in\X^*$ with
+            $$
+            \|f\|=1\qquad\textrm{and}\qquad f(u)=\|u\|.
+            $$
+        \item For each finite linear independent system $\{u_1,\ldots,u_d\}\subset\X$ there exist functionals  $\{f_1,\ldots,f_d\}\subset\X^*$ so we have a biorthogonal system $\{f_i,u_i\}$ $(i\in\{1,\ldots,d\})$:
+            $$
+            \langle f_i,u_j\rangle=\delta_{ij}\qquad(i,j\in\{1,\ldots,d\}).
+            $$
+      \end{enumerate}
+  \item \textbf{Dual operator} of $A\in L(\X,\mathcal{Z})$ is defined by
+      $$
+      A^*f:=f\circ A\qquad(f\in\Y^*)
+      $$
+      for which
+      $$
+      A^*\in L(\mathcal{Z}^*,\X^*),\qquad\textrm{and}\qquad \|A^*\|_{L(\mathcal{Z}^*,\X^*)}=\|A\|_{L(\X,\mathcal{Z})}
+      $$
+      holds. Thus,
+      $$
+      \red{\boxed{\langle f,Ax\rangle}}=f(Ax)=(A^*(f))(x)=\red{\boxed{\langle A^*f,x\rangle}}\qquad(x\in\X,\,f\in\mathcal{Z}^*).
+      $$
+      For Hilbert spaces $(\X,\|\cdot\|_{\X})$ and $(\mathcal{Z},\|\cdot\|_{\mathcal{Z}})$ the $\X$ and $\mathcal{Z}$ can be identified with their dual and  $\langle\cdot,\cdot\rangle$ is the scalar product.
+  \item \textbf{Closed-Range-Theorem.} Let $A\in L(\X,\mathcal{Z})$. Then the following conditions are equivalent:
+      \begin{enumerate}
+        \item $\mathcal{R}(A)$ is a closed subspace of $\mathcal{Z}$;
+        \item $\mathcal{R}(A^*)$ is a closed subspace of $\mathcal{X}^*$
+        \item $\mathcal{R}(A)=\mathcal{N}(A^*)_\perp\quad\Longleftrightarrow\quad\mathcal{R}(A^*)=\mathcal{N}(A)^\perp$ $\quad$ (\textbf{Fredholm alternative} means  for the equations
+            $$
+            (I)\;Ax=b\quad(x\in\X,\;b\in\mathcal{Z})\qquad\textrm{and}\qquad(II)\; A^*u=v\qquad(u\in\mathcal{Z}^*,v\in\X^*)
+            $$
+            that
+            \begin{itemize}
+              \item for the given $b\in\mathcal{Z}$ (I) has a solution iff for all solution $u$ of (II) $\langle u,b\rangle=0$ holds.
+              \item for the given $v\in\X^*$ (II) has a solution iff for all solution $x$ of (I) $\langle v,x\rangle=0$ holds.
+            \end{itemize}
+            )
+      \end{enumerate}
+  \item Closed-Graph-Theorem. The linear operator $A:\X\rightarrow\mathcal{Z}$ is continuous iff $\left\{(x,z):\;Ax=z\right\}$ is closed in $\X\times \mathcal{Z}$ w.r.t. product topology $$\|(x,z)\|:\equiv\|x\|+\|z\|.$$
+  \item \textbf{Projectors}.  Let $\X$ be a linear space. The linear operator $A:\X\rightarrow\mathcal{X}$ is to be called projector if it is idempotent: $A^2=A$.
+      \begin{enumerate}
+          \item $\mathcal{N}(I-A)=\mathcal{R}(A)$ and $\mathcal{R}(I-A)=\mathcal{N}(A)$.
+          \item $\mathcal{X}=\mathcal{N}(A)\oplus \mathcal{R}(A)$, i.e. for $x\in \mathcal{X}$ we have
+              $$
+              x=u+v,\;u\in\mathcal{N}(A),\;v\in\mathcal{R}(A)\qquad\Longleftrightarrow\qquad u=(I-A)x,\;v=Ax.
+              $$
+          \item The operator $I-A$ is also a projector.
+          \item If $\X=U\oplus V$ then for a projector $A:\X\rightarrow U$ along $V$ the following statement is true:
+              $$
+              A\in L(\X)\qquad\Longleftrightarrow\qquad (U,V\textrm{ are closed in }\X).
+              $$
+      \end{enumerate}
+\end{itemize} 

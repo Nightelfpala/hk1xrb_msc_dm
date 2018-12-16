@@ -1,0 +1,549 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+
+
+
+
+\section{Lineáris operátorok}
+\label{sec:kompakt}
+
+\noindent A lineáris operátorok, ill. az $\Y=\K$ esetben lineáris funkcionálok terének jelölésére az
+$$
+\mathfrak{L}(\mathcal{X}\curvearrowright \mathcal{Y}):=\left\{A\in \mathcal{X}\rightarrow \mathcal{Y}:\;A\;\textrm{lineáris}\right\},
+$$
+ill. az
+$$
+\mathfrak{L}(\mathcal{X},\mathcal{Y}):=\left\{A:\mathcal{X}\rightarrow \mathcal{Y}:\;A\;\textrm{lineáris}\right\}
+$$
+szimbólumot használjuk, $\mathcal{X}=\mathcal{Y}$ esetén pedig az $\mathfrak{L}(\mathcal{X},\mathcal{X})$-et $\mathfrak{L}(\mathcal{X})$-szel rövidítjük. Sok esetben -- különösen fizikai alkalmazásokban -- szokás az $$\X^+:=\emph{Hom}(\X,\K)=\mathfrak{L}(\mathcal{X},\K)$$ teret \textbf{lineáris formák} vagy \textbf{kovektor}ok tereként emlegetni, $\X$ elemeire a \idez{ket-vektor}, $\X^+$ elemeire pedig a \idez{bra-vektor} elnevezést használni, és
+tetszõleges $f\in\X^+$ és $x\in\X$ esetén az $f(x)$ helyettesítési értéket az $\langle f,x\rangle$, ill. $\langle f|x\rangle$ (\idez{bracket}) jelsorozattal jelölni:
+$$
+\langle f,x\rangle:=\langle f|x\rangle:=f(x)\qquad(x\in\X).
+$$
+
+
+
+Az $\X^+$ teret szokás az $\X$ tér \textbf{algebrai duális}ának nevezni. Ha $A\in \mathfrak{L}(\mathcal{X},\mathcal{Y})$, akkor
+$$
+\mathcal{R}(A):=\{Au\in\Y:\;u\in\mathcal{D}(A)\},
+$$
+ill. az
+$$
+\mathcal{N}(A):=A^{-1}[\{0\}]=\{u\in\mathcal{D}(A):\;Au=0\in\Y\}
+$$
+altereket az $A$ operátor (funkcionál) \textbf{képter}ének, ill. \textbf{magter}ének nevezzük.
+
+\bem{
+Világos, hogy, ha $A\in\mathfrak{L}(\X,\Y)$, akkor
+$$
+A\quad\textrm{izomorfizmus}\qquad\Longleftrightarrow\qquad\left/\mathcal{N}(A)=\{0\}\quad\textrm{és}\quad
+\mathcal{R}(A)=\Y\;\;\left(\Y/\mathcal{R}(A)=\{0\}\right)\right/,
+$$
+azaz
+$$
+A\quad\textrm{izomorfizmus}\qquad\Longleftrightarrow\qquad\left/\dim(\mathcal{N}(A))=0=\codim(\mathcal{R}(A))=\dim(\Y/\mathcal{R}(A))\right/.
+$$
+}{}
+
+A lináris algebrából közismert az alábbi
+
+\satzbn{ Ha $\X$ véges dimenziós vektortér, $A\in\mathcal{L}(\X)$, akkor igaz az
+$$
+\X=\mathcal{N}(A)\oplus \mathcal{R}(A)\qquad\Longleftrightarrow\qquad\mathcal{N}(A)\cap \mathcal{R}(A)=\{0\}
+$$
+ekvivalencia.
+}{}
+
+\satzbn{ (\textbf{Dimenziótétel.}) Ha $\X$ véges dimenziós vektortér, $\Y$ pedig (nem feltételenül véges dimenziós) vektortér, továbbá $A\in\mathcal{L}(\X,\Y)$, akkor
+$$
+\dim(\mathcal{N}(A))+\dim(\mathcal{R}(A))=\dim(\X).
+$$
+}{}
+\bigskip
+
+\noindent Adott $(\X,\|\cdot\|_\X)$,  $(\Y,\|\cdot\|\Y)$ normált terek és $A\in\X\rightarrow\X$  operátor esetén értelmezzük az
+$$
+\|A\|:=|||A|||:=\inf\left\{K\in[0,+\infty]:\;\|Ax\|_{\mathcal{Y}}\leq K\|x\|_{\mathcal{X}}\;(x\in\mathcal{D}(A))\right\}\qquad/\inf\emptyset:=+\infty/
+$$
+(kibõvített értelemben) valós számot. Az $A$ operátor \textbf{korlátos}, ha $\|A\|<+\infty$.
+A korlátos, lineráris operátorok halmazának jelölésére az
+$$
+L(\mathcal{X}\curvearrowright \mathcal{Y}):=\left\{A\in \mathfrak{L}(\mathcal{X}\curvearrowright \mathcal{Y}):\;A\;\textrm{korlátos}\right\},
+$$
+ill. az
+$$
+L(\mathcal{X},\mathcal{Y}):=\left\{A\in\mathfrak{L}(\mathcal{X}, \mathcal{Y}):\;A\;\textrm{korlátos}\right\}
+$$
+szimbólumokat fogjuk használni, $\mathcal{X}=\mathcal{Y}$ esetén pedig az $L(\mathcal{X},\mathcal{X})$-et $L(\mathcal{X})$-szel rövidítjük:
+$$
+L(\mathcal{X}):=L(\mathcal{X},\mathcal{X}).
+$$
+Ha  $A\in L(\X,\Y)$, akkor
+$$
+\|A\|=\sup\left\{\|Ax\|_\Y\in\R:\;x\in\X,\,\|x\|_\X=1\right\}.
+$$
+
+
+\bigskip
+
+\bsp{
+\begin{enumerate}
+  \item Ha $(\X,\|\cdot\|_\X)$ normált tér, $\mathcal{X}\neq\{0\}$, akkor az $I$ identikus operátorra $$I\in L(\X)\qquad\textrm{és}\qquad\|I\|=1$$ teljesül.
+  \item Ha $$(\X,\|\cdot\|_\X):=(L^2[0,\pi],\|\cdot\|_{L^2}),$$ akkor az
+    $$
+    A\in\X\rightarrow\X,\qquad Au:=-u''\qquad(u\in\mathfrak{C}^2[0,\pi]:\;u(0)=u(\pi)=0)
+    $$
+    operátor nem korlátos, ui. ha
+    $$
+    \varphi_n:[0,\pi]\rightarrow\R,\qquad\varphi_n(t):=\sin(nt)\quad(n\in\N),
+    $$
+    akkor $$\|\varphi_n\|=\sqrt{\pi/2}\qquad(n\in\N)$$ és
+    $$
+    \|A\varphi_n\|=\sqrt{\int_0^\pi n^2\sin^2(nt)\,\mathrm{d}t}=n^2\|\varphi_n\|\qquad(n\in\N).
+    $$
+\end{enumerate}
+}{}
+
+Valamely $A\in\mathfrak{L}(\X,\Y)$ (lineáris) operátor pontosan akkor korlátos, ha folytonos. Ez pedig azzal egyenértékû, hogy az $\mathcal{N}(A)$ magtér zárt altere $\X$-nek.
+
+Ha $\mathcal{A}\subset\X$ egy kodimenziós  zárt altér, akkor alkalmas $f\in\X^*$ funkcionálra
+$$
+\mathcal{A}=\mathcal{N}(f):=\left\{x\in\X:\;\langle f,x\rangle=0\right\},
+$$
+hiszen a feltételek következtében
+$$
+v\in\X\backslash\mathcal{A}\qquad\Longrightarrow\qquad\X=\mathcal{A}+\R v:=\left\{a+ \lambda v:\;a\in\mathcal{A},\,\lambda\in\R\right\},
+$$
+így az
+$$
+f(x)=f(a+ \lambda v):=\lambda\qquad(x\in\X)
+$$
+választással a kívánt funkcionálhoz jutunk (vö. \cite{KolmogorovFomin}, 131. old.)
+
+\defin{ Adott $\X$ lineáris tér esetén azt mondjuk, hogy az $A\in\mathcal{L}(\X)$ operátor
+\begin{enumerate}
+  \item \textbf{idempotens}, ha $A^2:=A\circ A=A$;
+  \item \textbf{projekció}, ha alkalmas az $\mathcal{U}\oplus\mathcal{V}=\X$ feltételnek eleget tévõ $\mathcal{U},\mathcal{V}\subset\X$ altér esetén
+      $$
+      Ax:=u\qquad(\exists|\,u\in\mathcal{U},\,v\in\mathcal{V}:\;x=u+v).
+      $$
+      Az $A$ (lineáris) operátort szokás az $U$ altérre való, $V$ altér menti, vagy $V$ altérrel párhuzamos irányú \textbf{vetítõ operátor}nak is nevezni.
+\end{enumerate}
+}{}
+
+\bsp{Az $I:\X\rightarrow\X$, $Ix:=x$ identikus operátor projekció.}{}
+
+\bsp{A $\mathcal{O}:\X\rightarrow\X$, $Ix:=0$ zérusoperátor projekció.}{}
+
+\bsp{Ha $p\in[1,+\infty)$, és $\X:=l_p$, akkor az
+$$
+A:l_p\rightarrow l_p,\qquad Au:=(u_1,\ldots,u_n,0,\ldots)
+$$
+operátor projekció.}{}
+
+\bsp{Ha $d\in\N$, és $\X:=\K^{d\times d}$, akkor az
+$$
+AM:=\frac{1}{2}(M+M^T)\qquad(M\in\X)
+$$
+operátor projekció.}{}
+
+
+\bsp{Ha valamely $0<a\in\R$ esetén
+      $$
+      \mathcal{X}:=\left\{f:[-a,a]\rightarrow\K:\;f\in\mathfrak{C}\right\},
+      $$
+      akkor az
+      $$
+      (Af)(x):=\frac{1}{2}\left(f(x)+f(-x)\right)\qquad(f\in\mathcal{X},\,x\in[-a,a])
+      $$
+      operátor projekció.
+      Látható, hogy az
+      $$
+      \mathcal{N}(A)=\left\{f\in\mathcal{X}:\;f\textrm{ páratlan}\right\}\qquad \textrm{és az}\qquad \mathcal{R}(A)=\left\{f\in\mathcal{X}:\;f\textrm{ páros}\right\}
+      $$
+      alterekre
+      $$
+      \mathcal{N}(A)\oplus\mathcal{R}(A)=\mathcal{X}
+      $$
+      teljesül, hiszen
+      $$
+      f(x)=\frac{1}{2}\left(f(x)+f(-x)\right)+\frac{1}{2}\left(f(x)-f(-x)\right)\qquad(x\in[-a,a]).
+      $$}{}
+
+\noindent Projekciók jellemzésére szolgál a következõ állítás.
+
+\satzbn{ Legyen $\X$ lineáris tér. Az $A\in\mathfrak{L}(\X)$ operátor pontosan akkor projekció, ha idempotens, továbbá ez utóbbi esetben
+\begin{enumerate}
+  \item $\mathcal{N}(I-A)=\mathcal{R}(A)$ és $\mathcal{R}(I-A)=\mathcal{N}(A)$.
+  \item $\mathcal{X}=\mathcal{N}(A)\oplus \mathcal{R}(A)$, pontosabban bármely $x\in \mathcal{X}$ esetén
+      $$
+      x=u+v,\;u\in\mathcal{N}(A),\;v\in\mathcal{R}(A)\qquad\Longleftrightarrow\qquad u=(I-A)x,\;v=Ax.
+      $$
+  \item Az $I-A$ operátor projekció: az $\mathcal{N}(A)$ altérre való $\mathcal{R}(A)$-val párhuzamos vetítés.
+  \item Ha $(\X,\|\cdot\|)$ Banach-tér, $\X=U\oplus V$, úgy az $U$ altérre való $A$ projekció pontosan akkor lesz korlátos, ha $U$ és $V$ zárt altér $\X$-ben.
+\end{enumerate}
+}
+
+\bsp{Ha
+      $$
+      \mathcal{X}:=L^2([0,1]\times[0,1]),
+      $$
+      akkor az
+      $$
+      (Af)(x,y):=\frac{1}{2}\left(f(x,y)-f(y,x)\right)\qquad(f\in\mathcal{X},\,(x,y)\in[0,1]\times[0,1])
+      $$
+      operátor projekció, ui. bármely $f\in\X$, ill. $(x,y)\in[0,1]\times[0,1]$ esetén
+      $$
+      \begin{array}{lll}
+      \displaystyle (A^2f)(x,y) & = & \displaystyle(A(Af))(x,y)=\frac{1}{2}\left\{(Af)(x,y)-(Af)(y,x)\right\}=\\\\
+      & = & \displaystyle\frac{1}{2}\left\{\frac{f(x,y)-f(y,x)}{2}-\frac{f(y,x)-f(x,y)}{2}\right\}=\\\\
+      & = & \displaystyle\frac{1}{4}\left(2f(x,y)-2f(y,x)\right)=(Af)(x,y).
+      \end{array}
+      $$
+      Látható, hogy az
+      $$
+      \mathcal{N}(A)=\left\{f\in\mathcal{X}:\;f\textrm{ szimmetrikus}\right\},\qquad\mathcal{R}(A)=\left\{f\in\mathcal{X}:\;f\textrm{ antiszimmetrikus}\right\}
+      $$
+%      és az
+%      $$
+%      \mathcal{R}(A)=\left\{f\in\mathcal{X}:\;f\textrm{ antiszimmetrikus}\right\}
+%      $$
+      alterekre
+      $
+      \mathcal{N}(A)\oplus\mathcal{R}(A)=\mathcal{X}
+      $
+      teljesül, hiszen bármely $(x,y)\in[0,1]\times[0,1]$ esetén
+      $$
+      f(x,y)=\frac{1}{2}\left(f(x,y)+f(y,x)\right)+\frac{1}{2}\left(f(x,y)-f(y,x)\right).
+      $$
+}{}
+
+
+
+
+\noindent Az $\X^*:=L(\mathcal{X},\K)$ szimbólum jelöli az $\X$-en értelmezett korlátos, lineáris funkcionálok összességét, az  $(\X^*,\|\cdot\|)$ normált teret az $\X$ vektortér, ill. az $(\X,\|\cdot\|_{\X})$ normált tér (\textbf{topológiai}) \textbf{duális}ának (\textbf{duális terének} vagy \textbf{konjugált terének}) nevezzük. Az egyszerûség kedvéért $(\X^*,\|\cdot\|)$ helyett gyakran csak $\X^*$-ot írunk. Az $\X^*$ altere $\X^+$-nek és
+$$
+\dim(\X)<\infty\qquad\Longrightarrow\qquad\X^+=\X^*.
+$$
+Ha $(\X,\|\cdot\|_{\X})$ és $(\Y,\|\cdot\|_{\Y})$ Hilbert-tér, akkor $\X$ és $\Y$ azonosítható duálisukkal, és $\langle\cdot,\cdot\rangle$ nem más mint a skaláris szorzat.
+
+\defin{ Legyen $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$  normált tér, valamint $A\in\mathfrak{L}(\X,\Y)$. Azt mondjuk, hogy $A\in\mathfrak{L}(\X,\Y)$ \textbf{nyílt}, ill. \textbf{zárt operátor}, ha bármely $\mathcal{H}\subset\X$ nyílt, ill. zárt halmaz esetén az $A[\mathcal{H}]\subset\Y$ képhalmaz nyílt, ill. zárt.
+}{}
+
+\satzbn{(\textbf{Nyílt leképezések tétele.}) Ha
+$(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ Banach-tér, akkor
+tetszõleges $A\in L(\X,\Y)$ (folytonos, lineáris) operátor esetében
+egyenértékûek az alábbi állítások.
+\begin{description}
+  \item[(1)] Az $A$ operátor szürjektív.
+  \item[(2)] Az $A$ operátor nyílt.
+\end{description}
+}{}
+
+Az iménti tétel következményeként kapjuk az alábbi igen fontos állítást.
+
+\satzbn{(\textbf{Banach-féle homeomorfia-tétel.}) Ha $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ Banach-tér, továbbá az $A\in L(\X,\Y)$ (folytonos, lineáris) operátor bijektív, akkor $A^{-1}\in L(\Y,\X)$, azaz minden, Banach-teret Banach-térbe képezõ korlátos lineáris bijekció inverze is korlátos.
+}{}
+
+Operátorok folytonossága sok esetben gráfjuk zártságára vezethetõ vissza.
+
+\satzbn{(\textbf{Zárt gráfra vonatkozó tétel.})  Az $(\X,\|\cdot\|_\X)$, $(\Y,\|\cdot\|_\Y)$ Banach-terek és az $A\in\mathfrak{L}(\X\curvearrowright\Y)$ (lineáris) operátor esetén, ha
+$$
+\textbf{(1)}\quad\mathcal{D}(A)\textrm{ zárt }/(\X,\|\cdot\|_\X)\textrm{-ben}/\qquad\textrm{és}\qquad\textbf{(2)}\quad\Gamma(A)\textrm{ zárt }/(\X\times\Y,\|(\cdot,\cdot)\|_{\X\times\Y})\textrm{-ban}/,
+$$
+akkor $A$ folytonos, ahol
+$$
+\Gamma(A):=\left\{(x,Ax)\in\X\times\Y:\;x\in\mathcal{D}(A)\right\}
+$$
+és
+$$
+\|(x,y)\|_{\X\times\Y}:=\|x\|^p_{\X}+\|y\|^p_{\Y}\qquad(x\in\X,\,y\in\Y\,p\in[1,+\infty))
+$$
+vagy
+$$
+\|(x,y)\|_{\X\times\Y}:=\max\{\|x\|_{\X},\|y\|_{\Y}\}\qquad(x\in\X,\,y\in\Y).
+$$
+}{}
+
+\noindent Bármely normált tér egy alterén értelmezett korlátos, lineáris funkcionál kiterjeszthetõ az egész térre a linearitás és a norma megtartásával. Errõl szól a
+
+\satzbn{(\textbf{Hahn-Banach-tétel.}) Ha $(\X,\|\cdot\|_\X)$ normált tér, $\mathcal{A}\subset \X$ altér, akkor tetszõleges
+$f\in \mathcal{A}^*$ esetén van olyan $F\in \X^*$, hogy
+$$
+\textbf{(1)}\;f\subset F,\quad\textrm{azaz}\quad F(u)=f(u)\quad(u\in
+\mathcal{A})\qquad\textrm{és}\qquad \textbf{(2)}\;\|F\|=\|f\|.
+$$
+}{}
+
+\noindent Következésképpen
+\begin{itemize}
+  \item az $(L(\mathcal{X},\Y),\|\cdot\|)$ operátortér pontosan akkor Banach-tér, ha $(\Y,\|\cdot\|_\Y)$ is Banach-tér. Így a $(\K,|\cdot|)$ tér teljessége miatt  az $(L(\mathcal{X},\K),\|\cdot\|)$ tér is teljes, azaz Banach-tér (vö. \cite{Kovacs}, 578. old. és 624. old).
+  \item ha $\X\neq\{0\}$, akkor bármely $0\neq u\in\X$ vektorhoz van olyan $f\in\X^*$ funkcionál, amelyre
+            $$
+            \|f\|=1\qquad\textrm{and}\qquad f(u)=\|u\|
+            $$
+            (vö. \cite{Simon}, 449. old.)
+  \item bármely véges lineárisan független $\{u_1,\ldots,u_d\}\subset\X$ rendszerhez létezik  $\{f_1,\ldots,f_d\}\subset\X^*$ funkcionálok olyan rendszere, hogy  $$\{f_i,u_i\}\qquad(i\in\{1,\ldots,d\})$$ \textbf{biortogonális rendszer}:
+            $$
+            \langle f_i,u_j\rangle=\delta_{ij}:=\left\{
+                                                  \begin{array}{ll}
+                                                    1 & (i=j), \\
+                                                    0 & (i\neq j)
+                                                  \end{array}
+                                                \right.
+            \qquad(i,j\in\{1,\ldots,d\}),
+            $$
+            továbbá az
+            $$
+            Ax:=\sum\limits_{k=1}^d\langle f_k,x\rangle u_k\qquad(x\in\X)
+            $$
+            operátor korlátos projekció a $\spanned\{u_1,\ldots,u_d\}$ altérre (vö. \cite{Kovacs}, 622. old.).
+\end{itemize}
+
+
+
+
+\defin{Legyen $(\X,\|\cdot\|)$ normált tér, $\mathcal{A}\subset\X$, ill. $\mathcal{B}\subset\X^*$ alterek. Az
+$$
+\mathcal{A}^\perp:=\left\{f\in\X^*:\;f(u)=0\;\,(u\in\mathcal{A})\right\}=\left\{f\in\X^*:\;\langle f,u\rangle=0\;\,(u\in\mathcal{A})\right\},
+$$
+ill. a
+$$
+\mathcal{B}_\perp:=\left\{u\in\X:\;f(u)=0\;\,(f\in\mathcal{B})\right\}=\left\{u\in\X:\;\langle f,u\rangle=0\;\,(f\in\mathcal{B})\right\}
+$$
+altereket az $\mathcal{A}$, ill. a $\mathcal{B}$ altér \textbf{annihilátor}ának nevezzük.
+}{}
+
+\noindent Világos, hogy
+\begin{enumerate}
+  \item $\mathcal{A}^\perp$, ill. $\mathcal{B}_\perp$ zárt altere $\X^*$-nak, ill. $\X$-nek.
+  \item ha $\X$ véges-dimenziós, akkor
+    $$
+    \dim(\mathcal{A}^\perp)=\dim(\X)-\dim(\mathcal{A}).
+    $$
+\end{enumerate}
+
+
+
+
+\satzbn{\label{izometrikusizom}Ha $(\X,\|\cdot\|)$ normált tér, $\mathcal{A}\subset\X$ zárt altér, akkor a
+$$
+\varphi:\mathcal{A}^\perp\rightarrow(\X/\mathcal{A})^*,\qquad\varphi(f)([x]):=f(x)\quad(f\in\mathcal{A}^\perp,\,[x]\in\X/\mathcal{A}),
+$$
+ill. a
+$$
+\psi:\X^*/\mathcal{A}^\perp\rightarrow\mathcal{A}^*,\qquad\psi([f]):=f|_{\Y}\quad([f]\in\X^*/\mathcal{A}^\perp)
+$$
+leképezések izometrikus izomorfizmusok.
+}{Vö. \cite{Werner}. $\blacksquare$}
+
+
+
+\satzbn{\label{dualitOp} Ha $(\X,\|\cdot\|_{\X})$ és $(\Y,\|\cdot\|_{\Y})$ normált tér, továbbá $A\in L(\X,\Y)$, akkor az
+$$
+A^*f:=f\circ A\qquad(f\in\Y^*)
+$$
+operátorra $$A^*\in L(\Y^*,\X^*),\qquad\textrm{továbbá}\qquad \|A^*\|_{L(\Y^*,\X^*)}=\|A\|_{L(\X,\Y)}.$$
+}{}
+
+\noindent Az \ref{dualitOp}. tételbeli $A^*$ operátort az $A$ operátor duálisának nevezzük. A fenti jelölésekkel tehát tehát $A^*:\Y^*\rightarrow\X^*$ pontosan akkor \textbf{duális operátor}a $A$-nak, ha
+$$
+\red{\boxed{\langle f,Ax\rangle}}=f(Ax)=(A^*(f))(x)=\red{\boxed{\langle A^*f,x\rangle}}\qquad(x\in\X,\,f\in\Y^*).
+$$
+
+\bsp{Ha
+$$
+(\X,\|\cdot\|_\X):=(l_{12},\|\cdot\|_{l_{12}})\qquad\textrm{és}\qquad(\Y,\|\cdot\|_\Y):=(l_{3},\|\cdot\|_{l_{3}}),
+$$
+akkor az
+$$
+A:\X\rightarrow\Y,\qquad A(x_n):=\left(\frac{x_n}{\sqrt{n}}\right)
+$$
+operátor duálisa az
+$$
+A^*f=\left(\frac{f_n}{\sqrt{n}}\right)\qquad(f=(f_n)\in \Y^*)
+$$
+operátor, ahol
+$$
+\X^*=l_{12/11}\qquad\textrm{és}\qquad\Y^*=l_{3/2},
+$$
+hiszen bármely $$f=(f_n)\in \Y^*$$ esetén
+$$
+A^*f(g)=f(Ag)=\sum\limits_{n=1}^\infty f_n\frac{g_n}{\sqrt{n}}=\sum\limits_{n=1}^\infty\frac{ f_n}{\sqrt{n}}g_n\qquad(g\in\X).
+$$
+}{}
+ 
+\noindent Az alábbi két példában legyen $$p\in[1,+\infty),\qquad q:=\left\{
+                                     \begin{array}{ll}
+                                       \frac{p}{p-1} & (p\neq1), \\
+                                       +\infty & (p=1).
+                                     \end{array}
+                                   \right.
+$$
+
+\bsp{Ha $\X:=\Y:=l_p$, és $B$, ill. $J$ jelöli \textbf{balra}, ill. a \textbf{jobbra való eltolás} operátorát:
+$$
+B:l_p\rightarrow l_p,\quad Bu:=(u_{n+1}),\qquad J:l_p\rightarrow l_p,\quad Ju:=(u_{n-1}),
+$$
+akkor $B,J\in L(\X)$, ui. $B$, ill. $J$ triviálisan lineáris, továbbá
+$$
+\|Bu\|_{l_p}=\left(\sum\limits_{n=2}^\infty\left|u_n\right|^p\right)^{1/p}\leq
+\left(\sum\limits_{n=1}^\infty\left|u_n\right|^p\right)^{1/p}=\|u\|_{l_p}\quad(u\in l_p),
+$$
+ill.
+$$
+\|Ju\|_{l_p}=\left(0+\sum\limits_{n=1}^\infty\left|u_n\right|^p\right)^{1/p}=\|u\|_{l_p}\qquad(u\in l_p),
+$$
+és bármely $$v\in\X^*=l_q$$  esetén
+$$
+B^*v(u)=v(Bu)=\sum\limits_{n=1}^\infty v_n\cdot u_{n+1}=\sum\limits_{n=2}^\infty v_{n-1}\cdot u_{n}\qquad(u\in\X),
+$$
+azaz
+$$
+B^*v=(0,v_1,v_2,\ldots)=Jv\qquad(v\in l_q).
+$$}{}
+
+\bsp{Ha $\X:=\Y:=L^p[0,1]$, továbbá $\varphi\in L^\infty[0,1]$, úgy az
+$$
+A_pu:=\varphi u\qquad(u\in L^p[0,1])
+$$
+operátor triviálisan lineáris, ill. duálisa az $A_q$
+operátor, hiszen bármely $u\in L^p[0,1]$ és $v\in L^q[0,1]$ esetén
+$$
+(A_p^*v)(u)=\int_0^1(A_pu)v=\int_0^1huv=\int_0^1u(A_qv)=(A_qv)(u).
+$$
+}{}
+
+
+
+
+
+
+Ha $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ normált tér, továbbá $A\in \mathfrak{L}(\X,\Y)$, akkor nyilvánvalóan $\mathcal{N}(A)$ és $\mathcal{R}(A)$ altér $\X$-ben, ill. $\Y$-ban továbbá $A\in L(\X,\Y)$ esetén $\mathcal{N}(A)$ zárt altér (vö. pl. \cite{Kovacs}). Az $\mathcal{R}(A)$ altér azonban nem mindig zárt altere $\Y$-nak. Az
+$$
+A:l_\infty\rightarrow l_\infty,\qquad Au:=\left(\frac{u_n}{n}\right)
+$$
+operátor esetében
+\begin{itemize}
+  \item bármely $\alpha,\beta\in\K$, ill. $(u_n),(v_n)\in l_\infty$ esetén
+      $$
+      A(\alpha (u_n)+\beta (v_n))=\left(\frac{\alpha u_n+\beta v_n}{n}\right)=\alpha\left(\frac{u_n}{n}\right)+\beta\left(\frac{v_n}{n}\right)=
+      \alpha A(u_n)+\beta A(v_n),
+      $$
+      azaz $A$ lineáris;
+  \item tetszõleges $u\in l_\infty$ sorozatra
+      $$
+      \|Au\|_\infty=\sup\limits_{n\in\N}\left|\frac{u_n}{n}\right|\leq\sup\limits_{n\in\N}|u_n|=\|u\|_\infty,
+      $$
+      tehát $A$ korlátos és így folytonos is: $A\in L(l_\infty)$ (következésképpen $\mathcal{N}(A)$ zárt);
+  \item ha
+      $$
+      u_n:=(1,\ldots,n,0,\ldots,0,\ldots)\qquad(n\in\N),
+      $$
+      akkor $(u_n)\in L_\infty$ és a
+      $$
+      v_n:=(1,\ldots,1,0\ldots,0,\ldots)\qquad(n\in\N)
+      $$
+      vektorral $A(u_n)=(v_n)$. Ennélfogva $(v_n)\in\mathcal{R}(A)$ és
+      $$
+      v_n\longrightarrow v:=(1,\ldots,1,\ldots)\qquad(n\rightarrow\infty).
+      $$
+      Így $v\notin\mathcal{R}(A)$, hiszen $u:=A^{-1} v=(1,\ldots,n\ldots)\notin l_\infty$.
+\end{itemize}
+
+\noindent Igaz viszont a következõ
+
+\satz{\label{magkep1}Legyen $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ normált tér. Ha $A\in L(\X,\Y)$, akkor
+\begin{enumerate}
+  \item $\mathcal{R}(A)^\perp=\mathcal{N}(A^*)\;\;$ és $\;\;\overline{\mathcal{R}(A)}=\mathcal{N}(A^*)_\perp$; %$\;\;\overline{A^*(\Y^*)}\subset\mathcal{N}(A)^\perp$;
+%  \item $\overline{\mathcal{N}(A)}=\mathcal{N}(A^*)^\perp\;\;$ és $\;\;A^*(\Y^*)_\perp=\mathcal{N}(A);$
+  \item ha $\mathcal{R}(A)$ zárt altere $\Y$-nak, akkor még
+    $$
+    \dim((\Y/\mathcal{R}(A))^*)=\dim(\mathcal{R}(A)^\perp)=\dim(\mathcal{N}(A^*))
+    $$
+    is igaz.
+\end{enumerate}
+}{
+\begin{enumerate}
+  \item Világos, hogy bármely $x\in\X$ esetén igaz az
+      $$
+      f\in\mathcal{R}(A)^\perp\quad\Longleftrightarrow\quad f(Ax)=A^*f(x)=0\quad\Longleftrightarrow\quad A^*f=0\quad\Longleftrightarrow\quad f\in\mathcal{N}(A^*).
+      $$
+      Továbbá
+      \begin{itemize}
+        \item $\overline{\mathcal{R}(A)}\subset\mathcal{N}(A^*)_\perp$, hiszen bármely $u\in\X$, ill. $v:=Au\in\mathcal{R}(A)$ esetén, ha $f\in\mathcal{N}(A^*)$, akkor
+            $$
+            f(v)=f(Au)=(A^*f)(u)=0,
+            $$
+            ahonnan $v\in\mathcal{N}(A^*)_\perp$ következik;
+        \item $\overline{\mathcal{R}(A)}\supset\mathcal{N}(A^*)_\perp$, hiszen  $U:=\overline{\mathcal{R}(A)}\subset\Y$ zárt altér, ennélfogva (vö. Hahn-Banach-tétel egyik következménye) bármely $v\notin U$ esetén van olyan $f\in\Y^*$ funkcionál, hogy $f(v)\neq0$ $(v\in\Y^*)$. Így tetszõleges $x\in\X$ vektorra
+            $$
+            (A^*f)(x)=f(Ax)=0,
+            $$
+            azaz $f\in\mathcal{N}(A^*)$. Világos, hogy $f\notin\mathcal{N}(A^*)_\perp$, hiszen ellenkezõ esetben $f(v)=0$ lenne. Mindez azt jelenti, hogy $v\notin U$, ahonnan $v\notin\mathcal{N}(A^*)_\perp$ és így
+            $$
+            \mathcal{N}(A^*)_\perp\subset U=\overline{\mathcal{R}(A)}
+            $$
+            következik.
+      \end{itemize}
+  \item Az elõzõ állítás következménye. $\blacksquare$
+ \end{enumerate}
+}
+
+
+Az \ref{magkep1}. tételbeli állítás következményeként elmondható, hog ha $A\in L(\X,\Y)$ zárt képterû operátor, úgy valamely $Au=v$ egyenlet pontosan akkor oldható meg, ha igaz az
+$$
+A^*f=0\qquad\Longrightarrow\qquad f(v)=0
+$$
+implikáció.
+
+\defin{Valamely $A\in\mathfrak{L}(\mathcal{X},\mathcal{Y})$ lineáris operátort \textbf{véges rang}únak \index{operátor!véges rangú} nevezünk, ha $\mathcal{R}(A)$ képtere véges dimenziós. Ha $A$ véges rangú, akkor a $\dim(\mathcal{R}(A))$ számot az $A$ operátor \textbf{rang}jának \index{rang!operátoré}  nevezzük.}{}
+
+\bsp{Ha $(\X,\|\cdot\|_\X)$, ill. $(\Y,\|\cdot\|_\Y)$  normált terek és $f\in\X^*$, ill. $y\in\Y$, akkor az
+$$
+f\otimes y:\X\rightarrow\Y,\qquad (f\otimes y)(x):=\langle f,x\rangle y
+$$
+operátor nyilván véges rangú: $\dim(\mathcal{R}(f\otimes y))=1$.}{}
+
+\noindent Nem nehéz belátni, hogy  ha az $A\in\mathfrak{L}(\mathcal{X},\mathcal{Y})$ lineáris operátor esetén $\mathcal{X}$ vagy $\mathcal{Y}$ véges dimenziós, akkor $A$ véges rangú.
+
+
+
+
+
+
+
+Lineáris algebrai megfontolásokra támaszkodva elmondható, hogy egy vektortér minden alterének van direkt kiegészítõje. Sõt, ha $\X$ Hilbert-tér és $\mathcal{A}\subset\X$ altér, akkor $$\X=\overline{\mathcal{A}}\oplus\mathcal{A}^T.$$ Az ortogonális kiegészítõ zárt altér, továbbá $(\mathcal{A}^T)^\perp=\overline{\mathcal{A}}.$ Ha $\X$ Banach-tér, akkor bármely zárt $\mathcal{A}\subset\X$ altérnek van ugyan direkt kiegészítõje, azonban ez a kiegészítõ altér nem feltétlenül zárt. Így pl. a $c_0\subset l_\infty$ altérnek nincsen zárt direkt kiegészítõje $l_\infty$-ben, ill. a $$\mathfrak{C}[0,1]\subset L^\infty[0,1]$$ altérnek sincsen zárt direkt kiegészítõje (vö. pl. \cite{Whitley, PelczynskiSudakov}).
+
+
+\satz{Legyen $\X$ Banach-tér, $\mathcal{A}\subset\X$ pedig véges dimenziós altér: $\dim(\mathcal{A})<\infty$. Ekkor $\mathcal{A}$-nak van $\X$-beli zárt direkt kiegészítõje, azaz alkalmas zárt $\mathcal{B}\subset\X$ altér esetén $$\X=\mathcal{A}\oplus\mathcal{B}$$ teljesül.}{Mivel $\mathcal{A}\subset\X$ véges dimenziós, ezért alkalmas $d\in\N$ esetén $\mathcal{A}$-ban van $d$-elemû bázis: $b_1,\ldots,b_d$. Így alkalmas $\alpha_1,\ldots,\alpha_l\in\K$ esetén
+$$
+u=\alpha_1b_1+\ldots\alpha_db_d.
+$$
+Jelölje $f_1,\ldots,f_d$ a megfelelõ Auerbach-bázist (vö. \cite{MeiseVogt}, 70. old.), azaz legyen $\{f_1,\ldots,f_d\}\subset\mathcal{A}^*$ olyan, amelyre
+$$
+f_k(b_l)=\delta_{kl}\qquad(k,l\in\{1,\ldots,d\},
+$$
+ahol $\mathcal{A}^*$ jelöli az $\mathcal{A}$ altér  duálisát. Ekkor (vö. Hahn-Banach-tétel harmadik következménye)  alkalmas $f_1,\ldots,f_d$ ($\X^*$-beli) funkcionálok esetén az
+$$
+Ax:=\sum\limits_{k=1}^d\langle f_k,x\rangle u_k\qquad(x\in\X)
+$$
+operátor korlátos projekció. Ha most $\mathcal{B}:=\mathcal{N}(A)$, akkor $A$ folytonossága következtében $\mathcal{B}$ zárt altér $\X$-ben, továbbá $\mathcal{B}\cap\mathcal{A}=\{0\},$ hiszen ellenkezõ esetben valamely $v\in\mathcal{B}\cap\mathcal{A}$ esetén $v\neq0$, ahonnan $$v\in\mathcal{B}=\mathcal{N}(A),$$ azaz $A(v)=0$ következik, ez pedig $v\in\X$ miatt azt jelenti, hogy $$0=A(v)=vz,$$ ami ellentmond annak, hogy $v\neq0$. Mivel bármely $u\in\mathcal{B}$ esetén $Au\in\mathcal{B}$, ill.
+$$
+A(u-Pu)=Au-A^2u=Au-Au=0
+$$
+következtében $u-Au\in\mathcal{B}$, ezért
+$$
+u=(u-Au)+Au
+$$
+a kívánt felbontás. $\blacksquare$
+}
+
+\noindent Ha tehát az $\X$ Banach-tér, ill. $\mathcal{A}\subset\X$ zárt altér esetén $\codim(\mathcal{A})<+\infty$, akkor $\mathcal{A}$-nak van $\X$-beli zárt direkt kiegészítõje, ui. ha a $\mathcal{B}\subset\X$ altérre $\X=\mathcal{A}\oplus\mathcal{B}$, akkor
+$$
+\dim(\mathcal{B})=\codim(\mathcal{A})<+\infty,
+$$
+így $\mathcal{B}$ zárt $\X$-ben.
+
+%\satz{Ha $\X$ és $\Y$ Banach-terek, továbbá $A\in L(\X,\Y)$ olyan (korlátos, lineáris) operátor, amelyre $\codim(A[\X])<+\infty$, akkor az $A[\X]$ altér zárt $\Y$-ban.}{} 
