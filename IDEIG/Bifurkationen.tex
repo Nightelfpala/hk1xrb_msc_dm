@@ -1,0 +1,203 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+
+
+
+
+\label{chap:LjapunovSchmidt}
+
+Ebben a bevezetjük a bifurkáció fogalmát, majd példákon keresztül szemléltetünk néhány egyszerûbb esetet.
+
+Adott $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ Banach-terek esetén legyen
+$
+\emptyset\neq\Omega\subset\X$ és $\emptyset\neq\Lambda\subset\R$
+az $x_0\in\X$ és a $\lambda_0\in\R$ egy-egy környete, majd tegyük fel, hogy az
+$$
+F:\Omega\times\Lambda\rightarrow\Y,\qquad F\in\mathfrak{C}^2
+$$
+leképezésre
+\begin{equation}\label{trivimo}
+F(x_0,\lambda_0)=0
+\end{equation}
+teljesül. Feladatunk az $(x_0,\lambda_0)$ pont egy környezetében az
+$$
+S:=F^{-1}[\{0\}]=\left\{(x,\lambda)\in\Omega\times\Lambda:\;F(x,\lambda)=0\right\},
+$$
+\textbf{megoldáshalmaz} vizsgálata, ill. a $\lambda$ \textbf{paraméter}tõl függõ
+\begin{equation}\label{paramhalmaz}
+S_\lambda:=\left\{x\in\X:\;(x,\lambda)\in S\right\}
+\end{equation}
+halmaz szerkezetének feltárása.
+
+
+
+\defin{Azt mondjuk, hogy a $(x_0,\lambda_0)$ pár \textbf{bifurkációs pont}, ill. $\lambda_0$ \textbf{kritikus érték}, amelynél \textbf{bifurkáció lép fel}, ha $(x_0,\lambda_0)$ tetszõleges környezetében az
+\begin{equation}
+F(x,\lambda)=0\label{bifEq}
+\end{equation}
+egyenlet megoldható, pontosabban alkalmas
+$$
+(u_n,\lambda_n),(v_n,\lambda_n)\in\Omega\times \Lambda\quad(u_n\neq v_n)\qquad(n\in\N):
+$$
+sorozatra
+$$
+F(u_n,\lambda_n)=0=F(v_n,\lambda_n)\qquad(n\in\N)
+$$
+és
+$$
+\lim\limits_{n\rightarrow\infty}(u_n,\lambda_n)=(x_0,\lambda_0)=\lim\limits_{n\rightarrow\infty}(v_n,\lambda_n).
+$$
+}{}
+
+\bsp{A $(0,0)$ pár az
+$$
+      F_\pm:\R\times\R\rightarrow\R,\qquad F_\pm(x,\lambda):=\pm x^2+\lambda.
+      $$
+leképezés bifurkációs pontja (\textbf{szub}- /(+)/, ill. \textbf{szuperkritikus} /(-)/ \textbf{nyereg-csomó-bifurkáció}). A $\lambda\in\R$ paramétertõl függõen a szub-, ill. a szuperkritikus esetben a \eqref{paramhalmaz}-beli halmaz a következõ alakú:
+$$
+            S_\lambda=\left\{
+                        \begin{array}{ll}
+                          \left\{-\sqrt{-\lambda},\sqrt{-\lambda}\right\} & (\lambda<0), \\
+                          \{0\} & (\lambda=0), \\
+                          \emptyset & (\lambda>0);
+                        \end{array}
+                      \right.\qquad\textrm{ill.}\qquad
+            S_\lambda=\left\{
+                        \begin{array}{ll}
+                          \emptyset & (\lambda<0), \\
+                          \{0\} & (\lambda=0), \\
+                          \left\{-\sqrt{\lambda},\sqrt{\lambda}\right\} & (\lambda>0).
+                        \end{array}
+                      \right.
+$$
+}{}
+\bigskip
+
+\bsp{ A $(0,1)$ pár az
+      $$
+      F:\R\times\R\rightarrow\R,\qquad F(x,\lambda):=\lambda x(1-x)-x.
+      $$
+      leképezés bifurkációs pontja (\textbf{transzkritikus bifurkáció}).
+      A $\lambda\in\R$ paramétertõl függõen a \eqref{paramhalmaz}-beli halmaz a következõ alakú:
+            $$
+            S_\lambda=\left\{
+                        \begin{array}{ll}
+                          \left\{0\right\} & (\lambda\in\{0;1\}), \\
+                          \left\{0,1-\frac{1}{\lambda}\right\} & (\lambda\in\R\backslash\{0;1\}).
+                        \end{array}
+                      \right.
+            $$}{}
+\bigskip
+
+\bsp{A $(0,0)$ pár az
+      $$
+      F_\pm:\R\times\R\rightarrow\R,\qquad F_\pm(x,\lambda):=\lambda x\pm x^3.
+      $$
+      leképezés bifurkációs pontja (\textbf{szub}- /(+)/, ill. \textbf{szuperkritikus} /(-)/ \textbf{vasvilla-bifurkáció}).
+       A $\lambda\in\R$ paramétertõl függõen a \eqref{paramhalmaz}-beli halmaz a következõ alakú:
+            $$
+            S_\lambda=\left\{
+                        \begin{array}{ll}
+                          \left\{-\sqrt{-\lambda},0,\sqrt{-\lambda}\right\} & (\lambda<0), \\
+                          \{0\} & (\lambda\geq0), \\
+                        \end{array}
+                      \right.\qquad\textrm{ill.}\qquad
+            S_\lambda=\left\{
+                        \begin{array}{ll}
+                          \{0\} & (\lambda\leq0), \\
+                          \left\{-\sqrt{\lambda},0,\sqrt{\lambda}\right\} & (\lambda>0).
+                        \end{array}
+                      \right.
+            $$}{}
+
+\bsp{Ha $$A\in L(\X),\qquad\mu\in\R:\quad\mathcal{N}(A-\mu I)\neq\{0\},$$ akkor a $(0,\mu)$ pár az
+      $$
+      F(x,\lambda):=Ax-\lambda x\qquad\left((x,\lambda)\in\Omega\times\Lambda\right),
+      $$
+      leképezés bifurkációs pontja, hiszen
+      bármely $\varepsilon>0$ esetén van olyan  $u\in\X$,\linebreak $\|u\|=\varepsilon$ vektor, amelyre $Au=\mu u$ (\textbf{lineáris sajátérték-feladat}).}{}
+
+\bsp{Ha valamely az $(x,y)$-síkon lévõ $L$ hosszúságú \textbf{rugalmas szál} egyik végét rögzítjük az origóban, a másik vége szabadon mozoghat, és az $x$-tengely mentén hat rá erõ, akkor a rugalmas szál mozgását leíró peremérték-feladat a következõ
+      $$
+      \vartheta''(s)+\lambda\sin(\vartheta(s))=0\quad(s\in[0,L]),\qquad\vartheta'(0)=\vartheta'(L)=0,
+      $$
+      ahol $\vartheta(s)$ jelöli a szál és az $x$-tengely közötti szöget az $(x(s),y(s))$, $s\in[0,L]$ pontban.
+      A $\sin(\vartheta)\approx\vartheta$
+      egyszerûsítõ feltevéssel lineáris peremérték-feladatot kapunk:
+      $$
+      \vartheta''(s)+\lambda\vartheta(s)=0\quad(s\in[0,L]),\qquad\vartheta'(0)=\vartheta'(L)=0.
+      $$
+      Látható, hogy az iménti peremérték-feladat  $$\vartheta(s):=0\quad(s\in[0,L])$$ triviális megoldásából a $\lambda$ paraméter változásával  végtelen sok megoldás \idez{bifurkálódik}:
+      $$
+      \vartheta_n(s):=\gamma\cos(\sqrt{\lambda_n}s)\qquad\left(n\in\N_0,\,0\neq\gamma\in\R,\,\lambda_n:=\left(\frac{n\pi}{L}\right)^2\right).
+      $$
+      A rugalmas szálra vonatkozó feladat absztrakt megfogalmazása a következõ.
+      Határozzuk meg az $$F(\vartheta,\lambda)=0$$ egyenlet bifurkációs pontjait, ahol
+      $$
+      F:\X\times\R\rightarrow\Y,\qquad F(\vartheta,\lambda):=\vartheta''+\lambda\sin(\vartheta),
+      $$
+      ill.
+      $$
+      \X:=\left\{\vartheta\in\mathfrak{C}^2[0,L]:\;\vartheta'(0)=\vartheta'(L)=0\right\},\qquad \|\vartheta\|_\X:=\max\left\{\|\vartheta\|_\infty,\|\vartheta'\|_\infty,\|\vartheta''\|_\infty\right\}
+      $$
+      és
+      $$
+      \Y:=\mathfrak{C}[0,L],\qquad\|\vartheta\|_{\Y}:=\|\vartheta\|_\infty.
+      $$}{}
+
+Az alábbiakban a bifurkáció fellépésének szükséges feltételét fogalmazzuk meg.
+
+\satz{Ha az $(x_0,\lambda_0)\in\Omega\times\Lambda$ pár bifurkációs pontja a \eqref{bifEq} egyenletnek, akkor $F$ elsõ változó szerinti Fréchet-driváltja nem invertálható:
+$
+\partial_1F(x_0,\lambda_0)\notin GL(\X,\Y).
+$}{H $\partial_1F(x_0,\lambda_0)$ nem invertálható operátor (nincs folytonos inverze), akkor az implicit függvényre vonatkozó tétel következtében bármely $\lambda_0\neq \lambda\in\Lambda$ esetén az $x$ kifejezhetõ $\lambda$ függvényeként, azaz $(x_0,\lambda_0)$ nem lehet bifurkációs pont. $\blacksquare$}
+
+\bsp{\textbf{(Lineáris sajátérték-feladat).} Ha $A\in L(\X)$ és  $F(x,\lambda):\equiv Ax-\lambda x,$ akkor\linebreak -- mint ahogy azt fentebb láttuk -- az $A$ operátor tetszõleges sajátértéke esetén a $(0,\mu)$ pár bifurkációs pontja a \eqref{bifEq} egyenletnek. Nem csoda tehát, hogy
+      $$
+      \partial_1F(0,\mu)=A-\mu I\notin GL(\X).
+      $$
+}{}
+
+\bsp{\textbf{(Nemlineáris sajátérték-feladat).} Let $\Y=\X,$ $\Lambda=\R,$ $0\in\Omega$ és tegyük fel, hogy az $f\in\mathfrak{C}^1(\Omega,\X)$ függvényre $f(0)=0$. Ekkor az
+      %\begin{equation}
+      $$
+      f(x)=\mu x
+      \label{nonlineigprob}
+      $$
+      %\end{equation}
+      nemlineáris sajátérték-feladat az
+      $$
+      F(x,\lambda):\equiv f(x)-\lambda x
+      $$
+      leképezés segítségével írható le. Világos, hogy a $(0,\mu)$ pár megoldása az $f(x)-\lambda x=0$ egyenletnek. Ha $(0,\mu)$ bifurkációs pont, akkor a fentiekbõl $\mu\in\sigma(f'(0))$ következik, hiszen
+      $$
+      \partial_1F(0,\mu)=f'(0)-\mu I.
+      $$}{}
+
+Megjegyezzük, hogy a $\partial_1F(x_0,\lambda_0)$ operátor nem invertálható volta még nem elégséges a bifurkáció fellépéséhez, mint ahogy azt az alábbi példa is mutatja.\\
+
+
+
+
+\bsp{Ha $\X=\R^2$, $\Lambda=\R$, $\Y:=\R^2$, továbbá
+$$F(x,y,\lambda):=(x-\lambda(x-y^3),y-\lambda(y+x^3)),$$ akkor
+$$
+\partial_{(x,y)}F(0,0,1)=\left[\begin{array}{cc}
+                                 0 & 0 \\
+                                 0 & 0
+                               \end{array}
+\right]\notin GL(\R^2,\R^2).
+$$
+A $(0,0,1)$ pár nem bifurkációs pontja $F$-nek, ui. az
+$$
+(0,0)=F(x,y,\lambda)=(x-\lambda(x-y^3),y-\lambda(y+x^3))
+$$
+egyenlõség elsõ komponensét $y$-nal, a másodikat $(-x)$-szel szorozva azt kapjuk, hogy
+$$
+(0,0)=(xy-\lambda(yx-y^4),-xy+\lambda(yx+x^4)).
+$$
+Az iménti két egyenlõség összeadásával $0=\lambda(x^4+y^4)$ adódk, ami azt jelenti, hogy bármely  $\lambda\in\R$ esetén $F(x,y,\lambda)=(0,0)$, azaz $(x,y)=(0,0)$.
+}{}
+
+

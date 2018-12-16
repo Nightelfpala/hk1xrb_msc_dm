@@ -1,0 +1,315 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+
+
+
+
+\label{chap:LjapunovSchmidtNum}
+
+A k�vetkez� fejezetben ismertetj�k a Ljapunov-Schmidt m�dszernek egy numerikus m�dszerk�nti felhaszn�l�s�t bizonyos perem�rt�k-feladatok eset�n \cite{LSNum} alapj�n. % TODO irodalomjegyz�kben rossz kis-nagybet�k a c�mn�l
+Tekints�k az al�bbi egyenletet:
+\begin{equation}
+Lu(x) = Nu(x),\;x\in[a, b] \label{eq:num:1}
+\end{equation}
+ahol $L$ �gynevezett Sturm-Liouville oper�tor:
+\begin{equation*}
+%Lu(x) = \frac{1}{w(x)}(-(p(x)u'(x))' + q(x)u(x)),
+L u = \frac{1}{w} ( -(p u')' + q u),
+\end{equation*}
+ahol $p(x) > 0, w(x) > 0\;(x \in [a, b])$, $p, q, w$ adott analitikus f�ggv�nyek, valamint $u$-ra a k�vetkez� peremfelt�telek teljes�lnek:
+\begin{align*}
+\alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
+\alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
+\end{align*}
+Ezek a kik�t�sek az�rt sz�ks�gesek, mert a k�s�bbiekben az ilyen $L$-ekhez adunk meg egy m�dszert (a Csebisev-Tau-m�dszert \cite{ChebysevTau}), amivel a saj�tf�ggv�nyeit el� tudjuk �ll�tani. \\ % TODO irodalomjegyz�k kis-nagybet�
+Emellett feltessz�k a k�vetkez�ket:
+\begin{itemize}
+\item $S$ val�s, szepar�bilis Hilbert-t�r, $L : \mathcal{D}(L) \subset S \rightarrow S$ line�ris oper�tor, $N : \mathcal{D}(N) \subset S \rightarrow S$ nemline�ris oper�tor,
+\item $L$ z�rt lek�pez�s (amivel ekvivalens \cite{funkanal}: $x_n \rightarrow x$ �s $Lx_n \rightarrow y$-b�l k�vetkezik hogy $x \in \mathcal{D}(L)$ �s $Lx = y$), �nadjung�lt, $\mathcal{D}(L)$ s�r� $S$-ben, $\mathcal{N}(L) = p > 0$ v�ges,
+\item $L$-nek a saj�t�rt�kei $\lambda_1 = \dots = \lambda_p = 0 < \lambda_{p + 1}$, $\lambda_i \leq \lambda_{i + 1}$, $\lim_{i \to \infty} \lambda_i = \infty$, �s a hozz�juk tartoz� $\Phi_1, \Phi_2, \dots$ saj�tf�ggv�nyek $S$-ben egy teljes ortonorm�lt rendszert alkotnak - ezeket a tulajdons�gokat a Sturm-Liouville-oper�tor biztos�tja,
+\item l�tezik egy $S' \subset S$ alt�r, ami egy $\mu$ norm�val teljes, $\mathcal{D}(L) \subset S'$, minden $x \in \mathcal{D}(L)$ eset�n a $\Phi_i$-szerinti Fourier-sora ($\sum_{k=1}^\infty \langle x, \Phi_k \rangle \Phi_k$) $\mu$-ben konverg�l $x$-hez �s $\{ \mu(\Phi_k) / \lambda_k\}_{k > p} \in l_2$, valamint l�tezik $\alpha > 0$, amivel $x \in S'$ eset�n $\|x\|_S \leq \alpha \mu(x)$ (teh�t $\mu$ $\alpha$-szorosa fels� becsl�se az eredeti norm�nak, �s $\mu$-beli konvergenci�b�l k�vetkezik, hogy az adott sorozat az eredeti norm�ban is konvergens),
+\item $\\mathcal{D}(L) \cap \mathcal{D}(N) \neq \emptyset$, $\mathcal{D}(N) \subset S'$ �s alt�r $S'$-ben, $\mathcal{D}(N)$ z�rt $\mu$ szerint,
+\item b�rmely $R > 0$-hoz l�tezik $\beta_R > 0, b_R > 0$, amelyekkel azon $x, y \in \mathcal{D}(N)$-ekre, amelyekre $\mu(x) \leq R, \mu(y) \leq R$ teljes�l, $\mu(Nx - Ny) \leq \beta_R \mu(x - y)$ �s $\mu(Nx) \leq b_R$, teh�t tetsz�leges $\mu$-szerinti g�mb $N$-szerinti k�pe korl�tos ($\mu$ norm�val), valamint ezen g�mbbeli elemek k�rnyezet�nek k�p�nek �tm�r�je ar�nyos a k�rnyezet �tm�r�j�vel; ezek a felt�telek biztos�tj�k majd az kiseg�t� egyenlet�nk kontrakci� tulajdons�g�t. % TODO �tfogalmazni a k�rnyezeteset % TODO auxiliary = kiseg�t�?
+\end{itemize}
+Az $\eqref{eq:num:1}$ egyenlet megold�sait $\mathcal{D}(L) \cap \mathcal{D}(N)$-ben keress�k. Legyen $m \geq p$ �s
+\begin{equation*}
+S_m := \spanned \{\Phi_1, \dots, \Phi_m \}, \quad S_0 := \{ 0\},
+\end{equation*}
+azaz $S_m$ az els� $m$ saj�tf�ggv�ny �ltal kifesz�tett alt�r, $S_m \subset \mathcal{D}(L)$. Defini�ljuk a k�vetkez� oper�torokat, amennyiben $u = \sum_{k = 1}^\infty \langle u, \Phi_k \rangle, \Phi_k$ ($u \in S$):
+\begin{equation*}
+P_m u := \sum_{k = 1}^m \langle u, \Phi_k \rangle, \Phi_k,
+\end{equation*}
+teh�t $P_m$ az $S_m$-re t�rt�n� ortogon�lis projekci�, valamint
+\begin{equation*}
+H_m u := \sum_{k = m + 1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle, \Phi_k.
+\end{equation*}
+$H_m$ $\mathcal{D}(L)$-be k�pez (mivel $\Phi_k \in \mathcal{D}(L) \; (k = 0, \dots, m+1, \dots)$), l�ssuk be r�la, hogy line�ris ($x, y \in S$, $\alpha \in \mathbb{R}$):
+\begin{align*}
+H_m(\alpha x + y) &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \alpha x + y, \Phi_k \rangle \Phi_k = \\
+ &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} ( \langle \alpha x, \Phi_k \rangle + \langle y, \Phi_k \rangle ) \Phi_k = \\
+ &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \alpha x, \Phi_k \rangle \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle y, \Phi_k \rangle \Phi_k = \\
+ &= \alpha \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle x, \Phi_k \rangle \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle y, \Phi_k \rangle \Phi_k = \\
+ &= \alpha H_m x + H_m y.
+\end{align*}
+$H_m$ az $L$ egy lesz�k�t�s�nek inverze, pontosabban $H_m = (L_{\mkern 1mu \vrule height 2ex\mkern2mu S_m^\perp})^{-1}$, �rtelemszer�en $S_m^\perp = \spanned \{ \Phi_{m+1}, \Phi_{m+2}, \dots \}$, �gy a linearit�s miatt el�g $\Phi_n$-ra n�zni ($n > m$):
+\begin{align*}
+L H_m \Phi_n &= L \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_n, \Phi_k \rangle \Phi_k \right) = \\
+ &= L \left( \frac{1}{\lambda_n} \Phi_n \right) = \frac{1}{\lambda_n} \lambda_n \Phi_n = \Phi_n.
+\end{align*}
+$H_m L u = (I - P_m)u$, ahol $I$ az identit�s oper�tor, ezt szint�n el�g $\Phi_n$-re vizsg�lni ($n = 1, 2, \dots$):
+\begin{align*}
+H_m L \Phi_n &= H_m (\lambda_n \Phi_n) = \lambda_n \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_n, \Phi_k \rangle \Phi_k = \\
+ &=
+	\begin{cases}
+		\mathbf{0}, &\text{ha } n \leq m \\
+		\Phi_n, &\text{ha } n \geq m + 1.
+	\end{cases}
+\end{align*}
+$H_m$ $S$-szerinti norm�ja $\frac{1}{\lambda_{m+1}}$, ehhez felhaszn�ljuk, hogy $L$ saj�t�rt�kei n�vekv� sorrendben vannak indexelve, valamint hogy $\|I - P_m\| \leq 1$ az ortogon�lis projekci� tulajdons�ga miatt:
+$$
+\begin{array}{lll}
+  \displaystyle\|H_m u\| & = & \displaystyle \left\|\sum_{k=m+1}^\infty\frac{1}{\lambda_k}\langle u,\Phi_k\rangle\Phi_k\right\| \leq \\\\
+    & \leq & \displaystyle\frac{1}{\lambda_{m+1}}\|(I-P_m)u\|\leq\frac{1}{\lambda_{m+1}}\|\cdot \|u\|
+\end{array}
+$$
+
+�s $u = \Phi_{m+1}$ eset�n teljes�l az egyenl�s�g:
+\begin{align*}
+\|H_m \Phi_{m+1}\| &= \left\| \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_{m+1}, \Phi_k \rangle \Phi_k\right\| = \\
+ &= \left\| \frac{1}{\lambda_{m+1}} \Phi_{m+1}\right\| = \frac{1}{\lambda_{m+1}} \|\Phi_{m+1}\|.
+\end{align*}
+M�g n�zz�k meg $H_m$ $\mu$-szerinti norm�j�t: $\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty \left( \frac{\mu(\Phi_k)}{\lambda_k}\right)^2\right)^{1/2}$:
+\begin{align*}
+\mu(H_m u) &= \mu \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle \Phi_k \right) \leq \\
+ &\leq \left| \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle \mu(\Phi_k) \right| = \left| \sum_{k = m+1}^\infty \frac{\mu(\Phi_k)}{\lambda_k} \langle u, \Phi_k \rangle \right| \leq \\
+ &\leq \left| \left( \frac{\mu(\Phi_k)}{\lambda_k}, \langle u, \Phi_k \rangle \right)_{l_2}\right| \leq \left\|\frac{\mu(\Phi_k)}{\lambda_k}\right\|_{l_2} \cdot\|\langle u, \Phi_k \rangle\|_{l_2} = \\
+ &= \sigma(m)\|u\| \leq \sigma(m) \alpha \mu(u)
+\end{align*}
+ahol $\left( \cdot, \cdot \right)_{l_2}$ az $l_2$-beli skal�ris szorz�st jel�li. A levezet�s sor�n alkalmaztuk a Cauchy-Bunyakovsky-Schwarz-egyenl�tlens�get �s a Parseval-egyenl�s�get.
+Ebb�l az is k�vetkezik, hogy $\lim_{m \to \infty} \mu(H_m) = 0$. A kor�bbi felt�teleinket eg�sz�ts�k ki m�g azzal, �gy $\mathcal{R}(H_m) \subset \mathcal{D}(N)$ �s $S_m \subset \mathcal{D}(N)$, hogy a $P_m$ �s a $H_m$ alkalmaz�sa ut�n tudjuk az $N$-et is m�g alkalmazni. \\
+Tegy�k fel, hogy $\overline{u} \in \mathcal{D}(N) \cap \mathcal{D}(L)$ megold�sa az $\eqref{eq:num:1}$ egyenletnek, teh�t
+\begin{equation}
+L\overline{u} = N\overline{u}. \label{eq:num:2}
+\end{equation}
+Erre el�sz�r alkalmazzuk $H_m$-et:
+\begin{align}
+H_m L \overline{u} &= H_m N \overline{u}, \nonumber \\
+(I - P_m) \overline{u} &= H_m N \overline{u}, \nonumber \\
+\overline{u} &= P_m \overline{u} + H_m N \overline{u}, \label{eq:num:3}
+\end{align}
+ez a kiseg�t� egyenlet. Ezut�n alkalmazzuk $\eqref{eq:num:2}$-re $P_m$-et: % TODO auxiliary = kiseg�t�?
+\begin{equation}
+P_m(L \overline{u} - N \overline{u}) = 0, \label{eq:num:4}
+\end{equation}
+ami a bifurk�ci�s egyenlet. Az �sszes olyan $\overline{u} \in \mathcal{D}(L) \cap \mathcal{D}(N)$, ami megold�sa a kiseg�t� �s a bifurk�ci�s egyenletnek, az megold�sa az eredeti $\eqref{eq:num:1}$ feladatnak. \\ % TODO auxiliary = kiseg�t�?
+Legyenek $a > 0, b > 0$ val�s sz�mok, �s legyen $u_0$ egy k�zel�t� megold�sa az $Lu = Nu$ egyenletnek �gy, hogy l�tezik $u^* \in S_m$ ($u^* = \sum_{k=1}^m a_k \Phi_k$ valamely $a_k$ sz�mokra, $k = 1, \dots, m$), amivel $\mu(u^* - u_0) \leq a$. Vegy�k a k�vetkez� halmazt:
+\begin{equation*}
+S_{u^*}^b := \{ u \in \mathcal{D}(N) \; | \; P_m u = u^*, \mu((I - P_m)u) \leq b \},
+\end{equation*}
+teh�t $S_{u^*}^b$ azon $u$-kat tartalmazza, melyek $S_m$-re levet�tve $u^*$-ba esnek, �s $u^*$-t�l $\mu$-szerinti t�vols�guk legfeljebb $b$. Ezen elemek $\mu$-norm�ja korl�tos:
+\begin{equation*}
+\mu(u) = \mu(P_m u + (I - P_m) u) \leq \mu(u^*) + \mu((I - P_m)u) \leq \mu(u^*) + b.
+\end{equation*}
+ Ezut�n defini�ljuk a k�vetkez� oper�tort:
+\begin{align*}
+T_{u^*}^b &: S_{u^*}^b \rightarrow S, \\
+T_{u^*}^b (u) &:= u^* + H_m N u.
+\end{align*}
+L�ssuk be $T_{u^*}^b$-r�l, hogy bizonyos felt�telek mellett kontrakci�, legyen $x, y \in S_{u^*}^b$:
+\begin{align*}
+\mu( T_{u^*}^b(x) - T_{u^*}^b(y)) &= \mu((u^* + H_m N x) - (u^* + H_m N y)) = \\
+&= \mu(H_m(N x - N y)) \leq \\
+&\leq \mu(H_m) \mu(N x - N y) \leq \\
+&\leq \mu(H_m) \beta_R \mu(x - y),
+\end{align*}
+ahol $R = \mu(u^*) + b$, teh�t $u^*$-t�l �s $b$-t�l f�gg� konstans, �s a kezdeti kik�t�seink alapj�n $\beta_R$ egy $R$-t�l f�gg� konstans. Mivel $\lim_{m \to \infty} \mu(H_m) = 0$, ez�rt el�g nagy $m$ eset�n $\mu(H_m) \beta_R < 1$. Annak, hogy $\mathcal{R}T_{u^*}^b) \subset S_{u^*}^b$ (teh�t lehet $ T_{u^*}^b$-t iterat�van alkalmazni) el�gs�ges felt�tele, hogy $\mu(H_m)^2 \mu(L) b_R \leq b$, ami kell�en nagy $m$-re szint�n teljes�l. Teh�t ha $m$ el�g nagy, akkor $ T_{u^*}^b$ kontrakci�, �gy a Banach-Tyihonov-Cacciopoli-t�tel miatt van fixpontja. Ezt az $u^*$-t�l f�gg� fixpontot jel�lj�k $y(u^*)$-al, �s asszoci�lt elemnek nevezz�k. $y(u^*)$-r�l k�nnyen bel�that�, hogy megold�sa az $\eqref{eq:num:3}$ egyenletnek. \\ % TODO associate = asszoci�lt?
+Vezess�k be a $c_k := \langle u^*, \Phi_k \rangle \;(k = 1, \dots, m)$ jel�l�st, amivel $u^* = \sum_{k = 1}^m c_k \Phi_k$. N�zz�k meg, hogy milyen felt�telek mellett lesz $y(u^*)$ megold�sa a $\eqref{eq:num:4}$ bifurk�ci�s egyenletnek?
+\begin{align*}
+0 &= P_m(L y(u^*) - N y(u^*)) = P_m L y(u^*) - P_m N y(u^*), \\
+P_m L y(u^*) &= P_m L (u^* + H_m N y(u^*)) = P_m L u^* + P_m L H_m N y(u^*) = \\
+ &= P_m L (\sum_{k = 1}^m c_k\Phi_k) + P_m L \sum_{k = m+1}^\infty \langle N y(u^*), \Phi_k \rangle \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + P_m \sum_{k = m + 1}^\infty \langle N y(u^*), \Phi_k \rangle \lambda_k \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + \sum_{k = m + 1}^\infty \langle N y(u^*), \Phi_k \rangle \lambda_k P_m \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k),
+\end{align*}
+teh�t
+\begin{equation*}
+0 = P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k - N y(u^*)),
+\end{equation*}
+ami pontosan akkor teljes�l, ha
+\begin{align}
+0 &= \langle \sum_{j = 1}^m c_j \lambda_j \Phi_j - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m), \text{ azaz} \nonumber \\
+0 &= \langle c_k \lambda_k \Phi_k - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m), \text{vagy} \nonumber \\
+0 &= \langle \lambda_k u^* - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m). \label{eq:num:5}
+\end{align}
+Ez ut�bbi egy $m$-v�ltoz�s ($c_k \; (k = 1, \dots, m)$ sz�mok meghat�rozz�k $u^*$-ot), $m$ egyenletb�l �ll� egyenletrendszer. Ezek eredm�nyek�nt meg�llap�thatjuk, hogy ha $a, b, m$ el�g nagyok, akkor az eredeti $\eqref{eq:num:1}$ egyenletnek $\overline{u}$ pontosan akkor megold�sa, ha az $\eqref{eq:num:5}$ egyenletnek $u^*$ megold�sa �s $\overline{u} = y(u^*)$. \\
+Ezzel minden�nk megvan ahhoz, hogy a feladat numerikus megold�s�t ismertess�k. Legyen $N \geq m$. Az $Lu = Nu$ feladat megold�sait
+\begin{equation*}
+u = \sum_{k = 1}^N c_k \Phi_k = \sum_{k = 1}^m c_k \Phi_k + \sum_{k = m+1}^N c_k \Phi_k
+\end{equation*}
+alakban keress�k, teh�t N n�vel�s�vel a megold�s pontoss�g�t jav�tjuk (a m�veletig�ny rov�s�ra). $H_m$-en is hasonl�k�ppen m�dos�tunk:
+\begin{equation*}
+H_m u := \sum_{k = m+1}^N \frac{c_k}{\lambda_k} \Phi_k
+\end{equation*}
+Maga az algoritmus a k�vetkez�:
+\begin{enumerate}
+\item �ll�tsuk el� $L$-hez $\Phi_k (k = 1, \dots, N)$ saj�tf�ggv�nyeket.
+\item R�gz�ts�nk egy kezdeti $u^* = \sum_{k = 1}^m c_k \Phi_k$ kiindul� �rt�ket.
+\item �ll�tsuk el� $y(u^*)$-ot a fixpontiter�ci�val: $y_0 := u^*$, $y_{i+1} := u^* + H_m N y_i, \; (i = 1, \dots, S)$.
+\item Oldjuk meg az $Lu^* = P_m N y_{S+1}$ egyenletet $u^*$-ra, p�ld�ul Newton-m�dszerrel.
+\item Az �gy kapott $u^*$-b�l kiindulva ism�telj�k 3.-4. l�p�seket, am�g a k�v�nt pontoss�got el nem �rj�k (amit $Lu^* - Nu^*$ norm�j�val lehet jellemezni).
+\end{enumerate}
+El�fordulhat, hogy a 3. vagy a 4. l�p�sben nincs konvergencia, ekkor $m$ n�vel�se sz�ks�ges lehet (ami miatt $N$-et is lehet, hogy n�velni kell). \\
+A peremfelt�teleket $u$-ra azzal garant�ljuk, hogy a homog�n peremfelt�telt kik�nyszer�tj�k a $\Phi_k$ saj�tf�ggv�nyekre, �gy az � line�ris kombin�ci�jukkal el��ll� f�ggv�nyre is teljes�lni fognak. A k�vetkez� szekci�ban taglaljuk, hogy hogyan tal�ljuk meg a saj�tf�ggv�nyeket.
+
+\section{Csebisev-Tau-m�dszer a saj�tf�ggv�nyek el��ll�t�s�ra}
+\label{sec:ChebTau}
+
+A fejezet elej�n el�rebocs�tottuk, hogy az $L$ alakj�ra vonatkoz� megk�t�sekre az�rt van sz�ks�g, mert az ilyen oper�torokhoz tudunk saj�tf�ggv�nyeket numerikusan k�nnyen el��ll�tani. A  \cite{ChebysevTau} �s \cite{LISC} cikkek alapj�n ezt bemutatjuk. Ennek az elj�r�snak az eredm�nyek�nt ugyan nem ortonorm�lt rendszert kapunk, de a Gram-Schmidt-m�dszerrel �t lehet megfelel�en alak�tani. \\
+Legyen $L$ egy Sturm-Liouville oper�tor:
+\begin{equation*}
+L u = \frac{1}{w} ( -(p u')' + q u),
+\end{equation*}
+�s tegy�k fel, hogy az intervallum amin dolgozunk a $(-1, 1)$. A peremfelt�teleink a k�vetkez�k:
+\begin{align*}
+\alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
+\alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
+\end{align*}
+Ha $L$-nek $\lambda$ saj�t�rt�ke, $v$ pedig a hozz� tartoz� saj�tvektor, akkor $L v = \lambda v$, azaz
+\begin{align}
+\frac{1}{w} ( -(p v')' + q v) &= \lambda v, \nonumber \\
+-p v'' - p' v' + q v &= \lambda w v. \label{eq:CT:2}
+\end{align}
+Jel�lj�k $T_n(x)$-el a $(-1, 1)$-en �rtelmezett Csebisev-polinomokat: $T_n(x) = \cos(n \arccos(x))$. Ezekr�l tudjuk, hogy ortogon�lis rendszert alkotnak az $\frac{1}{\sqrt{1 - x^2}}$ s�lyf�ggv�nnyel, �s van rekurz�v k�plet�k ($T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)$). A c�l az, hogy ilyen polinomok v�ges line�ris kombin�ci�j�val k�zel�ts�k a saj�tf�ggv�nyt:
+\begin{equation*}
+v(x) = \sum_{k = 0}^N a_k T_k(x) = \mathbf{a}^T \mathbf{t},
+\end{equation*}
+ahol $\mathbf{a}^T = [a_0, a_1, \dots, a_N]$ �s $\mathbf{t} = [T_0(x), T_1(x), \dots, T_N(x)]^T$, �gy az egy�tthat�k $\mathbf{a}$ vektora egy�rtelm�en meghat�rozza a $v(x)$ f�ggv�nyt. \\
+Mivel $L$-nek sz�ks�ge van $v$ deriv�ltjaira, vizsg�ljuk meg, hogy a deriv�l�s milyen (m�trixszal le�rhat�) v�ltoz�st eredm�nyez az egy�tthat�k vektor�n:
+\begin{equation}
+v'(x) = \sum_{k = 0}^N a_k T_k'(x) = \sum_{k = 0}^N b_k T_k(x) = \mathbf{b}^T \mathbf{t} \label{eq:CT:1}
+\end{equation}
+El�sz�r is n�zz�k meg, hogy mi a kapcsolat a Csebisev-polinomok �s a deriv�ltak k�z�tt. Az �ttekinthet�s�g kedv��rt haszn�ljuk a $\theta := \arccos x$ jel�l�st (amivel $\sin \theta = \sqrt{1 - x^2}$).
+\begin{align*}
+T_n (x) &= \cos(n \theta) \\
+T_n' (x) &= \sin(n \theta) n \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n+1} T_{n+1}' (x) &= \sin((n+1) \theta) \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n-1} T_{n-1}' (x) &= \sin((n-1) \theta) \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n+1} T_{n+1}' (x) - \frac{1}{n-1} T_{n-1}' (x) &= \frac{\sin((n+1) \theta) - \sin((n-1) \theta)}{\sqrt{1 - x^2}} \\
+\sin((n+1) \theta) - \sin((n-1) \theta) &= 2 \cos(n \theta) \sin\theta = 2 T_n(x) \sqrt{1 - x^2} \\
+\frac{1}{n+1} T_{n+1}' (x) - \frac{1}{n-1} T_{n-1}' (x) &= 2 T_n(x)
+\end{align*}
+Ez m�k�dik $n \geq 2$ eset�n, kis $n$-ekre pedig egyszer� a dolog:
+\begin{align*}
+T_0' (x) &= 0, \\
+T_1' (x) &= 1 = T_0(x), \\
+T_2' (x) &= 4x = 4 T_1(x).
+\end{align*}
+Helyettes�ts�k be $\eqref{eq:CT:1}$-be a $T_k(x)$-ek hely�re az �gy kapott k�pleteket:
+\begin{align*}
+v' &= \sum_{n = 0}^N b_n T_n = b_0 T_1' + \frac{b_1}{4} T_2' + \sum_{n=2}^N \frac{b_n}{2(n+1)} T_{n+1}' - \sum_{n=2}^N \frac{b_n}{2(n-1)} T_{n-1}' = \\
+ &= \left( b_0 - \frac{b_2}{2} \right) T_1' + \sum_{n=2}^{N - 1} \frac{b_{n-1} - b_{n+1}}{2n} T_n' + \frac{b_{N-1}}{2N} T_N' + \frac{b_N}{2(N+1)}T_{N+1}'.
+\end{align*}
+�gy m�r l�that� az �sszef�gg�s $a_n$ �s $b_n$ k�z�tt:
+\begin{align*}
+b_N &= 0 \\
+b_{N-1} &= 2N a_N \\
+b_{n-1} &= b_{n+1} + 2n a_n \;(n = N-1, \dots, 2) \\
+b_0 &= \frac{b_2}{2} + a_1.
+\end{align*}
+Bel�that�, hogy az al�bbi m�trix kiel�g�ti a $\hat{D} \mathbf{a} = \mathbf{b}$ egyenletet ($k, l = 0, \dots, N$):
+\begin{equation*}
+\hat{D}_{kl} =
+	\begin{cases}
+	l, &\text{ha } k = 0 \text{ �s } l \text{ p�ratlan} \\
+	2l, &\text{ha } l \geq k \geq 1 \text{ �s } l+k \text{ p�ratlan} \\
+	0, &\text{k�l�nben},
+	\end{cases}
+\end{equation*}
+azaz ennek a m�trixnak a seg�ts�g�vel tudjuk a polinomsorral fel�rt f�ggv�nyeket deriv�lni:
+\begin{equation*}
+v' = \mathbf{b}^T \mathbf{t} = (\hat{D}\mathbf{a})^T \mathbf{t}.
+\end{equation*}
+Ezut�n vizsg�ljuk meg, hogy az $x$-szel t�rt�n� szorz�s milyen v�ltoz�st eredm�nyez. Ezt m�r csak k�zel�t�leg tudjuk megadni:
+\begin{equation*}
+x v(x) = \sum_{k = 0}^N a_k x T_k(x) \approx \sum_{k = 0}^N c_k T_k(x).
+\end{equation*}
+Itt a Csebisev-polinomok rekurzi�j�b�l gyorsan kij�n a megold�s:
+\begin{align*}
+x T_0(x) &= T_1(x) \\
+x T_n(x) &= \frac{1}{2} \left( T_{n+1} + T_{n-1} \right) \; (n \geq 1)
+\end{align*}
+Ezt behelyettes�tve kapjuk:
+\begin{align*}
+c_0 &= \frac{a_1}{2} \\
+c_1 &= a_0 + \frac{a_2}{2} \\
+c_n &= \frac{a_{n-1} + a_{n+1}}{2} \; (n = 2, \dots, N-1) \\
+c_N &\approx \frac{a_{N-1}}{2}
+\end{align*}
+�gy az al�bbi m�trix k�zel�t�leg megval�s�tja a $M \mathbf{a} \approx \mathbf{c}$ szorz�st ($k, l = 0, \dots, N$):
+\begin{equation*}
+M_{kl} =
+	\begin{cases}
+	1, &\text{ha }(k, l) = (1, 0) \\
+	\frac{1}{2}l, &\text{ha } l \geq 2 \text{ �s } |k - l| = 1 \\
+	0, &\text{k�l�nben},
+	\end{cases}
+\end{equation*}
+teh�t
+\begin{equation*}
+x v(x) \approx \mathbf{c}^T \mathbf{t} \approx (M \mathbf{a})^T \mathbf{t}.
+\end{equation*}
+Ezenfel�l, ha $f$ analitikus f�ggv�ny, akkor $f(x) v(x) \approx (f(M)\mathbf{c})^T \mathbf{t}$. \\ % TODO valami blabla arr�l hogy ezt mi�rt engedhetj�k meg p, p', q, w-re, lehet hogy meg kell �ket szor�tanunk analitikus fv-ekre
+Ezek seg�ts�g�vel �rjuk fel az $\eqref{eq:CT:2}$ egyenletet az egy�tthat�k vektor�n v�gzett m�trixm�veletk�nt:
+\begin{equation*}
+\hat{L} \mathbf{a} := \left( -p(M) \hat{D}^2 - p'(M) \hat{D} + q(M) \right) \mathbf{a}.
+\end{equation*}
+A $\eqref{eq:CT:2}$ egyenlet jobb oldala ebben a form�ban pedig $\lambda w(M) \mathbf{a}$, jel�l�sk�nt $\textbf{B} := w(M)$. \\
+M�g hasonl�k�ppen meg kell fogalmaznunk a peremfelt�teleinket, ehhez felhaszn�ljuk, hogy $\mathbf{t}$ egy vektor�rt�k� f�ggv�ny, $[a, b] = [-1, 1]$, �s ennek az intervallumnak a v�gpontjain $T_n(-1) = (-1)^n$, $T_n(1) = 1$. Legyen
+\begin{align*}
+h_1^T &= \alpha_{11} (\mathbf{t}(-1))^T + \alpha_{12} (\mathbf{t}(-1))^T \hat{D}, \\
+h_2^T &= \alpha_{21} (\mathbf{t}(1))^T + \alpha_{22} (\mathbf{t}(1))^T \hat{D}
+\end{align*}
+amivel (ism�t a $\hat{D} \mathbf{a} = \mathbf{b}$ jel�l�st alkalmazva)
+\begin{align*}
+h_1^T \mathbf{a} &= \alpha_{11} (\mathbf{a}^T \mathbf{t}(-1))^T + \alpha_{12} (\mathbf{b}^T \mathbf{t}(-1))^T = \alpha_{11} v(-1) + \alpha_{12} v'(-1), \\
+h_2^T \mathbf{a} &= \alpha_{21} (\mathbf{a}^T \mathbf{t}(1))^T + \alpha_{22} (\mathbf{b}^T \mathbf{t}(1))^T = \alpha_{21} v(1) + \alpha_{22} v'(1).
+\end{align*}
+Legyen $H = (h_1, h_2)^T$, �gy a peremfelt�tel megfogalmazhat� $H \textbf{a} = \textbf{0}$ form�ban. \\
+Legyen $\hat{A}$ az a m�trix, amit �gy kapunk, hogy $\hat{L}$ utols� k�t sor�t elhagyjuk (teh�t $N-1 \times N+1$ m�trix), �s �ll�tsuk el� $\hat{B}$-t ugyan�gy $\textbf{B}$-b�l. Az al�bbi egyenletrendszer megold�sak�nt megkapjuk a saj�tf�ggv�nyekhez tartoz� egy�tthat�sorozatokat (ezt �ltal�nos�tott saj�t�rt�k feladatnak is nevezik):
+\begin{equation*}
+\begin{pmatrix} \hat{A} \\ H \end{pmatrix} \mathbf{a} = \lambda \begin{pmatrix} \hat{B} \\ \mathbf{0} \end{pmatrix} \mathbf{a}.
+\end{equation*}
+Az egyenlet jobb oldal�n jav�thatunk, ha $\mathbf{0}$ helyett $\frac{1}{\lambda_*} H$-t haszn�lunk, ahol $\lambda_*$ egy nagy sz�m, ami nem saj�t�rt�ke $L$-nek. �gy a jobb oldal m�trix�nak
+$\begin{pmatrix} \hat{B} \\ \frac{1}{\lambda_*} H \end{pmatrix}$
+nincsenek csupa $0$ sorai. \\
+M�g fontos megjegyezni, hogy ha az eredeti intervallumunk nem a $[-1, 1]$, hanem valamely $[a, b]$ intervallum, akkor a deriv�l�s m�trix egy kicsit m�shogy fog kin�zni: $D := \frac{1}{\alpha} \hat{D}$, ahol $\alpha$ az intervallum k�z�ppontja ($\alpha = \frac{b - a}{2}$).
+
+\section{P�lda a numerikus alkalmaz�sra}
+\label{sec:examples}
+
+Most mutassunk k�t p�ld�t a m�dszer gyakorlati alkalmaz�s�ra, felhaszn�lva a $\cite{LSNum}$ cikkhez k�sz�lt MATLAB csomagot. \\
+Tekints�k az
+\begin{equation*}
+-u''(x) - 2u(x) = \frac{1}{3} u^3 - \sqrt{x}
+\end{equation*}
+egyenletet a $[0, 1]$ intervallumon a
+\begin{align*}
+u(0) &= 0 \\
+u(1) + u'(1) &= 0
+\end{align*}
+peremfelt�telekkel. Erre a feladatra a kisz�molt megold�s a k�vetkez�, legfeljebb $10^{-5}$ hib�t megengedve:
+\begin{center}
+%	\includegraphics{./abrak/pelda_01.png}
+\end{center}
+Ehhez az $m = 0$ v�laszt�s elegend� volt. Ezzel szemben, ha v�ltoztatunk a peremfelt�telen, �s az intervallum jobb oldal�n a
+\begin{equation*}
+u'(1) = 0
+\end{equation*}
+felt�telt k�vetelj�k meg, akkor $m=0$ eset�n nincs konvergencia, �s m�g $m=1$ eset�n is probl�m�s a helyzet, mert a Newton-iter�ci� nem konverg�l, ez�rt meg kell adni kezdeti felt�telt. A
+$\text{cinit} = [1]$ param�terrel, azaz a $\Phi_1$ komponens kezdeti egy�tthat�j�t 1-re v�ltoztatva viszont m�r van konvergencia, �s megkapjuk a megold�st:
+\begin{center}
+%	\includegraphics{./abrak/pelda_02.png}
+\end{center}
+

@@ -1,0 +1,94 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+\section{Az implicit függvényre vonatkozó tétel}
+
+A továbbiakban legyen $(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ normált tér, $\Omega\subset\X$, és $\Lambda\subset\R$ egy-egy nyílt halmaz.
+
+\satzbn{\label{satzimplicit}Ha   $(x_0,\lambda_0)\in\Omega\time\lambda$ és $z_0\in \Y$, továbbá az $F\in\mathfrak{C}^k(\Omega\times\Lambda,\Y)$ leképezés teljesíti az
+
+%\begin{description}
+%  \item[(i)] $F(x_0,\lambda_0)=z_0$;
+%  \item[(ii)] $\partial_1F(x_0,\lambda_0)\in GL(\X,\Y)$,
+%\end{description}
+\smallskip
+$$
+\textbf{(i)}\quad F(x_0,\lambda_0)=z_0\qquad\textrm{és}\qquad\textbf{(ii)}\quad \partial_1F(x_0,\lambda_0)\in GL(\X,\Y)
+$$
+feltételeket, akkor alkalmas $\exists\;\delta>0$ esetén van olyan
+$$
+\phi:K_\delta(\lambda_0)\rightarrow K_\varepsilon(x_0)\quad/\phi\in\mathfrak{C}^k/
+$$
+leképezés (\textbf{implicit függvény}), amelyre
+\begin{itemize}
+  \item $\phi(\lambda_0)=x_0$,
+  \item a $K_\varepsilon(x_0)\times K_\delta(\lambda_0)$ környezetben $\qquad F(x,\lambda)=z_0\qquad\Longleftrightarrow\qquad x=\phi(\lambda),$\\
+  \item $\phi'(\lambda_0)=-(\partial_1F(x_0,\lambda_0))^{-1}\circ\partial_2F(x_0,\lambda_0)$
+\end{itemize}
+teljesül.}{}
+
+\noindent Megjegyezzük, hogy a fenti tétel \idez{konstruktív}, ui. a
+$$
+\phi:K_\delta(\lambda_0)\rightarrow K_\varepsilon(x_0)
+$$
+függvény a következõ numerikus (módosított Newton-)módszer eredményeként adódik (vö. \cite{KolmogorovFomin}, 523. old., \cite{Zeidler}, 151. old.):
+$$
+\phi_1(\lambda):= x_0,\qquad\phi_{n+1}(\lambda):=\phi_n(\lambda)-[\partial_1F(\phi_0,\lambda_0)]^{-1}\circ\left\{F(\phi_n(\lambda),\lambda)-z_0\right\}
+$$
+$$
+(n\in\N;\,\lambda\in K_\delta(\lambda_0)).
+$$
+
+
+\bsp{Ha $F_n:\R\times\R\rightarrow\R$,
+$$
+F_1(x,\lambda):=x^2-\lambda,\qquad F_2(x,\lambda):=x^2-\lambda^2,\qquad F_3(x,\lambda):=x^3-\lambda.
+$$
+akkor $$F_n(0,0)=0\qquad\textrm{és}\qquad\partial_1F_n(0,0)=0,$$ következésképpen nem teljesül az \ref{satzimplicit}. tételben a  \textbf{(ii)} feltétel (vö. \eqref{lehetbif} ábra).
+%\clearpage
+Nem csoda, hogy az $$F_n(x,\lambda)=0$$ egyenletbõl nem fejezhetõ ki $x$ a $\lambda$ (sima) függvényeként.
+\bigskip
+}{}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[bb= 0 0 360 600,width=4.7cm,angle=0]{./abrak/lehetbif1}
+
+\includegraphics[bb= 0 0 360 600,width=4.7cm,angle=0]{./abrak/lehetbif2}
+
+\includegraphics[bb= 0 0 360 600,width=4.7cm,angle=0]{./abrak/lehetbif3}
+\caption{\label{lehetbif} Az $F_n^{-1}[\{0\}]\subset\R^2$ õsképek alakja.}
+\end{center}
+\end{figure}
+\clearpage 
+
+Elõfordulhat, hogy $$\partial_1F(x_0,\lambda_0)\notin GL(\X,\Y),$$ de a $\partial_1F(x_0,\lambda_0)\in L(\X,\Y)$ operátor szürjektív. Ebben az esetben az implicit függvényre vonatkozó tétel alábbi variánsa igazolható.
+
+\satz{\label{surjimpl}Legyen $k\in\N$  $(x_0,\lambda_0)\in\Omega\time\lambda$, $z_0\in \Y$. Ha az $F\in\mathfrak{C}^k(\Omega\times\Lambda,\Y)$ függvényre\\
+\textbf{(i)} $F(x_0,\lambda_0)=z_0$ és\\ \textbf{(ii)} $ \partial_1F(x_0,\lambda_0)\in L(\X,\Y)$ szürjektív úgy, hogy alkalmas $P\in L(\X)$ projekcióval
+$$
+\X=\mathcal{R}(P)\oplus\mathcal{N}(P)\qquad\textrm{és}\qquad\mathcal{R}(P)=\mathcal{N}(\partial_1F(x_0,\lambda_0)),
+$$
+akkor alkalmas $\rho>0$ szám, ill.  $$U:=K(0)\subset\mathcal{R}(P)\qquad\textrm{és}\qquad V:=K(z_0)\subset \mathcal{N}(P)$$ környezetek esetén pontosan egy olyan
+$$
+\phi:U\times K_\rho(\lambda_0)\rightarrow V,\qquad\phi\in\mathfrak{C}^k
+$$
+függvény van, amelyre
+$$
+F(x_0+\xi+\phi(\xi,\lambda),\lambda)= z_0\qquad\qquad\left((\xi,\lambda)\in U\times K_\rho(\lambda_0)\right)
+$$
+teljesül.
+}{Legyen $\X=:\X_1\oplus\X_2$, ahol $$\X_1:=\mathcal{R}(P)\qquad\textrm{és}\qquad\X_2:=\mathcal{N}(P).$$ Ekkor az
+$$
+L:=\partial_1F(x_0,\lambda_0)|_{\X_2}:\X_2\rightarrow\Y
+$$
+operátor bijektív, ui. ha valamely $\eta\in\X_2$ vektorra $ L\eta=0$, akkor $\eta\in\mathcal{N}(\partial_1F(x_0,\lambda_0))=\X_1$, ennélfogva $\eta=0$.
+Legyen most
+$$
+G(\eta,\xi,\lambda):=F(x_0+\xi+\eta,\lambda)\qquad(\xi\in\X_1,\,\eta\in\X_2:\;x_0+\xi+\eta\in\Omega,\;\lambda\in\Lambda).
+$$
+Ekkor
+$$
+G(0,0,\lambda_0)=z_0\qquad\textrm{és}\qquad\partial_1G(0,0,\lambda)=\partial_1F(x_0,\lambda)|_{\X_2}=L\in GL(\X_2,\Y),
+$$
+következésképpen $G$-re teljesülnek az implicit függvényre vonatkozó ttétel feltételei: a $$G( \eta,\xi,\lambda)=z_0$$ egyenletbõl az elsõ változó kifejezhetõ a második, ill. a harmadik változó függvényeként: $\eta=\phi(\xi,\lambda)$. $\blacksquare$} 

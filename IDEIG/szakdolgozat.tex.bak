@@ -1,0 +1,203 @@
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage[latin2]{inputenc}
+%\usepackage{ngerman}
+\linespread{1.2}
+\usepackage[latin2]{inputenc}
+\usepackage{t1enc}
+\def\magyarOptions{defaults=hu-min}
+\usepackage[magyar]{babel}
+
+\usepackage{watermark}
+
+
+%\usepackage{funk0}
+\usepackage{funk1}
+%\selectlanguage{magyar}
+%\usepackage{modositott}
+%\input makrok.tex
+\usepackage{makeidx}
+%\usepackage{index}
+%\usepackage{multind}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{graphics}
+%\usepackage{showidx}
+\usepackage{indentfirst}
+\usepackage{footnote}
+\usepackage{xcolor}
+%\usepackage{euler}
+
+%\texttt{}\usepackage{eufrak}
+%\usepackage{tcolorbox}
+
+%\usepackage{euler}
+%\usepackage{eufrak}
+%\usepackage{multind}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%AlapÃ©rtelmezÃ©sek
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\topmargin}{-1cm} \setlength{\oddsidemargin}{.1cm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\textwidth}{16cm} \setlength{\textheight}{24cm}
+\setlength{\headheight}{1cm} \setlength{\headsep}{4mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\usepackage{amssymb,amsmath,amsfonts,amssymb,amsbsy}
+%\usepackage{amsmath}
+
+%\usepackage{amsfonts,amssymb,amsmath,amsbsy}
+
+\usepackage{url}
+\usepackage{appendix}
+%\usepackage{funk3}
+\usepackage{funk4}
+
+%\setcounter{page}{1}
+\makeindex
+
+%% SZOVEGKIEMELESEK
+%%
+%%%%%%%%%%%%%%%%%%%%%%%\setlength\mathindent{0 mm}
+\newcommand{\ki}[1]{\textbf{\textsl{#1}}}
+\newcommand{\key}[1]{\textbf{#1}}
+\def\idez#1{{\ideze}#1''}
+\def\ideze{\setbox0=\hbox{\lower1.38ex\hbox{''}}\dp0=0pt\box0}
+%%
+%%
+\newcommand*{\bigtimes}{\mathop{\raisebox{-.5ex}{\hbox{\huge{$\times$}}}}}
+%%
+%\makeindex
+%\newindex{index2}{raw2}{comp2}{NÃ©vmutatÃ³}
+%\usepackage{funk0}
+
+%\newindex{aut}{adx}{and}{NÃ©vmutatÃ³}
+
+
+\usepackage[normalem]{ulem}
+
+\newcommand{\green}[1]{{\color{green}{ #1}}}
+\newcommand{\red}[1]{{\color{red}{ #1}}}
+\newcommand{\blue}[1]{{\color{blue}{ #1}}}
+\newcommand{\yellow}[1]{{\color{yellow}{ #1}}}
+%\newcommand{\yellow}[1]{{\color{yellow}{ #1}}}
+\newcommand{\violet}[1]{{\color{violet}{ #1}}}
+
+\hyphenation{fej-lõ-dés-bi-o-ló-gi-a-i rend-szer sza-ka-szon-ként de-rék-szö-gû
+	meg-ol-dás meny-nyi-sé-ge meg-ol-dá-sá-nak}
+
+\begin{document}
+	
+%\definecolor{light}{gray}{.30}
+%\watermark{
+%\rotatebox{0}{
+%        \parbox[t][\textheight][t]{0.2pt}{
+%            \fontsize{10pt}{70pt}
+%            \selectfont\textcolor{red}{
+%                \boxed{\textrm{2017.01.09.}}
+%            }
+%        }
+%    }
+%}
+
+%\pagestyle{headings}
+%\unitlength 1mm
+%
+%
+%-------------------------------------------------------------
+%\pagestyle{plain}
+%\unitlength 1mm
+%\textheight 22cm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%TÅLEM%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength\topmargin{24 pt} \setlength\headheight{28 pt}
+%\setlength\headsep{6 pt} \setlength\footskip{25.29 pt}
+%\setlength\textheight{200 mm} %%
+%\setlength\textwidth{550 mm}
+
+
+
+%=============================================================
+
+\definecolor{magenta}{rgb}{1,0.5,0.14}
+
+
+%
+%=============================================================
+%\newpage
+
+
+%\pagestyle{headings}
+%\setcounter{page}{1}
+%\input Bev.tex
+%\clearpage
+%\pagestyle{plain}
+
+
+
+\input titelseite.tex
+\input Vorwort.tex
+\tableofcontents
+
+%\chapter{Jelöléseksek}
+%\input bezeichnungen.tex
+
+\chapter{Funkcionálanalitikai segédeszközök}
+\input faktorter.tex
+\input operator.tex
+\input kompaktoperator.tex
+\input fredholmoperator.tex
+%\input kompakt operator.tex
+%\input Fredholm.tex
+\input implicit.tex
+\chapter{Bifurkációk}
+\input Bifurkationen.tex
+\chapter{A Ljapunov-Schmidt-redukció}
+\input LjapunovSchmidt.tex
+
+\chapter{Alkalmazások}
+Az alábbiakban a Ljapunov-Schmidt módszert fogjuk használni peremérték-feladatok megoldhatóságának vizsgálatára.
+\input Alkalmaz1.tex
+\input Alkalmaz2.tex
+
+\chapter{A nmerikus Ljapunov-Schmidt-módszer}
+\input NumLSMethod.tex
+
+
+
+\input hivatkozasok.tex
+
+
+%=============================================================
+%\clearpage
+%\addcontentsline{toc}{chapter}{Tárgymutató}
+%\twocolumn
+
+%\input  szakdolgozat.ind
+%\printindex
+%\printindex[aut]
+%\printindex
+%\printindex \addcontentsline{toc}{chapter}{\indexname}
+
+%\markboth{index}{}
+%\markright{INDEX}
+%\printindex{szakdolgozat2}
+
+
+
+\clearpage
+\thispagestyle{empty}
+\begin{flushleft}
+\textbf{\hypertarget{bliptak}{Lipták Bence,\\ programtervezõ informatikus szakos egyetemi hallgató\\
+Eötvös Loránd Tudományegyetem, Informatikai Kar,\\
+1117 Budapest, Pázmány Péter sétány 1/C,\\
+padsoldier@gmail.com\\
+%\url{http://numanal.inf.elte.hu/~alex}
+}}
+\end{flushleft}
+
+
+\end{document} 

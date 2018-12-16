@@ -1,0 +1,119 @@
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage[latin2]{inputenc}
+\linespread{1.2}
+\usepackage[latin2]{inputenc}
+\usepackage{t1enc}
+\def\magyarOptions{defaults=hu-min}
+\usepackage[magyar]{babel}
+\usepackage{watermark}
+\usepackage{funk1}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{indentfirst}
+\usepackage{footnote}
+\usepackage{xcolor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%AlapÃ©rtelmezÃ©sek
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\topmargin}{-1cm} \setlength{\oddsidemargin}{.1cm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\textwidth}{16cm} \setlength{\textheight}{24cm}
+\setlength{\headheight}{1cm} \setlength{\headsep}{4mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amssymb,amsmath,amsfonts,amssymb,amsbsy}
+
+\usepackage{url}
+\usepackage{appendix}
+\usepackage{funk4}
+
+\makeindex
+
+%% SZOVEGKIEMELESEK
+%%
+%%%%%%%%%%%%%%%%%%%%%%%\setlength\mathindent{0 mm}
+\newcommand{\ki}[1]{\textbf{\textsl{#1}}}
+\newcommand{\key}[1]{\textbf{#1}}
+\def\idez#1{{\ideze}#1''}
+\def\ideze{\setbox0=\hbox{\lower1.38ex\hbox{''}}\dp0=0pt\box0}
+%%
+%%
+\newcommand*{\bigtimes}{\mathop{\raisebox{-.5ex}{\hbox{\huge{$\times$}}}}}
+%%
+%\makeindex
+%\newindex{index2}{raw2}{comp2}{NÃ©vmutatÃ³}
+%\usepackage{funk0}
+
+%\newindex{aut}{adx}{and}{NÃ©vmutatÃ³}
+
+
+\usepackage[normalem]{ulem}
+
+\newcommand{\green}[1]{{\color{green}{ #1}}}
+\newcommand{\red}[1]{{\color{red}{ #1}}}
+\newcommand{\blue}[1]{{\color{blue}{ #1}}}
+\newcommand{\yellow}[1]{{\color{yellow}{ #1}}}
+%\newcommand{\yellow}[1]{{\color{yellow}{ #1}}}
+\newcommand{\violet}[1]{{\color{violet}{ #1}}}
+
+\hyphenation{fej-lõ-dés-bi-o-ló-gi-a-i rend-szer sza-ka-szon-ként de-rék-szö-gû
+	meg-ol-dás meny-nyi-sé-ge meg-ol-dá-sá-nak}
+
+\begin{document}
+	
+
+
+%=============================================================
+
+\definecolor{magenta}{rgb}{1,0.5,0.14}
+
+
+
+\input titelseite.tex
+\input Vorwort.tex
+\tableofcontents
+
+%\chapter{Jelöléseksek}
+%\input bezeichnungen.tex
+
+\chapter{Funkcionálanalitikai segédeszközök}
+\input faktorter.tex
+\input operator.tex
+\input kompaktoperator.tex
+\input fredholmoperator.tex
+\input implicit.tex
+\chapter{Bifurkációk}
+\input Bifurkationen.tex
+\chapter{A Ljapunov-Schmidt-redukció}
+\input LjapunovSchmidt.tex
+
+\chapter{Alkalmazások}
+Az alábbiakban a Ljapunov-Schmidt módszert fogjuk használni peremérték-feladatok megoldhatóságának vizsgálatára.
+\input Alkalmaz1.tex
+\input Alkalmaz2.tex
+
+\chapter{A numerikus Ljapunov-Schmidt-módszer}
+\input NumLSMethod.tex
+
+
+
+\input hivatkozasok.tex
+
+
+
+
+\clearpage
+\thispagestyle{empty}
+\begin{flushleft}
+\textbf{\hypertarget{bliptak}{Lipták Bence,\\ programtervezõ informatikus szakos egyetemi hallgató\\
+Eötvös Loránd Tudományegyetem, Informatikai Kar,\\
+1117 Budapest, Pázmány Péter sétány 1/C,\\
+padsoldier@gmail.com\\
+%\url{http://numanal.inf.elte.hu/~alex}
+}}
+\end{flushleft}
+
+
+\end{document} 

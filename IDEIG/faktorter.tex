@@ -1,0 +1,151 @@
+%\setcounter{chapter}{0}
+%\bigskip
+Ebben a fejezetben összefoglaljuk a funkcionálanalízis azon fogalmait, ill. tételeit, amelyekre a késõbbiekben hivatkozunk, ill. amelyeket a Ljapunov-Schmidt-módszer tárgyalása folyamán felhasználunk. Ha mást nem írunk, akkor a továbbiakban legyen $\X$ és $\Y$ egy-egy a $\K$ testre vonatkozó vektortér. A jelölés-, ill. szimbólumrendszert illetõen alapvetõen a \cite{Kovacs} jegyzetre támaszkodunk.
+
+\section{Faktorterek, direkt kiegészítõk}
+
+Adott $\mathcal{H}$ halmaz, ill. $\sim\subset\mathcal{H}\times\mathcal{H}$ ekvivalencia esetében a
+$$
+[x]:=\left\{y\in\mathcal{H}:\;x\sim y\right\}
+$$szimbólum jelöli az $x\in\mathcal{H}$ elemhez tartozó ekvivalenciaosztályt,
+$$
+\mathcal{H}/\sim:=\left\{[x]\in\mathcal{P}(\mathcal{H}):\;x\in\mathcal{H}\right\}
+$$
+a $\sim$-ekvivalenciaosztályok halmazát.
+
+Ha $\mathcal{X}$ vektortér a $\K$ testre vonatkozóan, $A,B\subset\mathcal{X}$ és $\alpha\in\K$, akkor
+$$
+A+B:=\left\{a+b\in\mathcal{X}:\;a\in A,\,b\in B\right\},\qquad\{a\}+B=:a+B\quad(a\in\X),
+$$
+$$
+\alpha A:=\left\{\alpha a\in\mathcal{X}:\;a\in A\right\}.
+$$
+\bigskip
+
+\bsp{Ha $$\X:=\R^2,\qquad\mathcal{A}:=\{(a,0):\;a\in\R\}\qquad\textrm{és}\qquad r:=(x,y)\in\R^2,$$ akkor
+$$
+r+\mathcal{A}=\left\{r+u:\;u\in\mathcal{A}\right\}=\left\{(x+a,y+0):\;x\in\R\right\}=\left\{(x,y):\;x\in\R\right\},
+$$
+azaz $r+\mathcal{A}$ nem más mint az $y$ abszcisszájú vízszintes egyenes.}{}
+
+Adott $\mathcal{X}$ vektortér, $\mathcal{A},\mathcal{B}\subset\mathcal{X}$ altér és $\mathcal{A}\cap \mathcal{B}=\{0\}$ esetén az  $$\mathcal{A}+\mathcal{B}=:\mathcal{A}\oplus \mathcal{B}$$ komplexusösszeget \textbf{direktösszeg}nek, a $\mathcal{B}$ alteret pedig az $\mathcal{A}$ altér \textbf{direkt kiegészítõ}jének nevezzük, ha $\mathcal{A}\oplus\mathcal{B}=\X$ teljesül. Könnyen belátható, hogy
+$$
+x\in \mathcal{A}\oplus \mathcal{B}\qquad\Longleftrightarrow\qquad\exists|\,u\in \mathcal{A},\,v\in \mathcal{B}:\;x=u+v,
+$$
+
+
+Ha $\mathcal{A}$ altér az $\mathcal{X}$ vektortérben, akkor az
+$$
+x\sim y\qquad:\Longleftrightarrow\qquad x-y\in\mathcal{A}\quad(x,y\in\mathcal{X})
+$$
+reláció $\mathcal{X}$-beli ekvivalencia, és az $x\in\X$ elemhez tartozó ekvivalenciaosztályra
+$$
+[x]=\left\{u\in\mathcal{X}:\;x-u\in\mathcal{A}\right\}=\left\{x+y\in\mathcal{X}:\;y\in\mathcal{A}\right\}=x+\mathcal{A}.
+$$
+
+\bigskip
+
+\noindent A $\sim$-ekvivalenciaosztályok halmazára $\mathcal{X}/\sim$ helyett gyakran az $\mathcal{X}/\mathcal{A}$ jelölés használatos. Így
+$$
+\mathcal{X}/\mathcal{A}=\left\{x+\mathcal{A}:\;x\in\X\right\}.
+$$
+Mivel bármely $\lambda\in\K$ és $x,y,u,v\in \mathcal{X}$ esetén
+$$
+(x\sim y\;\wedge\;u\sim v)\quad\Longrightarrow\quad x+u\sim y+v,\qquad x\sim y\quad\Longrightarrow\quad\lambda x\sim\lambda y,
+$$
+ezért az
+$$
+[x]+[y]:=[x+y]\quad(x,y\in\mathcal{X}),\qquad\lambda\cdot[x]:=[\lambda\cdot x]\quad(\lambda\in\K,\,x\in\mathcal{X})
+$$
+mûveletekkel $\mathcal{X}/\mathcal{A}$ halmaz vektortér, amelyet az $\mathcal{X}$ vektortér $\mathcal{A}$ altere szerinti \textbf{fak\-tor\-te\-r}é\-nek vagy \textbf{hányadoster}ének nevezünk. Az $\mathcal{X}/\mathcal{A}$-beli nullvektor: $[0]=\mathcal{A}$.
+\bigskip
+
+\bsp{ Ha $$\X:=\R^2\qquad\textrm{és}\qquad\mathcal{A}:=\{(a,0):\;a\in\R\},$$ akkor
+$$
+\R^2/\mathcal{A}=\left\{r+\mathcal{A}:\;r\in\R^2\right\},
+$$
+azaz $\R^2/\mathcal{A}$ nem más mint az $\R^2$-beli vízszintes egyenesek halmaza.}{}
+\bigskip
+
+\bsp{ Világos, hogy ha $\X:=\mathfrak{C}_\R[0,1]$, akkor
+$$
+\mathcal{A}:=\left\{f\in\X:\;\int_0^1f=0\right\}
+$$
+altér $\X$-ben. Ha $$e:[0,1]\rightarrow\R,\qquad e(x):=1,$$ akkor $([e])$ bázisa $\mathcal{X}/\mathcal{A}$-nak, hiszen
+\begin{itemize}
+  \item $\displaystyle\int_0^11\,\mathrm{d}x=1\neq0$ következtében $e\notin\mathcal{A}$, tehát $[e]\neq0$, így $([e])$ lineárisan független.
+  \item ha
+      $$
+      f\in\X\qquad\textrm{és}\qquad\lambda:=\int_0^1f,
+      $$
+      akkor
+      $$
+      \int_0^1(f-\lambda e)=\int_0^1f(x)\,\mathrm{d}x-\lambda\int_0^11\,\mathrm{d}x=\int_0^1f(x)\,\mathrm{d}x-\lambda=0
+      $$
+      következtében
+      $$
+      f-\lambda e\in\mathcal{A},\qquad\textrm{azaz}\qquad [f]=\lambda[e].
+      $$
+\end{itemize}
+}{}
+\bigskip
+
+Adott $\mathcal{X}$ vektortér és $\mathcal{A}\subset\mathcal{X}$ altér esetében $\mathcal{A}$ kodimenziója a $$\left(\codim(\mathcal{A}):=\right)\codim(\mathcal{A})_{\mathcal{X}}:=\dim(\mathcal{X}/\mathcal{A})$$ (kibõvített értelemben vett) szám. Ha $\mathcal{B}\subset\mathcal{X}$ altér az $\mathcal{A}$  direkt kiegészítõje: $\mathcal{A}\oplus\mathcal{B}=\X$, akkor  $\codim(\mathcal{A})=\dim(\mathcal{B})$.
+\bigskip
+
+\noindent Belátható, hogy
+\begin{itemize}
+  \item ha $\mathcal{A}=\X$, akkor $\mathcal{X}/\mathcal{A}=\{0\}$, így $\codim(\X)=0$.
+  \item a következõ három állítás egyenértékû:
+      \begin{enumerate}
+        \item $\codim(\mathcal{A})=1$.
+        \item alkalmas $v\in\X\backslash\mathcal{A}$ esetén $$\X=\mathcal{A}+\R v:=\left\{a+ \lambda v:\;a\in\mathcal{A},\,\lambda\in\R\right\}.$$
+        \item tetszõleges $v\in\X\backslash\mathcal{A}$ esetén $$\X=\mathcal{A}+\R v.$$
+      \end{enumerate}
+\end{itemize}
+\bigskip
+
+\satzbn{Ha $\mathcal{A}$ altér az $\X$ vektortérben, amelynek a $\mathcal{B}$ vektorrendszer egy bázisa, akkor $\X$-ben van olyan $\mathcal{C}$ bázis, hogy $\mathcal{B}$ részrendszere $\mathcal{C}$-nek és
+$$
+\left\{x+\mathcal{A}:\;x\in \mathcal{C}\backslash \mathcal{B}\right\}
+$$
+bázisa az $\mathcal{X}/\mathcal{A}$ faktortérnek.
+}{}
+\bigskip
+
+\noindent Az iménti tétel következménye az
+\bigskip
+
+\behbn{Ha $\mathcal{A}$ altér az $\X$ vektortérben, akkor
+$$
+\dim(\mathcal{X})=\dim(\mathcal{A})+\dim(\mathcal{X}/\mathcal{A})=\dim(\mathcal{A})+\codim(\mathcal{A})_{\mathcal{X}}.
+$$
+}{}
+
+\satzbn{ Legyen $(\X,\|\cdot\|)$ normált tér, $\mathcal{A}\subset\X$ altér. Ekkor a $|||\cdot|||:\X/\mathcal{A}\rightarrow\R$,
+$$
+|||[x]|||:=d(x,\mathcal{A}):=\inf\left\{\|x-y\|\in\R:\;y\in\mathcal{A}\right\}=
+\inf\left\{\|z\|\in\R:\;z\in[x]\right\}
+$$
+leképezés norma, továbbá, ha $(\X,\|\cdot\|)$ Banach-tér, akkor $(\X/\mathcal{A},|||\cdot|||)$ is  Banach-tér.}{}
+
+%\begin{rem}\label{codimBEms}\item
+%\begin{enumerate}
+%  \item Ha $\mathcal{A}$ az $\mathcal{X}$-nek olyan nem-trivi?lis altere, hogy valamely %$x\in\mathcal{X}\backslash\mathcal{A}$ vektorra
+%      $$
+%      \mathcal{X}=\mathcal{A}+\sp(\{x\}),
+%      $$
+%      akkor $\dim(\sp(\{x\}))=1$ miatt $\codim_{\mathcal{X}}(\mathcal{A})=1$.
+%  \item Ha $f:\mathcal{X}\rightarrow\K$ line?ris, azaz b?rmely $\lambda\in\K$ ?s $u,v\in\mathcal{X}$ %eset?n $$f(u+\lambda v)=f(u)+\lambda f(v),$$ akkor a
+%      $$
+%      \ker(f):=\left\{u\in\mathcal{X}:\; f(u)=0\right\}
+%      $$
+%      halmaz alt?r $\mathcal{X}$-ben ?s $$\codim_{\mathcal{X}}(\ker(f))\leq 1,$$ hiszen $f=0$ eset?n %$\ker(f)=\mathcal{X}$, ?s k?nnyen bel?that?, hogy $f\neq0$ eset?n az $$\mathcal{A}:=\ker(f)$$ kiel?g?ti az %\emph{$1$}. felt?teleit.
+%\end{enumerate}
+%\end{rem}
+%\bigskip
+
+
+
+
+
