@@ -133,17 +133,13 @@ u(t) := \Phi(t) \hat{p}\qquad(t\in[0,1]).
 $$
 Hogy alkalmazhassuk a Ljapunov-Schmidt-módszert, értelmezzük az alábbi operátorokat. Legyen
 $$
-N:( L^2[0, 1], \mathbb{R}^n)\rightarrow ( L^2[0, 1], \mathbb{R}^n),\qquad Nx := f\circ x,
+N:L^2[0, 1]\rightarrow L^2[0, 1],\qquad Nx := f\circ x,
 $$
 továbbá
 $$
-L:\mathcal{D}(L)\rightarrow ( L^2[0, 1], \mathbb{R}^n),\qquad Lx := x' - Ax
+L:\mathcal{D}(L)\rightarrow L^2[0, 1],\qquad Lx := x' - Ax
 $$
 ahol
-$$
-( L^2[0, 1], \mathbb{R}^n) := \left\{ \phi \in L^2[0, 1] \rightarrow \mathbb{R}^n \right\}
-$$
-és
 $$
 \mathcal{D}(L):=\left\{ \phi : [0, 1] \rightarrow \mathbb{R}^n : \phi \text{ abszolút folytonos}, \phi' \in  L^2[0, 1], \,\sum_{k = 1}^N B_k \phi(t_k) = 0 \right\}.
 $$
@@ -154,7 +150,7 @@ Lx = Nx. \label{eq:mp:operator}
 \end{equation}
 Amennyiben $L$ invertálható, akkor $x$-re az $x = L^{-1} N x$ fixpont-egyenletet kapjuk. Tegyük fel, hogy $L$ nem invertálható: $\mathcal{N}(L) \neq \{ 0\}$. Erre fogjuk a Ljapunov-Schmidt-módszert alkalmazni. Alkalmasan választott
 $$
-Q:( L^2[0, 1], \mathbb{R}^n)\rightarrow\mathcal{R}(L), \qquad\textrm{és}\qquad P:( L^2[0, 1], \mathbb{R}^n)\rightarrow \mathcal{N}(L)
+Q:L^2[0, 1]\rightarrow\mathcal{R}(L), \qquad\textrm{és}\qquad P:L^2[0, 1]\rightarrow \mathcal{N}(L)
 $$
 projekciók bevezetésével az
 A $Q$ segítségével felírjuk a \eqref{eq:mp:operator} operátoregyenlettel egyenértékû
