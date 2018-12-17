@@ -7,31 +7,21 @@
 
 \label{chap:LjapunovSchmidtNum}
 
-A következõ fejezetben ismertetjük a Ljapunov-Schmidt-módszernek egy numerikus módszerként történõ felhasználását bizonyos peremérték-feladatok esetén \cite{LSNum} alapján.
-Tekintsük az alábbi egyenletet:
+A következõ fejezetben ismertetjük a Ljapunov-Schmidt-módszernek egy numerikus módszerként történõ felhasználását bizonyos peremérték-feladatok esetén \cite{LSNum} alapján. \\
+Legyen $\X := \left\{ \phi : [a, b] \rightarrow \mathbb{R} \right\}$ egy valós, szeparábilis Hilbert-tér. Tekintsük az alábbi egyenletet:
 \begin{equation}\label{eq:num:1}
-Lu(x) = Nu(x),\qquad(x\in[a, b]), 
+Lu = Nu, 
 \end{equation}
-ahol $L$ az úgynevezett Sturm-Liouville-operátor:
-\begin{equation*}
-%Lu(x) = \frac{1}{w(x)}(-(p(x)u'(x))' + q(x)u(x)),
-L u = \frac{1}{w} ( -(p u')' + q u),
-\end{equation*}
-ahol $$p(x) > 0,\quad w(x) > 0\qquad(x \in [a, b]),$$ $p, q, w$ adott analitikus függvények, valamint $u$-ra a következõ peremfeltételek teljesülnek:
+ahol $L \in \mathfrak{L}(\mathcal{X}\curvearrowright \mathcal{X})$ lineáris operátor, $N \in \mathcal{X} \rightarrow \mathcal{X}$ pedig egy nemlineáris operátor. Az $u \in \X$-re vonatkozó peremfeltételeink a következõk:
 $$
-\alpha_{11}u(a) + \alpha_{12}u'(a) = 0,\qquad \alpha_{21}u(b) + \alpha_{22}u'(b) = 0.
+\alpha_{11}u(a) + \alpha_{12}u'(a) = 0,\qquad \alpha_{21}u(b) + \alpha_{22}u'(b) = 0,
 $$
-%\begin{align*}
-%\alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
-%\alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
-%\end{align*}
-Ezek a kikötések azért szükségesek, mert a késõbbiekben az ilyen $L$-ekhez adunk meg egy módszert (a Csebisev-Tau-módszert \cite{ChebysevTau}), amivel a sajátfüggvényeit elõ tudjuk állítani. \\
-Emellett feltesszük a következõket:
+ahol $\alpha_{ij} \in \mathbb{R}\;(i,j = 1, 2)$. \\
+Feltesszük emellett a következõket:
 \begin{itemize}
-\item $\mathcal{X}$ valós, szeparábilis Hilbert-tér, $L \in \mathfrak{L}(\mathcal{X}\curvearrowright \mathcal{X})$ lineáris operátor, $N\in \mathcal{X} \rightarrow \mathcal{X}$ nemlineáris operátor,
 \item $L$ zárt leképezés %(amivel ekvivalens \cite{Kovacs}: $x_n \rightarrow x$ és $Lx_n \rightarrow y$-ból következik hogy $x \in \mathcal{D}(L)$ és $Lx = y$), 
-    önadjungált, $\mathcal{D}(L)$ sûrû $\mathcal{X}$-ben, $\mathcal{N}(L) = p > 0$ véges,
-\item $L$-nek a sajátértékei $$\lambda_1 = \dots = \lambda_p = 0 < \lambda_{p + 1},\qquad\lambda_i \leq \lambda_{i + 1}\qquad\lim_{i \to \infty} \lambda_i = \infty,$$ és a hozzájuk tartozó $\Phi_1, \Phi_2, \dots$ sajátfüggvények $\mathcal{X}$-ben egy teljes ortonormált rendszert alkotnak - ezeket a tulajdonságokat a Sturm-Liouville-operátor biztosítja,
+    önadjungált, $\mathcal{D}(L)$ sûrû $\mathcal{X}$-ben, $\dim\mathcal{N}(L) = p > 0$ véges,
+\item $L$-nek a sajátértékei $$\lambda_1 = \dots = \lambda_p = 0 < \lambda_{p + 1},\qquad\lambda_i \leq \lambda_{i + 1}\qquad\lim_{i \to \infty} \lambda_i = \infty,$$ és a hozzájuk tartozó $\Phi_1, \Phi_2, \dots$ sajátfüggvények $\mathcal{X}$-ben egy teljes ortonormált rendszert alkotnak,
 \item létezik egy $\mathcal{X'} \subset \mathcal{X}$ altér, ami egy $\mu$ normával teljes, $\mathcal{D}(L) \subset \mathcal{X'}$, minden\linebreak $x \in \mathcal{D}(L)$ esetén a $\Phi_i$-szerinti Fourier-sora ($\sum\limits_{k=1}\langle x, \Phi_k \rangle \Phi_k$) $\mu$-ben konvergál $x$-hez és
 $$
 \{ \mu(\Phi_k) / \lambda_k\}_{k > p} \in l_2,
@@ -129,7 +119,7 @@ Még nézzük meg $H_m$ $\mu$-szerinti normáját: $$\mu(H_m) \leq \alpha \sigma(m),$
  &\leq \left| \left( \frac{\mu(\Phi_k)}{\lambda_k}, \langle u, \Phi_k \rangle \right)_{l_2}\right| \leq \left\|\frac{\mu(\Phi_k)}{\lambda_k}\right\|_{l_2} \cdot\|\langle u, \Phi_k \rangle\|_{l_2} = \\\\
  &= \sigma(m)\|u\| \leq \sigma(m) \alpha \mu(u)
 \end{align*}
-ahol $\left( \cdot, \cdot \right)_{l_2}$ az $l_2$-beli skaláris szorzást jelöli. A levezetés során alkalmaztuk a Cauchy-Bunyakovsky-egyenlõtlenséget és a Parseval-egyenlõséget.
+ahol $\left( \cdot, \cdot \right)_{l_2}$ az $l_2$-beli skaláris szorzást jelöli. A levezetés során alkalmaztuk a Cauchy-Bunyakovszkij-egyenlõtlenséget és a Parseval-egyenlõséget.
 Ebbõl az is következik, hogy $$\lim_{m \to \infty} \mu(H_m) = 0.$$ A korábbi feltételeinket egészítsük ki még azzal, így $$\mathcal{R}(H_m) \subset \mathcal{D}(N)\qquad\textrm{és}\qquad S_m \subset \mathcal{D}(N),$$ hogy a $P_m$ és a $H_m$ alkalmazása után tudjuk az $N$-et is még alkalmazni. \\
 Tegyük fel, hogy $$\overline{u} \in \mathcal{D}(N) \cap \mathcal{D}(L)$$ megoldása az $\eqref{eq:num:1}$ egyenletnek, tehát
 \begin{equation}
@@ -146,7 +136,7 @@ ez a kisegítõ egyenlet. Ezután alkalmazzuk $\eqref{eq:num:2}$-re $P_m$-et:
 P_m(L \overline{u} - N \overline{u}) = 0, \label{eq:num:4}
 \end{equation}
 ami a bifurkációs egyenlet. Az összes olyan $$\overline{u} \in \mathcal{D}(L) \cap \mathcal{D}(N),$$ ami megoldása a kisegítõ és a bifurkációs egyenletnek, az megoldása az eredeti $\eqref{eq:num:1}$ feladatnak. \\
-Legyenek $a > 0, b > 0$ valós számok, és legyen $u_0$ egy közelítõ megoldása az $$Lu = Nu$$ egyenletnek úgy, hogy létezik $u^* \in S_m$ ($u^* = \sum_{k=1}^m a_k \Phi_k$ valamely $a_k$ számokra, $k = 1, \dots, m$), amivel $\mu(u^* - u_0) \leq a$. Vegyük a következõ halmazt:
+Legyenek $a > 0, b > 0$ valós számok, és legyen $u_0$ egy közelítõ megoldása az $$Lu = Nu$$ egyenletnek úgy, hogy létezik $u^* \in S_m$ ($u^* = \sum_{k=1}^m a_k \Phi_k$ valamely $a_k$ számokra, \linebreak $k = 1, \dots, m$), amivel $\mu(u^* - u_0) \leq a$. Vegyük a következõ halmazt:
 \begin{equation*}
 S_{u^*}^b := \{ u \in \mathcal{D}(N) \; | \; P_m u = u^*, \mu((I - P_m)u) \leq b \},
 \end{equation*}
@@ -238,19 +228,24 @@ Maga az algoritmus a következõ:
 \item Az így kapott $u^*$-ból kiindulva ismételjük 3.-4. lépéseket, amíg a kívánt pontosságot el nem érjük (egy megoldás pontosságát $Lu^* - Nu^*$ normájával jellemezzük).
 \end{enumerate}
 Elõfordulhat, hogy a 3. vagy a 4. lépésben nincs konvergencia, ekkor $m$ növelése szükséges lehet, ami miatt lehet, hogy $N$-et szintén növelni kell. \\
-A peremfeltételeket $u$-ra azzal garantáljuk, hogy a homogén peremfeltételt kikényszerítjük a $\Phi_k$ sajátfüggvényekre, így az õ lineáris kombinációjukkal elõálló függvényre is teljesülni fognak. A következõ szekcióban taglaljuk, hogy hogyan találjuk meg a sajátfüggvényeket.
+A peremfeltételeket $u$-ra azzal garantáljuk, hogy a homogén peremfeltételt kikényszerítjük a $\Phi_k$ sajátfüggvényekre, így az õ lineáris kombinációjukkal elõálló függvényre is teljesülni fognak. A következõ szekcióban taglaljuk, hogy hogyan állíthatjuk elõ egy bizonyos esetben a sajátfüggvényeket.
 
 \section{Csebisev-Tau-módszer a sajátfüggvények elõállítására}
 \label{sec:ChebTau}
 
-A fejezet elején elõrebocsátottuk, hogy az $L$ alakjára vonatkozó megkötésekre azért van szükség, mert az ilyen operátorokhoz tudunk sajátfüggvényeket numerikusan könnyen elõállítani. A  \cite{ChebysevTau} és \cite{LISC} cikkek alapján ezt bemutatjuk. Ennek az eljárásnak az eredményeként ugyan nem ortonormált rendszert kapunk, de a Gram-Schmidt-módszerrel át lehet megfelelõen alakítani. \\
-Legyen $L$ egy Sturm-Liouville operátor:
+
+A \cite{ChebysevTau} és \cite{LISC} cikkek alapján bemutatjuk, hogy bizonyos feltételek mellett hogyan lehet $L$ sajátfüggvényeit elõállítani. Ennek az eljárásnak az eredményeként ugyan nem ortonormált rendszert kapunk, de a Gram-Schmidt-módszerrel át lehet megfelelõen alakítani. \\
+Legyen $L$ egy úgynevezett Sturm-Liouville operátor:
 \begin{equation*}
 L u = \frac{1}{w} ( -(p u')' + q u),
 \end{equation*}
-és tegyük fel, hogy az intervallum amin dolgozunk a $(-1, 1)$. A peremfeltételeink a következõk:
+ahol
 $$
-\alpha_{11}u(a) + \alpha_{12}u'(a)= 0,\qquad \alpha_{21}u(b) + \alpha_{22}u'(b)= 0.
+p(x) > 0,\quad w(x) > 0\qquad(x \in [a, b]),
+$$
+$p, q, w$ adott analitikus függvények, és tegyük fel, hogy az intervallum, ami felett dolgozunk a $(-1, 1)$. A peremfeltételeink a következõk:
+$$
+\alpha_{11}u(-1) + \alpha_{12}u'(-1)= 0,\qquad \alpha_{21}u(1) + \alpha_{22}u'(1)= 0.
 $$
 %\begin{align*}
 %\alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
@@ -396,7 +391,8 @@ peremfeltételekkel. Erre a feladatra a kiszámolt megoldás a következõ, legfeljeb
 \begin{center}
 	\includegraphics{./abrak/pelda_01.png}
 \end{center}
-Ehhez az $m = 0$ választás elegendõ volt. Ezzel szemben ha változtatunk a peremfeltételen, és az intervallum jobb oldalán az $u'(1) = 0$ feltételt követeljük meg, akkor $m=0$ esetén nincs konvergencia. Még $m=1$ esetén sem kapunk megoldást, mert a Newton-iteráció nem konvergál, ezért meg kell adni kezdeti feltételt. A $\text{cinit} = [1]$ paraméterrel, azaz a $\Phi_1$ komponens kezdeti együtthatóját 1-re változtatva az iteráció konvergál, és megkapjuk a megoldást:
+Ehhez az $m = 0$ választás elegendõ volt. \\
+Ezzel szemben ha változtatunk a peremfeltételen, és az intervallum jobb oldalán az $u'(1) = 0$ feltételt követeljük meg, akkor $m=0$ esetén nincs konvergencia. Még $m=1$ esetén sem kapunk megoldást, mert a Newton-iteráció nem konvergál, ezért meg kell adni kezdeti feltételt. A $\text{cinit} = [1]$ paraméterrel, azaz a $\Phi_1$ komponens kezdeti együtthatóját $1$-nek választva az iteráció konvergál, és megkapjuk a megoldást:
 \begin{center}
 	\includegraphics{./abrak/pelda_02.png}
 \end{center}
