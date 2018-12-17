@@ -8,15 +8,11 @@
 \label{chap:LjapunovSchmidtNum}
 
 A következõ fejezetben ismertetjük a Ljapunov-Schmidt-módszernek egy numerikus módszerként történõ felhasználását bizonyos peremérték-feladatok esetén \cite{LSNum} alapján. \\
-Legyen $\X := \left\{ \phi : [a, b] \rightarrow \mathbb{R} \right\}$ egy valós, szeparábilis Hilbert-tér. Tekintsük az alábbi egyenletet:
+Legyen $\X$ egy valós, szeparábilis Hilbert-tér. Tekintsük az alábbi egyenletet:
 \begin{equation}\label{eq:num:1}
 Lu = Nu, 
 \end{equation}
-ahol $L \in \mathfrak{L}(\mathcal{X}\curvearrowright \mathcal{X})$ lineáris operátor, $N \in \mathcal{X} \rightarrow \mathcal{X}$ pedig egy nemlineáris operátor. Az $u \in \X$-re vonatkozó peremfeltételeink a következõk:
-$$
-\alpha_{11}u(a) + \alpha_{12}u'(a) = 0,\qquad \alpha_{21}u(b) + \alpha_{22}u'(b) = 0,
-$$
-ahol $\alpha_{ij} \in \mathbb{R}\;(i,j = 1, 2)$. \\
+ahol $L \in \mathfrak{L}(\mathcal{X}\curvearrowright \mathcal{X})$ lineáris operátor, $N \in \mathcal{X} \rightarrow \mathcal{X}$ pedig egy nemlineáris operátor.
 Feltesszük emellett a következõket:
 \begin{itemize}
 \item $L$ zárt leképezés %(amivel ekvivalens \cite{Kovacs}: $x_n \rightarrow x$ és $Lx_n \rightarrow y$-ból következik hogy $x \in \mathcal{D}(L)$ és $Lx = y$), 
@@ -228,29 +224,26 @@ Maga az algoritmus a következõ:
 \item Az így kapott $u^*$-ból kiindulva ismételjük 3.-4. lépéseket, amíg a kívánt pontosságot el nem érjük (egy megoldás pontosságát $Lu^* - Nu^*$ normájával jellemezzük).
 \end{enumerate}
 Elõfordulhat, hogy a 3. vagy a 4. lépésben nincs konvergencia, ekkor $m$ növelése szükséges lehet, ami miatt lehet, hogy $N$-et szintén növelni kell. \\
-A peremfeltételeket $u$-ra azzal garantáljuk, hogy a homogén peremfeltételt kikényszerítjük a $\Phi_k$ sajátfüggvényekre, így az õ lineáris kombinációjukkal elõálló függvényre is teljesülni fognak. A következõ szekcióban taglaljuk, hogy hogyan állíthatjuk elõ egy bizonyos esetben a sajátfüggvényeket.
+A következõ szekcióban taglaljuk, hogy hogyan állíthatjuk elõ egy bizonyos esetben a sajátfüggvényeket.
 
 \section{Csebisev-Tau-módszer a sajátfüggvények elõállítására}
 \label{sec:ChebTau}
 
 
 A \cite{ChebysevTau} és \cite{LISC} cikkek alapján bemutatjuk, hogy bizonyos feltételek mellett hogyan lehet $L$ sajátfüggvényeit elõállítani. Ennek az eljárásnak az eredményeként ugyan nem ortonormált rendszert kapunk, de a Gram-Schmidt-módszerrel át lehet megfelelõen alakítani. \\
-Legyen $L$ egy úgynevezett Sturm-Liouville operátor:
+Legyen
+$$
+\mathcal{D}(L) := \left\{ \phi \in L^2[-1, 1] : \phi \in \mathfrak{C}^2, \alpha_{11} \phi(-1) + \alpha_{12} \phi'(-1)= 0, \alpha_{21} \phi(1) + \alpha_{22} \phi'(1)= 0 \right\},
+$$
+$L : \mathcal{D}(L) \rightarrow L^2[-1, 1]$ úgynevezett Sturm-Liouville operátor:
 \begin{equation*}
 L u = \frac{1}{w} ( -(p u')' + q u),
 \end{equation*}
 ahol
 $$
-p(x) > 0,\quad w(x) > 0\qquad(x \in [a, b]),
+p(x) > 0,\quad w(x) > 0\qquad(x \in [-1, 1]),
 $$
-$p, q, w$ adott analitikus függvények, és tegyük fel, hogy az intervallum, ami felett dolgozunk a $(-1, 1)$. A peremfeltételeink a következõk:
-$$
-\alpha_{11}u(-1) + \alpha_{12}u'(-1)= 0,\qquad \alpha_{21}u(1) + \alpha_{22}u'(1)= 0.
-$$
-%\begin{align*}
-%\alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
-%\alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
-%\end{align*}
+$p, q, w$ adott analitikus függvények, és $\alpha_{ij} \in \mathbb{R} \; (i,j = 1, 2)$. \\
 Ha $L$-nek $\lambda$ sajátértéke, $v$ pedig a $\lambda$-hoz tartozó sajátfüggvény, akkor $L v = \lambda v$, azaz
 \begin{align}
 \frac{1}{w} ( -(p v')' + q v) &= \lambda v, \nonumber \\
@@ -341,7 +334,7 @@ Ezek segítségével írjuk fel az $\eqref{eq:CT:2}$ egyenletet az együtthatók vekto
 \hat{L} \mathbf{a} := \left( -p(M) \hat{D}^2 - p'(M) \hat{D} + q(M) \right) \mathbf{a}.
 \end{equation*}
 Az $\eqref{eq:CT:2}$ egyenlet jobb oldala ebben a formában pedig $\lambda w(M) \mathbf{a}$, vezessük be a \linebreak $\textbf{B} := w(M)$ jelölést. \\
-Még hasonlóképpen meg kell fogalmaznunk a peremfeltételeinket, ehhez felhasználjuk, hogy $\mathbf{t}$ egy vektorértékû függvény, $[a, b] = [-1, 1]$, és ennek az intervallumnak a végpontjain $$T_n(-1) = (-1)^n,\qquad\textrm{ill.}\qquad T_n(1) = 1.$$ Legyen
+Még hasonlóképpen meg kell fogalmaznunk a peremfeltételeinket, ehhez felhasználjuk, hogy $\mathbf{t}$ egy vektorértékû függvény, a $[-1, 1]$ intervallumnak a végpontjain $$T_n(-1) = (-1)^n,\qquad\textrm{ill.}\qquad T_n(1) = 1.$$ Legyen
 $$
 h_1^T= \alpha_{11} (\mathbf{t}(-1))^T + \alpha_{12} (\mathbf{t}(-1))^T \hat{D},\qquad h_2^T = \alpha_{21} (\mathbf{t}(1))^T + \alpha_{22} (\mathbf{t}(1))^T , \hat{D}
 $$
