@@ -1,0 +1,1412 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2014.8.16)  17 DEC 2018 00:10
+entering extended mode
+**D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/LiptÃ¡k*Bence/SZAKDOLGOZAT/IDEIG2/sza
+kdolgozat.tex
+
+("D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/LiptÃ¡k Bence/SZAKDOLGOZAT/IDEIG2/sza
+kdolgozat.tex"
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls"
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\bk12.clo"
+File: bk12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin2.def"
+File: latin2.def 2008/03/30 v1.1d Input encoding file
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.sty"
+Package: t1enc 1994/06/01 Standard LaTeX package
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\magyar.ldf"
+Language: magyar 2007/10/19 v1.5 Magyar support from the babel v3.7 system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+\c@enumv=\count89
+Package babel Info: Making ; an active character on input line 2706.
+Package babel Info: Making ! an active character on input line 2708.
+Package babel Info: Making ? an active character on input line 2714.
+Package babel Info: Making : an active character on input line 2716.
+Package babel Info: Making ` an active character on input line 2734.
+\c@footnote@add=\count90
+\c@footnote@ch=\count91
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ncctools\watermark.sty"
+Package: watermark 2004/12/09 v1.1 Watermarks (NCC)
+)
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\fun
+k1.sty" ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen104
+\Hy@linkcounter=\count92
+\Hy@pagecounter=\count93
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count94
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4062.
+Package hyperref Info: Link nesting OFF on input line 4067.
+Package hyperref Info: Hyper index ON on input line 4070.
+Package hyperref Info: Plain pages OFF on input line 4077.
+Package hyperref Info: Backreferencing OFF on input line 4082.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4300.
+\c@Hy@tempcnt=\count95
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4653.
+\Fld@menulength=\count96
+\Field@Width=\dimen105
+\Fld@charsize=\dimen106
+Package hyperref Info: Hyper figures OFF on input line 5773.
+Package hyperref Info: Link nesting OFF on input line 5778.
+Package hyperref Info: Hyper index ON on input line 5781.
+Package hyperref Info: backreferencing OFF on input line 5788.
+Package hyperref Info: Link coloring OFF on input line 5793.
+Package hyperref Info: Link coloring with OCG OFF on input line 5798.
+Package hyperref Info: PDF/A mode OFF on input line 5803.
+LaTeX Info: Redefining \ref on input line 5843.
+LaTeX Info: Redefining \pageref on input line 5847.
+\Hy@abspage=\count97
+\c@Item=\count98
+\c@Hfootnote=\count99
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2012/05/13 v6.82q Hyperref driver for pdfTeX
+\Fld@listcount=\count100
+\c@bookmark@seq@number=\count101
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip43
+)
+
+Package hyperref Warning: Option `pdftex' has already been used,
+(hyperref)                setting the option has no effect on input line 38.
+
+Package hyperref Info: Option `final' set `true' on input line 38.
+Package hyperref Info: Option `colorlinks' set `true' on input line 38.
+
+Package hyperref Warning: Option `bookmarks' has already been used,
+(hyperref)                setting the option has no effect on input line 38.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count102
+))
+\Gin@req@height=\dimen107
+\Gin@req@width=\dimen108
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\palatino.sty"
+Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty"
+Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
+\ttl@box=\box26
+\beforetitleunit=\skip44
+\aftertitleunit=\skip45
+\ttl@plus=\dimen109
+\ttl@minus=\dimen110
+\ttl@toksa=\toks17
+\titlewidth=\dimen111
+\titlewidthlast=\dimen112
+\titlewidthfirst=\dimen113
+
+
+Package titlesec Warning: Non standard sectioning command detected
+(titlesec)                Using default spacing and no format.
+
+
+Package titlesec Warning: Non standard sectioning command detected
+(titlesec)                Using default spacing and no format.
+
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty"
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip46
+\enit@outerparindent=\dimen114
+\enit@toks=\toks18
+\enit@inbox=\box27
+\enitdp@description=\count103
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\microtype.sty"
+Package: microtype 2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
+\MT@toks=\toks19
+\MT@count=\count104
+LaTeX Info: Redefining \lsstyle on input line 1597.
+LaTeX Info: Redefining \lslig on input line 1597.
+\MT@outer@space=\skip47
+LaTeX Info: Redefining \textls on input line 1605.
+\MT@outer@kern=\dimen115
+LaTeX Info: Redefining \textmicrotypecontext on input line 2156.
+Package microtype Info: Loading configuration file microtype.cfg.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\microtype.cfg"
+File: microtype.cfg 2010/01/10 v2.4 microtype main configuration file (RS)
+))
+\szaggatott=\box28
+\c@defin=\count105
+\c@satz=\count106
+\c@satzpn=\count107
+\c@satzpnbn=\count108
+\c@satzbn=\count109
+\c@behbn=\count110
+\c@beh=\count111
+\c@behs=\count112
+\c@bsp=\count113
+\c@bsps=\count114
+\c@bem=\count115
+\c@bems=\count116
+\c@erin=\count117
+\c@aufg=\count118
+\c@aufgbn=\count119
+\c@szineshatter=\count120
+\c@gyf=\count121
+\c@hf=\count122
+\c@pelda=\count123
+\c@allitas=\count124
+\c@kovetkezmeny=\count125
+\c@tetel=\count126
+\c@feladat=\count127
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\makeidx.sty"
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
+\fancy@headwidth=\skip48
+\f@ncyO@elh=\skip49
+\f@ncyO@erh=\skip50
+\f@ncyO@olh=\skip51
+\f@ncyO@orh=\skip52
+\f@ncyO@elf=\skip53
+\f@ncyO@erf=\skip54
+\f@ncyO@olf=\skip55
+\f@ncyO@orf=\skip56
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\mdwtools\footnote.sty"
+Package: footnote 1997/01/28 1.13 Save footnotes around boxes
+\fn@notes=\box29
+\fn@width=\dimen116
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks20
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip57
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks21
+\ex@=\dimen117
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen118
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count128
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count129
+\leftroot@=\count130
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count131
+\DOTSCASE@=\count132
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box30
+\strutbox@=\box31
+\big@size=\dimen119
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count133
+\c@MaxMatrixCols=\count134
+\dotsspace@=\muskip11
+\c@parentequation=\count135
+\dspbrk@lvl=\count136
+\tag@help=\toks22
+\row@=\count137
+\column@=\count138
+\maxfields@=\count139
+\andhelp@=\toks23
+\eqnshift@=\dimen120
+\alignsep@=\dimen121
+\tagshift@=\dimen122
+\tagwidth@=\dimen123
+\totwidth@=\dimen124
+\lineht@=\dimen125
+\@envbody=\toks24
+\multlinegap=\skip58
+\multlinetaggap=\skip59
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\appendix\appendix.sty"
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count140
+\c@@ppsavesec=\count141
+\c@@ppsaveapp=\count142
+)
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\fun
+k4.sty" ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip60
+\LTright=\skip61
+\LTpre=\skip62
+\LTpost=\skip63
+\LTchunksize=\count143
+\LTcapwidth=\dimen126
+\LT@head=\box32
+\LT@firsthead=\box33
+\LT@foot=\box34
+\LT@lastfoot=\box35
+\LT@cols=\count144
+\LT@rows=\count145
+\c@LT@tables=\count146
+\c@LT@chunks=\count147
+\LT@p@ftn=\toks26
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\sectsty\sectsty.sty"
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
+Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+)))
+\@indexfile=\write3
+
+Writing index file szakdolgozat.idx
+("C:\Program Files\MiKTeX 2.9\tex\latex\ulem\ulem.sty"
+\UL@box=\box36
+\UL@hyphenbox=\box37
+\UL@skip=\skip64
+\UL@hook=\toks27
+\UL@height=\dimen127
+\UL@pe=\count148
+\UL@pixel=\dimen128
+\ULC@box=\box38
+Package: ulem 2012/05/18
+\ULdepth=\dimen129
+)
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\sza
+kdolgozat.aux"
+
+LaTeX Warning: Label `sec:kompakt' multiply defined.
+
+
+LaTeX Warning: Label `chap:LjapunovSchmidt' multiply defined.
+
+
+LaTeX Warning: Label `eq:mp:inhomOG' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 64.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd"
+File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
+)
+\AtBeginShipoutBox=\box39
+Package hyperref Info: Link coloring ON on input line 64.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count149
+)
+LaTeX Info: Redefining \ref on input line 64.
+LaTeX Info: Redefining \pageref on input line 64.
+LaTeX Info: Redefining \nameref on input line 64.
+
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\sza
+kdolgozat.out")
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\sza
+kdolgozat.out")
+\@outlinefile=\write4
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count150
+\scratchdimen=\dimen130
+\scratchbox=\box40
+\nofMPsegments=\count151
+\nofMParguments=\count152
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count153
+\MPscratchDim=\dimen131
+\MPnumerator=\count154
+\makeMPintoPDFobject=\count155
+\everyMPtoPDFconversion=\toks29
+)
+LaTeX Info: Redefining \microtypecontext on input line 64.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-ppl.cfg"
+File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls"
+LaTeX Info: Redefining \cal on input line 592.
+LaTeX Info: Redefining \mit on input line 593.
+)
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\tit
+elseite.tex"
+LaTeX Font Info:    Font shape `T1/ppl/bx/sc' in size <24.88> not available
+(Font)              Font shape `T1/ppl/b/sc' tried instead on input line 9.
+ <./abrak/ELTE_logo.pdf, id=59, 845.0471pt x 597.51233pt>
+File: ./abrak/ELTE_logo.pdf Graphic file (type pdf)
+
+<use ./abrak/ELTE_logo.pdf>
+Package pdftex.def Info: ./abrak/ELTE_logo.pdf used on input line 21.
+(pdftex.def)             Requested size: 159.3382pt x 112.66237pt.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-cmr.cfg"
+File: mt-cmr.cfg 2009/11/09 v2.0 microtype config. file: Computer Modern Roman 
+(RS)
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-msa.cfg"
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-msb.cfg"
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)) [1
+
+
+{C:/Documents and Settings/All Users/Application Data/MiKTeX/2.9/pdftex/config/
+pdftex.map} <D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/LiptÃ¡k Bence/SZAKDOLGOZAT
+/IDEIG2/abrak/ELTE_logo.pdf>]
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\Vor
+wort.tex"
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+) [1]
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\sza
+kdolgozat.toc"
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 1.
+)
+\tf@toc=\write5
+ [2
+
+]
+1. fejezet.
+
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\fak
+torter.tex"
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 5.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 5.
+
+
+Package xcolor Warning: Incompatible color definition on input line 29.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 29--29
+[][][][][][] 
+ []
+
+[3
+
+]
+
+Package xcolor Warning: Incompatible color definition on input line 67.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 67--67
+[][][][][][] 
+ []
+
+LaTeX Font Info:    Try loading font information for U+euf on input line 90.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\ueuf.fd"
+File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-euf.cfg"
+File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
+
+)
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 90.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
+File: omsppl.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 90.
+
+
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 90--90
+[][][][][][] 
+ []
+
+[4]
+
+Package xcolor Warning: Incompatible color definition on input line 113.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 113--113
+[][][][][][] 
+ []
+
+[5]
+
+Package xcolor Warning: Incompatible color definition on input line 123.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 123--123
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 130.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 130--130
+[][][][][][] 
+ []
+
+)
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\ope
+rator.tex"
+
+Package xcolor Warning: Incompatible color definition on input line 47.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 47--47
+[][][][][][] 
+ []
+
+[6]
+
+Package xcolor Warning: Incompatible color definition on input line 56.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 56--56
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 62.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 62--62
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 106.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 106--106
+[][][][][][] 
+ []
+
+[7]
+
+Package xcolor Warning: Incompatible color definition on input line 133.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 133--133
+[][][][][][] 
+ []
+
+[8]
+
+Package xcolor Warning: Incompatible color definition on input line 135.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 135--135
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 137.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 137--137
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 143.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 143--143
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 149.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 149--149
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 172.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 172--172
+[][][][][][] 
+ []
+
+[9]
+
+Package xcolor Warning: Incompatible color definition on input line 187.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 187--187
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 220.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 220--220
+[][][][][][] 
+ []
+
+[10]
+
+Package xcolor Warning: Incompatible color definition on input line 232.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 232--232
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 242.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 242--242
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 247.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 247--247
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 267.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 267--267
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 277.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 277--277
+[][][][][][] 
+ []
+
+[11]
+Underfull \hbox (badness 1622) in paragraph at lines 287--287
+[]\T1/ppl/m/n/12 (+20) bármely vé-ges li-ne-á-ri-san füg-get-len $\OMS/cmsy/m/n
+/12 f\OML/cmm/m/it/12 u[]; [] ; u[]\OMS/cmsy/m/n/12 g [] X$ \T1/ppl/m/n/12 (+2
+0) rend-szer-hez lé-te-zik
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 316.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 316--316
+[][][][][][] 
+ []
+
+[12]
+
+Package xcolor Warning: Incompatible color definition on input line 339.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 339--339
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 348.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 348--348
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 375.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 375--375
+[][][][][][] 
+ []
+
+[13]
+
+Package xcolor Warning: Incompatible color definition on input line 405.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 405--405
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 416.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 416--416
+[][][][][][] 
+ []
+
+[14]
+
+Package xcolor Warning: Incompatible color definition on input line 492.
+
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 492.
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 492--492
+[][][][][][]
+ []
+
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 492.
+[15]
+
+Package xcolor Warning: Incompatible color definition on input line 501.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 501--501
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 507.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 507--507
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 541.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 541--541
+[][][][][][]
+ []
+
+[16])
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\kom
+paktoperator.tex" [17]
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 18--18
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 32.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 32--32
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 52.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 52--52
+[][][][][][]
+ []
+
+)
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\fre
+dholmoperator.tex" [18]
+Overfull \hbox (3.39473pt too wide) detected at line 21
+\OML/cmm/m/it/12 n \OT1/cmr/m/n/12 :=[] [] \OMS/cmsy/m/n/12 N\OT1/cmr/m/n/12 (\
+OML/cmm/m/it/12 A\OT1/cmr/m/n/12 ) =[] [] \OML/cmm/m/it/12 A[]\OT1/cmr/m/n/12 [
+\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 0\OMS/cmsy/m/n/12 g\OT1/cmr/m/n/12 ] \OML/cmm
+/m/it/12 <[] \OT1/cmr/m/n/12 +[]\OMS/cmsy/m/n/12 1 [] \OML/cmm/m/it/12 r \OT1/c
+mr/m/n/12 :=[] [] \OMS/cmsy/m/n/12 R\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A\OT1/cmr
+/m/n/12 ) =[] [] \OMS/cmsy/m/n/12 Y\OML/cmm/m/it/12 =A\OT1/cmr/m/n/12 [\OML/cmm
+/m/it/12 X\OT1/cmr/m/n/12 ] \OML/cmm/m/it/12 <[] \OT1/cmr/m/n/12 +[]\OMS/cmsy/m
+/n/12 1\OML/cmm/m/it/12 ;
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 21.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 21--21
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 30.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 30--30
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 40.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 40--40
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 58.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 58--58
+[][][][][][] 
+ []
+
+[19]
+
+Package xcolor Warning: Incompatible color definition on input line 73.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 73--73
+[][][][][][] 
+ []
+
+[20])
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\imp
+licit.tex" [21]
+Underfull \hbox (badness 10000) in paragraph at lines 28--28
+
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 28.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 28--28
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 51.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 51--51
+[][][][][][] 
+ []
+
+
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 55.
+
+<./abrak/lehetbif1.pdf, id=283, 361.35pt x 353.32pt>
+File: ./abrak/lehetbif1.pdf Graphic file (type pdf)
+
+<use ./abrak/lehetbif1.pdf>
+Package pdftex.def Info: ./abrak/lehetbif1.pdf used on input line 55.
+(pdftex.def)             Requested size: 133.72786pt x 222.8755pt.
+
+
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 57.
+
+<./abrak/lehetbif2.pdf, id=284, 361.35pt x 354.32375pt>
+File: ./abrak/lehetbif2.pdf Graphic file (type pdf)
+
+<use ./abrak/lehetbif2.pdf>
+Package pdftex.def Info: ./abrak/lehetbif2.pdf used on input line 57.
+(pdftex.def)             Requested size: 133.72786pt x 222.8755pt.
+
+
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 59.
+
+<./abrak/lehetbif3.pdf, id=285, 361.35pt x 354.32375pt>
+File: ./abrak/lehetbif3.pdf Graphic file (type pdf)
+
+<use ./abrak/lehetbif3.pdf>
+Package pdftex.def Info: ./abrak/lehetbif3.pdf used on input line 59.
+(pdftex.def)             Requested size: 133.72786pt x 222.8755pt.
+
+
+LaTeX Warning: Float too large for page by 31.54425pt on input line 62.
+
+[22] [23 <D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/LiptÃ¡k Bence/SZAKDOLGOZAT/ID
+EIG2/abrak/lehetbif1.pdf> <D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/LiptÃ¡k Benc
+e/SZAKDOLGOZAT/IDEIG2/abrak/lehetbif2.pdf
+
+pdfTeX warning: pdflatex.exe (file D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/Lipt
+Ã¡k Bence/SZAKDOLGOZAT/IDEIG2/abrak/lehetbif2.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+> <D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/LiptÃ¡k Bence/SZAKDOLGOZAT/IDEIG2/ab
+rak/lehetbif3.pdf
+
+pdfTeX warning: pdflatex.exe (file D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/Lipt
+Ã¡k Bence/SZAKDOLGOZAT/IDEIG2/abrak/lehetbif3.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
+
+Package xcolor Warning: Incompatible color definition on input line 94.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 94--94
+[][][][][][]
+ []
+
+) [24
+
+]
+2. fejezet.
+
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\Bif
+urkationen.tex"
+
+Package xcolor Warning: Incompatible color definition on input line 51.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 51--51
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 74.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 74--74
+[][][][][][] 
+ []
+
+[25
+
+]
+
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 90--90
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 112.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 112--112
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 119.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 119--119
+[][][][][][] 
+ []
+
+[26]
+Underfull \hbox (badness 7576) in paragraph at lines 147--147
+\T1/ppl/m/n/12 (+20) triviális meg-ol-dá-sá-ból a $\OML/cmm/m/it/12 $ \T1/ppl/
+m/n/12 (+20) pa-ra-mé-ter vál-to-zá-sá-val vég-te-len sok meg-ol-dás
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 147.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 147--147
+[][][][][][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 154.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 154--154
+[][][][][][]
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 160.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 160--160
+[][][][][][] 
+ []
+
+[27]
+
+Package xcolor Warning: Incompatible color definition on input line 176.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 176--176
+[][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--179
+
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 201.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 201--201
+[][][][][][] 
+ []
+
+) [28]
+3. fejezet.
+
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\Lja
+punovSchmidt.tex"
+
+Package xcolor Warning: Incompatible color definition on input line 41.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 41--41
+[][][][][][]
+ []
+
+[29
+
+]
+
+Package xcolor Warning: Incompatible color definition on input line 76.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 76--76
+[][][][][][]
+ []
+
+[30]
+
+Package xcolor Warning: Incompatible color definition on input line 103.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 103--103
+[][][][][][]
+ []
+
+) [31]
+4. fejezet.
+
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\Alk
+almaz1.tex"
+Underfull \hbox (badness 1320) in paragraph at lines 93--3
+[]\T1/ppl/m/n/12 (+20) Az aláb-bi-ak-ban a Ljapunov-Schmidt-módszert fog-juk ha
+sz-nál-ni peremérték-
+ []
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 10.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 10.
+
+
+Package xcolor Warning: Incompatible color definition on input line 153.
+
+
+Overfull \hbox (3.30946pt too wide) in paragraph at lines 153--153
+[][][][][][]
+ []
+
+[32
+
+] [33] [34])
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\Alk
+almaz2.tex"
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 10.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 10.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 10.
+
+pdfTeX warning (ext4): destination with the same identifier (name{equation.4.1}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.14 \begin{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{equation.4.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.17 \begin{equation}
+                      [35]
+Underfull \hbox (badness 10000) in paragraph at lines 83--85
+\T1/ppl/m/n/12 (+20) Az ál-lan-dók va-ri-á-lá-sá-nak mód-sze-rét hasz-nál-va lá
+t-ha-tó, hogy va-la-mely
+ []
+
+[36] [37] [38]
+Overfull \hbox (26.88719pt too wide) detected at line 221
+\OML/cmm/m/it/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) :=[] []
+ []
+
+[39] [40]
+Overfull \hbox (38.9452pt too wide) detected at line 264
+[][] \OML/cmm/m/it/12 v\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML
+/cmm/m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s\OT1/cmr/m/n/12 (\OML/cmm/m/i
+t/12 t\OT1/cmr/m/n/12 ) +[] \OML/cmm/m/it/12 w\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
+ x\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ))) d\OML/cmm/m/it/12 t \O
+T1/cmr/m/n/12 =[] [][] \OML/cmm/m/it/12 v\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT
+1/cmr/m/n/12 )\OML/cmm/m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s\OT1/cmr/m/
+n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) +[] \OML/cmm/m/it/12 w\OT1/cmr/m/n/12
+ (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ))) d\OM
+L/cmm/m/it/12 t \OT1/cmr/m/n/12 +[] [][] \OML/cmm/m/it/12 v\OT1/cmr/m/n/12 (\OM
+L/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 g\OT1/cmr/m/n/12 (\OML/cmm/m/i
+t/12 s\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) +[] \OML/cmm/m/it/1
+2 w\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/c
+mr/m/n/12 ))) d\OML/cmm/m/it/12 t:
+ []
+
+[41] [42] [43]) [44]
+5. fejezet.
+
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\Num
+LSMethod.tex" [45
+
+] [46] [47] [48] [49] [50] [51]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 191.
+
+pdfTeX warning (ext4): destination with the same identifier (name{equation.5.1}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.211 \end{align}
+                  [52]pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.5.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.218 \begin{equation}
+                       [53] [54] [55] [56]
+<./abrak/pelda_01.png, id=658, 377.91188pt x 301.8778pt>
+File: ./abrak/pelda_01.png Graphic file (type png)
+
+<use ./abrak/pelda_01.png>
+Package pdftex.def Info: ./abrak/pelda_01.png used on input line 338.
+(pdftex.def)             Requested size: 377.91095pt x 301.87706pt.
+
+<./abrak/pelda_02.png, id=660, 365.86688pt x 298.11375pt>
+File: ./abrak/pelda_02.png Graphic file (type png)
+
+<use ./abrak/pelda_02.png>
+Package pdftex.def Info: ./abrak/pelda_02.png used on input line 347.
+(pdftex.def)             Requested size: 365.86598pt x 298.11302pt.
+ [57 <D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/LiptÃ¡k Bence/SZAKDOLGOZAT/IDEIG2
+/abrak/pelda_01.png>])
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\hiv
+atkozasok.tex" [58 <D:/DOKUMENTUMOK/HALLGATÃ“K/DIPLOMAMUNKA/LiptÃ¡k Bence/SZAKD
+OLGOZAT/IDEIG2/abrak/pelda_02.png>]
+Underfull \hbox (badness 6173) in paragraph at lines 14--15
+[]\T1/ppl/b/n/12 Hirzebruch, F.; Schar-lau, W.\T1/ppl/m/n/12 (+20) : \T1/ppl/m/
+it/12 (+20) Ein-füh-rung in die Funk-ti-o-nalanaly-sis\T1/ppl/m/n/12 (+20) , B.
+I.-
+ []
+
+[59
+
+]) [60]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
+ [61
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
+
+("D:\DOKUMENTUMOK\HALLGATÃ“K\DIPLOMAMUNKA\LiptÃ¡k Bence\SZAKDOLGOZAT\IDEIG2\sza
+kdolgozat.aux")
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+Package rerunfilecheck Info: File `szakdolgozat.out' has not changed.
+(rerunfilecheck)             Checksum: E83123853D89CAFA2B9485E351EA643C;1098.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
+ ) 
+Here is how much of TeX's memory you used:
+ 11328 strings out of 493921
+ 169254 string characters out of 3147231
+ 314987 words of memory out of 3000000
+ 13983 multiletter control sequences out of 15000+200000
+ 52356 words of font info for 205 fonts, out of 3000000 for 9000
+ 848 hyphenation exceptions out of 8191
+ 37i,14n,43p,904b,632s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/euler/eufm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
+mbols/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on szakdolgozat.pdf (62 pages, 870891 bytes).
+PDF statistics:
+ 800 PDF objects out of 1000 (max. 8388607)
+ 215 named destinations out of 1000 (max. 500000)
+ 30863 words of extra memory for PDF output out of 35830 (max. 10000000)
+

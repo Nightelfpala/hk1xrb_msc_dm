@@ -1,0 +1,315 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+
+
+
+
+\label{chap:LjapunovSchmidtNum}
+
+A következõ fejezetben ismertetjük a Ljapunov-Schmidt-módszernek egy numerikus módszerként történõ felhasználását bizonyos peremérték-feladatok esetén \cite{LSNum} alapján.
+Tekintsük az alábbi egyenletet:
+\begin{equation}
+Lu(x) = Nu(x),\;x\in[a, b] \label{eq:num:1}
+\end{equation}
+ahol $L$ úgynevezett Sturm-Liouville operátor:
+\begin{equation*}
+%Lu(x) = \frac{1}{w(x)}(-(p(x)u'(x))' + q(x)u(x)),
+L u = \frac{1}{w} ( -(p u')' + q u),
+\end{equation*}
+ahol $p(x) > 0, w(x) > 0\;(x \in [a, b])$, $p, q, w$ adott analitikus függvények, valamint $u$-ra a következõ peremfeltételek teljesülnek:
+\begin{align*}
+\alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
+\alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
+\end{align*}
+Ezek a kikötések azért szükségesek, mert a késõbbiekben az ilyen $L$-ekhez adunk meg egy módszert (a Csebisev-Tau-módszert \cite{ChebysevTau}), amivel a sajátfüggvényeit elõ tudjuk állítani. \\
+Emellett feltesszük a következõket:
+\begin{itemize}
+\item $\mathcal{X}$ valós, szeparábilis Hilbert-tér, $L : \mathcal{D}(L) \subset \mathcal{X} \rightarrow \mathcal{X}$ lineáris operátor, $N : \mathcal{D}(N) \subset \mathcal{X} \rightarrow \mathcal{X}$ nemlineáris operátor,
+\item $L$ zárt leképezés (amivel ekvivalens \cite{Kovacs}: $x_n \rightarrow x$ és $Lx_n \rightarrow y$-ból következik hogy $x \in \mathcal{D}(L)$ és $Lx = y$), önadjungált, $\mathcal{D}(L)$ sûrû $\mathcal{X}$-ben, $\mathcal{N}(L) = p > 0$ véges,
+\item $L$-nek a sajátértékei $\lambda_1 = \dots = \lambda_p = 0 < \lambda_{p + 1}$, $\lambda_i \leq \lambda_{i + 1}$, $\lim_{i \to \infty} \lambda_i = \infty$, és a hozzájuk tartozó $\Phi_1, \Phi_2, \dots$ sajátfüggvények $\mathcal{X}$-ben egy teljes ortonormált rendszert alkotnak - ezeket a tulajdonságokat a Sturm-Liouville-operátor biztosítja,
+\item létezik egy $\mathcal{X'} \subset \mathcal{X}$ altér, ami egy $\mu$ normával teljes, $\mathcal{D}(L) \subset \mathcal{X'}$, minden $x \in \mathcal{D}(L)$ esetén a $\Phi_i$-szerinti Fourier-sora ($\sum_{k=1}^\infty \langle x, \Phi_k \rangle \Phi_k$) $\mu$-ben konvergál $x$-hez és $\{ \mu(\Phi_k) / \lambda_k\}_{k > p} \in l_2$, valamint létezik $\alpha > 0$, amivel $x \in \mathcal{X'}$ esetén $\|x\|_S \leq \alpha \mu(x)$ (tehát $\mu$ $\alpha$-szorosa felsõ becslése az eredeti normának, és $\mu$-beli konvergenciából következik, hogy az adott sorozat az eredeti normában is konvergens),
+\item $\mathcal{D}(L) \cap \mathcal{D}(N) \neq \emptyset$, $\mathcal{D}(N) \subset \mathcal{X'}$ és altér $\mathcal{X'}$-ben, $\mathcal{D}(N)$ zárt $\mu$ szerint,
+\item bármely $R > 0$-hoz létezik $\beta_R > 0, b_R > 0$, amelyekkel azon $x, y \in \mathcal{D}(N)$-ekre, amelyekre $\mu(x) \leq R, \mu(y) \leq R$ teljesül, $\mu(Nx - Ny) \leq \beta_R \mu(x - y)$ és $\mu(Nx) \leq b_R$, tehát tetszõleges $\mu$-szerinti gömb $N$-szerinti képe korlátos ($\mu$ normával), valamint ezen gömbbeli elemek környezetének képének átmérõje arányos a környezet átmérõjével; ezek a feltételek biztosítják majd az kisegítõ egyenletünk kontrakció tulajdonságát.
+\end{itemize}
+Az $\eqref{eq:num:1}$ egyenlet megoldásait $\mathcal{D}(L) \cap \mathcal{D}(N)$-ben keressük. Legyen $m \geq p$ és
+\begin{equation*}
+S_m := \spanned \{\Phi_1, \dots, \Phi_m \}, \quad S_0 := \{ 0\},
+\end{equation*}
+azaz $S_m$ az elsõ $m$ sajátfüggvény által kifeszített altér, $S_m \subset \mathcal{D}(L)$. Definiáljuk a következõ operátorokat, amennyiben $u = \sum_{k = 1}^\infty \langle u, \Phi_k \rangle, \Phi_k$ ($u \in S$):
+\begin{equation*}
+P_m u := \sum_{k = 1}^m \langle u, \Phi_k \rangle, \Phi_k,
+\end{equation*}
+tehát $P_m$ az $S_m$-re történõ ortogonális projekció, valamint
+\begin{equation*}
+H_m u := \sum_{k = m + 1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle, \Phi_k.
+\end{equation*}
+$H_m$ $\mathcal{D}(L)$-be képez (mivel $\Phi_k \in \mathcal{D}(L) \; (k = 0, \dots, m+1, \dots)$), lássuk be róla, hogy lineáris ($x, y \in \mathcal{X}$, $\alpha \in \mathbb{R}$):
+\begin{align*}
+H_m(\alpha x + y) &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \alpha x + y, \Phi_k \rangle \Phi_k = \\
+ &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} ( \langle \alpha x, \Phi_k \rangle + \langle y, \Phi_k \rangle ) \Phi_k = \\
+ &= \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \alpha x, \Phi_k \rangle \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle y, \Phi_k \rangle \Phi_k = \\
+ &= \alpha \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle x, \Phi_k \rangle \Phi_k + \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle y, \Phi_k \rangle \Phi_k = \\
+ &= \alpha H_m x + H_m y.
+\end{align*}
+$H_m$ az $L$ egy leszûkítésének inverze, pontosabban $H_m = (L_{\mkern 1mu \vrule height 2ex\mkern2mu S_m^\perp})^{-1}$, értelemszerûen $S_m^\perp = \spanned \{ \Phi_{m+1}, \Phi_{m+2}, \dots \}$, így a linearitás miatt elég $\Phi_n$-ra nézni ($n > m$):
+\begin{align*}
+L H_m \Phi_n &= L \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_n, \Phi_k \rangle \Phi_k \right) = \\
+ &= L \left( \frac{1}{\lambda_n} \Phi_n \right) = \frac{1}{\lambda_n} \lambda_n \Phi_n = \Phi_n.
+\end{align*}
+$H_m L u = (I - P_m)u$, ahol $I$ az identitás operátor, ezt szintén elég $\Phi_n$-re vizsgálni ($n = 1, 2, \dots$):
+\begin{align*}
+H_m L \Phi_n &= H_m (\lambda_n \Phi_n) = \lambda_n \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_n, \Phi_k \rangle \Phi_k = \\
+ &=
+	\begin{cases}
+		\mathbf{0}, &\text{ha } n \leq m \\
+		\Phi_n, &\text{ha } n \geq m + 1.
+	\end{cases}
+\end{align*}
+$H_m$ $\mathcal{X}$-szerinti normája $\frac{1}{\lambda_{m+1}}$, ehhez felhasználjuk, hogy $L$ sajátértékei növekvõ sorrendben vannak indexelve, valamint hogy $\|I - P_m\| \leq 1$ az ortogonális projekció tulajdonsága miatt:
+$$
+\begin{array}{lll}
+  \displaystyle\|H_m u\| & = & \displaystyle \left\|\sum_{k=m+1}^\infty\frac{1}{\lambda_k}\langle u,\Phi_k\rangle\Phi_k\right\| \leq \\\\
+    & \leq & \displaystyle\frac{1}{\lambda_{m+1}}\|(I-P_m)u\|\leq\frac{1}{\lambda_{m+1}}\|\cdot \|u\|
+\end{array}
+$$
+
+és $u = \Phi_{m+1}$ esetén teljesül az egyenlõség:
+\begin{align*}
+\|H_m \Phi_{m+1}\| &= \left\| \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle \Phi_{m+1}, \Phi_k \rangle \Phi_k\right\| = \\
+ &= \left\| \frac{1}{\lambda_{m+1}} \Phi_{m+1}\right\| = \frac{1}{\lambda_{m+1}} \|\Phi_{m+1}\|.
+\end{align*}
+Még nézzük meg $H_m$ $\mu$-szerinti normáját: $\mu(H_m) \leq \alpha \sigma(m)$, ahol $\sigma(m) = \left(\sum_{k = m+1}^\infty \left( \frac{\mu(\Phi_k)}{\lambda_k}\right)^2\right)^{1/2}$:
+\begin{align*}
+\mu(H_m u) &= \mu \left( \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle \Phi_k \right) \leq \\
+ &\leq \left| \sum_{k = m+1}^\infty \frac{1}{\lambda_k} \langle u, \Phi_k \rangle \mu(\Phi_k) \right| = \left| \sum_{k = m+1}^\infty \frac{\mu(\Phi_k)}{\lambda_k} \langle u, \Phi_k \rangle \right| \leq \\
+ &\leq \left| \left( \frac{\mu(\Phi_k)}{\lambda_k}, \langle u, \Phi_k \rangle \right)_{l_2}\right| \leq \left\|\frac{\mu(\Phi_k)}{\lambda_k}\right\|_{l_2} \cdot\|\langle u, \Phi_k \rangle\|_{l_2} = \\
+ &= \sigma(m)\|u\| \leq \sigma(m) \alpha \mu(u)
+\end{align*}
+ahol $\left( \cdot, \cdot \right)_{l_2}$ az $l_2$-beli skaláris szorzást jelöli. A levezetés során alkalmaztuk a Cauchy-Bunyakovsky-Schwarz-egyenlõtlenséget és a Parseval-egyenlõséget.
+Ebbõl az is következik, hogy $\lim_{m \to \infty} \mu(H_m) = 0$. A korábbi feltételeinket egészítsük ki még azzal, így $\mathcal{R}(H_m) \subset \mathcal{D}(N)$ és $S_m \subset \mathcal{D}(N)$, hogy a $P_m$ és a $H_m$ alkalmazása után tudjuk az $N$-et is még alkalmazni. \\
+Tegyük fel, hogy $\overline{u} \in \mathcal{D}(N) \cap \mathcal{D}(L)$ megoldása az $\eqref{eq:num:1}$ egyenletnek, tehát
+\begin{equation}
+L\overline{u} = N\overline{u}. \label{eq:num:2}
+\end{equation}
+Erre elõször alkalmazzuk $H_m$-et:
+\begin{align}
+H_m L \overline{u} &= H_m N \overline{u}, \nonumber \\
+(I - P_m) \overline{u} &= H_m N \overline{u}, \nonumber \\
+\overline{u} &= P_m \overline{u} + H_m N \overline{u}, \label{eq:num:3}
+\end{align}
+ez a kisegítõ egyenlet. Ezután alkalmazzuk $\eqref{eq:num:2}$-re $P_m$-et: % TODO auxiliary = kisegítõ?
+\begin{equation}
+P_m(L \overline{u} - N \overline{u}) = 0, \label{eq:num:4}
+\end{equation}
+ami a bifurkációs egyenlet. Az összes olyan $\overline{u} \in \mathcal{D}(L) \cap \mathcal{D}(N)$, ami megoldása a kisegítõ és a bifurkációs egyenletnek, az megoldása az eredeti $\eqref{eq:num:1}$ feladatnak. \\ % TODO auxiliary = kisegítõ?
+Legyenek $a > 0, b > 0$ valós számok, és legyen $u_0$ egy közelítõ megoldása az $Lu = Nu$ egyenletnek úgy, hogy létezik $u^* \in S_m$ ($u^* = \sum_{k=1}^m a_k \Phi_k$ valamely $a_k$ számokra, $k = 1, \dots, m$), amivel $\mu(u^* - u_0) \leq a$. Vegyük a következõ halmazt:
+\begin{equation*}
+S_{u^*}^b := \{ u \in \mathcal{D}(N) \; | \; P_m u = u^*, \mu((I - P_m)u) \leq b \},
+\end{equation*}
+tehát $S_{u^*}^b$ azon $u$-kat tartalmazza, melyek $S_m$-re levetítve $u^*$-ba esnek, és $u^*$-tól $\mu$-szerinti távolságuk legfeljebb $b$. Ezen elemek $\mu$-normája korlátos:
+\begin{equation*}
+\mu(u) = \mu(P_m u + (I - P_m) u) \leq \mu(u^*) + \mu((I - P_m)u) \leq \mu(u^*) + b.
+\end{equation*}
+ Ezután definiáljuk a következõ operátort:
+\begin{align*}
+T_{u^*}^b &: S_{u^*}^b \rightarrow \mathcal{X}, \\
+T_{u^*}^b (u) &:= u^* + H_m N u.
+\end{align*}
+Lássuk be $T_{u^*}^b$-rõl, hogy bizonyos feltételek mellett kontrakció, legyen $x, y \in S_{u^*}^b$:
+\begin{align*}
+\mu( T_{u^*}^b(x) - T_{u^*}^b(y)) &= \mu((u^* + H_m N x) - (u^* + H_m N y)) = \\
+&= \mu(H_m(N x - N y)) \leq \\
+&\leq \mu(H_m) \mu(N x - N y) \leq \\
+&\leq \mu(H_m) \beta_R \mu(x - y),
+\end{align*}
+ahol $R = \mu(u^*) + b$, tehát $u^*$-tól és $b$-tõl függõ konstans, és a kezdeti kikötéseink alapján $\beta_R$ egy $R$-tõl függõ konstans. Mivel $\lim_{m \to \infty} \mu(H_m) = 0$, ezért elég nagy $m$ esetén $\mu(H_m) \beta_R < 1$. Annak, hogy $\mathcal{R}(T_{u^*}^b) \subset S_{u^*}^b$ (tehát lehet $ T_{u^*}^b$-t iteratívan alkalmazni) elégséges feltétele, hogy $\mu(H_m)^2 \mu(L) b_R \leq b$, ami kellõen nagy $m$-re szintén teljesül. Tehát ha $m$ elég nagy, akkor $ T_{u^*}^b$ kontrakció, így a Banach-Tyihonov-Cacciopoli-tétel miatt van fixpontja. Ezt az $u^*$-tól függõ fixpontot jelöljük $y(u^*)$-al, és asszociált elemnek nevezzük. $y(u^*)$-ról könnyen belátható, hogy megoldása az $\eqref{eq:num:3}$ egyenletnek. \\ % TODO associate = asszociált?
+Vezessük be a $c_k := \langle u^*, \Phi_k \rangle \;(k = 1, \dots, m)$ jelölést, amivel $u^* = \sum_{k = 1}^m c_k \Phi_k$. Nézzük meg, hogy milyen feltételek mellett lesz $y(u^*)$ megoldása a $\eqref{eq:num:4}$ bifurkációs egyenletnek:
+\begin{align*}
+0 &= P_m(L y(u^*) - N y(u^*)) = P_m L y(u^*) - P_m N y(u^*), \\
+P_m L y(u^*) &= P_m L (u^* + H_m N y(u^*)) = P_m L u^* + P_m L H_m N y(u^*) = \\
+ &= P_m L (\sum_{k = 1}^m c_k\Phi_k) + P_m L \sum_{k = m+1}^\infty \langle N y(u^*), \Phi_k \rangle \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + P_m \sum_{k = m + 1}^\infty \langle N y(u^*), \Phi_k \rangle \lambda_k \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k) + \sum_{k = m + 1}^\infty \langle N y(u^*), \Phi_k \rangle \lambda_k P_m \Phi_k = \\
+ &= P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k),
+\end{align*}
+tehát
+\begin{equation*}
+0 = P_m (\sum_{k = 1}^m c_k \lambda_k \Phi_k - N y(u^*)),
+\end{equation*}
+ami pontosan akkor teljesül, ha
+\begin{align}
+0 &= \langle \sum_{j = 1}^m c_j \lambda_j \Phi_j - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m), \text{ azaz} \nonumber \\
+0 &= \langle c_k \lambda_k \Phi_k - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m), \text{vagy} \nonumber \\
+0 &= \langle \lambda_k u^* - N y(u^*), \Phi_k \rangle \qquad &(k = 1, \dots, m). \label{eq:num:5}
+\end{align}
+Ez utóbbi egy $m$-változós ($c_k \; (k = 1, \dots, m)$ számok meghatározzák $u^*$-ot), $m$ egyenletbõl álló egyenletrendszer. Ezek eredményeként megállapíthatjuk, hogy ha $a, b, m$ elég nagyok, akkor az eredeti $\eqref{eq:num:1}$ egyenletnek $\overline{u}$ pontosan akkor megoldása, ha az $\eqref{eq:num:5}$ egyenletnek $u^*$ megoldása és $\overline{u} = y(u^*)$. \\
+Ezzel mindenünk megvan ahhoz, hogy a feladat numerikus megoldását ismertessük. Legyen $N \geq m$. Az $Lu = Nu$ feladat megoldásait
+\begin{equation*}
+u = \sum_{k = 1}^N c_k \Phi_k = \sum_{k = 1}^m c_k \Phi_k + \sum_{k = m+1}^N c_k \Phi_k
+\end{equation*}
+alakban keressük, tehát N növelésével a megoldás pontosságát javítjuk (a mûveletigény rovására). $H_m$-en is hasonlóképpen módosítunk:
+\begin{equation*}
+H_m u := \sum_{k = m+1}^N \frac{c_k}{\lambda_k} \Phi_k
+\end{equation*}
+Maga az algoritmus a következõ:
+\begin{enumerate}
+\item Állítsuk elõ $L$-hez $\Phi_k (k = 1, \dots, N)$ sajátfüggvényeket.
+\item Rögzítsünk egy kezdeti $u^* = \sum_{k = 1}^m c_k \Phi_k$ kiinduló értéket.
+\item Állítsuk elõ $y(u^*)$-ot a fixpontiterációval: $y_0 := u^*$, $y_{i+1} := u^* + H_m N y_i, \; (i = 1, \dots, S)$.
+\item Oldjuk meg az $Lu^* = P_m N y_{S+1}$ egyenletet $u^*$-ra, például Newton-módszerrel.
+\item Az így kapott $u^*$-ból kiindulva ismételjük 3.-4. lépéseket, amíg a kívánt pontosságot el nem érjük (amit $Lu^* - Nu^*$ normájával lehet jellemezni).
+\end{enumerate}
+Elõfordulhat, hogy a 3. vagy a 4. lépésben nincs konvergencia, ekkor $m$ növelése szükséges lehet (ami miatt $N$-et is lehet, hogy növelni kell). \\
+A peremfeltételeket $u$-ra azzal garantáljuk, hogy a homogén peremfeltételt kikényszerítjük a $\Phi_k$ sajátfüggvényekre, így az õ lineáris kombinációjukkal elõálló függvényre is teljesülni fognak. A következõ szekcióban taglaljuk, hogy hogyan találjuk meg a sajátfüggvényeket.
+
+\section{Csebisev-Tau-módszer a sajátfüggvények elõállítására}
+\label{sec:ChebTau}
+
+A fejezet elején elõrebocsátottuk, hogy az $L$ alakjára vonatkozó megkötésekre azért van szükség, mert az ilyen operátorokhoz tudunk sajátfüggvényeket numerikusan könnyen elõállítani. A  \cite{ChebysevTau} és \cite{LISC} cikkek alapján ezt bemutatjuk. Ennek az eljárásnak az eredményeként ugyan nem ortonormált rendszert kapunk, de a Gram-Schmidt-módszerrel át lehet megfelelõen alakítani. \\
+Legyen $L$ egy Sturm-Liouville operátor:
+\begin{equation*}
+L u = \frac{1}{w} ( -(p u')' + q u),
+\end{equation*}
+és tegyük fel, hogy az intervallum amin dolgozunk a $(-1, 1)$. A peremfeltételeink a következõk:
+\begin{align*}
+\alpha_{11}u(a) + \alpha_{12}u'(a) &= 0, \\
+\alpha_{21}u(b) + \alpha_{22}u'(b) &= 0.
+\end{align*}
+Ha $L$-nek $\lambda$ sajátértéke, $v$ pedig a hozzá tartozó sajátvektor, akkor $L v = \lambda v$, azaz
+\begin{align}
+\frac{1}{w} ( -(p v')' + q v) &= \lambda v, \nonumber \\
+-p v'' - p' v' + q v &= \lambda w v. \label{eq:CT:2}
+\end{align}
+Jelöljük $T_n(x)$-el a $(-1, 1)$-en értelmezett Csebisev-polinomokat: $T_n(x) = \cos(n \arccos(x))$. Ezekrõl tudjuk, hogy ortogonális rendszert alkotnak az $\frac{1}{\sqrt{1 - x^2}}$ súlyfüggvénnyel, és van rekurzív képletük ($T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)$). A cél az, hogy ilyen polinomok véges lineáris kombinációjával közelítsük a sajátfüggvényt:
+\begin{equation*}
+v(x) = \sum_{k = 0}^N a_k T_k(x) = \mathbf{a}^T \mathbf{t},
+\end{equation*}
+ahol $\mathbf{a}^T = [a_0, a_1, \dots, a_N]$ és $\mathbf{t} = [T_0(x), T_1(x), \dots, T_N(x)]^T$, így az együtthatók $\mathbf{a}$ vektora egyértelmûen meghatározza a $v(x)$ függvényt. \\
+Mivel $L$-nek szüksége van $v$ deriváltjaira, vizsgáljuk meg, hogy a deriválás milyen (mátrixszal leírható) változást eredményez az együtthatók vektorán:
+\begin{equation}
+v'(x) = \sum_{k = 0}^N a_k T_k'(x) = \sum_{k = 0}^N b_k T_k(x) = \mathbf{b}^T \mathbf{t} \label{eq:CT:1}
+\end{equation}
+Elõször is nézzük meg, hogy mi a kapcsolat a Csebisev-polinomok és a deriváltak között. Az áttekinthetõség kedvéért használjuk a $\theta := \arccos x$ jelölést (amivel $\sin \theta = \sqrt{1 - x^2}$).
+\begin{align*}
+T_n (x) &= \cos(n \theta) \\
+T_n' (x) &= \sin(n \theta) n \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n+1} T_{n+1}' (x) &= \sin((n+1) \theta) \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n-1} T_{n-1}' (x) &= \sin((n-1) \theta) \frac{1}{\sqrt{1 - x^2}} \\
+\frac{1}{n+1} T_{n+1}' (x) - \frac{1}{n-1} T_{n-1}' (x) &= \frac{\sin((n+1) \theta) - \sin((n-1) \theta)}{\sqrt{1 - x^2}} \\
+\sin((n+1) \theta) - \sin((n-1) \theta) &= 2 \cos(n \theta) \sin\theta = 2 T_n(x) \sqrt{1 - x^2} \\
+\frac{1}{n+1} T_{n+1}' (x) - \frac{1}{n-1} T_{n-1}' (x) &= 2 T_n(x)
+\end{align*}
+Ez mûködik $n \geq 2$ esetén, kis $n$-ekre pedig egyszerû a dolog:
+\begin{align*}
+T_0' (x) &= 0, \\
+T_1' (x) &= 1 = T_0(x), \\
+T_2' (x) &= 4x = 4 T_1(x).
+\end{align*}
+Helyettesítsük be $\eqref{eq:CT:1}$-be a $T_k(x)$-ek helyére az így kapott képleteket:
+\begin{align*}
+v' &= \sum_{n = 0}^N b_n T_n = b_0 T_1' + \frac{b_1}{4} T_2' + \sum_{n=2}^N \frac{b_n}{2(n+1)} T_{n+1}' - \sum_{n=2}^N \frac{b_n}{2(n-1)} T_{n-1}' = \\
+ &= \left( b_0 - \frac{b_2}{2} \right) T_1' + \sum_{n=2}^{N - 1} \frac{b_{n-1} - b_{n+1}}{2n} T_n' + \frac{b_{N-1}}{2N} T_N' + \frac{b_N}{2(N+1)}T_{N+1}'.
+\end{align*}
+Így már látható az összefüggés $a_n$ és $b_n$ között:
+\begin{align*}
+b_N &= 0 \\
+b_{N-1} &= 2N a_N \\
+b_{n-1} &= b_{n+1} + 2n a_n \;(n = N-1, \dots, 2) \\
+b_0 &= \frac{b_2}{2} + a_1.
+\end{align*}
+Belátható, hogy az alábbi mátrix kielégíti a $\hat{D} \mathbf{a} = \mathbf{b}$ egyenletet ($k, l = 0, \dots, N$):
+\begin{equation*}
+\hat{D}_{kl} =
+	\begin{cases}
+	l, &\text{ha } k = 0 \text{ és } l \text{ páratlan} \\
+	2l, &\text{ha } l \geq k \geq 1 \text{ és } l+k \text{ páratlan} \\
+	0, &\text{különben},
+	\end{cases}
+\end{equation*}
+azaz ennek a mátrixnak a segítségével tudjuk a polinomsorral felírt függvényeket deriválni:
+\begin{equation*}
+v' = \mathbf{b}^T \mathbf{t} = (\hat{D}\mathbf{a})^T \mathbf{t}.
+\end{equation*}
+Ezután vizsgáljuk meg, hogy az $x$-szel történõ szorzás milyen változást eredményez. Ezt már csak közelítõleg tudjuk megadni:
+\begin{equation*}
+x v(x) = \sum_{k = 0}^N a_k x T_k(x) \approx \sum_{k = 0}^N c_k T_k(x).
+\end{equation*}
+Itt a Csebisev-polinomok rekurziójából gyorsan kijön a megoldás:
+\begin{align*}
+x T_0(x) &= T_1(x) \\
+x T_n(x) &= \frac{1}{2} \left( T_{n+1} + T_{n-1} \right) \; (n \geq 1)
+\end{align*}
+Ezt behelyettesítve kapjuk:
+\begin{align*}
+c_0 &= \frac{a_1}{2} \\
+c_1 &= a_0 + \frac{a_2}{2} \\
+c_n &= \frac{a_{n-1} + a_{n+1}}{2} \; (n = 2, \dots, N-1) \\
+c_N &\approx \frac{a_{N-1}}{2}
+\end{align*}
+Így az alábbi mátrix közelítõleg megvalósítja a $M \mathbf{a} \approx \mathbf{c}$ szorzást ($k, l = 0, \dots, N$):
+\begin{equation*}
+M_{kl} =
+	\begin{cases}
+	1, &\text{ha }(k, l) = (1, 0) \\
+	\frac{1}{2}l, &\text{ha } l \geq 2 \text{ és } |k - l| = 1 \\
+	0, &\text{különben},
+	\end{cases}
+\end{equation*}
+tehát
+\begin{equation*}
+x v(x) \approx \mathbf{c}^T \mathbf{t} \approx (M \mathbf{a})^T \mathbf{t}.
+\end{equation*}
+Ezenfelül, ha $f$ analitikus függvény, akkor $f(x) v(x) \approx (f(M)\mathbf{c})^T \mathbf{t}$. \\ % TODO valami blabla arról hogy ezt miért engedhetjük meg p, p', q, w-re, lehet hogy meg kell õket szorítanunk analitikus fv-ekre
+Ezek segítségével írjuk fel az $\eqref{eq:CT:2}$ egyenletet az együtthatók vektorán végzett mátrixmûveletként:
+\begin{equation*}
+\hat{L} \mathbf{a} := \left( -p(M) \hat{D}^2 - p'(M) \hat{D} + q(M) \right) \mathbf{a}.
+\end{equation*}
+A $\eqref{eq:CT:2}$ egyenlet jobb oldala ebben a formában pedig $\lambda w(M) \mathbf{a}$, jelölésként $\textbf{B} := w(M)$. \\
+Még hasonlóképpen meg kell fogalmaznunk a peremfeltételeinket, ehhez felhasználjuk, hogy $\mathbf{t}$ egy vektorértékû függvény, $[a, b] = [-1, 1]$, és ennek az intervallumnak a végpontjain $T_n(-1) = (-1)^n$, $T_n(1) = 1$. Legyen
+\begin{align*}
+h_1^T &= \alpha_{11} (\mathbf{t}(-1))^T + \alpha_{12} (\mathbf{t}(-1))^T \hat{D}, \\
+h_2^T &= \alpha_{21} (\mathbf{t}(1))^T + \alpha_{22} (\mathbf{t}(1))^T \hat{D}
+\end{align*}
+amivel (ismét a $\hat{D} \mathbf{a} = \mathbf{b}$ jelölést alkalmazva)
+\begin{align*}
+h_1^T \mathbf{a} &= \alpha_{11} (\mathbf{a}^T \mathbf{t}(-1))^T + \alpha_{12} (\mathbf{b}^T \mathbf{t}(-1))^T = \alpha_{11} v(-1) + \alpha_{12} v'(-1), \\
+h_2^T \mathbf{a} &= \alpha_{21} (\mathbf{a}^T \mathbf{t}(1))^T + \alpha_{22} (\mathbf{b}^T \mathbf{t}(1))^T = \alpha_{21} v(1) + \alpha_{22} v'(1).
+\end{align*}
+Legyen $H = (h_1, h_2)^T$, így a peremfeltétel megfogalmazható $H \textbf{a} = \textbf{0}$ formában. \\
+Legyen $\hat{A}$ az a mátrix, amit úgy kapunk, hogy $\hat{L}$ utolsó két sorát elhagyjuk (tehát $N-1 \times N+1$ mátrix), és állítsuk elõ $\hat{B}$-t ugyanígy $\textbf{B}$-bõl. Az alábbi egyenletrendszer megoldásaként megkapjuk a sajátfüggvényekhez tartozó együtthatósorozatokat (ezt általánosított sajátérték feladatnak is nevezik):
+\begin{equation*}
+\begin{pmatrix} \hat{A} \\ H \end{pmatrix} \mathbf{a} = \lambda \begin{pmatrix} \hat{B} \\ \mathbf{0} \end{pmatrix} \mathbf{a}.
+\end{equation*}
+Az egyenlet jobb oldalán javíthatunk, ha $\mathbf{0}$ helyett $\frac{1}{\lambda_*} H$-t használunk, ahol $\lambda_*$ egy nagy szám, ami nem sajátértéke $L$-nek. Így a jobb oldal mátrixának
+$\begin{pmatrix} \hat{B} \\ \frac{1}{\lambda_*} H \end{pmatrix}$
+nincsenek csupa $0$ sorai. \\
+Még fontos megjegyezni, hogy ha az eredeti intervallumunk nem a $[-1, 1]$, hanem valamely $[a, b]$ intervallum, akkor a deriválás mátrix egy kicsit máshogy fog kinézni: $D := \frac{1}{\alpha} \hat{D}$, ahol $\alpha$ az intervallum középpontja ($\alpha = \frac{b - a}{2}$).
+
+\section{Példa a numerikus alkalmazásra}
+\label{sec:examples}
+
+Most mutassunk két példát a módszer gyakorlati alkalmazására, felhasználva a $\cite{LSNum}$ cikkhez készült MATLAB csomagot. \\
+Tekintsük az
+\begin{equation*}
+-u''(x) - 2u(x) = \frac{1}{3} u^3 - \sqrt{x}
+\end{equation*}
+egyenletet a $[0, 1]$ intervallumon a
+\begin{align*}
+u(0) &= 0 \\
+u(1) + u'(1) &= 0
+\end{align*}
+peremfeltételekkel. Erre a feladatra a kiszámolt megoldás a következõ, legfeljebb $10^{-5}$ hibát megengedve:
+\begin{center}
+	\includegraphics{./abrak/pelda_01.png}
+\end{center}
+Ehhez az $m = 0$ választás elegendõ volt. Ezzel szemben, ha változtatunk a peremfeltételen, és az intervallum jobb oldalán a
+\begin{equation*}
+u'(1) = 0
+\end{equation*}
+feltételt követeljük meg, akkor $m=0$ esetén nincs konvergencia, és még $m=1$ esetén is problémás a helyzet, mert a Newton-iteráció nem konvergál, ezért meg kell adni kezdeti feltételt. A
+$\text{cinit} = [1]$ paraméterrel, azaz a $\Phi_1$ komponens kezdeti együtthatóját 1-re változtatva viszont már van konvergencia, és megkapjuk a megoldást:
+\begin{center}
+	\includegraphics{./abrak/pelda_02.png}
+\end{center}
+

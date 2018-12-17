@@ -1,0 +1,14 @@
+\select@language {magyar} \contentsline {chapter}{\numberline {1}Funkcion\'alanalitikai seg\'edeszk\"oz\"ok}{3}{chapter.1}
+\select@language {magyar} \contentsline {section}{\numberline {1.1}Faktorterek, direkt kieg\'esz\IeC {\'\i }t\H ok}{3}{section.1.1}
+\select@language {magyar} \contentsline {section}{\numberline {1.2}Line\'aris oper\'atorok}{6}{section.1.2}
+\select@language {magyar} \contentsline {section}{\numberline {1.3}Kompakt oper\'atorok}{18}{section.1.3}
+\select@language {magyar} \contentsline {section}{\numberline {1.4}Fredholm-oper\'atorok}{19}{section.1.4}
+\select@language {magyar} \contentsline {section}{\numberline {1.5}Az implicit f\"uggv\'enyre vonatkoz\'o t\'etel}{22}{section.1.5}
+\select@language {magyar} \contentsline {chapter}{\numberline {2}Bifurk\'aci\'ok}{25}{chapter.2}
+\select@language {magyar} \contentsline {chapter}{\numberline {3}A Ljapunov-Schmidt-redukci\'o}{29}{chapter.3}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}Alkalmaz\'asok}{32}{chapter.4}
+\select@language {magyar} \contentsline {section}{\numberline {4.1}Egy els\H orend\H u perem\'ert\'ek-feladat}{32}{section.4.1}
+\select@language {magyar} \contentsline {section}{\numberline {4.2}Egy $n$-edrend\H u perem\'ert\'ek-feladat}{35}{section.4.2}
+\select@language {magyar} \contentsline {chapter}{\numberline {5}A numerikus Ljapunov-Schmidt-m\'odszer}{45}{chapter.5}
+\select@language {magyar} \contentsline {section}{\numberline {5.1}Csebisev-Tau-m\'odszer a saj\'atf\"uggv\'enyek el\H o\'all\IeC {\'\i }t\'as\'ara}{52}{section.5.1}
+\select@language {magyar} \contentsline {section}{\numberline {5.2}P\'elda a numerikus alkalmaz\'asra}{57}{section.5.2}

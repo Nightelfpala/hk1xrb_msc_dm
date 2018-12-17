@@ -1,0 +1,596 @@
+\def\latex{\LaTeX\ }
+\def\ams{$\mathcal{A_{\textstyle M}S}$\ }
+\def\amstex{\ams-\TeX\ }
+\def\amslatex{\ams-\LaTeX\ }
+\def\elte{Eötvös Loránd Tudományegyetem\ }
+\def\ppte{Pázmány Péter Katolikus Egyetem\ }
+\def\ik{Informatikai Kar\ }
+\def\itk{Információs Technológiai Kar\ }
+\def\ttk{Természettudományi Kar\ }
+\def\kompalg{Komputeralgebra Tanszék\ }
+\def\numanal{Numerikus Analízis Tanszék\ }
+\def\algalk{Algoritmusok és Alkalmazásaik Tanszék\ }
+\def\infrend{Információs Rendszerek Tanszék\ }
+\def\inftud{Információtudományi Tanszék\ }
+\def\media{Média és Információtudományi Tanszék\ }
+\def\progszoft{Programozáselmélet és Szoftvertechnológiai Tanszék\ }
+\def\prognyelv{Programozási Nyelvek és Fordítóprogramok Tanszék\ }
+\def\terkeptud{Térképtudományi és Geoinformatikai Tanszék}
+\def\opkut{Operációkutatás Tanszék\ }
+\newcommand\MSC[1]{{\noindent \em Mathematical Subject Classification:} #1}
+
+\def\isbnkod{}
+
+%
+% Stílusfájl a TÁMOP-4.1.2.A/1-11/1-2011-0052 jegyzetíráshoz az ELTE IK-n
+% Szerzõ: Kovács Sándor (alex@.ludens.elte.hu)
+%
+%----------------------------------------
+% Történet:
+% 2013.01.08: elsõ publikus verzió (0.1)
+%
+%----------------------------------------
+
+
+%--- hyperref csomag a linkekhez
+\usepackage{hyperref}
+
+\hypersetup{pdftex,final,colorlinks,linkcolor=blue,bookmarks}
+
+%--- alapvetõ csomagok
+\usepackage[pdftex]{graphicx}
+\usepackage[pdftex]{color}
+\usepackage[T1]{fontenc}
+%\usepackage[magyar]{babel}
+%\usepackage{ngerman}
+%\usepackage[latin2]{inputenc}
+%\usepackage[latin2]{inputenc}
+%\usepackage{makeidx}
+
+\mathcode`\,="013B
+%--- ez még változhat
+% garamond font konfigurálása kidolgozandó
+%
+\usepackage{palatino}
+
+%--- formázási finomítások
+\topmargin -10mm
+\textheight 190mm
+
+\usepackage[sf,bf,calcwidth]{titlesec}
+
+\usepackage{enumitem}
+\setenumerate[1]{labelindent=0pt,itemsep=1ex,parsep=0ex,leftmargin=2em}
+\setitemize[1]{labelindent=0pt,itemsep=1ex,parsep=0ex,leftmargin=2em}
+
+\usepackage{microtype}
+
+%--- lebegõ objektumok ésszerûbb beállítási paraméterei
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\dbltopfraction}{0.9}	
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.7}	
+\renewcommand{\dblfloatpagefraction}{0.7}
+
+%--- használt színek
+\definecolor{kulcsszoszin}{rgb}{0.0,0.3,0.0}
+\definecolor{kiemelesszin}{rgb}{0.0,0.0,0.3}
+\definecolor{megjegyzesszin}{rgb}{1.0,0.5,0.9}
+\definecolor{fontosszin}{rgb}{0.9,0.9,1.0}
+\definecolor{definszin}{RGB}{219,255,218}
+\definecolor{peldaszin}{RGB}{255,225,193}
+\definecolor{feladatszin}{RGB}{153,204,255}
+\definecolor{szurke}{rgb}{0.5,0.5,0.5}
+\definecolor{sszurke}{rgb}{0.3,0.3,0.3}
+\definecolor{piros}{rgb}{0.6,0.0,0.0}
+\definecolor{zold}{rgb}{0.0,0.6,0.0}
+\definecolor{kek}{rgb}{0.0,0.0,0.6}
+\definecolor{szineshatter}{rgb}{1,0.5,0.14}
+\definecolor{allitasszin}{rgb}{1.0,0.5,0.5}
+\definecolor{tetelszin}{RGB}{255,204,253}
+
+
+%---
+\makeatletter
+\@addtoreset{figure}{section}
+\makeatother
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\sloppy
+
+%--- saját makrók
+
+% fontos szavak kiemelése
+\newcommand{\kulcsszo}[1]{{\textcolor{kulcsszoszin}{#1}}}
+\newcommand{\pirosszin}[1]{{\textcolor{piros}{#1}}}
+
+% fontos szó és indexbejegyzés
+\newcommand{\ikulcsszo}[2]{\kulcsszo{#1}\index{#2}}
+
+% idézõjelek (lehet, hogy felesleges parancs)
+\newcommand{\idez}[1]{``#1''}
+
+%--
+\unitlength 1mm
+\newsavebox{\szaggatott}
+\sbox{\szaggatott}{ {\color{szurke}\noindent\begin{picture}(125,0)
+	\put(0,0){\dashbox{1}(125,0){}}
+\end{picture}}}
+%--- \megjszagg = megjegyzéseket határoló szaggatott vonal.
+% Fõként belsõ használatra
+\newcommand{\megjszagg}{\noindent\usebox{\szaggatott}\\}
+
+% \megjegyzes{} = megjegyzés stíluselem
+\newcommand{\megjegyzes}[1]{
+\pagebreak[1]
+\megjszagg\nopagebreak[4]
+\noindent\colorbox{megjegyzesszin}%
+{\noindent\parbox{120mm}{\color{sszurke}#1}}\nopagebreak[4]
+\megjszagg\par
+\pagebreak[1]
+}
+
+% \fontos{} = fontos részek kiemelése
+\newcommand{\fontos}[1]{
+\par
+\noindent\colorbox{fontosszin}%
+{\noindent\parbox{\textwidth}{#1}}
+\par
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A következõ makrók hasznosak lehetnek, de felüldefiniálhatók,
+% ha a szerzõnek más az elképzelése.
+% A LaTeX-ben standard elemekhez (pl. definíció) nem tartozik saját
+% felület.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \meghatarozas{cimke}{szöveg} = a definíció enyhe formája
+\newcommand{\meghatarozas}[2]{
+\medskip\pagebreak[1]
+%\noindent\textit{#1}:\par
+%2006.08.28.
+\noindent\textit{#1}\par
+\nopagebreak[4]
+%\smallskip\par
+\noindent\colorbox{fontosszin}%
+{\noindent\parbox{\textwidth}{#2}}
+%\par\bigskip\pagebreak[1]
+\par\medskip\pagebreak[1]
+}
+
+%-----Módosítva (KS. 2012.12.27.)--------------------------------------------------------------
+\newcounter{defin}[section]
+\renewcommand{\thedefin}{\thesection.\arabic{defin}}
+\newcommand{\defin}[2]{\refstepcounter{defin}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{definszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thepelda.~Definíció:} #1}}\nopagebreak[2]
+%2006.08.29.
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thedefin.~definíció.} #1}}\nopagebreak[2]
+\par\smallskip
+\begin{small}
+\noindent #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \satz{tetelszoveg}{bizonyitas} = tétel.
+\newcounter{satz}[section]
+\renewcommand{\thesatz}{\thesection.\arabic{satz}}
+\newcommand{\satz}[2]{\refstepcounter{satz}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{tetelszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thetetel.~Tétel:} #1}}\nopagebreak[2]
+%2006.08.28
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thesatz.~tétel. }#1}}\nopagebreak[2]
+\begin{small}
+\noindent\textbf{Biz.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \satz{tetelszoveg}{bizonyitas} = tétel.
+\newcounter{satzpn}[section]
+\renewcommand{\thesatzpn}{\thesection.\arabic{satz}}
+\newcommand{\satzpn}[2]{\refstepcounter{satzpn}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{tetelszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thetetel.~Tétel:} #1}}\nopagebreak[2]
+%2006.08.28
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thesatz.~tétel }#1}}\nopagebreak[2]
+\begin{small}
+\noindent\textbf{Biz.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \satz{tetelszoveg}{bizonyitas} = tétel.
+\newcounter{satzpnbn}[section]
+\renewcommand{\thesatzpnbn}{\thesection.\arabic{satz}}
+\newcommand{\satzpnbn}[2]{\refstepcounter{satzpnbn}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{tetelszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thetetel.~Tétel:} #1}}\nopagebreak[2]
+%2006.08.28
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thesatz.~tétel }#1}}\nopagebreak[2]
+%\begin{small}
+%\noindent\textbf{Biz.} #2%
+%\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+
+% \satz{tetelszoveg}{bizonyitas} = tétel.
+\newcounter{satzbn}[section]
+\renewcommand{\thesatzbn}{\thesection.\arabic{satzbn}}
+\newcommand{\satzbn}[2]{\refstepcounter{satzbn}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{tetelszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thesatzbn.~Tétel:} #1}}\nopagebreak[2]
+%2006.08.28
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thesatzbn.~tétel. }#1}}\nopagebreak[2]
+%\begin{small}
+%\noindent\textbf{Biz.} #2%
+%\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \satz{tetelszoveg}{bizonyitas} = tétel.
+\newcounter{behbn}[section]
+\renewcommand{\thebehbn}{\thesection.\arabic{behbn}}
+\newcommand{\behbn}[2]{\refstepcounter{behbn}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{tetelszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thesatzbn.~Állítás:} #1}}\nopagebreak[2]
+%2006.08.28
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thesatzbn.~állítás. }#1}}\nopagebreak[2]
+%\begin{small}
+%\noindent\textbf{Biz.} #2%
+%\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \satz{allitasszoveg}{bizonyitas} = allitas.
+\newcounter{beh}[section]
+\renewcommand{\thebeh}{\thesection.\arabic{beh}}
+\newcommand{\beh}[2]{\refstepcounter{beh}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{tetelszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thetetel.~Tétel:} #1}}\nopagebreak[2]
+%2006.08.28
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thebeh.~állítás. }#1}}\nopagebreak[2]
+\begin{small}
+\noindent\textbf{Biz.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \allitas{allitasszoveg}{bizonyitas} = állítás.
+\newcounter{behs}[section]
+\renewcommand{\thebehs}{\thesection.\arabic{behs}}
+\newcommand{\behs}[2]{\refstepcounter{beh}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{tetelszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\theallitas.~Állítások:} #1}}\nopagebreak[2]
+%2006.08.28.
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\theallitas.~állítások.}#1}}\nopagebreak[2]
+\begin{small}
+\noindent #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \bsp{feladat}{megoldas} = példa. Javasolt szövegközi, gyors példákhoz
+\newcounter{bsp}[section]
+\renewcommand{\thebsp}{\thesection.\arabic{bsp}}
+\newcommand{\bsp}[2]{\refstepcounter{bsp}%
+%\bigskip\pagebreak[1]
+\noindent\colorbox{peldaszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thepelda.~Példa:} #1}}\nopagebreak[2]
+%2006.08.29.
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thebsp.~példa.} #1}}\nopagebreak[2]
+\par\smallskip
+\begin{small}
+\noindent #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \bsp{feladat}{megoldas} = példa. Javasolt szövegközi, gyors példákhoz
+\newcounter{bsps}[section]
+\renewcommand{\thebsps}{\thesection.\arabic{bsps}}
+\newcommand{\bsps}[2]{\refstepcounter{bsps}%
+%\bigskip\pagebreak[1]
+\noindent\colorbox{peldaszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thepelda.~Példák:} #1}}\nopagebreak[2]
+%2006.08.29.
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thebsps.~példák.} #1}}\nopagebreak[2]
+\par\smallskip
+\begin{small}
+\noindent #2%
+\end{small}
+\par
+%\medskip\pagebreak[1]%
+}
+
+% \bem{feladat}{megoldas} = példa. Javasolt szövegközi, gyors példákhoz
+\newcounter{bem}[section]
+\renewcommand{\thebem}{\thesection.\arabic{bem}}
+\newcommand{\bem}[2]{\refstepcounter{bem}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{megjegyzesszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thepelda.~Megjegyzés:} #1}}\nopagebreak[2]
+%2006.08.29.
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thebem.~megjegyzés.} #1}}\nopagebreak[2]
+\par\smallskip
+\begin{small}
+\noindent #2%
+\end{small}
+\par
+%\medskip\pagebreak[1]%
+}
+
+
+% \bem{feladat}{megoldas} = példa. Javasolt szövegközi, gyors példákhoz
+\newcounter{bems}[section]
+\renewcommand{\thebems}{\thesection.\arabic{bems}}
+\newcommand{\bems}[2]{\refstepcounter{bems}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{megjegyzesszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thepelda.~Megjegyzések:} #1}}\nopagebreak[2]
+%2006.08.29.
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thebem.~megjegyzések.} #1}}\nopagebreak[2]
+\par\smallskip
+\begin{small}
+\noindent #2%
+\end{small}
+\par
+%\medskip\pagebreak[1]%
+}
+
+
+
+% \bem{feladat}{megoldas} = példa. Javasolt szövegközi, gyors példákhoz
+\newcounter{erin}[section]
+\renewcommand{\theerin}{\thesection.\arabic{erin}}
+\newcommand{\erin}[2]{\refstepcounter{erin}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{megjegyzesszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thepelda.~Megjegyzés:} #1}}\nopagebreak[2]
+%2006.08.29.
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\theerin.~emlékeztetõ.} #1}}\nopagebreak[2]
+\par\smallskip
+\begin{small}
+\noindent #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \feladat{feladat}{megoldas} = feladat. Javasolt kidolgozott feladatokhoz
+\newcounter{aufg}[section]
+\renewcommand{\theaufg}{\thesection.\arabic{aufg}}
+\newcommand{\aufg}[2]{\refstepcounter{aufg}%
+\bigskip\pagebreak[1]
+\begin{small}
+\noindent\colorbox{feladatszin}%
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\theaufg.~feladat.} #1}}\nopagebreak[2]
+\par\smallskip
+\noindent\textbf{Útm.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+
+% \feladat{feladat}{megoldas} = feladat. Javasolt kidolgozott feladatokhoz
+\newcounter{aufgbn}[section]
+\renewcommand{\theaufgbn}{\thesection.\arabic{aufgbn}}
+\newcommand{\aufgbn}[2]{\refstepcounter{aufgbn}%
+\bigskip\pagebreak[1]
+\begin{small}
+\noindent\colorbox{feladatszin}%
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\theaufgbn.~feladat.} #1}}\nopagebreak[2]
+\par\smallskip
+%\noindent\textbf{Útm.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+
+
+% \feladat{szineshatter}{megoldas} = feladat. Javasolt kidolgozott feladatokhoz
+\newcounter{szineshatter}[section]
+\renewcommand{\theszineshatter}{\thesection.\arabic{szineshatter}}
+\newcommand{\szineshatter}[2]{\refstepcounter{szineshatter}%
+\bigskip\pagebreak[1]
+\begin{small}
+\noindent\colorbox{szineshatter}%
+{ \noindent\hspace{-2mm}\parbox{160mm}{%\textbf{\thefeladat.~feladat:}
+#1}}\nopagebreak[2]
+\par\smallskip
+%\noindent\textbf{Útm.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \feladat{gyf}{megoldas} = feladat. Javasolt kidolgozott feladatokhoz
+\newcounter{gyf}[section]
+\renewcommand{\thegyf}{\thesection.\arabic{gyf}}
+\newcommand{\gyf}[2]{\refstepcounter{gyf}%
+\bigskip\pagebreak[1]
+%\begin{small}
+\noindent\colorbox{feladatszin}%
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thegyf.~gyakorló feladat.} #1}}\nopagebreak[2]
+%\par\smallskip
+%\noindent\textbf{Útm.} #2%
+%\end{small}
+%\par
+%\medskip\pagebreak[1]%
+}
+
+% \feladat{hf}{megoldas} = feladat. Javasolt kidolgozott feladatokhoz
+\newcounter{hf}[section]
+\renewcommand{\thehf}{\thesection.\arabic{hf}}
+\newcommand{\hf}[2]{\refstepcounter{hf}%
+\bigskip\pagebreak[1]
+%\begin{small}
+\noindent\colorbox{feladatszin}%
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thehf.~házi feladat.} #1}}\nopagebreak[2]
+%\par\smallskip
+%\noindent\textbf{Útm.} #2%
+%\end{small}
+%\par
+%\medskip\pagebreak[1]%
+}
+
+%-----(KS)--------------------------------------------------------------
+
+
+%% \abra{abra.pdf}{felirat}{belsõ cimke} = egy ábra elhelyezése felirattal
+%\newcommand{\abra}[3]{
+%\begin{figure}[htbp]
+%\begin{center}
+%\includegraphics[width=110mm]{Abrak/#1}
+%\end{center}
+%\caption{#2}
+%\label{#3}
+%\end{figure}
+%}
+
+% \kisabra{abra.pdf}{felirat}{belsõ cimke} = egy ábra elhelyezése felirattal
+\newcommand{\kisabra}[3]{
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=60mm]{Abrak/#1}
+\end{center}
+\caption{#2}
+\label{#3}
+\end{figure}
+}
+
+% \kisdabra{abra1.pdf}{abra2.pdf}{felirat}{belsõ cimke} =
+% = két ábra elhelyezése közös felirattal
+\newcommand{\kisdabra}[4]{
+\begin{figure}[htbp]
+\,\includegraphics[width=60mm]{Abrak/#1}
+\hfill
+\includegraphics[width=60mm]{Abrak/#2}\,
+\caption{#3}
+\label{#4}
+\end{figure}
+}
+
+%-----Módosítva (GCs. 2006.03.21.)--------------------------------------------------------------
+% \pelda{feladat}{megoldas} = példa. Javasolt szövegközi, gyors példákhoz
+\newcounter{pelda}[section]
+\renewcommand{\thepelda}{\thesection.\arabic{pelda}}
+\newcommand{\pelda}[2]{\refstepcounter{pelda}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{peldaszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thepelda.~Példa:} #1}}\nopagebreak[2]
+%2006.08.29.
+{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thepelda.~Példa.} #1}}\nopagebreak[2]
+\par\smallskip
+\begin{small}
+\noindent\textbf{Útm.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+%---kiegészítés (GCs, 2006.03.21.)-----------------------------------------------------------------
+% \allitas{allitasszoveg}{bizonyitas} = állítás.
+\newcounter{allitas}[section]
+\renewcommand{\theallitas}{\thesection.\arabic{allitas}}
+\newcommand{\allitas}[2]{\refstepcounter{allitas}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{allitasszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\theallitas.~Állítás:} #1}}\nopagebreak[2]
+%2006.08.28.
+{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\theallitas.~Állítás.}#1}}\nopagebreak[2]
+\begin{small}
+\noindent\textbf{Biz.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+
+
+% \satz{allitasszoveg}{bizonyitas} = következmény.
+\newcounter{kovetkezmeny}[section]
+\renewcommand{\thekovetkezmeny}{\thesection.\arabic{kovetkezmeny}}
+\newcommand{\kovetkezmeny}[2]{\refstepcounter{kovetkezmeny}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{allitasszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thekovetkezmeny.~Következmény:} #1}}\nopagebreak[2]
+%2006.08.28
+{ \noindent\hspace{-2mm}\parbox{160mm}{\textbf{\thekovetkezmeny.~következmény. }#1}}\nopagebreak[2]
+\begin{small}
+\noindent\textbf{Biz.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \tetel{tetelszoveg}{bizonyitas} = tétel.
+\newcounter{tetel}[section]
+\renewcommand{\thetetel}{\thesection.\arabic{tetel}}
+\newcommand{\tetel}[2]{\refstepcounter{tetel}%
+\bigskip\pagebreak[1]
+\noindent\colorbox{tetelszin}%
+%{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thetetel.~Tétel:} #1}}\nopagebreak[2]
+%2006.08.28
+{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thetetel.~Tétel.}#1}}\nopagebreak[2]
+\begin{small}
+\noindent\textbf{Biz.} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+
+
+%-------------------------------------------------------------------------------------------------
+
+% \feladat{feladat}{megoldas} = feladat. Javasolt kidolgozott feladatokhoz
+\newcounter{feladat}[section]
+\renewcommand{\thefeladat}{\thesection.\arabic{feladat}}
+\newcommand{\feladat}[2]{\refstepcounter{feladat}%
+\bigskip\pagebreak[1]
+\begin{small}
+\noindent\colorbox{feladatszin}%
+{ \noindent\hspace{-2mm}\parbox{125mm}{\textbf{\thefeladat.~feladat:} #1}}\nopagebreak[2]
+\par\smallskip
+\noindent\textbf{Megoldás:} #2%
+\end{small}
+\par
+\medskip\pagebreak[1]%
+}
+
+% \vek{} = vektorjelölésre ajánlott az aláhúzás
+%\newcommand{\vek}[1]{\underline{#1}}
+

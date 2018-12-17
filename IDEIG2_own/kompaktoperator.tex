@@ -1,0 +1,52 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+
+
+
+
+\section{Kompakt operátorok}
+\label{sec:kompakt}
+
+A Fredholm-operátorok konstrukciójához érdemes feleleveníteni a kompakt operátorok fogalmát és néhány, a gyakorlat szempontjából hasznos tulajdonságukat. A következõk során $(\X, \|\cdot\|{.}_\X)$ és $(\Y, \|\cdot\|{.}_\Y)$ normált terek.
+
+\defin{ \label{KompaktOpDefin}Adott
+$(\X,\|\cdot\|_\X)$ és $(\Y,\|\cdot\|_\Y)$ normált terek esetén az
+$A\in\X\rightarrow\Y$ operátort \textbf{kompakt}nak
+nevezzük, ha bármely $H\subset\X$ korlátos
+halmaz $A[H]\subset\Y$ képe prekompakt halmaz. Ha az $A$ operátor még folytonos
+is, akkor $A$-t \textbf{teljesen folytonos}nak nevezzük.}{}
+
+\bsp{A
+$$
+B:l_2\rightarrow l_2,\qquad Bu:=(u_{n+1})
+$$
+operátor nem kompakt, ui. az
+$$
+e_n:=(\delta_{jn})_{j\in\N}\in l_2\qquad(n\in\N)
+$$
+sorozat korlátos, és az $(Ae_n)$ sorozatnak nincsen Cauchy-féle, így konvergens részsorozata, hiszen
+$$
+Ae_n=e_{n+1}\quad(n\in\N)\qquad\textrm{és így}\qquad\|Ae_m-Ae_n\|_2=2\quad(m\neq n).
+$$
+}{}
+
+A kompakt, lineáris $A:\X\rightarrow\Y$ operátorok halmazának jelölésére a
+$$
+K(\X,\Y):=\left\{A\in\mathfrak{L}(\X,\Y):\;A\textrm{ kompakt}\right\}
+$$
+szimbólumot használjuk, az $\X=\Y$ esetben $K(\X,\X)$-et pedig
+$K(\X)$-szel rövidítjük. Belátható (vö. \cite{Kovacs}, 788. old), hogy $K(\X,\Y)\subset L(\X,\Y)$, továbbá (vö. \cite{Kovacs}, 790. old.), hogy minden véges rangú operátor kompakt.
+
+Belátható (vö. \cite{Kovacs}, 790-793. old.), hogy minden véges rangú, folytonos lineáris operátor kompakt, továbbá
+ha valamely korlátos lineáris operátor tetszõleges pontossággal közelíthetõ véges rangú operátorokkal az indukált operátornormában, akkor a szóban forgó operátor kompakt.
+
+Még tegyünk egy megállapítást a kompakt operátorok duálisával kapcsolatban.
+
+\satz{(\textbf{Schauder}).
+Legyen  $(\X, \|\cdot\|_\X)$ és $(\Y, \|\cdot\|_\Y)$ Banach-tér, $A \in L(\X, \Y)$, ekkor
+\begin{equation*}
+A \in K(\X, \Y)\qquad\Longleftrightarrow\qquad A^* \in K(\Y^*, \X^*),
+\end{equation*}
+azaz A pontosan akkor kompakt, ha az $A^*$ duális operátor kompakt.
+}{Vö. \cite{Kovacs}, 799-801. old. $\blacksquare$} 

@@ -1,0 +1,155 @@
+%\setcounter{chapter}{0}
+%\bigskip
+
+
+
+
+
+\label{chap:LjapunovSchmidtAlk}
+
+\section{Egy elsõrendû peremérték-feladat}
+
+
+Ebben a pontban adott $\lambda\in\R$, $n\in\N$, ill.
+$$
+f:=(f_1,\ldots,f_n):[0,1]\times\R^n\rightarrow\R^n
+$$
+függvény esetén az
+\begin{equation}\label{elsorenduperemfel}
+\dot{x}(t)=\lambda f(t,x(t))\quad(t\in(0,1)),\qquad x(0)=x(1)
+\end{equation}
+peremérték-feladat megoldhatóságának vizsgálatával foglalkozunk: feltételeket adunk meg a peremérték-feladat megoldhatóságára.
+
+\satz{Tegyük fel, hogy $f$ folytonos
+$$
+\partial_jf_i\in\mathfrak{C}\qquad(i,j\in\{1,\ldots,n\}),
+$$
+továbbá valamely $v\in\R^n$ vektorra
+$$
+\int_0^1f(s,v)\,\mathrm{d}s=0,\qquad\det\left[\int_0^1\partial_jf_i(s,v)\,\mathrm{d}s\right]\neq0\quad(i\in\{1,\ldots,n\}),
+$$
+teljesül. Ekkor alkalmas $\delta>0$ számra és
+$$
+\Phi:[0,1]\times(-\delta,\delta)\rightarrow\R^n
+$$
+differenciálható függvényre $\Phi(\cdot,0)=v$, és a $\Phi(\cdot,\lambda)$ függvény megoldása a \eqref{elsorenduperemfel} peremérték-feladatnak.
+}{Világos, hogy ha $\lambda:=0$, akkor a \eqref{elsorenduperemfel} peremérték-feladatnak van (triviális) megoldása, hiszen bármely $c\in\R^n$ esetén a
+$$
+\varphi:[0,1]\rightarrow\R,\qquad\varphi(t):=c
+$$
+függvény megoldás. Legyen most
+$$
+\X:=\left\{x\in\mathfrak{C}^1([0,1],\R^n):\;x(0)=x(1)\right\}\qquad\textrm{és}\qquad\Y:=\left\{y\in\mathfrak{C}([0,1],\R^n):\;y(0)=0\right\},
+$$
+majd értelmezzük az $L:\X\rightarrow\Y$, ill. $N:\X\rightarrow\Y$ lineáris, ill. nemlineáris operátorokat az alábbi módon:
+$$
+(Lu)(t):=u(t)-u(0)\quad(u\in\X,\,t\in[0,1]),\qquad (Nu)(t):=\int_0^tf(s,u(s))\,\mathrm{d}s\quad(u\in\X,\,t\in[0,1]).
+$$
+Látható, hogy valamely $\phi:[0,1]\rightarrow\R^n$ differenciálható függvény pontosan akkor lesz a \eqref{elsorenduperemfel} peremértékfeladat megoldása, ha megoldása az
+\begin{equation}\label{absztraktelsperem}
+F(x,\lambda):=Lx-N(x)=0
+\end{equation}
+egyenletnek. Mivel az $L$ operátor lineáris, és folytonos, ezért deriválható (vö. \cite{AmbrosettiProdi}, 1. fejezet), továbbá Fréchet-deriváltjára
+$$
+dL(x)h=Lh\qquad(h\in\X).
+$$
+Az $N$ nemlináris operátor is Fréchet-differenciálható, és deriváltjára
+$$
+(dN(x)h)(t)=\int_0^t\partial_2f(s,x(s))h(s)\,\mathrm{d}s\qquad(h\in\X,\,t\in[0,1]).
+$$
+Így a
+$$
+\partial_1F(c,0)h=Lh
+$$
+operátor nem injektív és
+$$
+\X_2:=\mathcal{N}(L)=\spanned\left\{\alpha:[0,1]\rightarrow\R^n,\;\alpha\,\textrm{ állandófüggvény}\right\},
+$$
+sõt
+$$
+\Y_1:=\mathcal{R}(L):=\left\{y\in\Y:\;y(0)=y(1)=0\right\}.
+$$
+A
+$$
+(Px)(t):=x(0),\quad(x\in\X,\,t\in[0,1]),\qquad (Qy)(t):=y(t)-ty(1)\qquad(y\in\Y,\,t\in[0,1])
+$$
+folytonos projekciókkal az $\X$ és $\Y$ tér alterek direkt összegére bomlik:
+$$
+\X=\X_1\oplus\X_2,\qquad\Y=\Y_1\oplus\Y_2,
+$$
+ahol
+$$
+\X_1:=\mathcal{N}(P)=\left\{x\in\X:\;x(0)=0\right\},\qquad\X_2:=\mathcal{R}(P)=\mathcal{N}(L),
+$$
+ill.
+$$
+\Y:=\mathcal{R}(Q):=\mathcal{R}(L),\qquad\Y_2:=\mathcal{N}(Q)=\left\{y\in\Y:\;y(t)=\alpha t,\,\alpha\in\R^n\right\}.
+$$
+Ennélfogva $L$ Fredholm-operátor, hiszen
+$$
+\dim\mathcal{N}(L)=\dim \X_2=n\qquad\textrm{és}\qquad\codim\mathcal{R}(L)=\dim\Y_2=n,
+$$
+így
+$$
+\indOp(L)=\dim\mathcal{N}(L)-\codim\mathcal{R}(L)=n-n=0.
+$$
+Alkalmazható tehát Ljapunov-Schmidt-módszer. A \eqref{absztraktelsperem} egyenlet tehát pontosan akkor megoldható, ha az
+$$
+x=x_1+b\qquad(x_1\in\X_1,\,b\in\X_2)
+$$
+vektorokkal az
+$$
+\begin{array}{lll}
+  F_{1}(x_1,b,\lambda) & := & QL(x_1+b)-\lambda QN(x_1+b)=Q Lx_1-\lambda QN(x_1+b)=0, \\\\
+  F_{2}(x_1,b,\lambda) & := & (I-Q)L(x_1+b)-\lambda(I-Q)N(x_1+b)=0
+\end{array}
+$$
+egyenletekbõl álló rendszer megoldható. Mivel $\mathcal{R}(Q)=\Y_1$ és így $QLx_1=Lx_1$, ezért
+$$
+(I-Q)L(x_1+b)=(I-Q)Lx_1=Lx_1-QLx_1=0.
+$$
+Ennélfogva a \eqref{absztraktelsperem} egyenlet az alábbi egyenletekbõl álló rendszerrel egyenértékû:
+$$
+\left.\underline{\begin{array}{lll}
+  F_{1}(x_1,b,\lambda) & := &Lx_1-\lambda QN(x_1+b)=0, \\
+  F_{2}(x_1,b,\lambda) & := & (I-Q)N(x_1+b)=0.
+\end{array}}\right\}
+$$
+Látható, hogy bármely $h\in\X_1$ esetén
+$$
+F_1(0,b,0)=0\qquad\textrm{és}\qquad
+\partial_1F_1(0,b,0)=Lh.
+$$
+Ennélfogva az $\partial_1F_1:\X_1\rightarrow\Y_1$ lineáris, folytonos és bijektív leképezés. Így (vö. nyílt leképezések tétele) $(\partial_1F_1)^{-1}$ folytonos. Az implicit függvényre vonatkozó tétel következtében tehát a $(b,0)\in\X_2\times\R$ pont egy környezetében a
+$F_1$ elsõ változója kifejezhetõ a második, és a harmadik változó függvényeként: alkalmas $\phi\in\R^n\times\R$ függvényre
+$$
+x_1=\phi(b,\lambda)
+$$
+teljesül. Ezen kívül még az is igaz, hogy
+$$
+\phi(b,0)=0\qquad\textrm{és}\qquad\partial_1\phi(b,0)=0.
+$$
+Ez azt jelenti, a megoldhatóság vizsgálata a
+$$
+H(b,\lambda):\equiv(I-Q)N(\phi(b,\lambda)+b)=0
+$$
+egyenlet  az elsõ változójának a többi változó függvényében való kifejezhetõségét jelenti. Mivel
+$$
+\dim \X_2=\dim Y_2=n<+\infty\qquad\textrm{és}\qquad H:\X_2\times\R\rightarrow\R,
+$$
+ezért az implicit függvényre vonatkozó tétel ismét alkalmazható. Ez persze olyan $v\in\X_2$ meglétét tételezi fel, amelyre
+$$
+(I-Q)N(v)=t\int_0^1f(s,v)\,\mathrm{d}s=0,\qquad\textrm{azaz}\qquad\int_0^1f(s,v)\,\mathrm{d}s=0
+$$
+és amelyre a
+$$
+(I-Q)dN(v)d=t\left(\int_0^1\partial_2f(s,v)\,\mathrm{d}s\right)d=ta
+$$
+tetszõleges $a\in\R^n$ esetén megoldható $d$-re. Ez pedig azt jelenti, hogy az
+$$
+\int_0^1\partial_2f(s,v)\,\mathrm{d}s
+$$
+mátrix invertálható. $\blacksquare$
+}
+
+

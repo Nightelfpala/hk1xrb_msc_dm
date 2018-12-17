@@ -9,10 +9,7 @@
 
 \section{Egy $n$-edrendû peremérték-feladat}
 
-Legyen
-$$
-n,N\in\N,\qquad B:=[b_{ij}]\in\{1,\ldots,N\}\rightarrow\R^{n\times n},\qquad g,a_0, \ldots, a_{n-1}\in\mathfrak{C}(\R,\R).
-$$
+Legyen $$n,N\in\N,\qquad B:=[b_{ij}]\in\{1,\ldots,N\}\rightarrow\R^{n\times n},\qquad g,a_0, \ldots, a_{n-1}\in\mathfrak{C}(\R,\R).$$
 Az alábbiakban az
 \begin{equation}
 y^{(n)}(t) + a_{n-1}(t) y^{(n-1)}(t) + \ldots + a_0(t) y(t) = g(y(t)) \qquad (t\in[0,1]), \label{eq:mp:inhomOG}
@@ -20,22 +17,12 @@ y^{(n)}(t) + a_{n-1}(t) y^{(n-1)}(t) + \ldots + a_0(t) y(t) = g(y(t)) \qquad (t\
 \begin{equation}
 \sum_{j = 1}^n b_{ij}(0) y^{(j-1)}(0) + \sum_{j = 1}^n b_{ij}(1) y^{(j-1)}(t_1) + \ldots + \sum_{j = 1}^n b_{ij}(N) y^{(j-1)}(t_N) = 0 \quad (i = 1, \ldots, n) \label{eq:mp:boundaryOG}
 \end{equation}
-$n$-edrendû, nemlineáris peremérték-feladat megoldhatóságát vizsgáljuk, ahol 
-$$
-0 = t_0 < t_1 < \ldots < t_N = 1
-$$
-(vö. $\cite{multipoint}$). Feltesszük, hogy  $g$ Lipschitz-folytonos, valamint
-$$
-a_0(t) \neq 0\qquad (t\in[0,1]),
-$$
-továbbá
-$$
-g(+\infty):=\lim_{t \to +\infty} g(t)\in\R,\qquad\textrm{és}\qquad g(-\infty):=\lim_{t \to -\infty} g(t)\in\R.
-$$
+$n$-edrendû, nemlineáris peremérték-feladat megoldhatóságát vizsgáljuk, ahol  $$0 = t_0 < t_1 < \ldots < t_N = 1$$ (vö. $\cite{multipoint}$). Feltesszük, hogy  $g$ Lipschitz-folytonos, valamint $$a_0(t) \neq 0\qquad (0 \leq t \leq 1),$$ továbbá $$g(+\infty):=\lim_{t \to +\infty} g(t)\in\R,\qquad\textrm{és}\qquad g(-\infty):=\lim_{t \to -\infty} g(t)\in\R.$$
 A vizsgálat során fontos szerepet fog játszani a
-\begin{equation}\label{eq:mp:inhomOG}
-y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \ldots + a_0 y(t) = 0 \qquad (t\in[0,1])
+\begin{equation}
+y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \ldots + a_0 y(t) = 0 \quad (0 \leq t \leq 1)
 \end{equation}
+\label{eq:mp:inhomOG}
 homogén egyenlet a \eqref{eq:mp:boundaryOG} peremfeltételekkel.
 Elsõ lépésként fogalmazzuk át a feladatot: a magasabbrendû egyenlet írjuk át elsõrendû egyenletrendszerré.
 Az
@@ -93,11 +80,11 @@ D: = B_0 + B_1 \Phi(t_1) + \ldots + B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1).
 \end{equation*}
 Emellett még szükséges az inhomogén, lineáris egyenlet vizsgálata:
 \begin{equation}
-x'(t) = A(t) x(t) + h(t) \qquad (t\in[0,1]). \label{eq:mp:inhomlin}
+x'(t) = A(t) x(t) + h(t) \quad (0 \leq t \leq 1). \label{eq:mp:inhomlin}
 \end{equation}
-Az állandók variálásának módszerét használva látható, hogy valamely\linebreak $x:[0,1]\rightarrow\R^n$ differenciálható függvény pontosan akkor lesz \eqref{eq:mp:inhomlin}-\eqref{eq:mp:boundary} peremérték-feladat megoldása, ha
+Az állandók variálásának módszerét használva látható, hogy valamely $x:[0,1]\rightarrow\R^n$ differenciálható függvény pontosan akkor lesz \eqref{eq:mp:inhomlin}-\eqref{eq:mp:boundary} peremérték-feladat megoldása, ha
 \begin{align*}
-&x(t) = \Phi(t) x(0) + \Phi(t) \int_0^1 \Phi^{-1}(s) h(s)\, \mathrm{d}s\quad(t\in[0,1]), \\\\
+&x(t) = \Phi(t) x(0) + \Phi(t) \int_0^1 \Phi^{-1}(s) h(s)\, \mathrm{d}s\quad(t\in[0,1]), \\
 &B_0 x(0) + B_1 x(t_1) + \ldots + B_{N-1} x(t_{N-1}) + B_N x(1) = 0.&&
 \end{align*}
 Ennélfogva
@@ -130,17 +117,17 @@ vektor benne van a $D$ mátrix képterében. Mivel $\mathcal{R}(D) \perp \mathcal{N
 \end{equation*}
 Ezután megvizsgáljuk a $\eqref{eq:mp:hom}$-$\eqref{eq:mp:boundary}$ feladatot. Ez pontosan akkor oldható meg, ha
 \begin{align*}
-&x(t) = \Phi(t) x(0) \quad(t\in[0,1]), \\\\
+&x(t) = \Phi(t) x(0) \quad(t\in[0,1]), \\
 &B_0 x(0) + B_1 x(t_1) + \ldots + B_{N-1} x(t_{N-1}) + B_N x(1) = 0&&
 \end{align*}
 teljesül.
 A második egyenlet a következõ alakba írható:
 \begin{align*}
-0 &= B_0 x(0) + B_1 x(t_1) + \ldots + B_{N-1} x(t_{N-1}) + B_N x(1) = \\\\
- &= B_0 x(0) + B_1 \Phi(t_1) x(0) + \ldots + B_{N-1} \Phi(t_{N-1}) x(0) + B_N \Phi(1) x(0) = \\\\
+0 &= B_0 x(0) + B_1 x(t_1) + \ldots + B_{N-1} x(t_{N-1}) + B_N x(1) = \\
+ &= B_0 x(0) + B_1 \Phi(t_1) x(0) + \ldots + B_{N-1} \Phi(t_{N-1}) x(0) + B_N \Phi(1) x(0) = \\
  &= D x(0).
 \end{align*}
-Ez azt jelenti, hogy $x$ pontosan akkor megoldása a homogén peremfeladatnak, ha\linebreak $x(0) \in \mathcal{N}(D)$. Ebbõl az is kiderült, hogy a megoldástér ugyanannyi dimenziós, mint $\mathcal{N}(D)$. A továbbiakban feltesszük, hogy $\dim \mathcal{N}(D) = 1$, $\hat{p} \in \mathcal{N}(D)$, $\|\hat{p}\| = 1$, majd legyen
+Ez azt jelenti, hogy $x$ pontosan akkor megoldása a homogén peremfeladatnak, ha $x(0) \in \mathcal{N}(D)$. Ebbõl az is kiderült, hogy a megoldástér ugyanannyi dimenziós, mint $\mathcal{N}(D)$. A továbbiakban feltesszük, hogy $\dim \mathcal{N}(D) = 1$, $\hat{p} \in \mathcal{N}(D)$, $\|\hat{p}\| = 1$, majd legyen
 $$
 u(t) := \Phi(t) \hat{p}\qquad(t\in[0,1]).
 $$
@@ -192,17 +179,14 @@ $$
 $$
 M := (L|_{\X_1})^{-1}.
 $$
-Értelemszerûen
-$$
-L M h= h\quad(h \in \mathcal{R}(L))\qquad\textrm{és}\qquad M L x= (I - P) x\quad(x \in \mathcal{D}(L)).
-$$
-%\begin{align*}
-%L M h &= h \quad &(h \in \mathcal{R}(L)), \\
-%M L x &= (I - P) x \quad &(x \in \mathcal{D}(L)).
-%\end{align*}
+Értelemszerûen 
+\begin{align*}
+L M h &= h \quad &(h \in \mathcal{R}(L)), \\
+M L x &= (I - P) x \quad &(x \in \mathcal{D}(L)).
+\end{align*}
 Bontsuk fel $x \in \mathcal{D}(L)$-et az $\X_1$ és $\X_2$ alterek mentén:
 $$
-x = \widetilde{x} + \overline{x} \qquad(\widetilde{x} \in \X_1, \overline{x} \in \X_2).
+x = \widetilde{x} + \overline{x}, \qquad(\widetilde{x} \in \X_1, \overline{x} \in \X_2).
 $$
 Jól látható, hogy
 $$
@@ -213,51 +197,44 @@ valamint
 M L \widetilde{x} = \widetilde{x}. \label{eq:mp:MLx1}
 \end{equation}
 Ezt a \eqref{eq:mp:operatorIm} egyenletbe behelyettesítve és $M$-et alkalmazva mindkét oldalra jutunk az
-$$
-\widetilde{x}= M Q N (\widetilde{x} + \overline{x}),\qquad 0= (I - Q) N (\widetilde{x} + \overline{x})
-$$
-%\begin{align*}
-%\widetilde{x} &= M Q N (\widetilde{x} + \overline{x}), \\
-%0 &= (I - Q) N (\widetilde{x} + \overline{x})
-%\end{align*}
-egyenletekbõl álló rendszerhez, amibõl az elsõ egyenlet a fixpont feladat, de a cikket követve viszont már más megközelítéssel fogjuk megoldani az egyenletrendszert. \\
-Nézzük ezt meg egy kicsit részletesebben. A korábbi levezetésünkbõl és $L$ definíciójából következik, hogy $x \in \X_2$ pontosan akkor, ha $$x(t) = \Phi(t) \hat{p}\qquad(t\in[0,1])$$ (ami egybevág $u$-nak a definíciójával, tehát $u \in \X_2$). \\
-Konstruáljunk meg egy $$\psi : [0, 1] \rightarrow \mathbb{R}^n$$ függvényt úgy, hogy az õ merõleges kiegészítõje $\X_2$ legyen. Legyen $$p \in \mathcal{N}(D^T) \setminus \{ \mathbf{0} \},$$ majd legyen
+\begin{align*}
+\widetilde{x} &= M Q N (\widetilde{x} + \overline{x}), \\
+0 &= (I - Q) N (\widetilde{x} + \overline{x})
+\end{align*}
+egyenletrendszerhez, amibõl az elsõ egyenlet a fixpont feladat, de a cikket követve viszont már más megközelítéssel fogjuk megoldani az egyenletrendszert. \\
+Nézzük ezt meg egy kicsit részletesebben. A korábbi levezetésünkbõl és $L$ definíciójából következik, hogy $x \in \X_2$ pontosan akkor, ha $x(t) = \Phi(t) \hat{p}$ (ami egybevág $u$-nak a definíciójával, tehát $u \in \X_2$). \\
+Konstruáljunk meg egy $\psi : [0, 1] \rightarrow \mathbb{R}^n$ függvényt úgy, hogy az õ merõleges kiegészítõje $\X_2$ legyen. Legyen $p \in \mathcal{N}(D^T) \setminus \{ \mathbf{0} \}$, és legyen
 \begin{equation*}
-\psi(t) :=
+\psi(t) =
 	\begin{cases}
-	\left[ \left( B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &(t \in (t_{N-1}, 1]), \\\\
-	\left[ \left( B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &(t \in (t_{N-2}, t_{N-1}]),  \\\\
+	\left[ \left( B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in (t_{N-1}, 1] \\
+	\left[ \left( B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in (t_{N-2}, t_{N-1}]  \\
 	\vdots &\\
-	\left[ \left( B_2 \Phi(t_2) + \ldots + B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &(t \in (t_1, t_2]),  \\\\
-	\left[ \left( B_1 \Phi(t_1) + B_2 \Phi(t_2) + \ldots + B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &(t \in [0, t_1]).  
+	\left[ \left( B_2 \Phi(t_2) + \ldots + B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in (t_1, t_2]  \\
+	\left[ \left( B_1 \Phi(t_1) + B_2 \Phi(t_2) + \ldots + B_{N-1} \Phi(t_{N-1}) +  B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p &\text{ha } t \in [0, t_1]. \\
 	\end{cases}
 \end{equation*}
-Ellenõrizzük, hogy $$\psi(t) = 0\qquad(t \in [0, 1])$$ lehetséges-e. Elõször nézzük meg, hogy $(t_{N-1}, 1]$ intervallumon ez mit jelentene:
+Ellenõrizzük, hogy $\psi(t) = 0 \; (t \in [0, 1])$ lehetséges-e. Elõször nézzük meg, hogy $(t_{N-1}, 1]$ intervallumon ez mit jelentene:
 \begin{equation*}
 0 = \psi(t) = \left[ B_N \Phi(1) \Phi^{-1}(t) \right]^T p = \Phi^{-T}(t) \Phi^T(1) B_N^T p,
-\end{equation*}\\
+\end{equation*}
 ami pontosan akkor teljesül, ha $p \in \mathcal{N}(B_N^T)$. Ezt feltéve és továbbhaladva, $(t_{N-2}, t_{N-1}]$ intervallumon nézzük:
 \begin{align*}
-0 &= \psi(t) = \left[ \left( B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p =\\\\
+0 &= \psi(t) = \left[ \left( B_{N-1} \Phi(t_{N-1}) + B_N \Phi(1) \right) \Phi^{-1}(t) \right]^T p =\\
  &= \Phi^{-T}(t) \left( B_{N-1}^T \Phi^T(t_{N-1}) + \Phi^T(1) B_N^T \right) p = \Phi^{-T}(t) \Phi^T(t_{N-1}) B_{N-1}^T p,
 \end{align*}
-ami akkor teljesül, ha $p \in \mathcal{N}(B_{N-1}^T)$. Ezt ismét feltételezve és $i = N-3, \ldots, 1$ tovább folytatva azt kapjuk, hogy ha $$\psi(t) = 0 \qquad (t \in [0, 1]),$$ abból az következik, hogy $$p \in \mathcal{N}(B_i^T).$$ A továbbiakban feltesszük, hogy $$\bigcap\limits_{i = 1}^N \mathcal{N}(B_i^T) = \{ \mathbf{0} \},$$ így $\psi$ nem az azonosan $\mathbf{0}$ függvény, valamint $p \in \mathcal{N}(D^T)$-at úgy választjuk, hogy $\|\psi\|_{L^2} = 1$ teljesüljön. \\
+ami akkor teljesül, ha $p \in \mathcal{N}(B_{N-1}^T)$. Ezt ismét feltételezve és $i = N-3, \ldots, 1$ tovább folytatva azt kapjuk, hogy ha $\psi(t) = 0 \; (t \in [0, 1])$, abból az következik, hogy $p \in \mathcal{N}(B_i^T)$. A továbbiakban feltesszük, hogy $\cap_{i = 1}^N \mathcal{N}(B_i^T) = \{ \mathbf{0} \}$, így $\psi$ nem az azonosan $\mathbf{0}$ függvény, valamint hogy $p \in \mathcal{N}(D^T)$-at úgy választjuk, hogy $\|\psi\|_{L^2} = 1$. \\
 Belátható, hogy $\mathcal{R}(L) = {\psi}^\perp$. % TODO why?
 Ennek segítségével írjuk fel az $Q$ projekciót:
 \begin{equation*}
-(Qx) (t) = x(t) - \psi(t) \int_0^1 \psi^T(s) x(s) \,\mathrm{d}s = x(t) - \psi(t) \langle x, \psi \rangle_{L^2}\qquad(t\in[0,1]).
+(Qx) (t) = x(t) - \psi(t) \int_0^1 \psi^T(s) x(s) \,\mathrm{d}s = x(t) - \psi(t) \langle x, \psi \rangle_{L^2}.
 \end{equation*}
-Értelemszerûen $$Q L x = L x \qquad (x \in \mathcal{D}(L)).$$
+Értelemszerûen $Q L x = L x \; (x \in \mathcal{D}(L))$. \\
 Írjuk fel a $P$ projekciót is integrál segítségével:
 \begin{equation*}
-(Px)(t) = u(t) \int_0^1 u^T(s) x(s) \,\mathrm{d}s = u(t) \langle x, u \rangle_{L^2}\qquad(t\in[0,1]),
+(Px)(t) = u(t) \int_0^1 u^T(s) x(s) \,\mathrm{d}s = u(t) \langle x, u \rangle_{L^2},
 \end{equation*}
-ahol $u$ volt az a vektor, ami kifeszíti $\X_2$-õt. Így bármely $x \in ( L^2[0, 1], \mathbb{R}^n)$-re
-$$
-Px = \overline{x} = \alpha u,
-$$
-ahol $\alpha$ megfelelõ ($x$-tõl függõ) valós szám. \\
+ahol $u$ volt az a vektor, ami kifeszíti $\X_2$-õt. Így bármely $x \in ( L^2[0, 1], \mathbb{R}^n)$-re $Px = \overline{x} = \alpha u$, ahol $\alpha$ megfelelõ ($x$-tõl függõ) valós szám. \\
 Írjuk fel $x$-et az $\X_1 \oplus \X_2$ felbontásával és helyettesítsük be a \eqref{eq:mp:MLx1} azonosságot, a \eqref{eq:mp:operatorIm} levetített feladatot, illetve a $\X_2$-õt kifeszítõ $u$-t:
 \begin{equation*}
 x = \overline{x} + \widetilde{x} = \overline{x} + M L \widetilde{x} = \overline{x} + M L x = \overline{x} + M Q N x = \alpha u + M Q N x.
@@ -272,43 +249,35 @@ Vezessük be az alábbi jelöléseket:
 \item $M Q N (x)$ elsõ komponensét jelöljük $w(x)$-szel,
 \item $\psi(t)$ $n$. komponensét jelöljük $v(t)$-vel.
 \end{itemize}
-Mivel $f$ az a függvény, aminek az elsõ $n-1$ komponense azonosan $0$, az $n$-edik komponense pedig $f_n(x) = g(x_1)$, emellett $x_1$ felírható $$x_1(t) = \alpha s(t) + w(x(t))\qquad(t\in[0,1])$$ alakban, így az integrál átalakítható:
+Mivel $f$ az a függvény, aminek az elsõ $n-1$ komponense azonosan $0$, az $n$. komponense pedig $f_n(x) = g(x_1)$, emellett $x_1$ felírható $x_1(t) = \alpha s(t) + w(x(t))$ alakban, így az integrál átalakítható:
 \begin{equation*}
 0 = \int_0^1 \left( f(x(t)) \right)^T \psi(t)\,\mathrm{d}t = \int_0^1 v(t) g(x_1(t)) \,\mathrm{d}t = \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t.
 \end{equation*}
-Mivel a $\left\{ t\in[0.1] :\; s(t) =0 \right\}$ halmaz nullmértékû, ezért az integrál felbontható:
+Mivel $\left\{ t : s(t) =0 \right\}$ 0-mértékû, ezért az integrál felbontható:
 \begin{equation*}
-\int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t = \int_{\{ s(t) > 0 \}} v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t + \int_{\{ s(t) < 0 \}} v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t.
+\int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t = \int_{\{ s(t) > 0 \}} v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t + \int_{\{ s(t) < 0 \}} v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t
 \end{equation*}
-$M$, $E$ és $g$ korlátossága miatt $w$ is korlátos, így az $\alpha \to \pm \infty$ határesetben az egyenlet a következõ alakú:
+$M$, $E$ és $g$ korlátossága miatt $w$ is korlátos, írjuk fel $\alpha \to \pm \infty$ esetén az egyenletet:
 \begin{align*}
-\lim_{\alpha \to \infty} \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t &= g(\infty) \int_{s(t) > 0} v(t) \,\mathrm{d}t + g(-\infty) \int_{s(t) < 0} v(t) \,\mathrm{d}t =: J_1, \\\\
+\lim_{\alpha \to \infty} \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t &= g(\infty) \int_{s(t) > 0} v(t) \,\mathrm{d}t + g(-\infty) \int_{s(t) < 0} v(t) \,\mathrm{d}t =: J_1 \\
 \lim_{\alpha \to -\infty} \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t &= g(-\infty) \int_{s(t) > 0} v(t) \,\mathrm{d}t + g(\infty) \int_{s(t) < 0} v(t) \,\mathrm{d}t =: J_2.
 \end{align*}
-Tegyük fel, hogy
-$$
-J_2 < 0 < J_1
-$$
-($J_1 < 0 < J_2$ esetén hasonlóan járhatunk el, de $J_1\cdot J_2 < 0$ szükséges). Így létezik $\alpha_0$, amivel
+Tegyük fel, hogy $J_2 < 0 < J_1$ ($J_1 < 0 < J_2$ esetén analóg módon folytatható, de $J_1 J_2 < 0$ szükséges). Így létezik $\alpha_0$, amivel
 \begin{align}
-\int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t &> 0 \quad &( \alpha \geq \alpha_0), \label{eq:mp:alpha} \\ \nonumber \\
-\int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t &< 0 \quad &( \alpha \leq -\alpha_0). \nonumber
+\int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t &> 0 \qquad &\text{ha } \alpha \geq \alpha_0, \label{eq:mp:alpha} \\
+\int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t &< 0 \qquad &\text{ha } \alpha \leq -\alpha_0. \nonumber
 \end{align}
 Definiáljuk az alábbi operátorokat:
 \begin{align*}
-&H_1 : ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow ( L^2[0, 1], \mathbb{R}^n), \\\\
-&H_1(x, \alpha) := \alpha u + M Q N (x), \\\\
-&H_2 :  ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow \mathbb{R}, \\\\
-&H_2(x, \alpha) := \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t, \\\\
-&H : ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R}, \\\\
+&H_1 : ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow ( L^2[0, 1], \mathbb{R}^n) \\
+&H_1(x, \alpha) := \alpha u + M Q N (x) \\
+&H_2 :  ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow \mathbb{R} \\
+&H_2(x, \alpha) := \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t \\
+&H : ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \rightarrow ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R} \\
 &H(x, \alpha) := (H_1 (x, \alpha), H_2(x, \alpha)).
 \end{align*}
-$( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R}$-en a
-$$
-\|(x, \alpha)\| := \max \{ \|x\|_{L^2}, |\alpha| \}.
-$$ 
-normát használjuk.
-Látható, hogy az eredeti $\eqref{eq:mp:inhom}$-$\eqref{eq:mp:boundary}$ peremérték-feladat megoldhatósága a $H$ fixpontjának létezésével hozható összefüggésbe. \\
+
+Ezzel a szétválasztással $\overline{x} = \alpha u$, azaz $x$-nek az $\X_2$ irányú komponensét az $\alpha$ reprezentálja. $( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R}$-en a norma amit használunk $\|(x, \alpha)\| := \max \{ \|x\|_{L^2}, |\alpha| \}$. Jól látható, hogy az eredeti $\eqref{eq:mp:inhom}$-$\eqref{eq:mp:boundary}$ peremérték-feladat megoldhatósága a $H$ fixpontjának létezésével hozható összefüggésbe. \\
 Legyen
 $$
 r := \sup\{|g(t)|\in\R:\;t\in\R\}\qquad\textrm{és}\qquad m :=\sup\{|v(t)|\in\R:\;t\in[0,1]\}.
@@ -317,7 +286,7 @@ Ekkor
 \begin{equation*}
 \left| \int_0^1 v(t) g(\alpha s(t) + w(x(t)))\,\mathrm{d}t\right| \leq rm.
 \end{equation*}
-Válasszunk $\alpha_0$-át úgy, hogy a \eqref{eq:mp:alpha} egyenletek teljesüljenek és $\alpha_0 > rm$, legyen $$\delta := \alpha_0 + rm.$$ Az $u$, $g$ és $M Q$ korlátossága miatt ha $|\alpha| \leq \delta$ és $x \in L^2[0, 1]$, akkor
+Válasszunk $\alpha_0$-át úgy, hogy $\eqref{eq:mp:alpha}$ egyenletek teljesüljenek és $\alpha_0 > rm$, legyen $\delta := \alpha_0 + rm$. $u$, $g$ és $M E$ korlátossága miatt ha $|\alpha| \leq \delta$ és $x \in L^2[0, 1]$, akkor
 \begin{equation*}
 \|H_1 (x, \alpha)\| = \| \alpha u + M Q N (x)\| \leq |\alpha| \|u\| + \|M Q N (x)\| \leq |\alpha| \|u\| + \|M Q\| |g(x_1)| \leq b_1
 \end{equation*}
@@ -326,7 +295,7 @@ megfelelõ $b_1$ választásával. Legyen
 \mathcal{B} = \left\{ (x, \alpha) \in L^2[0, 1] \times \mathbb{R} : \|x\| \leq b_1 \text{ és } |\alpha| \leq \delta \right\},
 \end{equation*}
 így $\mathcal{B}$ egy zárt, korlátos, konvex halmaz. A cél megmutatni, hogy $H$ a $\mathcal{B}$ halmazt önmagába képezi. $\|H_1(x, \alpha)\| \leq b_1$-et az elõbb beláttuk, nézzük $\|H_2(x, \alpha)\| \leq \delta$-t. \\
-Elõször legyen $\alpha_0 \leq \alpha \leq \delta$, ekkor a \eqref{eq:mp:alpha} feltételünk miatt
+Elõször legyen $\alpha_0 \leq \alpha \leq \delta$, a feltételünk miatt
 \begin{equation*}
 \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t > 0,
 \end{equation*}
@@ -334,20 +303,16 @@ Elõször legyen $\alpha_0 \leq \alpha \leq \delta$, ekkor a \eqref{eq:mp:alpha} f
 \begin{equation*}
 H_2(x, \alpha) = \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t \geq \alpha_0 - rm > 0,
 \end{equation*}
-ennélfogva
-$$
-H_2(x, \alpha) \in [0, \alpha_0 - rm] \subset [-\delta, \delta].
-$$
+így $H_2(x, \alpha) \in [0, \alpha_0 - rm] \subset [-\delta, \delta]$. \\
 Ha $0 \leq \alpha < \alpha_0$, akkor
 \begin{align*}
-|H_2(x, \alpha)| &= \left| \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t \right| \leq \\\\
+|H_2(x, \alpha)| &= \left| \alpha - \int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t \right| \leq \\
  &\leq |\alpha| + \left|\int_0^1 v(t) g(\alpha s(t) + w(x(t))) \,\mathrm{d}t\right| \leq \alpha_0 + rm = \delta,
 \end{align*}
-így $H_2(x, \alpha) \in [-\delta, \delta]$.
-Ezeket összefoglalva, ha $0 \leq \alpha \leq \delta$ és $x \in L^2[0, 1]$, akkor \linebreak $H(x, \alpha) \in \mathcal{B}$. Analóg módon belátható, hogy ha $-\delta \leq \alpha \leq 0$, akkor ugyanez fennáll. \\
-Így tehát $H(\mathcal{B}) \subset \mathcal{B}$. $H$ kompaktsága következik $M Q N$ kompaktságából, és így a Schauder fixpont-tétel (vö. \cite{Kovacs} 923. old.) értelmében $H$-nak van fixpontja $\mathcal{B}$-ben, tehát van olyan $$(x_0, \alpha_0) \in ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R},$$ amivel
+így $H_2(x, \alpha) \in [-\delta, \delta]$, tehát ha $0 \leq \alpha \leq \delta$ és $x \in L^2[0, 1]$, akkor $H(x, \alpha) \in \mathcal{B}$. Analóg módon belátható, hogy ha $-\delta \leq \alpha \leq 0$, akkor ugyanez fenn áll. \\
+Így tehát $H(\mathcal{B}) \subset \mathcal{B}$. $H$ kompaktsága következik $M Q N$ kompaktságából, és így a Schauder fixpont-tétel értelmében $H$-nak van fixpontja $\mathcal{B}$-ben, tehát van $(x_0, \alpha_0) \in ( L^2[0, 1], \mathbb{R}^n) \times \mathbb{R}$, amivel
 \begin{align*}
-x_0 &= \alpha_0 u + M Q N (x_0), \\ \\
+x_0 &= \alpha_0 u + M Q N (x_0), \text{ és} \\
 \alpha_0 &= \alpha_0 - \int_0^1 v(t) g(\alpha_0 s(t) + w(x_0(t))) \,\mathrm{d}t
 \end{align*}
 teljesül, tehát az eredeti $\eqref{eq:mp:inhom}$-$\eqref{eq:mp:boundary}$ peremfeladat megoldható, és $x_0 + \alpha_0 u$ egy megoldása.
