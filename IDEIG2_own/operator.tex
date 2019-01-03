@@ -281,7 +281,7 @@ $$
   \item az $(L(\mathcal{X},\Y),\|\cdot\|)$ operátortér pontosan akkor Banach-tér, ha $(\Y,\|\cdot\|_\Y)$ is Banach-tér. Így a $(\K,|\cdot|)$ tér teljessége miatt  az $(L(\mathcal{X},\K),\|\cdot\|)$ tér is teljes, azaz Banach-tér (vö. \cite{Kovacs}, 578. old. és 624. old).
   \item ha $\X\neq\{0\}$, akkor bármely $0\neq u\in\X$ vektorhoz van olyan $f\in\X^*$ funkcionál, amelyre
             $$
-            \|f\|=1\qquad\textrm{and}\qquad f(u)=\|u\|
+            \|f\|=1\qquad\textrm{és}\qquad f(u)=\|u\|
             $$
             (vö. \cite{Simon}, 449. old.)
   \item bármely véges lineárisan független $\{u_1,\ldots,u_d\}\subset\X$ rendszerhez létezik  $\{f_1,\ldots,f_d\}\subset\X^*$ funkcionálok olyan rendszere, hogy  $$\{f_i,u_i\}\qquad(i\in\{1,\ldots,d\})$$ \textbf{biortogonális rendszer}:
@@ -517,7 +517,7 @@ operátor nyilván véges rangú: $\dim(\mathcal{R}(f\otimes y))=1$.}{}
 Lineáris algebrai megfontolásokra támaszkodva elmondható, hogy egy vektortér minden alterének van direkt kiegészítõje. Sõt, ha $\X$ Hilbert-tér és $\mathcal{A}\subset\X$ altér, akkor $$\X=\overline{\mathcal{A}}\oplus\mathcal{A}^T.$$ Az ortogonális kiegészítõ zárt altér, továbbá $(\mathcal{A}^T)^\perp=\overline{\mathcal{A}}.$ Ha $\X$ Banach-tér, akkor bármely zárt $\mathcal{A}\subset\X$ altérnek van ugyan direkt kiegészítõje, azonban ez a kiegészítõ altér nem feltétlenül zárt. Így pl. a $c_0\subset l_\infty$ altérnek nincsen zárt direkt kiegészítõje $l_\infty$-ben, ill. a $$\mathfrak{C}[0,1]\subset L^\infty[0,1]$$ altérnek sincsen zárt direkt kiegészítõje (vö. pl. \cite{Whitley, PelczynskiSudakov}).
 
 
-\satz{Legyen $\X$ Banach-tér, $\mathcal{A}\subset\X$ pedig véges dimenziós altér: $\dim(\mathcal{A})<\infty$. Ekkor $\mathcal{A}$-nak van $\X$-beli zárt direkt kiegészítõje, azaz alkalmas zárt $\mathcal{B}\subset\X$ altér esetén $$\X=\mathcal{A}\oplus\mathcal{B}$$ teljesül.}{Mivel $\mathcal{A}\subset\X$ véges dimenziós, ezért alkalmas $d\in\N$ esetén $\mathcal{A}$-ban van $d$-elemû bázis: $b_1,\ldots,b_d$. Így alkalmas $\alpha_1,\ldots,\alpha_l\in\K$ esetén
+\satz{Legyen $\X$ Banach-tér, $\mathcal{A}\subset\X$ pedig véges dimenziós altér: $\dim(\mathcal{A})<\infty$. Ekkor $\mathcal{A}$-nak van $\X$-beli zárt direkt kiegészítõje, azaz alkalmas zárt $\mathcal{B}\subset\X$ altér esetén $$\X=\mathcal{A}\oplus\mathcal{B}$$ teljesül.}{Mivel $\mathcal{A}\subset\X$ véges dimenziós, ezért alkalmas $d\in\N$ esetén $\mathcal{A}$-ban van $d$-elemû bázis: $b_1,\ldots,b_d$. Így alkalmas $\alpha_1,\ldots,\alpha_d\in\K$ esetén
 $$
 u=\alpha_1b_1+\ldots\alpha_db_d.
 $$
@@ -527,11 +527,11 @@ f_k(b_l)=\delta_{kl}\qquad(k,l\in\{1,\ldots,d\},
 $$
 ahol $\mathcal{A}^*$ jelöli az $\mathcal{A}$ altér  duálisát. Ekkor (vö. Hahn-Banach-tétel harmadik következménye)  alkalmas $f_1,\ldots,f_d$ ($\X^*$-beli) funkcionálok esetén az
 $$
-Ax:=\sum\limits_{k=1}^d\langle f_k,x\rangle u_k\qquad(x\in\X)
+Ax:=\sum\limits_{k=1}^d\langle f_k,x\rangle b_k\qquad(x\in\X)
 $$
 operátor korlátos projekció. Ha most $\mathcal{B}:=\mathcal{N}(A)$, akkor $A$ folytonossága következtében $\mathcal{B}$ zárt altér $\X$-ben, továbbá $\mathcal{B}\cap\mathcal{A}=\{0\},$ hiszen ellenkezõ esetben valamely $v\in\mathcal{B}\cap\mathcal{A}$ esetén $v\neq0$, ahonnan $$v\in\mathcal{B}=\mathcal{N}(A),$$ azaz $A(v)=0$ következik, ez pedig $v\in\X$ miatt azt jelenti, hogy $$0=A(v)=vz,$$ ami ellentmond annak, hogy $v\neq0$. Mivel bármely $u\in\mathcal{B}$ esetén $Au\in\mathcal{B}$, ill.
 $$
-A(u-Pu)=Au-A^2u=Au-Au=0
+A(u-Au)=Au-A^2u=Au-Au=0
 $$
 következtében $u-Au\in\mathcal{B}$, ezért
 $$
