@@ -1,0 +1,56 @@
+##
+
+\begin{frame}
+\frametitle{A Ljapunov-Schmidt-módszer I.}
+Tegyük fel, hogy a kezdeti $Lu = Nu$ egyenletünkben $L$ Fredholm-operátor. Ekkor az egyenlettel ekvivalens:
+\begin{align*}
+Lu &= QNu \qquad \textrm{és} \\	% kisegítő egyenlet
+0 &= (I - Q) Nu.		% bifurkációs egyenlet
+\end{align*}
+$u$-t bontsuk összegre $\mathcal{N}(L)$ és a kiegészítője mentén:
+\begin{align*}
+u = Pu + (I - P)u = u_0 + v, \\
+u_0 \in \mathcal{N}(L), \quad v \in \mathcal{X} / \mathcal{N}(L).
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Ljapunov-Schmidt-módszer II.}
+Ezt a felbontást helyettesítsük be a $Q$-val felbontott egyenletbe:
+\begin{align*}
+Lv &= QN(u_0 + v) \qquad \textrm{és} \\
+0 &= (I - Q) N(u_0 + v).
+\end{align*}
+Mivel $L|_{\mathcal{X} / \mathcal{N}(L)}$ invertálható, így az első egyenlet rögzített $u_0$ esetén egy fixpont-egyenlet $v$-re:
+\begin{equation*}
+v = (L|_{\mathcal{X} / \mathcal{N}(L)})^{-1} Q N (u_0 + v).
+\end{equation*}
+Jelöljük az $u_0$-hoz tartozó fixpontot $v(u_0)$-al.
+\end{frame}
+
+\begin{frame}
+\frametitle{A Ljapunov-Schmidt-módszer III.}
+Helyettesítsük ezt be a második egyenletbe:
+\begin{equation*}
+0 = (I - Q) N(u_0 + v(u_0)).
+\end{equation*}
+Ez egy véges dimenzión értelmezett, véges dimenziós egyenletrendszer, amit meg tudunk oldani.
+\end{frame}
+
+##
+
+5. dia (LS-módszer I)
+Nézzük meg magát a módszert az első példán keresztül.
+Tegyük fel, hogy az Lu = Nu egyenletben L Fredholm-operátor.
+Vetítsük ezt az egyenletet Q-val és (I-Q)-val, ahol I az identitás operátor, így kapjuk az alábbi egyenletrendszert, ami vele ekvivalens, itt az első egyenletünk a kisegítő egyenlet, a második pedig a bifurkációs egyenlet. % auxiliary equation, bifurcation equation
+Mivel Q L képterére vetít, ezért ha Lu-t I-Q-val vetítjük, akkor az a tér nulleleme lesz.
+Bontsuk u-t összegre L magtere és annak a kiegészítője mentén, P és (I-P) felhasználásával, így kapjuk u_0-t és v-t.
+
+6. dia (LS-módszer II)
+Ezután u felbontását behelyettesítjük a Q-val felbontott egyenletbe, felhasználva L linearitását és azt, hogy u_0 L magterében van, így kapjuk a következő egyenletrendszert.
+Ha L értelmezési tartományát leszűkítjük a magterének a direkt kiegészítőjére, akkor egy invertálható operátort kapunk, ennek az inverznek az alkalmazásával kapunk egy fixpont-feladatot v-re.
+Jelöljük v(u_0)-al az u_0-hoz tartozó fixpontot, amivel u_0 + v(u_0) kielégíti az egyenletet.
+
+7. dia (LS-módszer III)
+Ha ezt behelyettesítjük az egyenletrendszerünk második egyenletébe, akkor a következőt kapjuk.
+Mivel I-Q véges dimenzióra képez (ami L képtere), valamint u_0 véges dimenzióból van (L magtere), ezért ez egy véges dimenzión értelmezett, véges dimenziós egyenletrendszer, amit már meg tudunk oldani például Newton-módszerrel.

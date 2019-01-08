@@ -1,0 +1,93 @@
+1. dia (Cím)
+A dolgozatom témája a Ljapunov-Schmidt-redukció, amivel bizonyos végtelen dimenziós egyenleteket lehet véges dimenzióra redukálni.
+
+2. dia (Motiváció I)
+Először is nézzünk két példát, hogy milyen jellegű feladatoknál lehet erre a módszerre szükség.
+Tekintsük az Lu = Nu operátor egyenletet, ahol L és N egy Banach-tér részhalmazain értelmezettek, és keressük azon u-kat, amelyek kielégítik az egyenletet.
+Ha az egyik operátor, például L invertálható, akkor u előáll az (L^-1 N) kompozíció fixpontjaként.
+Ha egyik operátor sem invertálható, akkor máshogy kell megoldani a problémát, erre alkalmas a módszer.
+Erre példaként lehet L valamilyen lineáris differenciál-operátor, N pedig egy nemlineáris operátor, ennek egy numerikus megoldásáról még fogok beszélni.
+
+3. dia (Motiváció II)
+Második példának nézzünk egy bifurkációs egyenletet: F(x, lambda) = 0, aminek ismert egy (x_0, lambda_0) megoldása.
+Itt a cél további megoldásokat találni, lehetőleg úgy, hogy az egyes lambdákhoz a teljes megoldáshalmazt megkapjuk.
+
+4. dia (Fredholm def.)
+Érdemes még definiálni a Fredholm-operátorokat, ezek olyan korlátos lineáris operátorok, amelyeknek a magtere is és a képterének a kiegészítő altere is véges dimenziós.
+Itt definiáljuk is az úgynevezett Ljapunov-Schmidt projekciókat, amelyek közül az egyik (P) az értelmezési tartományból a magtérbe vetít, a másik (Q) pedig a Y-ból a képtérbe. Ezekre szükségünk lesz a módszer ismertetése során.
+(Például ilyen operátor a kis l_végtelen-en értelmezett eltolás művelet.)
+
+% bevezetés (4 dia): kb 1p 50 másodperc
+
+
+5. dia (LS I.)
+Ezzel rá is térhetünk a módszer ismertetésére.
+Vegyük a második motivációs példaként szereplő egyenletet. Itt F az (x_0, lambda_0) egy környezetében értelmezve van, és kétszer folytonosan differenciálható.
+F-nek az első változó szerinti Fréchet-deriváltját jelöljük L-el, és erről tegyük fel, hogy Fredholm-operátor.
+L magtere és képtere segítségével bontsuk fel az X és Y tereket alterek direkt összegére, és mivel a magtér véges dimenziós, ezért abban egy bázist jelöljünk az x_i elemekkel.
+%% ha kérdezik: a Fréchet-deriválás lényegében a parciális deriválás kiterjesztése Banach-terekre
+%% ha kérdezik: a Hahn-Banach-tétel segítségével a dolgozatban bizonyítom, hogy véges dimenziós altérhez Banach-terekben van zárt direkt kiegészítő
+
+6. dia (LS II.)
+Ezután az X tér elemeit felbontjuk x_0 és az L magterébe képező, korábban bevezetett P projekció segítségével, illetve az F-re vonatkozó egyenletünkre alkalmazzuk a szintén előbb bevezetett Q projekciót, ami L képterébe képez, így kapjuk az alábbi, az eredetivel ekvivalens, három változós egyenletrendszert.
+Itt az első egyenletünk az úgynevezett kisegítő (auxiliary) egyenlet, a második pedig a bifurkációs egyenlet.
+A kisegítő egyenletet felírjuk a három változós G függvénnyel, amit első két változójában X_0-nak és R^n-nek a 0 körüli alkalmas környezetein értelmezünk, és a harmadik változóban pedig lambda_0 egy környezetében értelmezzük.
+G-nek az első változó szerint vett Fréchet-deriváltja L leszűkítése X_0-ra.
+%% ha kérdezik: x = x_0 + v + w: v := P(x - x_0), w := (I-P)(x - x_0)
+%% ha kérdezik: Q korlátos lineáris (projekció ami zárt altérre vetít), így Fréchet-deriváltja önmaga
+
+7. dia (LS III.)
+Ha L-et leszűkítjük X_0-ra, akkor az így kapott függvény magtere csak a nullelemet tartalmazza, így ez a leszűkítés és ezzel G első változó szerinti deriváltja invertálható.
+Emiatt tudjuk az implicit függvény tételt alkalmazni, így a (0, lambda_0) egy környezetében G első változója, w felírható s és lambda egy fi függvényeként.
+G-be ezeket behelyettesítve 0-át kapunk, tehát a kisegítő egyenletünket kielégítettük a fi függvény felhasználásával.
+Ezt a bifurkációs egyenletünkbe behelyettesítve láthatjuk, hogy ez egy véges dimenzión értelmezett, véges dimenziós egyenletrendszer, amit már könnyebben meg lehet oldani.
+
+% LS-módszer (3 dia): kb 2p 30 másodperc
+
+
+8. dia (Alkalmazás: elsőrendű)
+A módszert alkalmazhatjuk differenciálegyenletek megoldhatóságának bizonyítására, erre láthatunk most két példát.
+Első példaként legyen egy elsőrendű, n-dimenziós differenciálegyenlet-rendszer periodikus peremfeltétellel, amiben van egy lambda paraméter.
+Itt a módszer segítségével tudunk elégséges feltételt adni megoldás létezésére.
+%% ha kérdezik: feltétel például f komponenseinek parciális deriváltjainak a folytonossága
+
+9. dia (Alkalmazás: n-edrendű)
+Második példánk egy n-edrendű, nemlineáris differenciálegyenlet a [0, 1] intervallumon több pontos peremfeltétellel.
+Itt szintén tudunk elégséges feltételt megadni a megoldhatóságra.
+%% ha kérdezik: feltétel például B(k) mátrixok transzponáltjainak nulltereinek metszete csak a nullvektort tartalmazza; g függvény +-végtelenben vett határértéke létezik és véges
+
+% alkalmazások (2 dia): kb 35-40 másodperc
+
+
+10. dia (num LS I)
+Az első motivációs példánk volt az Lu = Nu operátor-egyenlet.
+Feltesszük, hogy ezek egy Hilbert-tér részhalmazain értelmezettek, hogy L lineáris, zárt és önadjungált, N nemlineáris. N-re vonatkozóan még vannak korlátossági feltételeink is.
+Veszünk m és M számokat.
+L sajátértékei nemnegatívok, és növekvő sorrendben a hozzájuk tartozó sajátfüggvényeket jelöljük Fi-vel, és ezekről feltesszük, hogy egy teljes ortonormált rendszert alkotnak. M fogja meghatározni, hogy hány sajátfüggvény segítségével közelítjük majd a megoldást.
+Az első m sajátfüggvények alterére vett projekciót elnevezzük P_m-nek, H_m az L ezen altér direkt kiegészítőjén vett inverze.
+
+11. dia (num LS II)
+A már korábban ismert módon előállnak a kisegítő és a bifurkációs egyenleteink.
+
+12. dia (num LS III)
+Ezután az algoritmus a következő: veszünk egy u* kiinduló értéket a sajátfüggvények véges lineáris kombinációjaként.
+A hozzátartozó úgynevezett asszociált y := y(u*) elemet előállítjuk egy kontrakciós operátor iterációjával, ez megoldása a kisegítő egyenletnek.
+Ezután előállítjuk a következő u* értéket az Lu* = P_m N y egyenlet megoldásaként például Newton-módszerrel, és ezeket a lépéseket ismételjük, amíg a kellő pontosságot el nem érjük. A pontosságot Ly - Ny normájával lehet jellemezni.
+A módszer során paraméterként kezeltük m-et illetve a kiinduló u* értéket, előfordulhat, hogy valamelyik lépés során nincsen konvergencia, például a fixpont-egyenletnél az operátor nem kontrakció, ezen a paraméterek változtatásával lehet javítani.
+
+% numerikus (3 dia): kb 2p 10 másodperc
+
+
+13. dia (Cseb-Tau I)
+A dolgozatomban még ehhez a numerikus módszerhez írtam arról, hogy bizonyos esetben hogyan lehet L sajátfüggvényeit előállítani.
+Ha L úgynevezett Sturm-Liouville-operátor (ami másodrendű deriválást és analitikus függvényekkel szorzást tartalmaz), akkor a Csebisev-Tau-módszert alkalmazhatjuk.
+Ennek lényege, hogy Csebisev-polinomok véges lineáris kombinációjaként írjuk fel u-t. Ekkor az 'a' együtthatóvektor megfeleltethető az u függvénynek.
+
+14. dia (Cseb-Tau II)
+A Csebisev-polinomok rekurzív tulajdonságait felhasználva előállítunk egy D mátrixot, amit az együtthatóvektorral szorozva az u'-höz tartozó együtthatóvektort közelíti, és egy M mátrixot, amire egy f függvényt alkalmazva és a kapott mátrixszal az együtthatóvektort beszorozva az u függvény f-fel szorzásának együtthatóvektorának közelítését kapjuk.
+Ezeket a mátrixokat felhasználva fel tudunk írni egy általánosított sajátérték egyenletet, aminél a kapott sajátvektor az L sajátfüggvényéhez tartozó együtthatóvektor.
+
+% C-T (2 dia): kb 1p 10-15 másodperc
+
+
+%% összesen: kb 8 perc 20 másodperc, "ha kérdezik" részeket nem számítva

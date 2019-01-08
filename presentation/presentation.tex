@@ -1,0 +1,379 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+\usepackage[latin2]{inputenc}
+\linespread{1.2}
+\usepackage[latin2]{inputenc}
+\usepackage{t1enc}
+\def\magyarOptions{defaults=hu-min}
+\usepackage[magyar]{babel}
+\DeclareMathOperator{\codim}{codim}	% kodimenzió operátor
+\DeclareMathOperator{\spanned}{span}	% span
+
+
+\hyphenation{fej-lõ-dés-bi-o-ló-gi-a-i rend-szer sza-ka-szon-ként de-rék-szö-gû
+	meg-ol-dás meny-nyi-sé-ge meg-ol-dá-sá-nak}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[A Ljapunov-Schmidt-módszer]{A Ljapunov-Schmidt-módszer} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Lipták Bence Gábor} % Your name
+\institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+ELTE prog. inf. MSc, modellalkotó szakirány \\ % Your institution for the title page
+\medskip
+\textit{padsoldier@gmail.com} \\ % Your email address
+\medskip
+Témavezetõ: Dr. Kovács Sándor
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+%\section{First Section} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+%\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+
+% Motiváció
+\begin{frame}
+\frametitle{Motiváció I.}
+Tekintsünk egy
+\begin{equation*}
+Lu = Nu
+\end{equation*}
+alakú operátor-egyenletet.
+\begin{itemize}
+\item Ha $L$ invertálható, akkor a
+\begin{equation*}
+u = L^{-1} N u
+\end{equation*}
+fixpont-egyenlet megoldásaként $u$ elõállítható.
+\item Ha $L$ nem invertálható, akkor más megközelítésre van szükség.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Motiváció II.}
+Tekintsük az
+\begin{equation*}
+F(x, \lambda) = 0
+\end{equation*}
+bifurkációs egyenletet, aminek van $(x_0, \lambda_0)$ megoldása:
+\begin{equation*}
+F(x_0, \lambda_0) = 0.
+\end{equation*}
+Keressük az egyes $\lambda$ értékekhez tartozó $x$ megoldásokat. % szóban: megoldás halmazt
+\end{frame}
+
+% Fredholm op.
+\begin{frame}
+\frametitle{Definíció: Fredholm-operátorok}
+\begin{block}{Definíció}
+$L \in L(\mathcal{X}, \mathcal{Y})$ Fredholm-operátor, ha
+\begin{itemize}
+\item $\dim \mathcal{N}(L) < +\infty$, és
+\item $\codim \mathcal{R}(L) = \dim (\mathcal{Y} / L[\mathcal{X}]) < +\infty$
+\end{itemize}
+\end{block}
+% szóban példa: l_végtelen-en az eltolás (balra vagy jobbra) operátor
+Vegyük továbbá az alábbi projekciókat:
+\begin{align*}
+P &: \mathcal{X} \rightarrow \mathcal{N}(L), \\
+Q &: \mathcal{Y} \rightarrow \mathcal{R}(L).
+\end{align*}
+\end{frame}
+
+% LS-módszer
+\begin{frame}
+\frametitle{A Ljapunov-Schmidt-módszer I.}
+Tekintsük az
+\begin{equation*}
+F \in \mathcal{X} \times \mathbb{R} \rightarrow \mathcal{Y}, \qquad F(x, \lambda) = 0
+\end{equation*}
+egyenletet ($\mathcal{X}$ és $\mathcal{Y}$ Banach-terek), aminek ismert $(x_0, \lambda_0)$ megoldása. \\
+Legyen
+\begin{equation*}
+L := \partial_1 F(x_0, \lambda_0) \in L(\mathcal{X}, \mathcal{Y})
+\end{equation*}
+Fredholm-operátor. \\ % szóban: L invertálható -> implicit fv tétel alkalmazható
+Legyen
+\begin{equation*}
+\mathcal{X} = \mathcal{N}(L) \oplus \mathcal{X}_0, \qquad \mathcal{Y} = \mathcal{Y}_0 \oplus \mathcal{R}(L),
+\end{equation*}
+és a lineárisan független $x_1, \ldots, x_n \in \mathcal{X}$ elemekkel
+\begin{equation*}
+\mathcal{N}(L) = \spanned \{ x_1, \ldots, x_n \}.
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Ljapunov-Schmidt-módszer II.}
+A Ljapunov-Schmidt-projekciókat felhasználva és $x = x_0 + v + w$ felbontást bevezetve (ahol $v \in \mathcal{N}(L)$, $w \in \mathcal{X}_0$) kapjuk az alábbi, az eredetivel ekvivalens egyenletrendszert:
+\begin{align*}
+Q \circ F(x_0 + v + w, \lambda) &= 0, \\
+(I - Q) \circ F(x_0 + v + w, \lambda) &= 0.
+\end{align*}
+Legyen
+\begin{equation*}
+G \in \mathcal{X}_0 \times \mathbb{R}^n \times \mathbb{R} \rightarrow \mathcal{R}(L),
+\end{equation*}
+\begin{equation*}
+G(w, s, \lambda) := Q \circ F (x_0 + \sum_{k = 1}^n s_k x_k + w, \lambda).
+\end{equation*}
+amire
+\begin{equation*}
+\partial_1 G(0, 0, \lambda_0) = L|_{\mathcal{X}_0}.
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Ljapunov-Schmidt-módszer III.}
+Mivel
+\begin{equation*}
+\partial_1 G(0, 0, \lambda_0) = L|_{\mathcal{X}_0},
+\end{equation*}
+invertálható, így $G$-re alkalmazható az implicit függvény tétel, így a $(0, \lambda_0)$ egy környezetében
+\begin{equation*}
+w = \phi(s, \lambda), \quad \phi(0, \lambda_0) = 0,
+\end{equation*}
+\begin{equation*}
+G (\phi(s, \lambda), s, \lambda) = Q \circ F (x_0 + \sum_{k = 1}^n s_k x_k + \phi(s, \lambda), \lambda) = 0.
+\end{equation*}
+Így már csak az 
+\begin{equation*}
+(I - Q) \circ F(x_0 + \sum_{k = 1}^n s_k x_k + \phi(s, \lambda), \lambda) = 0
+\end{equation*}
+egyenletet kell megoldani, ami véges dimenzión értelmezett ($s_1, \ldots, s_n, \lambda \in \mathbb{R}$), és véges dimezióba képez.
+\end{frame}
+
+% alkalmazasok
+\begin{frame}
+\frametitle{Alkalmazások: Elsõrendû peremérték-feladat}
+Legyen $n \in \mathbb{N}, \lambda \in \mathbb{R}$,
+\begin{equation*}
+f := (f_1, \ldots, f_n) : [0, 1] \times \mathbb{R}^n \rightarrow \mathbb{R}^n,
+\end{equation*}
+esetén tekintsük az
+\begin{align*}
+\dot{x}(t) &= \lambda f(t, x(t)) \quad(t \in (0, 1)), \\
+x(0) &= x(1)
+\end{align*}
+peremérték feladatot. \\
+A módszer segítségével feltételt adhatunk az egyenletrendszer megoldhatóságára $\lambda \in (-\delta, \delta)$ esetén.
+\end{frame}
+
+\begin{frame}
+\frametitle{Alkalmazások: $n$-edrendû peremérték-feladat}
+Legyen $n, N \in \mathbb{N}$. Tekintsük az alábbi feladatot:
+\begin{equation*}
+y^{(n)}(t) + a_{n-1}(t) y^{(n-1)}(t) + \ldots + a_0(t)y(t) = g(y(t)), \qquad (t \in [0, 1]),
+\end{equation*}
+\begin{align*}
+&\sum_{j = 1}^n b_{ij}(0) y^{(j-1)}(0) + \sum_{j = 1}^n b_{ij}(1) y^{(j-1)}(t_1) + \ldots + & \\
+ &+ \sum_{j = 1}^n b_{ij}(N) y^{(j-1)}(t_N) = 0 & (i = 1, \ldots, n),
+\end{align*}
+ahol $g, a_0, \ldots a_{n-1} \in \mathfrak{C}(\mathbb{R}, \mathbb{R})$, $b_{ij}(k) \in \mathbb{R}$ ($i, j = 1, \ldots, n$, $k = 1, \ldots, N$), illetve $0 = t_0 < t_1 < \ldots < t_N = 1$. \\
+A módszer segítségével feltételeket adhatunk a feladat megoldhatóságára.
+\end{frame}
+
+% numerikus
+\begin{frame}
+\frametitle{A numerikus Ljapunov-Schmidt-módszer I.}
+Keressük az
+\begin{equation*}
+Lu = Nu
+\end{equation*}
+feladat megoldásait numerikusan, ahol $L$ lineáris, zárt és önadjungált, $N$ pedig nemlineáris operátor. Rögzítsünk $m \leq M \in \mathbb{N}$ számokat. \\
+$L$ sajátfüggvényei: $\Phi_1, \Phi_2, \ldots$, sajátérték ($\lambda_1, \ldots$) szerint növekvõen. \\
+Ha $u = \sum_{k = 1}^\infty \langle u, \Phi_k \rangle \Phi_k$, akkor legyen
+\begin{equation*}
+P_m u := \sum_{k = 1}^m \langle u, \Phi_k \rangle, \Phi_k
+\end{equation*}
+és
+\begin{equation*}
+H_m u := \sum_{k = m + 1}^M \frac{1}{\lambda_k} \langle u, \Phi_k \rangle, \Phi_k.
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{A numerikus Ljapunov-Schmidt-módszer II.}
+Ezekkel elõállítjuk a kisegítõ egyenletünket:
+\begin{equation*}
+u = P_m u + H_m N u,
+\end{equation*}
+és a bifurkációs egyenletünket:
+\begin{equation*}
+P_m(L u - N u) = 0.
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{A numerikus Ljapunov-Schmidt-módszer III.}
+Vegyünk egy
+\begin{equation*}
+u^* = \sum_{k = 1}^m c_k \Phi_k
+\end{equation*}
+kiinduló értéket, és állítsuk elõ az ehhez tartozó, az
+\begin{equation*}
+y = P_m y + H_m N y
+\end{equation*}
+kisegítõ egyenletet megoldó $y(u^*)$-ot fixpontiterációval:
+\begin{equation*}
+y_0 := u^*; \qquad y_{i+1} := u^* + H_m N y_i.
+\end{equation*}
+Majd oldjuk meg az ($m$-dimenziós)
+\begin{equation*}
+L u^* = P_m N y
+\end{equation*}
+egyenletet $u^*$-ra, és ezt kiinduló értéknek véve ismételjük a lépéseket.
+\end{frame}
+
+% Csebisev-Tau
+\begin{frame}
+\frametitle{Csebisev-Tau-módszer I.}
+Ha $L$ úgynevezett Sturm-Liouville-operátor
+\begin{equation*}
+Lu = \frac{1}{w} ( -(pu')' + qu),
+\end{equation*}
+akkor a Csebisev-Tau-módszerrel állíthatjuk elõ a sajátfüggvényeit Csebisev-polinomok véges lineáris kombinációjaként.
+\begin{equation*}
+u(x) = \sum_{k=0}^N a_k T_k(x).
+\end{equation*}
+Ekkor $u$-t meghatározza az $\mathbf{a} := [a_0, \ldots, a_N]$ együtthatóvektor.
+\end{frame}
+
+\begin{frame}
+\frametitle{Csebisev-Tau-módszer II.}
+Az ilyen együtthatóvektorokhoz megadható $\hat{D}$ mátrix, ami a deriválást közelíti:
+\begin{equation*}
+u \sim \mathbf{a} \quad \implies \quad u' \sim \hat{D}\mathbf{a}
+\end{equation*}
+illetve $M$ mátrix, amivel analitikus függvénnyel való szorzást tudunk közelíteni:
+\begin{equation*}
+u \sim \mathbf{a} \quad \implies \quad f \cdot u \sim f(M) \mathbf{a}.
+\end{equation*}
+Ezekkel felírhatjuk a sajátfüggvény egyenletünket általánosított sajátérték feladatként, ahol az együtthatóvektor a sajátfüggvény, és arra megoldva megkapjuk a sajátfüggvényeket.
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Fõbb hivatkozások}
+\footnotesize{
+\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+\bibitem{Kovacs}{\bf Kovács, S.}: {\it Funkcionálanalízis feladatokban, egyetemi jegyzet}, Budapest, 2013.\\ ISBN: 978-963-284-445-9%\\
+%(\url{http://numanal.inf.elte.hu/~alex/hu/anyag/PROGINF/FunkAnal/FunkAnalKS.pdf})
+\bibitem{multipoint} {\bf Rodriguez, J.; Taylor, P.}: {\it Multipoint boundary value problems for nonlinear ordinary differential equations}, Nonlinear Anal. {\bf 68}(11)  (2008), 3465--3474.
+\bibitem{LSNum} {\bf Trif, D.}: {\it The Lyapunov-Schmidt method for two-point boundary value problems}, Fixed Point Theory {\bf 6}(1)  (2005), 119--132.
+\bibitem{ChebysevTau} {\bf Liefvendahl, M.}: {\it A Chebyshev Tau Spectral Method for the Calculation of Eigenvalues and Pseudospectra}, Technical Report, TRITA-NA-0125, KTH, Stockholm, 2001.
+\end{thebibliography}
+}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{Köszönöm a figyelmet.}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
