@@ -3,21 +3,24 @@ A dolgozatom témája a Ljapunov-Schmidt-redukció, amivel bizonyos végtelen di
 
 2. dia (Motiváció I)
 Először is nézzünk két példát, hogy milyen jellegű feladatoknál lehet erre a módszerre szükség.
-Tekintsük az Lu = Nu operátor egyenletet, ahol L és N egy Banach-tér részhalmazain értelmezettek, és keressük azon u-kat, amelyek kielégítik az egyenletet.
-Ha az egyik operátor, például L invertálható, akkor u előáll az (L^-1 N) kompozíció fixpontjaként.
+Legyenek X és Y Banach-terek, X kompakt részhalmaza Y-nak.
+Legyen L egy lineáris operátor X-ből Y-ba, N pedig egy nemlineáris operátor Y-ból Y-ba.
+Tekintsük az Lu = Nu operátor egyenletet, és keressük azon u-kat, amelyek kielégítik az egyenletet.
+Ha L invertálható, folytonos inverzű, és L^-1 vagy N teljesen folytonos (azaz még kompakt is), akkor a Schauder-fixpont-tétel miatt létezik az u fixpont.
 Ha egyik operátor sem invertálható, akkor máshogy kell megoldani a problémát, erre alkalmas a módszer.
-Erre példaként lehet L valamilyen lineáris differenciál-operátor, N pedig egy nemlineáris operátor, ennek egy numerikus megoldásáról még fogok beszélni.
+Erre konkrét példaként lehet L valamilyen lineáris differenciál-operátor, N pedig egy nemlineáris operátor, ennek feladatnak egy numerikus megoldásáról még fogok beszélni.
 
 3. dia (Motiváció II)
-Második példának nézzünk egy bifurkációs egyenletet: F(x, lambda) = 0, aminek ismert egy (x_0, lambda_0) megoldása.
-Itt a cél további megoldásokat találni, lehetőleg úgy, hogy az egyes lambdákhoz a teljes megoldáshalmazt megkapjuk.
+Második példának nézzünk egy paraméteres egyenletet: F(x, lambda) = 0, aminek ismert egy (x_0, lambda_0) megoldása.
+Itt a cél további megoldásokat találni, lehetőleg úgy, hogy a teljes megoldáshalmazt megkapjuk, azaz az összes olyan (x, lambda) párt, ami megoldja az egyenletet, illetve az egyes lambda paraméter értékekhez minden x-et.
+Ez az előbbi probléma általánosítása, ugyanis ha F = L - N, akkor F = 0 ekvivalens L = N -el.
 
 4. dia (Fredholm def.)
 Érdemes még definiálni a Fredholm-operátorokat, ezek olyan korlátos lineáris operátorok, amelyeknek a magtere is és a képterének a kiegészítő altere is véges dimenziós.
 Itt definiáljuk is az úgynevezett Ljapunov-Schmidt projekciókat, amelyek közül az egyik (P) az értelmezési tartományból a magtérbe vetít, a másik (Q) pedig a Y-ból a képtérbe. Ezekre szükségünk lesz a módszer ismertetése során.
 (Például ilyen operátor a kis l_végtelen-en értelmezett eltolás művelet.)
 
-% bevezetés (4 dia): kb 1p 50 másodperc
+% bevezetés (4 dia): kb 2p 30 másodperc
 
 
 5. dia (LS I.)
@@ -90,4 +93,4 @@ Ezeket a mátrixokat felhasználva fel tudunk írni egy általánosított saját
 % C-T (2 dia): kb 1p 10-15 másodperc
 
 
-%% összesen: kb 8 perc 20 másodperc, "ha kérdezik" részeket nem számítva
+%% összesen: kb 9 perc 00 másodperc, "ha kérdezik" részeket nem számítva

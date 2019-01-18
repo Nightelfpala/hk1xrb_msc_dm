@@ -135,17 +135,20 @@ Témavezetõ: Dr. Kovács Sándor
 % Motiváció
 \begin{frame}
 \frametitle{Motiváció I.}
-Tekintsünk egy
+Legyenek $\mathcal{X} \subset \mathcal{Y}$ Banach-terek, tekintsünk egy
+\begin{equation*}
+L : \mathcal{X} \rightarrow \mathcal{Y}, \qquad N : \mathcal{Y} \rightarrow \mathcal{Y}
+\end{equation*}
 \begin{equation*}
 Lu = Nu
 \end{equation*}
-alakú operátor-egyenletet.
+alakú operátor-egyenletet. % L lin., N nemlin. szóban
 \begin{itemize}
-\item Ha $L$ invertálható, akkor a
+\item Ha $L$ injektív, akkor átfogalmazhatjuk
 \begin{equation*}
 u = L^{-1} N u
 \end{equation*}
-fixpont-egyenlet megoldásaként $u$ elõállítható.
+alakra. Ha $L^{-1}$ folytonos és $L^{-1}$ vagy $N$ kompakt, akkor létezik $u$ fixpont.
 \item Ha $L$ nem invertálható, akkor más megközelítésre van szükség.
 \end{itemize}
 \end{frame}
@@ -154,13 +157,14 @@ fixpont-egyenlet megoldásaként $u$ elõállítható.
 \frametitle{Motiváció II.}
 Tekintsük az
 \begin{equation*}
-F(x, \lambda) = 0
+F(x, \lambda) = 0 \qquad (x \in \mathcal{X}, \lambda \in \mathbb{R})
 \end{equation*}
-bifurkációs egyenletet, aminek van $(x_0, \lambda_0)$ megoldása:
+ egyenletet, aminek van $(x_0, \lambda_0)$ megoldása:
 \begin{equation*}
 F(x_0, \lambda_0) = 0.
 \end{equation*}
-Keressük az egyes $\lambda$ értékekhez tartozó $x$ megoldásokat. % szóban: megoldás halmazt
+Keressük az egyes $\lambda$ értékekhez tartozó $x$ megoldásokat. \\ % szóban: megoldás halmazt
+Ez az elõbbi feladat általánosítása: $F := L - N$.
 \end{frame}
 
 % Fredholm op.
@@ -359,8 +363,8 @@ Ezekkel felírhatjuk a sajátfüggvény egyenletünket általánosított sajátérték fela
 \frametitle{Fõbb hivatkozások}
 \footnotesize{
 \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem{Kovacs}{\bf Kovács, S.}: {\it Funkcionálanalízis feladatokban, egyetemi jegyzet}, Budapest, 2013.\\ ISBN: 978-963-284-445-9%\\
-%(\url{http://numanal.inf.elte.hu/~alex/hu/anyag/PROGINF/FunkAnal/FunkAnalKS.pdf})
+\bibitem{Kovacs}{\bf Kovács, S.}: {\it Abstract bifurcations}, Mikl\'os Farkas Seminar on Applied Analysis, Budapest University of Technology, 22 February 2018.
+\bibitem{Poetzsch} \textbf{P\"otzsche, C.:} \emph{Bifurcation theory},  Lecture Notes, SS 2010, TU M\"unchen, 2011.
 \bibitem{multipoint} {\bf Rodriguez, J.; Taylor, P.}: {\it Multipoint boundary value problems for nonlinear ordinary differential equations}, Nonlinear Anal. {\bf 68}(11)  (2008), 3465--3474.
 \bibitem{LSNum} {\bf Trif, D.}: {\it The Lyapunov-Schmidt method for two-point boundary value problems}, Fixed Point Theory {\bf 6}(1)  (2005), 119--132.
 \bibitem{ChebysevTau} {\bf Liefvendahl, M.}: {\it A Chebyshev Tau Spectral Method for the Calculation of Eigenvalues and Pseudospectra}, Technical Report, TRITA-NA-0125, KTH, Stockholm, 2001.
